@@ -1,0 +1,53 @@
+import marketImg from "../assets/marketing.png";
+
+
+export const markets = [
+  {
+    id: "lekki-sunday",
+    name: "Lekki Sunday Market",
+    area: "Lekki",
+    address: "Lekki Phase 1",
+    distanceKm: 1.2,
+    days: [0],            
+    open: "07:00",       
+    close: "14:00",
+    produce: ["tomato", "ugu", "carrot", "scotchbonnet"],
+    image: marketImg,
+  },
+  {
+    id: "yaba-green",
+    name: "Yaba Green Farmers Market",
+    area: "Yaba",
+    address: "Yaba, Lagos Mainland",
+    distanceKm: 6.8,
+    days: [6, 0],
+    open: "08:00",
+    close: "16:00",
+    produce: ["ugu", "sweetcorn", "carrot", "mango"],
+    image: marketImg,
+  },
+  {
+    id: "ikeja-harvest",
+    name: "Ikeja Harvest Square",
+    area: "Ikeja",
+    address: "Allen Avenue, Ikeja",
+    distanceKm: 14,
+    days: [3, 6],
+    open: "07:30",
+    close: "13:00",
+    produce: ["tomato", "carrot", "scotchbonnet", "watermelon"],
+    image: marketImg,
+  },
+  {
+    id: "surulere-organic",
+    name: "Surulere Organic Corner",
+    area: "Surulere",
+    address: "Adeniran Ogunsanya",
+    distanceKm: 11,
+    days: [6],
+    open: "09:00",
+    close: "15:00",
+    produce: ["mango", "strawberry", "watermelon"],
+    image: marketImg,
+  },
+];
