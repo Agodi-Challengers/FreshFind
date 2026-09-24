@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "./Logo.jsx";
 import Icon from "./Icon.jsx";
@@ -40,9 +40,11 @@ function SavedButton({ compact = false }) {
   );
 }
 
-/** Desktop navbar and mobile header with slide-in menu. */
+/** Desktop navbar and mobile header with a full-screen menu. */
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const closeRef = useRef(null);
+  const openRef = useRef(null);
   const location = useLocation();
   const now = useNow();
   const { markets } = useData();
@@ -59,9 +61,14 @@ export default function SiteHeader() {
     const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    // focus the close button once the menu is visible
+    const focusTimer = window.setTimeout(() => closeRef.current?.focus(), 60);
+    const opener = openRef.current;
     return () => {
+      window.clearTimeout(focusTimer);
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      opener?.focus();
     };
   }, [menuOpen]);
 
@@ -106,10 +113,11 @@ export default function SiteHeader() {
           </span>
         </div>
         <header className="mobile-header">
-          <Logo tagline={false} compact />
+          <Logo compact />
           <div className="mobile-header__icons">
             <SavedButton compact />
             <button
+              ref={openRef}
               type="button"
               className="round-btn"
               aria-label="Open menu"
@@ -123,57 +131,48 @@ export default function SiteHeader() {
         </header>
       </div>
 
+      {/* Full-screen mobile menu (design by Aishat, feat-Aishat branch) */}
       <div
-        className={`drawer-backdrop${menuOpen ? " is-open" : ""}`}
-        onClick={() => setMenuOpen(false)}
-        aria-hidden="true"
-      />
-      <nav
         id="mobile-menu"
-        className={`drawer${menuOpen ? " is-open" : ""}`}
-        aria-label="Mobile"
+        className={`mmenu${menuOpen ? " is-open" : ""}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
         aria-hidden={!menuOpen}
         inert={menuOpen ? undefined : true}
       >
-        <div className="drawer__head">
-          <Logo compact />
+        <div className="mmenu__head">
+          <Logo size="menu" onClick={() => setMenuOpen(false)} />
           <button
+            ref={closeRef}
             type="button"
-            className="round-btn"
+            className="mmenu__close"
             aria-label="Close menu"
             onClick={() => setMenuOpen(false)}
           >
-            <Icon name="x" size={18} />
+            <Icon name="x" size={26} />
           </button>
         </div>
-        <ul className="drawer__links">
-          <li>
-            <NavLink to="/" end className="drawer__link">
-              Home
-            </NavLink>
-          </li>
-          {NAV_LINKS.map((l) => (
-            <li key={l.to}>
-              <NavLink to={l.to} className="drawer__link">
-                {l.label}
-              </NavLink>
-            </li>
-          ))}
-          <li>
-            <NavLink to="/saved" className="drawer__link">
-              Saved & notes
-            </NavLink>
-          </li>
-        </ul>
-        <div className="drawer__actions">
-          <Link to="/login" className="btn btn--outline btn--block">
-            Log in
-          </Link>
-          <Link to="/signup" className="btn btn--primary btn--block">
+        <nav aria-label="Mobile">
+          <ul className="mmenu__links">
+            {NAV_LINKS.map((l, i) => (
+              <li key={l.to} style={{ "--i": i }}>
+                <NavLink to={l.to} className="mmenu__link">
+                  {l.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="mmenu__actions">
+          <Link to="/signup" className="mmenu__btn mmenu__btn--primary">
             Sign up
           </Link>
+          <Link to="/login" className="mmenu__btn mmenu__btn--outline">
+            Log in
+          </Link>
         </div>
-      </nav>
+      </div>
     </>
   );
 }
