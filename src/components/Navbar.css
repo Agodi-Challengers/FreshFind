@@ -76,19 +76,13 @@ body {
   transition: color 0.2s ease;
 }
 
-/* LINK HOVER */
-
 .nav-links a:hover {
   color: #00B207 !important;
 }
 
-/* ACTIVE LINK */
-
 .nav-links a.active {
   color: #1B221C;
 }
-
-/* GREEN LINE UNDER ACTIVE LINK */
 
 .nav-links a.active::after {
   content: "";
@@ -206,8 +200,6 @@ body {
     color 0.2s ease;
 }
 
-/* LOGIN HOVER */
-
 .login-button:hover {
   background: #84d187 !important;
   color: #1B221C !important;
@@ -248,86 +240,373 @@ body {
 }
 
 /* =========================
-   TABLET
+   MOBILE MENU BUTTON
 ========================= */
 
-@media (max-width: 1150px) {
-  .nav-bar {
-    padding: 0 3%;
-    gap: 18px;
-  }
+.mobile-menu-button {
+  display: none;
 
-  .brand img {
-    width: 150px;
-  }
+  width: 45px;
+  height: 45px;
 
-  .nav-links {
-    gap: 20px;
-  }
+  align-items: center;
+  justify-content: center;
 
-  .nav-links a {
-    font-size: 14px;
-  }
+  border: none;
+  border-radius: 50%;
 
-  .nav-actions {
-    gap: 10px;
-  }
+  background: transparent;
 
-  .signup-button {
-    padding: 0 18px;
-  }
+  color: #1B221C;
 
-  .saved-button {
-    padding: 0 11px;
-  }
+  font-size: 30px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
+
+.mobile-menu-button:hover {
+  background: #e8f5e9;
+  color: #00B207;
+  transform: rotate(5deg) scale(1.08);
+}
+
 
 /* =========================
-   SMALLER SCREEN
+   MOBILE MENU
 ========================= */
 
-@media (max-width: 950px) {
-  .brand img {
-    width: 130px;
-  }
-
-  .nav-links {
-    gap: 14px;
-  }
-
-  .nav-links a {
-    font-size: 13px;
-  }
-
-  .nav-actions {
-    gap: 5px;
-  }
-
-  .login-button {
-    padding: 10px 12px;
-  }
-
-  .signup-button {
-    padding: 0 14px;
-  }
+.mobile-menu {
+  display: none;
 }
+
 
 /* =========================
    MOBILE
 ========================= */
 
 @media (max-width: 800px) {
+
   .nav-bar {
     height: 75px;
     padding: 0 5%;
   }
+
+  /* Hide desktop navigation */
 
   .nav-links,
   .nav-actions {
     display: none;
   }
 
+  /* Mobile logo */
+
   .brand img {
     width: 145px;
   }
+
+  /* Show menu icon */
+
+  .mobile-menu-button {
+    display: flex;
+  }
+
+
+  /* =========================
+     MOBILE MENU OVERLAY
+  ========================= */
+
+  .mobile-menu {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #ffffff;
+
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 5%;
+
+    /*
+      Instead of sliding from the side,
+      the menu starts slightly smaller
+      and transparent.
+    */
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(0.97);
+
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease,
+      visibility 0.35s ease;
+  }
+
+
+  /* =========================
+     OPEN MENU
+  ========================= */
+
+  .mobile-menu-open {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: scale(1);
+  }
+
+
+  /* =========================
+     MOBILE MENU HEADER
+  ========================= */
+
+  .mobile-menu-header {
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  /* Logo */
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .mobile-brand img {
+    width: 180px;
+    height: auto;
+
+    display: block;
+  }
+
+  .mobile-brand:hover {
+    transform: scale(1.04);
+
+    opacity: 0.8;
+  }
+
+
+  /* =========================
+     CLOSE BUTTON
+  ========================= */
+
+  .mobile-close-button {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #1B221C;
+
+    font-size: 32px;
+
+    cursor: pointer;
+
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .mobile-close-button:hover {
+    background: #e8f5e9;
+
+    color: #00B207;
+
+    transform: rotate(90deg) scale(1.1);
+  }
+
+
+  /* =========================
+     MOBILE LINKS
+  ========================= */
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 75px;
+  }
+
+  .mobile-nav-links a {
+    position: relative;
+
+    width: fit-content;
+
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 23px;
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    margin-bottom: 40px;
+
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+
+  /* Link hover */
+
+  .mobile-nav-links a:hover {
+    color: #00B207;
+
+    transform: translateX(8px);
+  }
+
+
+  /* Small green line on hover */
+
+  .mobile-nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #00B207;
+
+    border-radius: 10px;
+
+    transition: width 0.3s ease;
+  }
+
+  .mobile-nav-links a:hover::after {
+    width: 100%;
+  }
+
+
+  /* Active link */
+
+  .mobile-nav-links a.active {
+    color: #1B221C;
+  }
+
+
+ /* =========================
+   MOBILE BUTTONS
+========================= */
+
+.mobile-menu-actions {
+  position: absolute;
+
+  left: 5%;
+  right: 5%;
+  bottom: 30px;
+
+  width: 90%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 60px;
+}
+
+.mobile-signup-button,
+.mobile-login-button {
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 35px;
+
+  text-decoration: none;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+
+/* =========================
+   SIGN UP
+========================= */
+
+.mobile-signup-button {
+  background: #1f5d32;
+
+  color: #ffffff;
+}
+
+.mobile-signup-button:hover {
+  background: #00B207;
+
+  color: #ffffff;
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 8px 20px rgba(0, 176, 7, 0.2);
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.mobile-login-button {
+  background: #ffffff;
+
+  color: #1f5d32;
+
+  border: 1.5px solid #1f5d32;
+}
+
+.mobile-login-button:hover {
+  background: #e8f5e9;
+
+  color: #00B207;
+
+  border-color: #00B207;
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 8px 20px rgba(0, 176, 7, 0.12);
 }
