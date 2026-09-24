@@ -1,174 +1,366 @@
 {
-  "months": [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ],
   "categories": [
-    { "name": "Vegetables", "label": "Vegetables", "icon": "carrot" },
-    { "name": "Fruits", "label": "Fruits", "icon": "apple" },
+    { "name": "Fruit", "icon": "apple", "label": "Fruit" },
+    { "name": "Vegetables", "icon": "carrot", "label": "Vegetable" },
+    { "name": "Herbs & spices", "icon": "leaf", "label": "Herbs & spices" },
+    { "name": "Dairy & eggs", "icon": "egg", "label": "Dairy & eggs" },
+    { "name": "Grains & tubers", "icon": "wheat", "label": "Grains & tubers" },
+    { "name": "Fish & meat", "icon": "store", "label": "Fish & meat" }
+  ],
+  "months": [
     {
-      "name": "Grains & Legumes",
-      "label": "Grains & Legumes",
-      "icon": "wheat"
+      "name": "January",
+      "intro": "The heart of the dry season: cheap tomatoes, crunchy Jos carrots and the last of the strawberries."
     },
-    { "name": "Herbs & Spices", "label": "Herbs & Spices", "icon": "leaf" },
-    { "name": "Tubers", "label": "Tubers", "icon": "sprout" },
-    { "name": "Eggs & Dairy", "label": "Eggs & Dairy", "icon": "egg" }
+    {
+      "name": "February",
+      "intro": "Harmattan skies and full stalls. Tomatoes, watermelon and oranges are at their best value."
+    },
+    {
+      "name": "March",
+      "intro": "The end of the dry season brings mangoes, early corn and cheap tomatoes. Here’s what to look out for."
+    },
+    {
+      "name": "April",
+      "intro": "The first rains arrive. Mangoes peak, sweet corn fills the stalls and leafy greens start to return."
+    },
+    {
+      "name": "May",
+      "intro": "Rainy season greens are back: ugu, efo and okra, with the last sweet mangoes of the year."
+    },
+    {
+      "name": "June",
+      "intro": "Plenty of leafy greens, okra and garden eggs. Tomatoes get pricier, so buy what you need."
+    },
+    {
+      "name": "July",
+      "intro": "Corn is everywhere and greens are cheap. A good month for soups and stews."
+    },
+    {
+      "name": "August",
+      "intro": "New yam arrives from the farms, with okra, cucumbers and garden eggs still going strong."
+    },
+    {
+      "name": "September",
+      "intro": "New yam season is in full swing, and leafy greens are at their cheapest before the dry months."
+    },
+    {
+      "name": "October",
+      "intro": "The rains ease off. Yam, beans and the last of the rainy season greens fill the stalls."
+    },
+    {
+      "name": "November",
+      "intro": "Dry season is back: tomatoes and peppers get cheaper, and Jos carrots start to arrive."
+    },
+    {
+      "name": "December",
+      "intro": "Festive shopping month: tomatoes, peppers, yam and chicken are in demand, so shop early."
+    }
   ],
   "items": [
     {
       "id": "tomatoes",
       "name": "Tomatoes",
-      "shortName": "Tomatoes",
       "category": "Vegetables",
-      "description": "Vine-ripened Lagos tomatoes, sold by the basket or the paint bucket. Firm enough for stew and sweet enough for salad.",
-      "season": "111111111111",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
+      "description": "Plum and cherry varieties from Kano, Jos and Ogun.",
+      "season": "111100000011",
+      "badge": "Good prices",
+      "price": "₦6,000 a small basket",
+      "note": "Dry season supply keeps prices low",
+      "image": "/images/produce/tomatoes.webp",
+      "photo": "/images/produce/tomatoes-photo.webp",
+      "icon": "/images/seasonal/plum-tomatoes-mini.webp",
+      "round": "/images/seasonal/tomatoes-round.webp"
     },
     {
-      "id": "scotch-bonnet",
-      "name": "Scotch Bonnet Pepper",
-      "shortName": "Pepper",
-      "category": "Vegetables",
-      "description": "The small, fiery pepper that gives Nigerian stew its heat. Sold fresh in mixed bowls or by the cup.",
-      "season": "111111111111",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
-    },
-    {
-      "id": "okra",
-      "name": "Okra",
-      "shortName": "Okra",
-      "category": "Vegetables",
-      "description": "Tender green pods, best picked young. A staple for soup and the reason many stalls open before dawn.",
-      "season": "110000000011",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
-    },
-    {
-      "id": "plantain",
-      "name": "Plantain",
-      "shortName": "Plantain",
-      "category": "Fruits",
-      "description": "Sold in green, yellow and over-ripe bunches depending on whether you are frying, boiling or roasting.",
-      "season": "111111111111",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
-    },
-    {
-      "id": "mango",
-      "name": "Mango",
-      "shortName": "Mango",
-      "category": "Fruits",
-      "description": "Sweet, fibrous mangoes that arrive with the April rains and disappear by early October.",
-      "season": "000111111000",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
-    },
-    {
-      "id": "pineapple",
-      "name": "Pineapple",
-      "shortName": "Pineapple",
-      "category": "Fruits",
-      "description": "Golden, low-acid pineapple from the coastal belt, peeled to order at most stalls.",
-      "season": "001111100000",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
-    },
-    {
-      "id": "sweet-corn",
-      "name": "Sweet Corn",
-      "shortName": "Corn",
-      "category": "Vegetables",
-      "description": "Boiled or roasted on the spot. The roadside favourites are picked the same morning in season.",
-      "season": "000111110000",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
+      "id": "mangoes",
+      "name": "Mangoes",
+      "category": "Fruit",
+      "description": "Sweet Ogbomoso and Peter mangoes. Best in March.",
+      "season": "001110000000",
+      "badge": "Peak season",
+      "note": "Sweetest fruit of the year",
+      "pick": {
+        "title": "Ogbomoso mangoes",
+        "text": "Juicy, fibre-light and at their cheapest for the next 3 weeks. Look for fruit that gives a little when pressed.",
+        "image": "/images/seasonal/mangoes-feature.webp"
+      },
+      "image": "/images/produce/mangoes.webp",
+      "photo": "/images/produce/mangoes-photo.webp",
+      "icon": "/images/seasonal/mangoes-icon.webp",
+      "round": "/images/seasonal/mangoes-round.webp"
     },
     {
       "id": "ugu",
-      "name": "Ugu (Fluted Pumpkin Leaves)",
+      "name": "Ugu (pumpkin leaves)",
       "shortName": "Ugu",
-      "category": "Herbs & Spices",
-      "description": "Fluted pumpkin leaves, shredded and sold by the bundle. The backbone of most Nigerian soups.",
-      "season": "111111111111",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
+      "category": "Vegetables",
+      "description": "Staple leafy green for soups and stews.",
+      "season": "000011111100",
+      "badge": "Plentiful",
+      "note": "Rains start in April, supply rising",
+      "image": "/images/produce/ugu.webp",
+      "photo": "/images/produce/ugu-pumpkin-leaves-photo.webp",
+      "icon": "/images/seasonal/ugu-pumpkin-leaves-icon.webp",
+      "round": "/images/seasonal/ugu-pumpkin-leaves-item.webp"
     },
     {
-      "id": "waterleaf",
-      "name": "Waterleaf",
-      "shortName": "Waterleaf",
-      "category": "Herbs & Spices",
-      "description": "Soft, quick-cooking greens used in edikang ikong and afang. Sold in tied bunches while still wet.",
-      "season": "000111110000",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
+      "id": "sweet-corn",
+      "name": "Sweet corn",
+      "category": "Vegetables",
+      "description": "Roast or boil; buy with husks still green.",
+      "season": "001111100000",
+      "badge": "Early harvest",
+      "price": "₦300–500 a cob",
+      "note": "First harvests from Ogun farms",
+      "image": "/images/produce/sweet-corn.webp",
+      "photo": "/images/produce/sweet-corn-photo.webp",
+      "icon": "/images/seasonal/sweet-corn-mini.webp",
+      "round": "/images/seasonal/sweet-corn-item.webp"
     },
     {
-      "id": "brown-beans",
-      "name": "Brown Beans",
-      "shortName": "Beans",
-      "category": "Grains & Legumes",
-      "description": "Dried honey beans and oloyin, sold by the cup, the paint bucket or the bag.",
-      "season": "111111111111",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
-    },
-    {
-      "id": "yam",
-      "name": "Yam",
-      "shortName": "Yam",
-      "category": "Tubers",
-      "description": "Puna and white yam tubers, priced per tuber or per bundle. The new harvest lands with the dry season.",
-      "season": "110000000011",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
+      "id": "carrots",
+      "name": "Carrots",
+      "category": "Vegetables",
+      "description": "Crunchy Jos carrots, sweetest in the dry season.",
+      "season": "111000000011",
+      "note": "Jos supply drops after March",
+      "image": "/images/produce/carrots.webp",
+      "icon": "/images/seasonal/carrots-item.webp"
     },
     {
       "id": "watermelon",
       "name": "Watermelon",
-      "shortName": "Watermelon",
-      "category": "Fruits",
-      "description": "Heavy, deep-red melons that dominate the stalls through the hot months.",
-      "season": "111110000001",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null,
-      "pick": "Look for a heavy melon with a creamy-yellow field spot; that is where the sugar is."
+      "category": "Fruit",
+      "description": "Heavy for its size means ripe and juicy.",
+      "season": "111100000000",
+      "note": "Last weeks of peak season",
+      "image": "/images/produce/watermelon.webp",
+      "photo": "/images/produce/watermelon-photo.webp",
+      "icon": "/images/seasonal/watermelon-mini.webp"
+    },
+    {
+      "id": "strawberries",
+      "name": "Strawberries",
+      "category": "Fruit",
+      "description": "Grown on the Jos Plateau. Limited supply.",
+      "season": "110000000001",
+      "note": "Last Plateau batches",
+      "image": "/images/produce/strawberries.webp",
+      "photo": "/images/produce/strawberries-photo.webp",
+      "icon": "/images/seasonal/strawberries-item.webp"
+    },
+    {
+      "id": "scotch-bonnet",
+      "name": "Scotch bonnet",
+      "category": "Herbs & spices",
+      "description": "Ata rodo: the heat in every good pepper soup.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/scotch-bonnet.webp",
+      "photo": "/images/produce/scotch-bonnet-photo.webp"
+    },
+    {
+      "id": "scent-leaf",
+      "name": "Scent leaf",
+      "category": "Herbs & spices",
+      "description": "Efirin: the fragrant leaf in pepper soup and yam porridge.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/scent-leaf.webp",
+      "icon": "/images/seasonal/ugu-pumpkin-leaves-icon.webp"
+    },
+    {
+      "id": "garden-eggs",
+      "name": "Garden eggs",
+      "category": "Vegetables",
+      "description": "Bitter-sweet garden eggs, eaten raw with groundnut paste or in stew.",
+      "season": "000111111000",
+      "note": "More stalls each week",
+      "image": "/images/seasonal/garden-eggs-item.webp"
+    },
+    {
+      "id": "oranges",
+      "name": "Oranges",
+      "category": "Fruit",
+      "description": "Juicy local oranges, great for fresh juice.",
+      "season": "111000000011",
+      "note": "Late-season, sourer fruit",
+      "image": "/images/produce/oranges.webp",
+      "icon": "/images/seasonal/oranges-item.webp"
+    },
+    {
+      "id": "onions",
+      "name": "Onions",
+      "category": "Vegetables",
+      "description": "Red and white bulbs from the north. Store them somewhere dry and airy.",
+      "season": "111100000011",
+      "note": "Northern harvest keeps prices down",
+      "image": "/images/produce/yam.webp"
+    },
+    {
+      "id": "efo-tete",
+      "name": "Efo tete",
+      "category": "Vegetables",
+      "description": "Tender amaranth greens for efo riro.",
+      "season": "000111111110",
+      "note": "Rainy season greens",
+      "image": "/images/produce/ugu.webp"
+    },
+    {
+      "id": "okra",
+      "name": "Okra",
+      "category": "Vegetables",
+      "description": "Pick small, bright pods that snap cleanly.",
+      "season": "000111111100",
+      "note": "Plenty through the rains",
+      "image": "/images/produce/okra.webp"
+    },
+    {
+      "id": "tatashe",
+      "name": "Tatashe",
+      "category": "Vegetables",
+      "description": "Sweet red pepper that gives stew its colour.",
+      "season": "111100000011",
+      "note": "Cheapest in the dry season",
+      "image": "/images/produce/tatashe.webp"
+    },
+    {
+      "id": "cucumber",
+      "name": "Cucumber",
+      "category": "Vegetables",
+      "description": "Crisp, firm cucumbers for salads and juice.",
+      "season": "001111110000",
+      "note": "Firm and cheap through the rains",
+      "image": "/images/produce/okra.webp"
+    },
+    {
+      "id": "yam",
+      "name": "Yam",
+      "category": "Grains & tubers",
+      "description": "New yam arrives from August. Look for firm tubers with no soft spots.",
+      "season": "100000011111",
+      "note": "New yam harvest",
+      "image": "/images/produce/yam.webp"
+    },
+    {
+      "id": "plantain",
+      "name": "Plantain",
+      "category": "Grains & tubers",
+      "description": "Green for boiling, ripe yellow and black for dodo.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/plantain.webp"
+    },
+    {
+      "id": "beans",
+      "name": "Beans",
+      "category": "Grains & tubers",
+      "description": "Oloyin (honey) and brown beans, sold by the mudu.",
+      "season": "111000000011",
+      "note": "Fresh from the northern harvest",
+      "image": "/images/produce/scotch-bonnet.webp"
+    },
+    {
+      "id": "garri",
+      "name": "Garri",
+      "category": "Grains & tubers",
+      "description": "White and yellow garri, freshly fried and sold by the paint bucket.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/scotch-bonnet.webp"
+    },
+    {
+      "id": "cassava",
+      "name": "Cassava",
+      "category": "Grains & tubers",
+      "description": "Fresh roots for fufu, garri and abacha.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/yam.webp"
+    },
+    {
+      "id": "pineapple",
+      "name": "Pineapple",
+      "category": "Fruit",
+      "description": "Sweet sugarloaf pineapples. Smell the base to check ripeness.",
+      "season": "111100000011",
+      "note": "Sweetest in the dry season",
+      "image": "/images/produce/plantain.webp"
+    },
+    {
+      "id": "pawpaw",
+      "name": "Pawpaw",
+      "category": "Fruit",
+      "description": "Soft, sweet pawpaw. Ripe when it gives slightly.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/pawpaw.webp"
     },
     {
       "id": "eggs",
-      "name": "Farm Eggs",
-      "shortName": "Eggs",
-      "category": "Eggs & Dairy",
-      "description": "Crates of free-range and deep-litter eggs from peri-urban poultry farms around Lagos.",
+      "name": "Eggs",
+      "category": "Dairy & eggs",
+      "description": "Free-range and farm eggs, sold by the crate.",
       "season": "111111111111",
-      "photo": "/images/placeholder-produce.svg",
-      "image": "/images/placeholder-produce.svg",
-      "icon": null
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/eggs.webp"
+    },
+    {
+      "id": "wara",
+      "name": "Wara",
+      "category": "Dairy & eggs",
+      "description": "Soft Fulani cheese, great fried or in stew.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/eggs.webp"
+    },
+    {
+      "id": "honey",
+      "name": "Honey",
+      "category": "Dairy & eggs",
+      "description": "Raw local honey from Oyo and Kwara hives.",
+      "season": "111100000011",
+      "note": "Dry season harvest",
+      "image": "/images/produce/honey.webp"
+    },
+    {
+      "id": "local-chicken",
+      "name": "Local chicken",
+      "category": "Fish & meat",
+      "description": "Pastured local chicken, firmer and more flavourful.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/eggs.webp"
+    },
+    {
+      "id": "smoked-fish",
+      "name": "Smoked fish",
+      "category": "Fish & meat",
+      "description": "Catfish, mackerel and bonga smoked over wood.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/smoked-fish.webp"
+    },
+    {
+      "id": "fresh-catfish",
+      "name": "Fresh catfish",
+      "category": "Fish & meat",
+      "description": "Live and fresh catfish from local ponds and the lagoon.",
+      "season": "111111111111",
+      "badge": "All year",
+      "note": "Available all year",
+      "image": "/images/produce/smoked-fish.webp"
     }
   ]
 }

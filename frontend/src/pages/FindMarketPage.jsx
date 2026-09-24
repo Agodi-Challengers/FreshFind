@@ -1,215 +1,162 @@
-import { useMemo, useState } from "react";
-import Breadcrumb from "../components/Breadcrumb.jsx";
-import Dropdown from "../components/Dropdown.jsx";
-import Icon from "../components/Icon.jsx";
-import MarketRow from "../components/MarketRow.jsx";
-import SearchBox from "../components/SearchBox.jsx";
-import { useData } from "../context/DataContext.jsx";
-import { useNow } from "../context/ClockContext.jsx";
-import { useUserLocation } from "../context/LocationContext.jsx";
-import { useDecoratedMarkets } from "../lib/useMarkets.js";
-import { fitMapProjection } from "../lib/geo.js";
-import { isOpenNow } from "../lib/time.js";
-
-const PAD = 12;
-
-/** Decorative Lagos outline: water to the east and south, a few main roads. */
-function MapArt() {
-  return (
-    <svg
-      className="ff-map__art"
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      <rect width="100" height="100" fill="var(--ff-map-land)" />
-      <path
-        d="M100 0 H60 C70 14 74 26 72 40 C70 54 75 66 87 76 C93 82 97 90 100 100 Z"
-        fill="var(--ff-map-water)"
-      />
-      <path
-        d="M0 76 C16 70 30 75 44 84 C54 90 62 96 66 100 H0 Z"
-        fill="var(--ff-map-water)"
-        opacity="0.8"
-      />
-      <g stroke="var(--ff-green-300)" strokeWidth="1" fill="none" opacity="0.7">
-        <path d="M6 24 H46" />
-        <path d="M4 50 H54" />
-        <path d="M20 6 V40" />
-        <path d="M36 42 V94" />
-      </g>
-    </svg>
-  );
-}
+import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Breadcrumb from '../components/Breadcrumb.jsx';
+import Icon from '../components/Icon.jsx';
+import Dropdown from '../components/Dropdown.jsx';
+import SearchBox from '../components/SearchBox.jsx';
+import MarketRow from '../components/MarketRow.jsx';
+import LagosMap from '../components/LagosMap.jsx';
+import { useData } from '../context/DataContext.jsx';
+import { useNow } from '../context/ClockContext.jsx';
+import { useUserLocation } from '../context/LocationContext.jsx';
+import { useDecoratedMarkets } from '../lib/useMarkets.js';
+import { useUrlFilters } from '../lib/useFilters.js';
+import { applyFilters, sortMarkets, activeFilterChips, hasActiveFilters, filtersToParams, EMPTY_FILTERS } from '../lib/filters.js';
+import { areaDropdown, dayDropdown, timeDropdown, sortDropdown } from '../lib/quickFilters.js';
+import { DAY_SHORT, formatMinutes } from '../lib/time.js';
+import './FindMarketPage.css';
 
 export default function FindMarketPage() {
-  const { areas } = useData();
-  const decorated = useDecoratedMarkets();
+  const data = useData();
   const now = useNow();
-  const { origin } = useUserLocation();
-  const [q, setQ] = useState("");
-  const [area, setArea] = useState("all");
-  const [onlyOpen, setOnlyOpen] = useState(false);
-  const [selected, setSelected] = useState(null);
+  const { origin, status, requestDeviceLocation, chooseArea, reset } = useUserLocation();
+  const markets = useDecoratedMarkets();
+  const [filters, setFilters] = useUrlFilters();
+  const [selectedId, setSelectedId] = useState(null);
+  const [hoverId, setHoverId] = useState(null);
 
-  const filtered = useMemo(() => {
-    const term = q.trim().toLowerCase();
-    return decorated.filter((m) => {
-      if (area !== "all" && m.area !== area) return false;
-      if (onlyOpen && !isOpenNow(m, now)) return false;
-      if (!term) return true;
-      return `${m.name} ${m.street} ${m.area} ${m.locality}`
-        .toLowerCase()
-        .includes(term);
-    });
-  }, [decorated, area, onlyOpen, now, q]);
-
-  const mappable = useMemo(
-    () => decorated.filter((m) => m.map && m.lat && m.lng),
-    [decorated],
+  const results = useMemo(
+    () => sortMarkets(applyFilters(markets, filters, data.produceById), filters.sort),
+    [markets, filters, data.produceById],
   );
-  const canMap = mappable.length >= 2;
+  const chips = activeFilterChips(filters, now);
+  const listQuery = filtersToParams(filters).toString();
 
-  const { positions, you } = useMemo(() => {
-    if (!canMap) return { positions: {}, you: null };
-    const project = fitMapProjection(mappable);
-    const pts = mappable.map((m) => ({ id: m.id, ...project(m) }));
-    const xs = pts.map((p) => p.x);
-    const ys = pts.map((p) => p.y);
-    const minX = Math.min(...xs);
-    const maxX = Math.max(...xs);
-    const minY = Math.min(...ys);
-    const maxY = Math.max(...ys);
-    const norm = (p) => ({
-      left: `${PAD + ((p.x - minX) / (maxX - minX || 1)) * (100 - PAD * 2)}%`,
-      top: `${PAD + ((p.y - minY) / (maxY - minY || 1)) * (100 - PAD * 2)}%`,
-    });
-    return {
-      positions: Object.fromEntries(pts.map((p) => [p.id, norm(p)])),
-      you: origin?.lat != null ? norm(project(origin)) : null,
-    };
-  }, [mappable, canMap, origin]);
+  const area = areaDropdown(filters, { ...data, markets });
+  const day = dayDropdown(filters, now);
+  const time = timeDropdown(filters, markets);
+  const sort = sortDropdown(filters);
 
-  const areaOptions = [
-    { value: "all", label: "All areas" },
-    ...areas.map((a) => ({ value: a.name, label: a.name })),
+  const locationOptions = [
+    { value: 'device', label: status === 'locating' ? 'Finding you…' : 'Use my current location', strong: true },
+    { value: 'default', label: `${data.defaultLocation.label} (default)` },
+    { header: 'Choose an area' },
+    ...data.areas.map((a) => ({ value: `area:${a.name}`, label: a.place })),
   ];
+  const locationValue =
+    origin.source === 'device' ? 'device' : origin.source === 'area' ? `area:${origin.area}` : 'default';
+  const onLocation = (v) => {
+    if (v === 'device') requestDeviceLocation();
+    else if (v === 'default') reset();
+    else chooseArea(v.slice(5));
+  };
 
-  const openCount = filtered.filter((m) => isOpenNow(m, now)).length;
+  const crumbs = [{ label: 'Home', to: '/' }, { label: 'Find a Market', to: chips.length ? '/find' : undefined }];
+  if (chips.length === 1) crumbs.push({ label: chips[0].label });
 
   return (
-    <div className="ff-container ff-page">
-      <Breadcrumb
-        items={[{ label: "Home", to: "/" }, { label: "Find a Market" }]}
-      />
-      <div className="ff-page-header" style={{ paddingBottom: 0 }}>
-        <div className="ff-page-header__copy">
-          <span className="ff-eyebrow">Find a market</span>
-          <h1 className="ff-page-title">Who is open near you</h1>
-          <p className="ff-lead">
-            Pick a result to highlight it on the map, or search by market,
-            street or area.
-          </p>
-        </div>
-      </div>
-
-      <div className="ff-toolbar" style={{ marginTop: 22 }}>
-        <div className="ff-toolbar__search">
-          <SearchBox
-            value={q}
-            onChange={setQ}
-            onPick={(opt) => setQ(opt.value)}
-            markets={decorated}
-            placeholder="Search markets or areas"
+    <div className="ff-find">
+      <div className="ff-find__toolbar">
+        <div className="ff-container ff-find__toolbar-inner">
+          <Dropdown
+            icon="locate-fixed"
+            label={origin.source === 'device' ? 'Your location' : 'Location'}
+            value={locationValue}
+            options={
+              origin.source === 'device'
+                ? [{ value: 'device', label: origin.label, strong: true }, ...locationOptions.slice(1)]
+                : locationOptions
+            }
+            onChange={onLocation}
+            className="ff-find__loc"
           />
+          <Dropdown icon="map-pin" label="Area" value={area.value} options={area.options} onChange={(v) => setFilters({ ...filters, areas: area.apply(v) })} className="ff-find__dd" />
+          <Dropdown icon="calendar" label="Day" value={day.value} options={day.options} onChange={(v) => setFilters({ ...filters, days: day.apply(v) })} className="ff-find__dd" />
+          <Dropdown icon="clock" label="Time" value={time.value} options={time.options} onChange={(v) => setFilters({ ...filters, time: time.apply(v) })} className="ff-find__dd ff-find__dd--time" panelWidth={300} />
+          <SearchBox
+            value={filters.q}
+            onChange={(q) => setFilters({ ...filters, q })}
+            onSubmit={(q) => setFilters({ ...filters, q })}
+            onPick={(opt) =>
+              opt.type === 'category'
+                ? setFilters({ ...filters, q: '', cats: [opt.value] })
+                : setFilters({ ...filters, q: opt.value })
+            }
+            markets={markets}
+            className="ff-find__search"
+          />
+          <Link to={`/directory${listQuery ? `?${listQuery}` : ''}`} className="ff-btn ff-btn--outline ff-find__list">
+            <Icon name="layout-grid" size={16} />
+            List view
+          </Link>
         </div>
-        <Dropdown
-          icon="map-pin"
-          label="Area"
-          value={area}
-          options={areaOptions}
-          onChange={setArea}
-        />
-        <button
-          type="button"
-          className={`ff-chip ff-chip--lg${onlyOpen ? " is-active" : ""}`}
-          aria-pressed={onlyOpen}
-          onClick={() => setOnlyOpen((v) => !v)}
-        >
-          <span className="ff-dot ff-dot--open" aria-hidden="true" />
-          Open now
-        </button>
       </div>
 
-      <div className="ff-result-bar">
-        <p className="ff-result-bar__count">
-          {filtered.length} {filtered.length === 1 ? "market" : "markets"} ·{" "}
-          {openCount} open now
+      {status === 'denied' && (
+        <p className="ff-find__notice ff-container" role="status">
+          Location access is off, so distances are measured from {origin.label}. You can pick an area instead.
         </p>
-        <button
-          type="button"
-          className="ff-link-arrow"
-          onClick={() => setSelected(null)}
-        >
-          Clear selection
-        </button>
-      </div>
+      )}
 
-      <div className="ff-split">
-        <div className="ff-split__list">
-          {filtered.length === 0 ? (
-            <div className="ff-empty">
-              <strong>No markets match those filters</strong>
-              <p>Try a different area, or turn off the “open now” filter.</p>
+      <div className="ff-find__split">
+        <section className="ff-find__list-col" aria-labelledby="find-count">
+          <div className="ff-find__head">
+            <div>
+              <Breadcrumb items={crumbs} />
+              <h1 id="find-count" className="ff-find__count" aria-live="polite">
+                {results.length} {results.length === 1 ? 'market matches' : 'markets match'}
+              </h1>
             </div>
-          ) : (
-            filtered.map((m) => (
-              <MarketRow
-                key={m.id}
-                market={m}
-                selected={selected === m.id}
-                onSelect={setSelected}
-                onHover={setSelected}
-              />
-            ))
-          )}
-        </div>
+            <Dropdown
+              icon="arrow-up-down"
+              label="Sort by"
+              value={sort.value}
+              options={sort.options}
+              onChange={(v) => setFilters({ ...filters, sort: v })}
+              className="ff-find__sort"
+              align="right"
+            />
+          </div>
 
-        <div className="ff-map-panel">
-          <div className="ff-map">
-            <MapArt />
-            {canMap &&
-              filtered.map(
-                (m) =>
-                  positions[m.id] && (
-                    <button
-                      key={m.id}
-                      type="button"
-                      className={`ff-map__pin${selected === m.id ? " is-active" : ""}${
-                        m.status.state === "closed" ? " is-closed" : ""
-                      }`}
-                      style={positions[m.id]}
-                      onClick={() => setSelected(m.id)}
-                      onMouseEnter={() => setSelected(m.id)}
-                      onMouseLeave={() => setSelected(null)}
-                    >
-                      <span
-                        className="ff-dot ff-dot--open"
-                        aria-hidden="true"
-                      />
-                      {m.name}
-                    </button>
-                  ),
-              )}
-            {canMap && you && (
-              <span className="ff-map__you" style={you} title="Your location" />
+          <div className="ff-find__active">
+            {hasActiveFilters(filters) ? (
+              <>
+                {chips.map((c) => (
+                  <button key={c.key} type="button" className="ff-filter-chip ff-filter-chip--dark" onClick={() => setFilters(c.remove(filters))} aria-label={`Remove filter ${c.label}`}>
+                    {c.label} ×
+                  </button>
+                ))}
+                <button type="button" className="ff-text-btn ff-text-btn--accent" onClick={() => setFilters({ ...EMPTY_FILTERS, sort: filters.sort })}>
+                  Clear all
+                </button>
+              </>
+            ) : (
+              <span className="ff-muted">
+                Distances from {origin.label} · {DAY_SHORT[now.dayKey]} {formatMinutes(now.minutes)}
+              </span>
             )}
           </div>
-          <p className="ff-fineprint">
-            <Icon name="info" size={14} /> Approximate positions for orientation
-            only. Open a market for a real map.
-          </p>
-        </div>
+
+          {results.length ? (
+            <div className="ff-find__rows">
+              {results.map((m) => (
+                <MarketRow key={m.id} market={m} selected={m.id === selectedId} onSelect={setSelectedId} onHover={setHoverId} />
+              ))}
+            </div>
+          ) : (
+            <div className="ff-empty">
+              <strong>No markets match</strong>
+              <span>Try another day, time or area.</span>
+              <button type="button" className="ff-btn ff-btn--primary" onClick={() => setFilters({ ...EMPTY_FILTERS, sort: filters.sort })}>
+                Clear filters
+              </button>
+            </div>
+          )}
+        </section>
+
+        <section className="ff-find__map-col" aria-label="Map of markets">
+          <LagosMap markets={results} selectedId={selectedId} hoverId={hoverId} onSelect={setSelectedId} />
+        </section>
       </div>
     </div>
   );

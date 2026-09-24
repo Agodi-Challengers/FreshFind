@@ -1,328 +1,564 @@
 {
   "defaultLocation": {
-    "area": "Lekki",
     "label": "Lekki Phase 1",
-    "lat": 6.4413,
-    "lng": 3.4679
+    "area": "Lekki",
+    "lat": 6.4383,
+    "lng": 3.4652
   },
+  "regions": ["Island", "Mainland", "Outskirts"],
   "areas": [
-    { "name": "Lekki", "place": "Lekki Phase 1", "lat": 6.4413, "lng": 3.4679 },
-    {
-      "name": "Victoria Island",
-      "place": "Victoria Island",
-      "lat": 6.4281,
-      "lng": 3.4219
-    },
-    { "name": "Ikoyi", "place": "Ikoyi", "lat": 6.452, "lng": 3.435 },
-    { "name": "Ajah", "place": "Ajah", "lat": 6.4667, "lng": 3.5667 },
-    { "name": "Yaba", "place": "Yaba", "lat": 6.5095, "lng": 3.3711 },
-    { "name": "Surulere", "place": "Surulere", "lat": 6.5, "lng": 3.35 },
-    { "name": "Ikeja", "place": "Ikeja", "lat": 6.6018, "lng": 3.3515 },
-    { "name": "Ikorodu", "place": "Ikorodu", "lat": 6.6194, "lng": 3.5105 }
-  ],
-  "regions": [
-    { "name": "Island", "label": "Lagos Island" },
-    { "name": "Mainland", "label": "Lagos Mainland" }
+    { "name": "Lekki", "region": "Island", "lat": 6.4383, "lng": 3.4652, "place": "Lekki Phase 1" },
+    { "name": "Ikoyi", "region": "Island", "lat": 6.452, "lng": 3.438, "place": "Ikoyi" },
+    { "name": "Victoria Island", "region": "Island", "lat": 6.4281, "lng": 3.4219, "place": "Victoria Island" },
+    { "name": "Ajah", "region": "Island", "lat": 6.468, "lng": 3.58, "place": "Ajah" },
+    { "name": "Yaba", "region": "Mainland", "lat": 6.514, "lng": 3.378, "place": "Yaba" },
+    { "name": "Surulere", "region": "Mainland", "lat": 6.493, "lng": 3.355, "place": "Surulere" },
+    { "name": "Ikeja", "region": "Mainland", "lat": 6.6, "lng": 3.35, "place": "Ikeja" },
+    { "name": "Gbagada", "region": "Mainland", "lat": 6.555, "lng": 3.388, "place": "Gbagada" },
+    { "name": "Maryland", "region": "Mainland", "lat": 6.571, "lng": 3.367, "place": "Maryland" },
+    { "name": "Festac", "region": "Mainland", "lat": 6.467, "lng": 3.284, "place": "Festac Town" },
+    { "name": "Ikorodu", "region": "Outskirts", "lat": 6.615, "lng": 3.507, "place": "Ikorodu" },
+    { "name": "Epe", "region": "Outskirts", "lat": 6.584, "lng": 3.983, "place": "Epe" }
   ],
   "markets": [
     {
-      "id": "lekki-farmers-market",
-      "name": "Lekki Farmers Market",
-      "street": "Admiralty Way",
-      "address": "Admiralty Way, Lekki Phase 1, Lagos",
+      "id": "lekki-sunday",
+      "name": "Lekki Sunday Market",
       "area": "Lekki",
+      "region": "Island",
       "locality": "Lekki Phase 1",
-      "region": "Island",
-      "lat": 6.4413,
-      "lng": 3.4679,
-      "map": { "x": 514, "y": 557 },
+      "street": "Admiralty Way, Lekki Phase 1",
+      "address": "Admiralty Way, Lekki Phase 1, Lagos",
+      "lat": 6.4468,
+      "lng": 3.4716,
+      "map": { "x": 445, "y": 623 },
+      "schedule": { "sun": ["07:00", "14:00"] },
+      "description": "A big Sunday market with 60+ stalls. Growers from Epe, Ikorodu and Ogun State sell straight from the farm. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Vegetables", "Herbs & spices", "Grains & tubers", "Fish & meat"],
+      "produce": ["tomatoes", "scotch-bonnet", "ugu", "yam", "plantain", "smoked-fish", "scent-leaf", "onions"],
+      "payment": "Cash and bank transfer",
+      "parking": "Dedicated parking",
+      "growers": "Mixed growers & traders",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0100",
       "images": {
-        "card": "/images/placeholder-market.svg",
-        "row": "/images/placeholder-market.svg",
-        "hero": "/images/placeholder-market.svg"
+        "card": "/images/markets/lekki-sunday-card.webp",
+        "row": "/images/markets/lekki-sunday-row.webp",
+        "popup": "/images/markets/lekki-sunday-popup.webp",
+        "gallery": [
+          "/images/markets/lekki-sunday-gallery-1.webp",
+          "/images/markets/lekki-sunday-gallery-2.webp",
+          "/images/markets/lekki-sunday-gallery-3.webp"
+        ]
       },
-      "schedule": {
-        "sat": ["08:00", "15:00"],
-        "sun": ["09:00", "15:00"]
-      },
-      "produce": [
-        "tomatoes",
-        "scotch-bonnet",
-        "okra",
-        "plantain",
-        "ugu",
-        "mango"
-      ],
-      "categories": ["Vegetables", "Fruits", "Herbs & Spices"],
-      "growers": "Smallholder and organic growers from Epe, Badagry and Ikorodu",
-      "prices": "Retail and wholesale prices",
-      "payment": "Cash and card accepted",
-      "parking": "Dedicated parking on site",
-      "phone": "+234 801 234 5678",
-      "about": "A weekend market on Admiralty Way where farmers from the eastern axis sell straight from the farm.",
-      "tips": "Come before 10 AM for the best tomatoes and the shortest queues."
+      "nearby": ["ikoyi-farm-table", "vi-weekend", "chevron-drive", "ajah-fresh-hub"]
     },
     {
-      "id": "vi-green-market",
-      "name": "VI Green Market",
-      "street": "Adeola Odeku Street",
-      "address": "Adeola Odeku Street, Victoria Island, Lagos",
-      "area": "Victoria Island",
-      "locality": "Victoria Island",
-      "region": "Island",
-      "lat": 6.4281,
-      "lng": 3.4219,
-      "map": { "x": 431, "y": 584 },
-      "images": {
-        "card": "/images/placeholder-market.svg",
-        "row": "/images/placeholder-market.svg",
-        "hero": "/images/placeholder-market.svg"
-      },
-      "schedule": {
-        "wed": ["07:00", "16:00"],
-        "sat": ["07:00", "16:00"]
-      },
-      "produce": [
-        "pineapple",
-        "watermelon",
-        "sweet-corn",
-        "tomatoes",
-        "waterleaf"
-      ],
-      "categories": ["Fruits", "Vegetables", "Herbs & Spices"],
-      "growers": "Mixed conventional growers from Ogun and Oyo states",
-      "prices": "Fixed retail prices",
-      "payment": "Card payments welcome",
-      "parking": "Street parking nearby",
-      "phone": "+234 802 345 6789",
-      "about": "A mid-week and weekend stop for office workers on the island, heavy on fruit stalls.",
-      "tips": "The pineapple stall sells out by early afternoon on Saturdays."
-    },
-    {
-      "id": "ikoyi-organic-hub",
-      "name": "Ikoyi Organic Hub",
-      "street": "Awolowo Road",
-      "address": "Awolowo Road, Ikoyi, Lagos",
+      "id": "ikoyi-farm-table",
+      "name": "Ikoyi Farm Table",
       "area": "Ikoyi",
+      "region": "Island",
       "locality": "Ikoyi",
-      "region": "Island",
+      "street": "Bourdillon Road, Ikoyi",
+      "address": "Bourdillon Road, Ikoyi, Lagos",
       "lat": 6.452,
-      "lng": 3.435,
-      "map": { "x": 455, "y": 536 },
+      "lng": 3.438,
+      "map": { "x": 369, "y": 608 },
+      "schedule": { "sat": ["10:00", "15:00"], "sun": ["10:00", "15:00"] },
+      "description": "Artisan dairy, eggs, honey and pastured chicken from nearby farms. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Dairy & eggs", "Vegetables", "Fish & meat"],
+      "produce": ["eggs", "wara", "honey", "local-chicken", "efo-tete", "tomatoes"],
+      "payment": "Cash, transfer and card",
+      "parking": "Dedicated parking",
+      "growers": "Organic growers present",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0104",
       "images": {
-        "card": "/images/placeholder-market.svg",
-        "row": "/images/placeholder-market.svg",
-        "hero": "/images/placeholder-market.svg"
+        "card": "/images/markets/ikoyi-farm-table-card.webp",
+        "row": "/images/markets/ikoyi-farm-table-row.webp",
+        "popup": "/images/markets/ikoyi-farm-table-popup.webp",
+        "gallery": [
+          "/images/markets/ikoyi-farm-table-gallery-1.webp",
+          "/images/markets/ikoyi-farm-table-gallery-2.webp",
+          "/images/markets/ikoyi-farm-table-gallery-2.webp"
+        ]
       },
-      "schedule": {
-        "sat": ["08:00", "14:00"]
-      },
-      "produce": ["ugu", "waterleaf", "brown-beans", "eggs", "okra"],
-      "categories": [
-        "Herbs & Spices",
-        "Grains & Legumes",
-        "Eggs & Dairy",
-        "Vegetables"
-      ],
-      "growers": "Certified organic growers from across Lagos and Ogun",
-      "prices": "Premium retail prices",
-      "payment": "Cash and card accepted",
-      "parking": "Dedicated parking for shoppers",
-      "phone": "+234 803 456 7890",
-      "about": "A Saturday-only certified organic market with a small number of vetted producers.",
-      "tips": "Bring your own bags; the hub is plastic-free."
+      "nearby": ["vi-weekend", "lekki-sunday", "yaba-green", "yaba-tech-gate"]
     },
     {
-      "id": "ajah-community-market",
-      "name": "Ajah Community Market",
-      "street": "Addo Road",
-      "address": "Addo Road, Ajah, Lagos",
-      "area": "Ajah",
-      "locality": "Ajah",
+      "id": "vi-weekend",
+      "name": "VI Weekend Market",
+      "area": "Victoria Island",
       "region": "Island",
-      "lat": 6.4667,
-      "lng": 3.5667,
-      "map": { "x": 694, "y": 507 },
+      "locality": "Victoria Island",
+      "street": "Ozumba Mbadiwe Ave car park",
+      "address": "Ozumba Mbadiwe Ave car park, Lagos",
+      "lat": 6.439,
+      "lng": 3.422,
+      "map": { "x": 344, "y": 662 },
+      "schedule": { "sat": ["09:00", "17:00"] },
+      "description": "Saturday market by the water with fruit, honey and ready-to-cook herbs. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Fruit", "Dairy & eggs", "Herbs & spices"],
+      "produce": ["pineapple", "mangoes", "honey", "eggs", "scent-leaf", "tatashe"],
+      "payment": "Cash, transfer and card",
+      "parking": "Dedicated parking",
+      "growers": "Mixed growers & traders",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0106",
       "images": {
-        "card": "/images/placeholder-market.svg",
-        "row": "/images/placeholder-market.svg",
-        "hero": "/images/placeholder-market.svg"
+        "card": "/images/markets/vi-weekend-card.webp",
+        "row": "/images/markets/vi-weekend-row.webp",
+        "popup": "/images/markets/vi-weekend-popup.webp",
+        "gallery": [
+          "/images/markets/vi-weekend-gallery-1.webp",
+          "/images/markets/surulere-organic-gallery-3.webp",
+          "/images/markets/surulere-organic-gallery-2.webp"
+        ]
       },
-      "schedule": {
-        "tue": ["06:00", "18:00"],
-        "fri": ["06:00", "18:00"]
-      },
-      "produce": [
-        "plantain",
-        "yam",
-        "tomatoes",
-        "scotch-bonnet",
-        "brown-beans"
-      ],
-      "categories": ["Fruits", "Tubers", "Vegetables", "Grains & Legumes"],
-      "growers": "Community growers and traders from the Lekki-Epe corridor",
-      "prices": "Wholesale prices for bulk buyers",
-      "payment": "Cash only",
-      "parking": "Dedicated bus and car parking",
-      "phone": "+234 804 567 8901",
-      "about": "A long-running neighbourhood market that opens twice a week for the Ajah community.",
-      "tips": "Yam is cheapest when you buy a full tuber bundle."
+      "nearby": ["ikoyi-farm-table", "lekki-sunday", "surulere-organic", "yaba-green"]
     },
     {
-      "id": "yaba-fresh-mart",
-      "name": "Yaba Fresh Mart",
-      "street": "Herbert Macaulay Way",
-      "address": "Herbert Macaulay Way, Yaba, Lagos",
+      "id": "chevron-drive",
+      "name": "Chevron Drive Evening Market",
+      "area": "Lekki",
+      "region": "Island",
+      "locality": "Chevron Drive",
+      "street": "Chevron Drive, Lekki",
+      "address": "Chevron Drive, Lekki, Lagos",
+      "lat": 6.438,
+      "lng": 3.530,
+      "map": { "x": 554, "y": 640 },
+      "schedule": { "wed": ["16:00", "20:00"], "fri": ["16:00", "20:00"] },
+      "description": "Midweek evening market for fresh greens and eggs after work. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Vegetables", "Herbs & spices", "Dairy & eggs"],
+      "produce": ["efo-tete", "scent-leaf", "tatashe", "eggs", "honey"],
+      "payment": "Cash, transfer and card",
+      "parking": "Dedicated parking",
+      "growers": "Mixed growers & traders",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0113",
+      "images": {
+        "card": "/images/markets/chevron-drive-card.webp",
+        "row": "/images/markets/chevron-drive-row.webp",
+        "popup": "/images/markets/chevron-drive-popup.webp",
+        "gallery": [
+          "/images/markets/chevron-drive-gallery-1.webp",
+          "/images/markets/yaba-green-gallery-2.webp",
+          "/images/markets/chevron-drive-gallery-3.webp"
+        ]
+      },
+      "nearby": ["lekki-sunday", "ajah-fresh-hub", "ikoyi-farm-table", "vi-weekend"]
+    },
+    {
+      "id": "yaba-green",
+      "name": "Yaba Green Farmers Market",
       "area": "Yaba",
-      "locality": "Yaba",
       "region": "Mainland",
-      "lat": 6.5095,
-      "lng": 3.3711,
-      "map": { "x": 338, "y": 421 },
+      "locality": "Yaba",
+      "street": "Herbert Macaulay Way, Yaba",
+      "address": "Herbert Macaulay Way, Yaba, Lagos",
+      "lat": 6.513,
+      "lng": 3.377,
+      "map": { "x": 242, "y": 498 },
+      "schedule": { "sat": ["08:00", "16:00"], "sun": ["10:00", "16:00"] },
+      "description": "Leafy greens, herbs and organic growers from Ogun and Oyo farms. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Vegetables", "Herbs & spices"],
+      "produce": ["ugu", "efo-tete", "okra", "garden-eggs", "scent-leaf", "tatashe", "carrots"],
+      "payment": "Cash and bank transfer",
+      "parking": "Street parking only",
+      "growers": "Organic growers present",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0101",
       "images": {
-        "card": "/images/placeholder-market.svg",
-        "row": "/images/placeholder-market.svg",
-        "hero": "/images/placeholder-market.svg"
+        "card": "/images/markets/yaba-green-card.webp",
+        "row": "/images/markets/yaba-green-row.webp",
+        "popup": "/images/markets/yaba-green-popup.webp",
+        "gallery": [
+          "/images/markets/yaba-green-gallery-1.webp",
+          "/images/markets/yaba-green-gallery-2.webp",
+          "/images/markets/yaba-green-gallery-2.webp"
+        ]
       },
-      "schedule": {
-        "mon": ["06:00", "19:00"],
-        "tue": ["06:00", "19:00"],
-        "wed": ["06:00", "19:00"],
-        "thu": ["06:00", "19:00"],
-        "fri": ["06:00", "19:00"],
-        "sat": ["06:00", "19:00"],
-        "sun": ["08:00", "16:00"]
-      },
-      "produce": [
-        "tomatoes",
-        "okra",
-        "plantain",
-        "watermelon",
-        "pineapple",
-        "eggs"
-      ],
-      "categories": ["Vegetables", "Fruits", "Eggs & Dairy"],
-      "growers": "Mixed growers from the Lagos mainland and Ogun state",
-      "prices": "Retail and wholesale prices",
-      "payment": "Cash and card accepted",
-      "parking": "Dedicated parking behind the mart",
-      "phone": "+234 805 678 9012",
-      "about": "A daily mainland mart close to the Yaba tech cluster, popular with students and commuters.",
-      "tips": "Evening prices drop just before the 7 PM close."
+      "nearby": ["yaba-tech-gate", "surulere-organic", "gbagada-dawn", "maryland-evening"]
     },
     {
-      "id": "surulere-farmers-bazaar",
-      "name": "Surulere Farmers Bazaar",
-      "street": "Bode Thomas Street",
-      "address": "Bode Thomas Street, Surulere, Lagos",
-      "area": "Surulere",
-      "locality": "Surulere",
+      "id": "yaba-tech-gate",
+      "name": "Yaba Tech Gate Market",
+      "area": "Yaba",
       "region": "Mainland",
-      "lat": 6.5,
-      "lng": 3.35,
-      "map": { "x": 300, "y": 440 },
-      "images": {
-        "card": "/images/placeholder-market.svg",
-        "row": "/images/placeholder-market.svg",
-        "hero": "/images/placeholder-market.svg"
-      },
+      "locality": "Yaba",
+      "street": "Herbert Macaulay Way (Tech gate)",
+      "address": "Herbert Macaulay Way (Tech gate), Lagos",
+      "lat": 6.5185,
+      "lng": 3.3745,
+      "map": { "x": 248, "y": 483 },
       "schedule": {
         "mon": ["07:00", "18:00"],
+        "tue": ["07:00", "18:00"],
         "wed": ["07:00", "18:00"],
+        "thu": ["07:00", "18:00"],
         "fri": ["07:00", "18:00"]
       },
-      "produce": ["brown-beans", "yam", "ugu", "scotch-bonnet", "sweet-corn"],
-      "categories": [
-        "Grains & Legumes",
-        "Tubers",
-        "Herbs & Spices",
-        "Vegetables"
-      ],
-      "growers": "Farmers' cooperatives from Oyo and Kwara states",
-      "prices": "Wholesale prices available",
-      "payment": "Cash and transfer accepted",
-      "parking": "Dedicated parking lot next door",
-      "phone": "+234 806 789 0123",
-      "about": "A Monday, Wednesday and Friday bazaar known for dry goods and tubers.",
-      "tips": "Buy beans by the paint bucket for the best value."
+      "description": "Weekday market with low prices, popular with students and staff. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Vegetables", "Fruit"],
+      "produce": ["tomatoes", "oranges", "pawpaw", "carrots", "cucumber", "garden-eggs"],
+      "payment": "Cash and bank transfer",
+      "parking": "Street parking only",
+      "growers": "Mixed growers & traders",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0114",
+      "images": {
+        "card": "/images/markets/yaba-tech-gate-card.webp",
+        "row": "/images/markets/yaba-tech-gate-row.webp",
+        "popup": "/images/markets/yaba-tech-gate-popup.webp",
+        "gallery": [
+          "/images/markets/yaba-tech-gate-gallery-1.webp",
+          "/images/markets/lekki-sunday-gallery-2.webp",
+          "/images/markets/yaba-tech-gate-gallery-3.webp"
+        ]
+      },
+      "nearby": ["yaba-green", "surulere-organic", "gbagada-dawn", "maryland-evening"]
     },
     {
-      "id": "ikeja-city-market",
-      "name": "Ikeja City Market",
-      "street": "Obafemi Awolowo Way",
-      "address": "Obafemi Awolowo Way, Ikeja, Lagos",
+      "id": "surulere-organic",
+      "name": "Surulere Organic Corner",
+      "area": "Surulere",
+      "region": "Mainland",
+      "locality": "Surulere",
+      "street": "Adeniran Ogunsanya St, Surulere",
+      "address": "Adeniran Ogunsanya St, Surulere, Lagos",
+      "lat": 6.493,
+      "lng": 3.36,
+      "map": { "x": 211, "y": 524 },
+      "schedule": { "sat": ["09:00", "15:00"] },
+      "description": "A small, friendly market for tropical fruit, coconuts and fresh juice. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Fruit"],
+      "produce": ["mangoes", "pineapple", "oranges", "pawpaw", "watermelon"],
+      "payment": "Cash and bank transfer",
+      "parking": "Street parking only",
+      "growers": "Organic growers present",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0103",
+      "images": {
+        "card": "/images/markets/surulere-organic-card.webp",
+        "row": "/images/markets/surulere-organic-row.webp",
+        "popup": "/images/markets/surulere-organic-popup.webp",
+        "gallery": [
+          "/images/markets/surulere-organic-gallery-1.webp",
+          "/images/markets/surulere-organic-gallery-2.webp",
+          "/images/markets/surulere-organic-gallery-3.webp"
+        ]
+      },
+      "nearby": ["yaba-green", "yaba-tech-gate", "gbagada-dawn", "maryland-evening"]
+    },
+    {
+      "id": "ajah-fresh-hub",
+      "name": "Ajah Fresh Hub",
+      "area": "Ajah",
+      "region": "Island",
+      "locality": "Ajah",
+      "street": "Addo Road, Ajah",
+      "address": "Addo Road, Ajah, Lagos",
+      "lat": 6.472,
+      "lng": 3.588,
+      "map": { "x": 670, "y": 578 },
+      "schedule": { "tue": ["07:00", "18:00"], "thu": ["07:00", "18:00"], "sat": ["07:00", "18:00"] },
+      "description": "Busy midweek market for grains, peppers, yam and groundnuts. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Grains & tubers", "Vegetables"],
+      "produce": ["sweet-corn", "yam", "scotch-bonnet", "beans", "plantain", "onions"],
+      "payment": "Cash and bank transfer",
+      "parking": "Street parking only",
+      "growers": "Mixed growers & traders",
+      "prices": "Wholesale prices",
+      "phone": "+234 800 000 0105",
+      "images": {
+        "card": "/images/markets/ajah-fresh-hub-card.webp",
+        "row": "/images/markets/ajah-fresh-hub-row.webp",
+        "popup": "/images/markets/ajah-fresh-hub-popup.webp",
+        "gallery": [
+          "/images/markets/ajah-fresh-hub-gallery-1.webp",
+          "/images/markets/ajah-fresh-hub-gallery-2.webp",
+          "/images/markets/ikeja-harvest-gallery-3.webp"
+        ]
+      },
+      "nearby": ["sangotedo-saturday", "chevron-drive", "lekki-sunday", "ikoyi-farm-table"]
+    },
+    {
+      "id": "gbagada-dawn",
+      "name": "Gbagada Dawn Market",
+      "area": "Gbagada",
+      "region": "Mainland",
+      "locality": "Gbagada",
+      "street": "Gbagada Expressway service lane",
+      "address": "Gbagada Expressway service lane, Lagos",
+      "lat": 6.554,
+      "lng": 3.388,
+      "map": { "x": 278, "y": 407 },
+      "schedule": {
+        "mon": ["06:00", "11:00"],
+        "tue": ["06:00", "11:00"],
+        "wed": ["06:00", "11:00"],
+        "thu": ["06:00", "11:00"],
+        "fri": ["06:00", "11:00"],
+        "sat": ["06:00", "11:00"]
+      },
+      "description": "Early-morning market for traders and families who shop before work. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Vegetables", "Fish & meat"],
+      "produce": ["tomatoes", "scotch-bonnet", "onions", "yam", "ugu", "smoked-fish"],
+      "payment": "Cash and bank transfer",
+      "parking": "Street parking only",
+      "growers": "Mixed growers & traders",
+      "prices": "Wholesale prices",
+      "phone": "+234 800 000 0107",
+      "images": {
+        "card": "/images/markets/gbagada-dawn-card.webp",
+        "row": "/images/markets/gbagada-dawn-row.webp",
+        "popup": "/images/markets/gbagada-dawn-popup.webp",
+        "gallery": [
+          "/images/markets/gbagada-dawn-gallery-1.webp",
+          "/images/markets/lekki-sunday-gallery-2.webp",
+          "/images/markets/lekki-sunday-gallery-3.webp"
+        ]
+      },
+      "nearby": ["maryland-evening", "yaba-tech-gate", "ikeja-gra-sunday", "yaba-green"]
+    },
+    {
+      "id": "maryland-evening",
+      "name": "Maryland Evening Market",
+      "area": "Maryland",
+      "region": "Mainland",
+      "locality": "Maryland",
+      "street": "Mobolaji Bank Anthony Way",
+      "address": "Mobolaji Bank Anthony Way, Lagos",
+      "lat": 6.567,
+      "lng": 3.366,
+      "map": { "x": 234, "y": 374 },
+      "schedule": {
+        "mon": ["16:00", "21:00"],
+        "tue": ["16:00", "21:00"],
+        "wed": ["16:00", "21:00"],
+        "thu": ["16:00", "21:00"],
+        "fri": ["16:00", "21:00"]
+      },
+      "description": "After-work market for quick stew ingredients on the way home. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Vegetables", "Dairy & eggs"],
+      "produce": ["tomatoes", "scotch-bonnet", "onions", "efo-tete", "eggs", "plantain"],
+      "payment": "Cash, transfer and card",
+      "parking": "Street parking only",
+      "growers": "Mixed growers & traders",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0108",
+      "images": {
+        "card": "/images/markets/maryland-evening-card.webp",
+        "row": "/images/markets/maryland-evening-row.webp",
+        "popup": "/images/markets/maryland-evening-popup.webp",
+        "gallery": [
+          "/images/markets/maryland-evening-gallery-1.webp",
+          "/images/markets/lekki-sunday-gallery-2.webp",
+          "/images/markets/lekki-sunday-gallery-3.webp"
+        ]
+      },
+      "nearby": ["ikeja-gra-sunday", "gbagada-dawn", "ikeja-harvest", "yaba-tech-gate"]
+    },
+    {
+      "id": "sangotedo-saturday",
+      "name": "Sangotedo Saturday Market",
+      "area": "Ajah",
+      "region": "Island",
+      "locality": "Sangotedo",
+      "street": "Monastery Road, Sangotedo",
+      "address": "Monastery Road, Sangotedo, Lagos",
+      "lat": 6.468,
+      "lng": 3.632,
+      "map": { "x": 760, "y": 578 },
+      "schedule": { "sat": ["07:00", "15:00"] },
+      "description": "Neighbourhood Saturday market with fruit trucks from Ogun State. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Fruit", "Vegetables"],
+      "produce": ["watermelon", "pineapple", "sweet-corn", "tomatoes", "ugu"],
+      "payment": "Cash and bank transfer",
+      "parking": "Street parking only",
+      "growers": "Mixed growers & traders",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0112",
+      "images": {
+        "card": "/images/markets/sangotedo-saturday-card.webp",
+        "row": "/images/markets/sangotedo-saturday-row.webp",
+        "popup": "/images/markets/sangotedo-saturday-popup.webp",
+        "gallery": [
+          "/images/markets/sangotedo-saturday-gallery-1.webp",
+          "/images/markets/sangotedo-saturday-gallery-2.webp",
+          "/images/markets/surulere-organic-gallery-3.webp"
+        ]
+      },
+      "nearby": ["ajah-fresh-hub", "chevron-drive", "lekki-sunday", "ikorodu-farmgate"]
+    },
+    {
+      "id": "ikeja-gra-sunday",
+      "name": "Ikeja GRA Sunday Market",
       "area": "Ikeja",
-      "locality": "Ikeja",
       "region": "Mainland",
-      "lat": 6.6018,
-      "lng": 3.3515,
-      "map": { "x": 303, "y": 236 },
+      "locality": "Ikeja GRA",
+      "street": "Isaac John Street, Ikeja GRA",
+      "address": "Isaac John Street, Ikeja GRA, Lagos",
+      "lat": 6.58,
+      "lng": 3.355,
+      "map": { "x": 214, "y": 348 },
+      "schedule": { "sun": ["09:00", "14:00"] },
+      "description": "Quiet Sunday market for organic produce, dairy and baked goods. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Dairy & eggs", "Fruit", "Herbs & spices"],
+      "produce": ["eggs", "wara", "honey", "mangoes", "scent-leaf", "strawberries"],
+      "payment": "Cash, transfer and card",
+      "parking": "Dedicated parking",
+      "growers": "Organic growers present",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0115",
       "images": {
-        "card": "/images/placeholder-market.svg",
-        "row": "/images/placeholder-market.svg",
-        "hero": "/images/placeholder-market.svg"
+        "card": "/images/markets/ikeja-gra-sunday-card.webp",
+        "row": "/images/markets/ikeja-gra-sunday-row.webp",
+        "popup": "/images/markets/ikeja-gra-sunday-popup.webp",
+        "gallery": [
+          "/images/markets/ikeja-gra-sunday-gallery-1.webp",
+          "/images/markets/ikoyi-farm-table-gallery-2.webp",
+          "/images/markets/ikoyi-farm-table-gallery-2.webp"
+        ]
       },
-      "schedule": {
-        "mon": ["06:00", "20:00"],
-        "tue": ["06:00", "20:00"],
-        "wed": ["06:00", "20:00"],
-        "thu": ["06:00", "20:00"],
-        "fri": ["06:00", "20:00"],
-        "sat": ["06:00", "20:00"],
-        "sun": ["07:00", "18:00"]
-      },
-      "produce": [
-        "tomatoes",
-        "scotch-bonnet",
-        "plantain",
-        "mango",
-        "watermelon",
-        "eggs",
-        "brown-beans"
-      ],
-      "categories": [
-        "Vegetables",
-        "Fruits",
-        "Eggs & Dairy",
-        "Grains & Legumes"
-      ],
-      "growers": "Large-scale growers from the north and south-west",
-      "prices": "Wholesale and retail prices",
-      "payment": "Cash and card accepted",
-      "parking": "Dedicated multi-storey parking",
-      "phone": "+234 807 890 1234",
-      "about": "The biggest market in the dataset: a daily market with the widest produce range.",
-      "tips": "Weekday mornings are calmer than the Saturday rush."
+      "nearby": ["maryland-evening", "ikeja-harvest", "gbagada-dawn", "yaba-tech-gate"]
     },
     {
-      "id": "ikorodu-roadside-market",
-      "name": "Ikorodu Roadside Market",
-      "street": "Ikorodu Road",
-      "address": "Ikorodu Road, Ikorodu, Lagos",
-      "area": "Ikorodu",
-      "locality": "Ikorodu",
+      "id": "festac-2nd-ave",
+      "name": "Festac 2nd Avenue Market",
+      "area": "Festac",
       "region": "Mainland",
-      "lat": 6.6194,
-      "lng": 3.5105,
-      "map": { "x": 592, "y": 201 },
-      "images": {
-        "card": "/images/placeholder-market.svg",
-        "row": "/images/placeholder-market.svg",
-        "hero": "/images/placeholder-market.svg"
-      },
+      "locality": "Festac Town",
+      "street": "2nd Avenue, Festac Town",
+      "address": "2nd Avenue, Festac Town, Lagos",
+      "lat": 6.468,
+      "lng": 3.283,
+      "map": { "x": 68, "y": 585 },
       "schedule": {
-        "sat": ["06:00", "17:00"],
-        "sun": ["06:00", "17:00"]
+        "mon": ["08:00", "19:00"],
+        "tue": ["08:00", "19:00"],
+        "wed": ["08:00", "19:00"],
+        "thu": ["08:00", "19:00"],
+        "fri": ["08:00", "19:00"],
+        "sat": ["08:00", "19:00"],
+        "sun": ["08:00", "19:00"]
       },
-      "produce": ["yam", "sweet-corn", "okra", "waterleaf", "plantain"],
-      "categories": ["Tubers", "Vegetables", "Herbs & Spices", "Fruits"],
-      "growers": "Ikorodu and Epe farming families",
-      "prices": "Farm-gate retail prices",
-      "payment": "Cash only",
-      "parking": "Roadside parking available",
-      "phone": "+234 808 901 2345",
-      "about": "A weekend roadside market selling straight off the back of the truck.",
-      "tips": "Sweet corn is picked the same morning in season."
+      "description": "Open every day, with the best fresh and smoked fish on the mainland. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Fish & meat", "Grains & tubers"],
+      "produce": ["fresh-catfish", "smoked-fish", "plantain", "yam", "garden-eggs", "scotch-bonnet"],
+      "payment": "Cash and bank transfer",
+      "parking": "Street parking only",
+      "growers": "Mixed growers & traders",
+      "prices": "Retail prices",
+      "phone": "+234 800 000 0109",
+      "images": {
+        "card": "/images/markets/festac-2nd-ave-card.webp",
+        "row": "/images/markets/festac-2nd-ave-row.webp",
+        "popup": "/images/markets/festac-2nd-ave-popup.webp",
+        "gallery": [
+          "/images/markets/festac-2nd-ave-gallery-1.webp",
+          "/images/markets/festac-2nd-ave-gallery-2.webp",
+          "/images/markets/festac-2nd-ave-gallery-2.webp"
+        ]
+      },
+      "nearby": ["surulere-organic", "yaba-green", "yaba-tech-gate", "maryland-evening"]
+    },
+    {
+      "id": "ikorodu-farmgate",
+      "name": "Ikorodu Farmgate Market",
+      "area": "Ikorodu",
+      "region": "Outskirts",
+      "locality": "Ikorodu",
+      "street": "Sagamu Road, Ikorodu",
+      "address": "Sagamu Road, Ikorodu, Lagos",
+      "lat": 6.614,
+      "lng": 3.507,
+      "map": { "x": 521, "y": 277 },
+      "schedule": { "thu": ["06:00", "14:00"], "sun": ["06:00", "12:00"] },
+      "description": "Farm-gate prices on cassava, garri and yam straight from Ikorodu farms. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Grains & tubers", "Fruit"],
+      "produce": ["cassava", "garri", "yam", "sweet-corn", "plantain", "pawpaw", "okra"],
+      "payment": "Cash and bank transfer",
+      "parking": "Street parking only",
+      "growers": "Mixed growers & traders",
+      "prices": "Wholesale prices",
+      "phone": "+234 800 000 0110",
+      "images": {
+        "card": "/images/markets/ikorodu-farmgate-card.webp",
+        "row": "/images/markets/ikorodu-farmgate-row.webp",
+        "popup": "/images/markets/ikorodu-farmgate-popup.webp",
+        "gallery": [
+          "/images/markets/ikorodu-farmgate-gallery-1.webp",
+          "/images/markets/ikeja-harvest-gallery-3.webp",
+          "/images/markets/lekki-sunday-gallery-3.webp"
+        ]
+      },
+      "nearby": ["gbagada-dawn", "maryland-evening", "ikeja-gra-sunday", "ikeja-harvest"]
+    },
+    {
+      "id": "ikeja-harvest",
+      "name": "Ikeja Harvest Square",
+      "area": "Ikeja",
+      "region": "Mainland",
+      "locality": "Ikeja",
+      "street": "Allen Avenue, Ikeja",
+      "address": "Allen Avenue, Ikeja, Lagos",
+      "lat": 6.601,
+      "lng": 3.353,
+      "map": { "x": 203, "y": 312 },
+      "schedule": { "wed": ["07:30", "13:00"], "sat": ["07:30", "13:00"] },
+      "description": "Wholesale-friendly market known for tomatoes, onions and tubers. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Vegetables", "Grains & tubers"],
+      "produce": ["tomatoes", "onions", "yam", "beans", "plantain", "scotch-bonnet", "garri"],
+      "payment": "Cash and bank transfer",
+      "parking": "Dedicated parking",
+      "growers": "Mixed growers & traders",
+      "prices": "Wholesale prices",
+      "phone": "+234 800 000 0102",
+      "images": {
+        "card": "/images/markets/ikeja-harvest-card.webp",
+        "row": "/images/markets/ikeja-harvest-row.webp",
+        "popup": "/images/markets/ikeja-harvest-popup.webp",
+        "gallery": [
+          "/images/markets/ikeja-harvest-gallery-1.webp",
+          "/images/markets/lekki-sunday-gallery-2.webp",
+          "/images/markets/ikeja-harvest-gallery-3.webp"
+        ]
+      },
+      "nearby": ["ikeja-gra-sunday", "maryland-evening", "gbagada-dawn", "yaba-tech-gate"]
+    },
+    {
+      "id": "epe-fish-farm",
+      "name": "Epe Fish & Farm Market",
+      "area": "Epe",
+      "region": "Outskirts",
+      "locality": "Epe",
+      "street": "Oluwo Market Road, Epe",
+      "address": "Oluwo Market Road, Epe, Lagos",
+      "lat": 6.580,
+      "lng": 3.989,
+      "map": { "x": 780, "y": 348 },
+      "schedule": { "mon": ["06:00", "15:00"], "fri": ["06:00", "15:00"] },
+      "description": "Lagoon-side market famous for fresh fish landed the same morning. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "categories": ["Fish & meat", "Grains & tubers", "Fruit"],
+      "produce": ["fresh-catfish", "smoked-fish", "scotch-bonnet", "sweet-corn", "yam", "pineapple"],
+      "payment": "Cash and bank transfer",
+      "parking": "Street parking only",
+      "growers": "Mixed growers & traders",
+      "prices": "Wholesale prices",
+      "phone": "+234 800 000 0111",
+      "images": {
+        "card": "/images/markets/epe-fish-farm-card.webp",
+        "row": "/images/markets/epe-fish-farm-row.webp",
+        "popup": "/images/markets/epe-fish-farm-popup.webp",
+        "gallery": [
+          "/images/markets/epe-fish-farm-gallery-1.webp",
+          "/images/markets/festac-2nd-ave-gallery-2.webp",
+          "/images/markets/festac-2nd-ave-gallery-2.webp"
+        ]
+      },
+      "nearby": ["sangotedo-saturday", "ajah-fresh-hub", "ikorodu-farmgate", "chevron-drive"]
     }
   ]
 }

@@ -1,0 +1,403 @@
+/* Seasonal Recommendations (Figma: 05 Seasonal Recommendations · Desktop) + produce detail */
+
+.ff-seasonal__hero {
+  padding: 40px 0 48px;
+  background: var(--ff-green);
+  color: #fff;
+}
+
+.ff-seasonal__hero-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.ff-seasonal__hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 640px;
+}
+
+.ff-seasonal__hero h1 {
+  color: #fff;
+  font-size: 52px;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+}
+
+.ff-seasonal__hero p {
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ff-green-200);
+}
+
+.ff-seasonal__week {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: var(--ff-green-700);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ff-seasonal__months {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.ff-seasonal__months button {
+  min-height: 38px;
+  padding: 10px 0;
+  border: 0;
+  border-radius: 12px;
+  background: var(--ff-green-700);
+  color: var(--ff-green-200);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.18s var(--ff-ease);
+}
+
+.ff-seasonal__months button:hover {
+  background: #387a48;
+  color: #fff;
+}
+
+.ff-seasonal__months button[aria-pressed='true'] {
+  background: var(--ff-yellow);
+  color: var(--ff-ink);
+  font-weight: 700;
+}
+
+.ff-seasonal__h2 {
+  font-size: 30px;
+  line-height: 37px;
+}
+
+.ff-seasonal__peak {
+  padding-top: 56px;
+  padding-bottom: 32px;
+}
+
+.ff-seasonal__peak .ff-seasonal__h2 {
+  margin-bottom: 24px;
+}
+
+.ff-seasonal__peak-row {
+  display: grid;
+  grid-template-columns: minmax(0, 856fr) minmax(0, 400fr);
+  gap: 24px;
+}
+
+.ff-seasonal__feature {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  border-radius: var(--ff-r-2xl);
+  background: var(--ff-green);
+}
+
+.ff-seasonal__feature > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ff-seasonal__feature::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(26, 51, 31, 0.85) 0%, rgba(26, 51, 31, 0) 60%);
+}
+
+.ff-seasonal__feature-copy {
+  position: absolute;
+  left: 36px;
+  bottom: 36px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 380px;
+  color: #fff;
+}
+
+.ff-seasonal__badge {
+  padding: 5px 12px;
+  border-radius: var(--ff-r-pill);
+  background: var(--ff-yellow);
+  color: var(--ff-ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ff-seasonal__feature h3 {
+  color: #fff;
+  font-size: 40px;
+  line-height: 1.05;
+}
+
+.ff-seasonal__feature p {
+  max-width: 360px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ff-green-100);
+}
+
+.ff-seasonal__feature-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ff-seasonal__side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ff-seasonal__mini {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 20px;
+  color: var(--ff-ink);
+}
+
+.ff-seasonal__mini:hover {
+  color: var(--ff-ink);
+}
+
+.ff-seasonal__mini img {
+  width: 100px;
+  height: 100px;
+  flex: none;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.ff-seasonal__mini > span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ff-muted);
+}
+
+.ff-seasonal__mini strong {
+  font-size: 17px;
+  color: var(--ff-ink);
+}
+
+.ff-seasonal__see {
+  font-weight: 700;
+  color: var(--ff-green) !important;
+}
+
+.ff-seasonal__lists {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.ff-seasonal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border-radius: var(--ff-r-2xl);
+}
+
+.ff-seasonal__list--green {
+  background: var(--ff-green-100);
+}
+
+.ff-seasonal__list--orange {
+  background: var(--ff-orange-100);
+}
+
+.ff-seasonal__list h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+}
+
+.ff-seasonal__list h2 > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ff-green);
+}
+
+.ff-seasonal__items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ff-seasonal__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--ff-ink);
+}
+
+.ff-seasonal__item:hover {
+  color: var(--ff-ink);
+}
+
+.ff-seasonal__item img {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.ff-seasonal__item > span {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--ff-muted);
+}
+
+.ff-seasonal__item strong {
+  font-size: 15px;
+  color: var(--ff-ink);
+}
+
+.ff-seasonal__none {
+  color: var(--ff-muted);
+}
+
+.ff-seasonal__best {
+  padding-top: 24px;
+  padding-bottom: 96px;
+}
+
+/* Produce detail */
+.ff-produce-detail {
+  padding-top: 32px;
+  padding-bottom: 96px;
+}
+
+.ff-produce-detail__top {
+  display: grid;
+  grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  margin: 24px 0 48px;
+}
+
+.ff-produce-detail__top > img {
+  width: 100%;
+  height: 360px;
+  border-radius: var(--ff-r-xl);
+  object-fit: cover;
+  background: var(--ff-sand);
+}
+
+.ff-produce-detail__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ff-produce-detail__season {
+  font-size: 15px;
+  color: var(--ff-muted);
+}
+
+.ff-produce-detail__season strong {
+  color: var(--ff-green);
+}
+
+.ff-produce-detail__rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ff-produce-detail__rows .ff-market-row__side {
+  display: none;
+}
+
+@media (max-width: 991.98px) {
+  .ff-seasonal__peak-row,
+  .ff-seasonal__lists,
+  .ff-produce-detail__top,
+  .ff-produce-detail__rows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ff-seasonal__hero-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ff-seasonal__months {
+    display: flex;
+    margin-inline: calc(var(--ff-gutter) * -1);
+    padding-inline: var(--ff-gutter);
+    overflow-x: auto;
+  }
+
+  .ff-seasonal__months button {
+    flex: 0 0 64px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .ff-seasonal__hero h1 {
+    font-size: 34px;
+  }
+
+  .ff-seasonal__feature h3 {
+    font-size: 30px;
+  }
+
+  .ff-seasonal__feature-copy {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .ff-seasonal__h2 {
+    font-size: 24px;
+  }
+
+  .ff-produce-detail__top > img {
+    height: 240px;
+  }
+}
