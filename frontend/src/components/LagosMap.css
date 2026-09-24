@@ -1,28 +1,28 @@
 /* Illustrated Lagos map (Figma: Find a Market · Map, Map pin states) */
 
-.ff-map {
+.map {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: var(--ff-map-land);
+  background: var(--map-land);
 }
 
-.ff-map__viewport {
+.map__viewport {
   position: absolute;
   inset: 0;
   overflow: auto;
   scrollbar-width: thin;
 }
 
-.ff-map__stage {
+.map__stage {
   position: relative;
   min-width: 100%;
   aspect-ratio: 820 / 900;
-  transition: width 0.3s var(--ff-ease);
+  transition: width 0.3s var(--ease);
 }
 
-.ff-map__base {
+.map__base {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -31,7 +31,7 @@
 }
 
 /* Pins */
-.ff-pin {
+.pin {
   position: absolute;
   z-index: 3;
   display: inline-flex;
@@ -42,54 +42,54 @@
   padding: 0;
   border: 3px solid #fff;
   border-radius: 50%;
-  background: var(--ff-green);
+  background: var(--green);
   color: #fff;
-  box-shadow: var(--ff-shadow-pin);
+  box-shadow: var(--shadow-pin);
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition:
-    transform 0.18s var(--ff-ease),
-    background-color 0.18s var(--ff-ease),
-    width 0.18s var(--ff-ease),
-    height 0.18s var(--ff-ease);
+    transform 0.18s var(--ease),
+    background-color 0.18s var(--ease),
+    width 0.18s var(--ease),
+    height 0.18s var(--ease);
 }
 
-.ff-pin--soon {
-  background: var(--ff-amber);
+.pin--soon {
+  background: var(--amber);
 }
 
-.ff-pin--closed {
-  background: var(--ff-pin-closed);
+.pin--closed {
+  background: var(--pin-closed);
 }
 
-.ff-pin:hover,
-.ff-pin.is-hover {
+.pin:hover,
+.pin.is-hover {
   z-index: 4;
   transform: translate(-50%, -50%) scale(1.15);
 }
 
-.ff-pin.is-selected {
+.pin.is-selected {
   z-index: 5;
   width: 44px;
   height: 44px;
-  background: var(--ff-orange);
+  background: var(--orange);
 }
 
-.ff-pin:focus-visible {
+.pin:focus-visible {
   box-shadow:
-    var(--ff-shadow-pin),
-    0 0 0 3px var(--ff-green);
+    var(--shadow-pin),
+    0 0 0 3px var(--green);
 }
 
 /* You */
-.ff-map__you {
+.map__you {
   position: absolute;
   z-index: 2;
   width: 0;
   height: 0;
 }
 
-.ff-map__you-halo {
+.map__you-halo {
   position: absolute;
   left: -45px;
   top: -45px;
@@ -97,10 +97,10 @@
   height: 90px;
   border-radius: 50%;
   background: rgba(47, 125, 225, 0.15);
-  animation: ff-map-halo 2.4s ease-out infinite;
+  animation: map-halo 2.4s ease-out infinite;
 }
 
-.ff-map__you-dot {
+.map__you-dot {
   position: absolute;
   left: -9px;
   top: -9px;
@@ -108,11 +108,11 @@
   height: 18px;
   border: 3px solid #fff;
   border-radius: 50%;
-  background: var(--ff-blue);
+  background: var(--blue);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.ff-map__you-label {
+.map__you-label {
   position: absolute;
   left: 14px;
   top: 8px;
@@ -120,9 +120,9 @@
   align-items: center;
   gap: 6px;
   padding: 4px 9px;
-  border-radius: var(--ff-r-pill);
+  border-radius: var(--r-pill);
   background: #fff;
-  color: var(--ff-ink);
+  color: var(--ink);
   font-size: 11.5px;
   font-weight: 500;
   line-height: 15px;
@@ -130,7 +130,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-@keyframes ff-map-halo {
+@keyframes map-halo {
   0% {
     transform: scale(0.6);
     opacity: 1;
@@ -142,7 +142,7 @@
 }
 
 /* Popup */
-.ff-pin-popup {
+.pin-popup {
   position: absolute;
   z-index: 10;
   display: flex;
@@ -150,60 +150,60 @@
   gap: 9px;
   width: 260px;
   padding: 12px;
-  border-radius: var(--ff-r-lg);
+  border-radius: var(--r-lg);
   background: #fff;
   box-shadow: 0 14px 32px -6px rgba(26, 64, 36, 0.22);
   transform: translate(-50%, calc(-100% - 32px));
-  animation: ff-fade-up 0.2s var(--ff-ease) both;
+  animation: fade-up 0.2s var(--ease) both;
 }
 
-.ff-pin-popup.is-below {
+.pin-popup.is-below {
   transform: translate(-50%, 32px);
 }
 
-.ff-pin-popup img {
+.pin-popup img {
   width: 100%;
   height: 100px;
   border-radius: 12px;
   object-fit: cover;
 }
 
-.ff-pin-popup h3 {
+.pin-popup h3 {
   margin: 0;
-  font-family: var(--ff-font);
+  font-family: var(--font);
   font-size: 15px;
   font-weight: 700;
   line-height: 20px;
 }
 
-.ff-pin-popup__status {
+.pin-popup__status {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
   font-size: 12px;
   font-weight: 500;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-pin-popup .ff-icon-text {
+.pin-popup .icon-text {
   font-size: 12px;
   font-weight: 500;
 }
 
-.ff-pin-popup__btns {
+.pin-popup__btns {
   display: flex;
   gap: 8px;
 }
 
-.ff-pin-popup__btns .ff-btn {
+.pin-popup__btns .btn {
   flex: 1;
   min-height: 36px;
   padding: 9px 12px;
   font-size: 13px;
 }
 
-.ff-pin-popup__close {
+.pin-popup__close {
   position: absolute;
   top: 18px;
   right: 18px;
@@ -216,19 +216,19 @@
   border: 0;
   border-radius: 50%;
   background: #fff;
-  color: var(--ff-ink);
+  color: var(--ink);
   cursor: pointer;
 }
 
 /* Controls */
-.ff-map__hint {
+.map__hint {
   position: absolute;
   top: 20px;
   left: 20px;
   z-index: 6;
   padding: 6px 12px;
-  border-radius: var(--ff-r-pill);
-  background: var(--ff-green);
+  border-radius: var(--r-pill);
+  background: var(--green);
   color: #fff;
   font-size: 12px;
   font-weight: 500;
@@ -236,7 +236,7 @@
   pointer-events: none;
 }
 
-.ff-map__zoom {
+.map__zoom {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -244,12 +244,12 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--ff-border);
+  border: 1px solid var(--border);
   border-radius: 12px;
   background: #fff;
 }
 
-.ff-map__zoom button {
+.map__zoom button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -258,25 +258,25 @@
   padding: 0;
   border: 0;
   background: #fff;
-  color: var(--ff-ink);
+  color: var(--ink);
   cursor: pointer;
 }
 
-.ff-map__zoom button + button {
-  border-top: 1px solid var(--ff-border);
+.map__zoom button + button {
+  border-top: 1px solid var(--border);
 }
 
-.ff-map__zoom button:hover:not(:disabled) {
-  background: var(--ff-green-100);
-  color: var(--ff-green);
+.map__zoom button:hover:not(:disabled) {
+  background: var(--green-100);
+  color: var(--green);
 }
 
-.ff-map__zoom button:disabled {
-  color: var(--ff-closed);
+.map__zoom button:disabled {
+  color: var(--closed);
   cursor: default;
 }
 
-.ff-map__legend {
+.map__legend {
   position: absolute;
   left: 20px;
   bottom: 24px;
@@ -287,28 +287,28 @@
   margin: 0;
   padding: 9px 14px;
   list-style: none;
-  border: 1px solid var(--ff-border);
+  border: 1px solid var(--border);
   border-radius: 12px;
   background: #fff;
   font-size: 12px;
   font-weight: 500;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-map__legend li {
+.map__legend li {
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.ff-map__key {
+.map__key {
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
 
 @media (max-width: 575.98px) {
-  .ff-map__legend {
+  .map__legend {
     right: 12px;
     left: 12px;
     bottom: 12px;
@@ -316,7 +316,7 @@
     font-size: 11px;
   }
 
-  .ff-map__hint {
+  .map__hint {
     display: none;
   }
 }

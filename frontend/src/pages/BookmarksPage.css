@@ -1,19 +1,19 @@
 /* Bookmarks (Figma: 06 Bookmarks · Desktop, M5 Saved & notes) */
 
-.ff-bookmarks__notice {
+.bookmarks__notice {
   display: flex;
   align-items: center;
   gap: 12px;
   margin: 0 0 24px;
   padding: 14px 18px;
   border-radius: 16px;
-  background: var(--ff-yellow-100);
-  color: var(--ff-notice-text);
+  background: var(--yellow-100);
+  color: var(--notice-text);
   font-size: 14px;
   font-weight: 500;
 }
 
-.ff-bookmarks__body {
+.bookmarks__body {
   display: grid;
   grid-template-columns: minmax(0, 848fr) minmax(0, 400fr);
   align-items: start;
@@ -21,19 +21,19 @@
   padding-bottom: 96px;
 }
 
-.ff-bookmarks__list {
+.bookmarks__list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.ff-bookmarks__tabs {
+.bookmarks__tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.ff-bookmarks__items {
+.bookmarks__items {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -42,23 +42,23 @@
   list-style: none;
 }
 
-.ff-saved {
+.saved {
   display: flex;
   gap: 18px;
   padding: 16px;
-  border-radius: var(--ff-r-card);
+  border-radius: var(--r-card);
 }
 
-.ff-saved > img {
+.saved > img {
   width: 120px;
   height: 120px;
   flex: none;
   border-radius: 16px;
   object-fit: cover;
-  background: var(--ff-sand);
+  background: var(--sand);
 }
 
-.ff-saved__body {
+.saved__body {
   display: flex;
   flex: 1;
   min-width: 0;
@@ -66,87 +66,87 @@
   gap: 10px;
 }
 
-.ff-saved__top {
+.saved__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-.ff-saved__title {
+.saved__title {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.ff-saved__tags {
+.saved__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.ff-saved__type {
+.saved__type {
   padding: 3px 8px;
   font-size: 11px;
   font-weight: 700;
   line-height: 14px;
 }
 
-.ff-saved h2 {
+.saved h2 {
   margin: 0;
-  font-family: var(--ff-font);
+  font-family: var(--font);
   font-size: 18px;
   font-weight: 700;
   line-height: 23px;
 }
 
-.ff-saved h2 a {
-  color: var(--ff-ink);
+.saved h2 a {
+  color: var(--ink);
 }
 
-.ff-saved h2 a:hover {
-  color: var(--ff-green);
+.saved h2 a:hover {
+  color: var(--green);
   text-decoration: underline;
 }
 
-.ff-saved__title p {
+.saved__title p {
   font-size: 13px;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-saved__icons {
+.saved__icons {
   display: flex;
   gap: 6px;
 }
 
-.ff-saved__note {
+.saved__note {
   display: flex;
   align-items: flex-start;
   gap: 10px;
   padding: 12px 14px;
-  border: 1px solid var(--ff-border);
+  border: 1px solid var(--border);
   border-radius: 12px;
   background: #fff;
-  color: var(--ff-muted);
+  color: var(--muted);
   cursor: text;
 }
 
-.ff-saved__note.has-note {
+.saved__note.has-note {
   border-color: transparent;
-  background: var(--ff-cream);
+  background: var(--cream);
 }
 
-.ff-saved__note:focus-within {
-  border-color: var(--ff-green);
+.saved__note:focus-within {
+  border-color: var(--green);
   background: #fff;
-  box-shadow: var(--ff-input-ring);
+  box-shadow: var(--input-ring);
 }
 
-.ff-saved__note .ff-icon {
+.saved__note .icon {
   margin-top: 2px;
 }
 
-.ff-saved__note textarea {
+.saved__note textarea {
   flex: 1;
   min-height: 20px;
   padding: 0;
@@ -157,77 +157,77 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.45;
-  color: var(--ff-ink);
+  color: var(--ink);
   field-sizing: content;
 }
 
-.ff-saved__note textarea::placeholder {
+.saved__note textarea::placeholder {
   font-weight: 400;
-  color: var(--ff-placeholder);
+  color: var(--placeholder);
 }
 
-.ff-saved__note textarea:focus-visible {
+.saved__note textarea:focus-visible {
   box-shadow: none;
 }
 
 /* Export panel */
-.ff-bookmarks__export {
+.bookmarks__export {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 24px;
-  border-radius: var(--ff-r-xl);
+  border-radius: var(--r-xl);
 }
 
-.ff-bookmarks__export h2 {
+.bookmarks__export h2 {
   font-size: 20px;
 }
 
-.ff-bookmarks__export > p {
+.bookmarks__export > p {
   margin-top: -8px;
   font-size: 13px;
 }
 
-.ff-bookmarks__preview {
+.bookmarks__preview {
   max-height: 320px;
   margin: 0;
   padding: 18px;
   overflow: auto;
   border-radius: 16px;
-  background: var(--ff-cream);
-  font-family: var(--ff-font);
+  background: var(--cream);
+  font-family: var(--font);
   font-size: 12px;
   line-height: 2;
   white-space: pre-wrap;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-bookmarks__export-btns {
+.bookmarks__export-btns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.ff-bookmarks__export-btns .ff-btn:disabled {
+.bookmarks__export-btns .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   box-shadow: none;
 }
 
-.ff-bookmarks__export hr {
+.bookmarks__export hr {
   margin: 0;
-  border-color: var(--ff-border);
+  border-color: var(--border);
   opacity: 1;
 }
 
-.ff-bookmarks__export h3 {
+.bookmarks__export h3 {
   margin: 0;
-  font-family: var(--ff-font);
+  font-family: var(--font);
   font-size: 14px;
   font-weight: 700;
 }
 
-.ff-bookmarks__social {
+.bookmarks__social {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
@@ -236,17 +236,17 @@
   list-style: none;
 }
 
-.ff-bookmarks__social a {
+.bookmarks__social a {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
   font-size: 12px;
   font-weight: 500;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-bookmarks__social a > span {
+.bookmarks__social a > span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -254,26 +254,26 @@
   height: 52px;
   border-radius: 50%;
   color: #fff;
-  transition: transform 0.18s var(--ff-ease);
+  transition: transform 0.18s var(--ease);
 }
 
-.ff-bookmarks__social a:hover > span {
+.bookmarks__social a:hover > span {
   transform: translateY(-2px);
 }
 
 @media (max-width: 991.98px) {
-  .ff-bookmarks__body {
+  .bookmarks__body {
     grid-template-columns: minmax(0, 1fr);
     padding-bottom: 48px;
   }
 }
 
 @media (max-width: 575.98px) {
-  .ff-saved {
+  .saved {
     flex-direction: column;
   }
 
-  .ff-saved > img {
+  .saved > img {
     width: 100%;
     height: 140px;
   }

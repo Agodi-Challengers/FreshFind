@@ -1,4 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 const ToastContext = createContext(() => {});
 
@@ -22,7 +29,7 @@ export function ToastProvider({ children }) {
         {message?.text}
       </div>
       {message && (
-        <div key={message.id} className="ff-toast" aria-hidden="true">
+        <div key={message.id} className="toast" aria-hidden="true">
           {message.text}
         </div>
       )}

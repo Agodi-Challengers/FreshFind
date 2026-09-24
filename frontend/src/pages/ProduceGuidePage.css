@@ -1,6 +1,6 @@
 /* Produce Guide (Figma: 04 Produce Guide · Desktop, M4) */
 
-.ff-guide__toolbar {
+.guide__toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -9,130 +9,130 @@
   padding-bottom: 28px;
 }
 
-.ff-guide__tabs {
+.guide__tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.ff-guide__tab {
+.guide__tab {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 40px;
   padding: 10px 16px;
-  border: 1px solid var(--ff-border);
-  border-radius: var(--ff-r-pill);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
   background: #fff;
-  color: var(--ff-ink);
+  color: var(--ink);
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
   cursor: pointer;
   transition:
-    background-color 0.18s var(--ff-ease),
-    color 0.18s var(--ff-ease),
-    border-color 0.18s var(--ff-ease);
+    background-color 0.18s var(--ease),
+    color 0.18s var(--ease),
+    border-color 0.18s var(--ease);
 }
 
-.ff-guide__tab:hover {
-  border-color: var(--ff-green-600);
+.guide__tab:hover {
+  border-color: var(--green-600);
 }
 
-.ff-guide__tab-count {
+.guide__tab-count {
   font-size: 12px;
   font-weight: 500;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-guide__tab[aria-pressed='true'] {
-  border-color: var(--ff-green);
-  background: var(--ff-green);
+.guide__tab[aria-pressed="true"] {
+  border-color: var(--green);
+  background: var(--green);
   color: #fff;
 }
 
-.ff-guide__tab[aria-pressed='true'] .ff-guide__tab-count {
-  color: var(--ff-green-200);
+.guide__tab[aria-pressed="true"] .guide__tab-count {
+  color: var(--green-200);
 }
 
-.ff-guide__controls {
+.guide__controls {
   display: flex;
   gap: 10px;
 }
 
-.ff-guide__search {
+.guide__search {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 240px;
   height: 44px;
   padding: 0 16px;
-  border: 1px solid var(--ff-border);
-  border-radius: var(--ff-r-md);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
   background: #fff;
-  color: var(--ff-green);
+  color: var(--green);
 }
 
-.ff-guide__search:focus-within {
-  border-color: var(--ff-green);
-  box-shadow: var(--ff-input-ring);
+.guide__search:focus-within {
+  border-color: var(--green);
+  box-shadow: var(--input-ring);
 }
 
-.ff-guide__search input {
+.guide__search input {
   flex: 1;
   min-width: 0;
   border: 0;
   outline: 0;
   background: transparent;
   font-size: 14px;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-guide__search input:focus-visible {
+.guide__search input:focus-visible {
   box-shadow: none;
 }
 
-.ff-guide__season {
+.guide__season {
   width: 210px;
 }
 
-.ff-guide__season .ff-dropdown__button {
+.guide__season .dropdown__button {
   height: 44px;
   padding-block: 4px;
 }
 
-.ff-guide__grid-wrap {
+.guide__grid-wrap {
   padding-bottom: 40px;
 }
 
-.ff-guide__tip-wrap {
+.guide__tip-wrap {
   padding-bottom: 96px;
 }
 
-.ff-guide__tip {
+.guide__tip {
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 28px 32px;
-  border-radius: var(--ff-r-xl);
-  background: var(--ff-yellow-100);
+  border-radius: var(--r-xl);
+  background: var(--yellow-100);
 }
 
-.ff-guide__tip h2 {
+.guide__tip h2 {
   margin: 0 0 4px;
-  font-family: var(--ff-font);
+  font-family: var(--font);
   font-size: 17px;
   font-weight: 700;
 }
 
-.ff-guide__tip p {
+.guide__tip p {
   max-width: 800px;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-guide__tip-ic {
+.guide__tip-ic {
   display: inline-flex;
   flex: none;
   align-items: center;
@@ -140,41 +140,41 @@
   width: 52px;
   height: 52px;
   border-radius: 16px;
-  background: var(--ff-yellow);
-  color: var(--ff-ink);
+  background: var(--yellow);
+  color: var(--ink);
 }
 
 @media (max-width: 767.98px) {
-  .ff-guide__tabs {
+  .guide__tabs {
     flex-wrap: nowrap;
-    margin-inline: calc(var(--ff-gutter) * -1);
-    padding-inline: var(--ff-gutter);
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
     overflow-x: auto;
   }
 
-  .ff-guide__tab {
+  .guide__tab {
     flex: none;
   }
 
-  .ff-guide__controls {
+  .guide__controls {
     width: 100%;
   }
 
-  .ff-guide__search {
+  .guide__search {
     flex: 1;
     width: auto;
   }
 
-  .ff-guide__season {
+  .guide__season {
     width: 160px;
   }
 
-  .ff-guide__tip {
+  .guide__tip {
     align-items: flex-start;
     padding: 20px;
   }
 
-  .ff-guide__tip-wrap {
+  .guide__tip-wrap {
     padding-bottom: 48px;
   }
 }

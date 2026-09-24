@@ -1,19 +1,25 @@
 /** "Open now" / "Closing soon" / "Closed" pill with a coloured dot. */
-export default function StatusPill({ status, className = '' }) {
+export default function StatusPill({ status, className = "" }) {
   const cls = {
-    open: 'ff-pill--green',
-    soon: 'ff-pill--amber',
-    closed: 'ff-pill--muted',
+    open: "pill--green",
+    soon: "pill--amber",
+    closed: "pill--muted",
   }[status.state];
-  const dot = { open: 'ff-dot--open', soon: 'ff-dot--soon', closed: '' }[status.state];
+  const dot = { open: "dot--open", soon: "dot--soon", closed: "" }[
+    status.state
+  ];
   return (
-    <span className={`ff-pill ${cls} ${className}`.trim()}>
-      <span className={`ff-dot ${dot}`} aria-hidden="true" />
+    <span className={`pill ${cls} ${className}`.trim()}>
+      <span className={`dot ${dot}`} aria-hidden="true" />
       {status.pill}
     </span>
   );
 }
 
 export function statusTextClass(status) {
-  return { open: 'ff-status-text--open', soon: 'ff-status-text--soon', closed: 'ff-status-text--closed' }[status.state];
+  return {
+    open: "status-text--open",
+    soon: "status-text--soon",
+    closed: "status-text--closed",
+  }[status.state];
 }

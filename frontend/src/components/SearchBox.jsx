@@ -1,11 +1,15 @@
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Icon from './Icon.jsx';
-import { useData } from '../context/DataContext.jsx';
-import { formatKm } from '../lib/geo.js';
-import { asset } from '../lib/assets.js';
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Icon from "./Icon.jsx";
+import { useData } from "../context/DataContext.jsx";
+import { formatKm } from "../lib/geo.js";
+import { asset } from "../lib/assets.js";
 
-const clean = (s) => s.toLowerCase().replace(/[“”"']/g, '').trim();
+const clean = (s) =>
+  s
+    .toLowerCase()
+    .replace(/[“”"']/g, "")
+    .trim();
 
 /**
  * Search input with a suggestion panel (Figma "Search / … State=Typing"):
@@ -20,10 +24,10 @@ export default function SearchBox({
   onSubmit,
   onPick,
   markets,
-  placeholder = 'Search markets or produce',
+  placeholder = "Search markets or produce",
   label,
-  icon = 'search',
-  className = '',
+  icon = "search",
+  className = "",
 }) {
   const uid = useId();
   const navigate = useNavigate();
@@ -33,12 +37,19 @@ export default function SearchBox({
   const rootRef = useRef(null);
   const inputRef = useRef(null);
 
-  const q = clean(value || '');
+  const q = clean(value || "");
 
   const groups = useMemo(() => {
     if (q.length < 2) return [];
-    const items = produce.filter((p) => clean(p.name).includes(q) || clean(p.shortName || '').includes(q)).slice(0, 3);
-    const cats = categories.filter((c) => clean(c.name).includes(q)).slice(0, 2);
+    const items = produce
+      .filter(
+        (p) =>
+          clean(p.name).includes(q) || clean(p.shortName || "").includes(q),
+      )
+      .slice(0, 3);
+    const cats = categories
+      .filter((c) => clean(c.name).includes(q))
+      .slice(0, 2);
     const matchedProduceIds = new Set(items.map((p) => p.id));
     const mk = markets
       .filter(
@@ -53,10 +64,10 @@ export default function SearchBox({
     const out = [];
     if (items.length) {
       out.push({
-        title: 'Produce',
+        title: "Produce",
         options: items.map((p) => ({
           key: `p-${p.id}`,
-          type: 'produce',
+          type: "produce",
           value: p.shortName || p.name,
           title: p.name,
           sub: `Sold at ${marketsByProduce[p.id]?.length || 0} markets`,
@@ -66,10 +77,10 @@ export default function SearchBox({
     }
     if (cats.length) {
       out.push({
-        title: 'Category',
+        title: "Category",
         options: cats.map((c) => ({
           key: `c-${c.name}`,
-          type: 'category',
+          type: "category",
           value: c.name,
           title: c.name,
           sub: `Category · ${markets.filter((m) => m.categories.includes(c.name)).length} markets`,
@@ -80,10 +91,10 @@ export default function SearchBox({
     if (mk.length) {
       const first = items[0];
       out.push({
-        title: 'Markets',
+        title: "Markets",
         options: mk.map((m) => ({
           key: `m-${m.id}`,
-          type: 'market',
+          type: "market",
           value: m.id,
           title: m.name,
           sub:
@@ -107,13 +118,13 @@ export default function SearchBox({
     const onDown = (e) => {
       if (!rootRef.current?.contains(e.target)) setOpen(false);
     };
-    document.addEventListener('mousedown', onDown);
-    return () => document.removeEventListener('mousedown', onDown);
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
   }, [open]);
 
   const pick = (opt) => {
     setOpen(false);
-    if (opt.type === 'market') {
+    if (opt.type === "market") {
       navigate(`/markets/${opt.value}`);
       return;
     }
@@ -121,21 +132,21 @@ export default function SearchBox({
   };
 
   const onKeyDown = (e) => {
-    if (e.key === 'ArrowDown' && flat.length) {
+    if (e.key === "ArrowDown" && flat.length) {
       e.preventDefault();
       setOpen(true);
       setActive((i) => Math.min(flat.length - 1, i + 1));
-    } else if (e.key === 'ArrowUp' && flat.length) {
+    } else if (e.key === "ArrowUp" && flat.length) {
       e.preventDefault();
       setActive((i) => Math.max(-1, i - 1));
-    } else if (e.key === 'Enter') {
+    } else if (e.key === "Enter") {
       e.preventDefault();
       if (showPanel && active >= 0) pick(flat[active]);
       else {
         setOpen(false);
         onSubmit?.(value);
       }
-    } else if (e.key === 'Escape') {
+    } else if (e.key === "Escape") {
       setOpen(false);
     }
   };
@@ -143,12 +154,15 @@ export default function SearchBox({
   let index = -1;
 
   return (
-    <div className={`ff-search${showPanel ? ' is-open' : ''}${label ? ' ff-search--labelled' : ''} ${className}`.trim()} ref={rootRef}>
-      <div className="ff-search__field">
-        <Icon name={icon} size={17} className="ff-search__icon" />
-        <span className="ff-search__lab">
+    <div
+      className={`search${showPanel ? " is-open" : ""}${label ? " search--labelled" : ""} ${className}`.trim()}
+      ref={rootRef}
+    >
+      <div className="search__field">
+        <Icon name={icon} size={17} className="search__icon" />
+        <span className="search__lab">
           {label && (
-            <label className="ff-field-label" htmlFor={`${uid}-input`}>
+            <label className="field-label" htmlFor={`${uid}-input`}>
               {label}
             </label>
           )}
@@ -156,7 +170,7 @@ export default function SearchBox({
             ref={inputRef}
             id={`${uid}-input`}
             type="search"
-            className="ff-search__input"
+            className="search__input"
             placeholder={placeholder}
             value={value}
             autoComplete="off"
@@ -165,7 +179,9 @@ export default function SearchBox({
             aria-expanded={showPanel}
             aria-controls={`${uid}-list`}
             aria-autocomplete="list"
-            aria-activedescendant={showPanel && active >= 0 ? `${uid}-opt-${active}` : undefined}
+            aria-activedescendant={
+              showPanel && active >= 0 ? `${uid}-opt-${active}` : undefined
+            }
             onChange={(e) => {
               onChange(e.target.value);
               setOpen(true);
@@ -177,11 +193,11 @@ export default function SearchBox({
         {value && (
           <button
             type="button"
-            className="ff-search__clear"
+            className="search__clear"
             aria-label="Clear search"
             onClick={() => {
-              onChange('');
-              onSubmit?.('');
+              onChange("");
+              onSubmit?.("");
               inputRef.current?.focus();
             }}
           >
@@ -190,10 +206,15 @@ export default function SearchBox({
         )}
       </div>
       {showPanel && (
-        <div className="ff-panel ff-search__panel" id={`${uid}-list`} role="listbox" aria-label="Suggestions">
+        <div
+          className="panel search__panel"
+          id={`${uid}-list`}
+          role="listbox"
+          aria-label="Suggestions"
+        >
           {groups.map((g) => (
             <div key={g.title} role="group" aria-label={g.title}>
-              <div className="ff-panel__group" aria-hidden="true">
+              <div className="panel__group" aria-hidden="true">
                 {g.title}
               </div>
               {g.options.map((opt) => {
@@ -205,21 +226,26 @@ export default function SearchBox({
                     id={`${uid}-opt-${i}`}
                     role="option"
                     aria-selected={i === active}
-                    className={`ff-suggest${i === active ? ' is-active' : ''}`}
+                    className={`suggest${i === active ? " is-active" : ""}`}
                     onMouseEnter={() => setActive(i)}
                     onMouseDown={(e) => e.preventDefault()}
                     onClick={() => pick(opt)}
                   >
                     {opt.img ? (
-                      <img src={asset(opt.img)} alt="" className="ff-suggest__img" loading="lazy" />
+                      <img
+                        src={asset(opt.img)}
+                        alt=""
+                        className="suggest__img"
+                        loading="lazy"
+                      />
                     ) : (
-                      <span className="ff-suggest__ic" aria-hidden="true">
-                        <Icon name={opt.icon || 'leaf'} size={16} />
+                      <span className="suggest__ic" aria-hidden="true">
+                        <Icon name={opt.icon || "leaf"} size={16} />
                       </span>
                     )}
-                    <span className="ff-suggest__t">
-                      <span className="ff-suggest__title">{opt.title}</span>
-                      <span className="ff-suggest__sub">{opt.sub}</span>
+                    <span className="suggest__t">
+                      <span className="suggest__title">{opt.title}</span>
+                      <span className="suggest__sub">{opt.sub}</span>
                     </span>
                   </div>
                 );

@@ -1,6 +1,6 @@
 /* About us (Figma: 07 About Us · Desktop) */
 
-.ff-about__hero {
+.about__hero {
   display: grid;
   grid-template-columns: minmax(0, 600px) minmax(0, 624px);
   justify-content: space-between;
@@ -10,31 +10,31 @@
   padding-bottom: 72px;
 }
 
-.ff-about__copy {
+.about__copy {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.ff-about__copy h1 {
+.about__copy h1 {
   font-size: 48px;
   line-height: 1.08;
   letter-spacing: -0.015em;
 }
 
-.ff-about__photo {
+.about__photo {
   position: relative;
 }
 
-.ff-about__photo img {
+.about__photo img {
   width: 100%;
   height: 460px;
   border-radius: 32px;
   object-fit: cover;
-  background: var(--ff-sand);
+  background: var(--sand);
 }
 
-.ff-about__stat {
+.about__stat {
   position: absolute;
   left: -28px;
   bottom: 14px;
@@ -43,169 +43,169 @@
   gap: 2px;
   padding: 16px 20px;
   border-radius: 20px;
-  background: var(--ff-yellow);
-  box-shadow: var(--ff-shadow-float);
+  background: var(--yellow);
+  box-shadow: var(--shadow-float);
   font-size: 13px;
   font-weight: 500;
-  animation: ff-float 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 
-.ff-about__stat strong {
-  font-family: var(--ff-display);
+.about__stat strong {
+  font-family: var(--display);
   font-size: 28px;
   line-height: 35px;
 }
 
-.ff-about__stats-wrap {
+.about__stats-wrap {
   padding-bottom: 72px;
 }
 
-.ff-about__stats {
+.about__stats {
   display: flex;
   justify-content: space-between;
   gap: 24px;
   margin: 0;
   padding: 32px 40px;
-  border-radius: var(--ff-r-2xl);
-  background: var(--ff-green);
+  border-radius: var(--r-2xl);
+  background: var(--green);
   list-style: none;
 }
 
-.ff-about__stats li {
+.about__stats li {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.ff-about__stats strong {
-  font-family: var(--ff-display);
+.about__stats strong {
+  font-family: var(--display);
   font-size: 40px;
   line-height: 49px;
   color: #fff;
 }
 
-.ff-about__stats span {
+.about__stats span {
   font-size: 14px;
   font-weight: 500;
-  color: var(--ff-green-200);
+  color: var(--green-200);
 }
 
-.ff-about__values h2,
-.ff-about__team h2 {
+.about__values h2,
+.about__team h2 {
   margin-bottom: 32px;
   font-size: 36px;
   line-height: 44px;
 }
 
-.ff-about__values {
+.about__values {
   padding-bottom: 80px;
 }
 
-.ff-about__value {
+.about__value {
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: 28px;
-  border-radius: var(--ff-r-xl);
+  border-radius: var(--r-xl);
 }
 
-.ff-about__value .ff-feature__icon {
+.about__value .feature__icon {
   width: 52px;
   height: 52px;
   border-radius: 16px;
 }
 
-.ff-about__value h3 {
+.about__value h3 {
   font-size: 22px;
 }
 
-.ff-about__value p {
+.about__value p {
   font-size: 15px;
   line-height: 1.55;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-about__team {
+.about__team {
   padding-bottom: 96px;
 }
 
-.ff-about__team h2 {
+.about__team h2 {
   margin-bottom: 8px;
 }
 
-.ff-about__team .ff-lead {
+.about__team .lead {
   margin-bottom: 32px;
   font-size: 16px;
 }
 
-.ff-about__team ul {
+.about__team ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.ff-about__member {
+.about__member {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
   padding: 24px;
-  border-radius: var(--ff-r-xl);
+  border-radius: var(--r-xl);
   text-align: center;
 }
 
-.ff-about__avatar {
+.about__avatar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 88px;
   height: 88px;
   border-radius: 50%;
-  font-family: var(--ff-display);
+  font-family: var(--display);
   font-size: 28px;
   font-weight: 700;
-  color: var(--ff-green);
+  color: var(--green);
 }
 
-.ff-about__member h3 {
-  font-family: var(--ff-font);
+.about__member h3 {
+  font-family: var(--font);
   font-size: 18px;
   font-weight: 700;
 }
 
-.ff-about__member p {
+.about__member p {
   margin-top: -6px;
   font-size: 14px;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-about__social {
+.about__social {
   display: flex;
   gap: 8px;
 }
 
-.ff-about__social a {
+.about__social a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--ff-border);
+  border: 1px solid var(--border);
   border-radius: 50%;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-about__social a:hover {
-  background: var(--ff-green-100);
-  color: var(--ff-green);
+.about__social a:hover {
+  background: var(--green-100);
+  color: var(--green);
 }
 
 @media (max-width: 991.98px) {
-  .ff-about__hero {
+  .about__hero {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .ff-about__stats {
+  .about__stats {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 24px;
@@ -213,24 +213,24 @@
 }
 
 @media (max-width: 767.98px) {
-  .ff-about__copy h1 {
+  .about__copy h1 {
     font-size: 32px;
   }
 
-  .ff-about__photo img {
+  .about__photo img {
     height: 260px;
   }
 
-  .ff-about__stat {
+  .about__stat {
     left: 12px;
   }
 
-  .ff-about__stats strong {
+  .about__stats strong {
     font-size: 30px;
   }
 
-  .ff-about__values h2,
-  .ff-about__team h2 {
+  .about__values h2,
+  .about__team h2 {
     font-size: 28px;
   }
 }

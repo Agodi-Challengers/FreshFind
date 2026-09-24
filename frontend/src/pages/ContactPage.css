@@ -1,6 +1,6 @@
 /* Contact us (Figma: 08 Contact Us · Desktop) */
 
-.ff-contact__body {
+.contact__body {
   display: grid;
   grid-template-columns: minmax(0, 788fr) minmax(0, 460fr);
   align-items: start;
@@ -8,106 +8,106 @@
   padding-bottom: 96px;
 }
 
-.ff-contact__form {
+.contact__form {
   display: flex;
   flex-direction: column;
   gap: 18px;
   padding: 32px;
-  border-radius: var(--ff-r-2xl);
+  border-radius: var(--r-2xl);
 }
 
-.ff-contact__form h2 {
+.contact__form h2 {
   font-size: 24px;
   line-height: 30px;
 }
 
-.ff-contact__row {
+.contact__row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
-.ff-field {
+.field {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.ff-field label,
-.ff-contact__topics legend {
+.field label,
+.contact__topics legend {
   margin: 0;
   font-size: 13px;
   font-weight: 600;
   line-height: 17px;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-field input,
-.ff-field textarea {
+.field input,
+.field textarea {
   width: 100%;
   padding: 14px 16px;
-  border: 1px solid var(--ff-border);
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: var(--ff-cream);
+  background: var(--cream);
   font-size: 14px;
-  color: var(--ff-ink);
+  color: var(--ink);
   transition:
-    border-color 0.18s var(--ff-ease),
-    box-shadow 0.18s var(--ff-ease);
+    border-color 0.18s var(--ease),
+    box-shadow 0.18s var(--ease);
 }
 
-.ff-field input:hover,
-.ff-field textarea:hover {
-  border-color: var(--ff-placeholder);
+.field input:hover,
+.field textarea:hover {
+  border-color: var(--placeholder);
 }
 
-.ff-field input:focus,
-.ff-field textarea:focus {
+.field input:focus,
+.field textarea:focus {
   outline: 0;
-  border: 2px solid var(--ff-green);
+  border: 2px solid var(--green);
   padding: 13px 15px;
-  box-shadow: var(--ff-input-ring);
+  box-shadow: var(--input-ring);
 }
 
-.ff-field input::placeholder,
-.ff-field textarea::placeholder {
-  color: var(--ff-placeholder);
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--placeholder);
 }
 
-.ff-field [aria-invalid='true'] {
-  border-color: var(--ff-orange);
+.field [aria-invalid="true"] {
+  border-color: var(--orange);
 }
 
-.ff-field__error {
+.field__error {
   font-size: 12.5px;
   font-weight: 500;
   color: #b3401f;
 }
 
-.ff-contact__topics {
+.contact__topics {
   margin: 0;
   padding: 0;
   border: 0;
 }
 
-.ff-contact__topics legend {
+.contact__topics legend {
   float: left;
   width: 100%;
   margin-bottom: 8px;
 }
 
-.ff-contact__topics div {
+.contact__topics div {
   display: flex;
   clear: both;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.ff-contact__topics .ff-chip {
+.contact__topics .chip {
   padding: 8px 14px;
 }
 
-.ff-contact__submit {
+.contact__submit {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -116,30 +116,30 @@
   font-size: 13px;
 }
 
-.ff-contact__side {
+.contact__side {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.ff-contact__map {
+.contact__map {
   overflow: hidden;
-  border-radius: var(--ff-r-2xl);
+  border-radius: var(--r-2xl);
 }
 
-.ff-contact__map-frame {
+.contact__map-frame {
   position: relative;
   height: 260px;
-  background: var(--ff-map-land);
+  background: var(--map-land);
 }
 
-.ff-contact__map-frame iframe {
+.contact__map-frame iframe {
   width: 100%;
   height: 100%;
   border: 0;
 }
 
-.ff-contact__you {
+.contact__you {
   position: absolute;
   top: 16px;
   left: 16px;
@@ -149,62 +149,62 @@
   cursor: pointer;
 }
 
-.ff-contact__info {
+.contact__info {
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: 24px;
 }
 
-.ff-contact__info .ff-icon-text {
+.contact__info .icon-text {
   font-size: 15px;
   font-weight: 500;
   line-height: 20px;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-contact__info a:hover {
-  color: var(--ff-green);
+.contact__info a:hover {
+  color: var(--green);
   text-decoration: underline;
 }
 
-.ff-contact__faq {
+.contact__faq {
   display: flex;
   align-items: center;
   gap: 14px;
   width: 100%;
   padding: 20px;
   border: 0;
-  border-radius: var(--ff-r-xl);
-  background: var(--ff-green);
+  border-radius: var(--r-xl);
+  background: var(--green);
   color: #fff;
   text-align: left;
   cursor: pointer;
   transition:
-    background-color 0.18s var(--ff-ease),
-    transform 0.18s var(--ff-ease);
+    background-color 0.18s var(--ease),
+    transform 0.18s var(--ease);
 }
 
-.ff-contact__faq:hover {
-  background: var(--ff-green-hover);
+.contact__faq:hover {
+  background: var(--green-hover);
   transform: translateY(-2px);
 }
 
-.ff-contact__faq > span:nth-child(2) {
+.contact__faq > span:nth-child(2) {
   display: flex;
   flex: 1;
   flex-direction: column;
   gap: 2px;
   font-size: 13px;
-  color: var(--ff-green-200);
+  color: var(--green-200);
 }
 
-.ff-contact__faq strong {
+.contact__faq strong {
   font-size: 15px;
   color: #fff;
 }
 
-.ff-contact__faq-ic {
+.contact__faq-ic {
   display: inline-flex;
   flex: none;
   align-items: center;
@@ -212,23 +212,23 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--ff-yellow);
-  color: var(--ff-green);
+  background: var(--yellow);
+  color: var(--green);
 }
 
 @media (max-width: 991.98px) {
-  .ff-contact__body {
+  .contact__body {
     grid-template-columns: minmax(0, 1fr);
     padding-bottom: 48px;
   }
 }
 
 @media (max-width: 575.98px) {
-  .ff-contact__row {
+  .contact__row {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .ff-contact__form {
+  .contact__form {
     padding: 20px;
   }
 }

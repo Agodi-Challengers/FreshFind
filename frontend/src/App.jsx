@@ -1,33 +1,39 @@
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Outlet, Route, Routes, useLocation } from 'react-router-dom';
-import { DataProvider, useData } from './context/DataContext.jsx';
-import { ClockProvider } from './context/ClockContext.jsx';
-import { LocationProvider } from './context/LocationContext.jsx';
-import { BookmarksProvider } from './context/BookmarksContext.jsx';
-import { ToastProvider } from './context/ToastContext.jsx';
-import UtilityBar from './components/UtilityBar.jsx';
-import SiteHeader from './components/SiteHeader.jsx';
-import SiteFooter from './components/SiteFooter.jsx';
-import BottomTabBar from './components/BottomTabBar.jsx';
-import ChatLauncher from './components/ChatLauncher.jsx';
-import { getVisitorCount } from './lib/visitors.js';
-import HomePage from './pages/HomePage.jsx';
-import FindMarketPage from './pages/FindMarketPage.jsx';
-import DirectoryPage from './pages/DirectoryPage.jsx';
-import MarketDetailPage from './pages/MarketDetailPage.jsx';
-import ProduceGuidePage from './pages/ProduceGuidePage.jsx';
-import ProduceDetailPage from './pages/ProduceDetailPage.jsx';
-import SeasonalPage from './pages/SeasonalPage.jsx';
-import BookmarksPage from './pages/BookmarksPage.jsx';
-import AboutPage from './pages/AboutPage.jsx';
-import ContactPage from './pages/ContactPage.jsx';
-import AuthPage from './pages/AuthPage.jsx';
-import NotFoundPage from './pages/NotFoundPage.jsx';
+import { useEffect, useState } from "react";
+import {
+  BrowserRouter,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import { DataProvider, useData } from "./context/DataContext.jsx";
+import { ClockProvider } from "./context/ClockContext.jsx";
+import { LocationProvider } from "./context/LocationContext.jsx";
+import { BookmarksProvider } from "./context/BookmarksContext.jsx";
+import { ToastProvider } from "./context/ToastContext.jsx";
+import UtilityBar from "./components/UtilityBar.jsx";
+import SiteHeader from "./components/SiteHeader.jsx";
+import SiteFooter from "./components/SiteFooter.jsx";
+import BottomTabBar from "./components/BottomTabBar.jsx";
+import ChatLauncher from "./components/ChatLauncher.jsx";
+import { getVisitorCount } from "./lib/visitors.js";
+import HomePage from "./pages/HomePage.jsx";
+import FindMarketPage from "./pages/FindMarketPage.jsx";
+import DirectoryPage from "./pages/DirectoryPage.jsx";
+import MarketDetailPage from "./pages/MarketDetailPage.jsx";
+import ProduceGuidePage from "./pages/ProduceGuidePage.jsx";
+import ProduceDetailPage from "./pages/ProduceDetailPage.jsx";
+import SeasonalPage from "./pages/SeasonalPage.jsx";
+import BookmarksPage from "./pages/BookmarksPage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+import AuthPage from "./pages/AuthPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname]);
   return null;
 }
@@ -37,12 +43,12 @@ function SiteLayout() {
   const [visitors] = useState(getVisitorCount);
   return (
     <>
-      <a href="#main" className="ff-skip-link">
+      <a href="#main" className="skip-link">
         Skip to content
       </a>
       <UtilityBar visitors={visitors} />
       <SiteHeader />
-      <main id="main" className="ff-main" tabIndex={-1}>
+      <main id="main" className="main" tabIndex={-1}>
         <Outlet />
       </main>
       <SiteFooter visitors={visitors} />
@@ -56,14 +62,14 @@ function AppRoutes() {
   const { ready, error } = useData();
   if (error) {
     return (
-      <div className="ff-loading" role="alert">
+      <div className="loading" role="alert">
         Sorry, market data could not be loaded. Please refresh the page.
       </div>
     );
   }
   if (!ready) {
     return (
-      <div className="ff-loading" role="status">
+      <div className="loading" role="status">
         Loading markets…
       </div>
     );

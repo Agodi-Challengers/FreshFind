@@ -1,12 +1,15 @@
-import { useEffect } from 'react';
-import Icon from './Icon.jsx';
-import { loadTawk, openChat, tawkConfigured } from '../lib/tawk.js';
-import { useToast } from '../context/ToastContext.jsx';
+import { useEffect } from "react";
+import Icon from "./Icon.jsx";
+import { loadTawk, openChat, tawkConfigured } from "../lib/tawk.js";
+import { useToast } from "../context/ToastContext.jsx";
 
 export function useOpenChat() {
   const toast = useToast();
   return () => {
-    if (!openChat()) toast('Chat is not set up yet. Add the Tawk.to IDs to .env to turn it on.');
+    if (!openChat())
+      toast(
+        "Chat is not set up yet. Add the Tawk.to IDs to .env to turn it on.",
+      );
   };
 }
 
@@ -22,11 +25,16 @@ export default function ChatLauncher() {
   }, []);
 
   return (
-    <button type="button" className="ff-chat-launcher" onClick={open} aria-label="Ask FreshFind: open chat">
-      <span className="ff-chat-launcher__avatar" aria-hidden="true">
+    <button
+      type="button"
+      className="chat-launcher"
+      onClick={open}
+      aria-label="Ask FreshFind: open chat"
+    >
+      <span className="chat-launcher__avatar" aria-hidden="true">
         <Icon name="bot" size={20} />
       </span>
-      <span className="ff-chat-launcher__text">Ask FreshFind</span>
+      <span className="chat-launcher__text">Ask FreshFind</span>
     </button>
   );
 }

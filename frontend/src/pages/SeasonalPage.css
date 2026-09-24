@@ -1,12 +1,12 @@
 /* Seasonal Recommendations (Figma: 05 Seasonal Recommendations · Desktop) + produce detail */
 
-.ff-seasonal__hero {
+.seasonal__hero {
   padding: 40px 0 48px;
-  background: var(--ff-green);
+  background: var(--green);
   color: #fff;
 }
 
-.ff-seasonal__hero-row {
+.seasonal__hero-row {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -14,98 +14,98 @@
   margin-top: 28px;
 }
 
-.ff-seasonal__hero-copy {
+.seasonal__hero-copy {
   display: flex;
   flex-direction: column;
   gap: 10px;
   max-width: 640px;
 }
 
-.ff-seasonal__hero h1 {
+.seasonal__hero h1 {
   color: #fff;
   font-size: 52px;
   line-height: 1.22;
   letter-spacing: -0.015em;
 }
 
-.ff-seasonal__hero p {
+.seasonal__hero p {
   font-size: 17px;
   line-height: 1.5;
-  color: var(--ff-green-200);
+  color: var(--green-200);
 }
 
-.ff-seasonal__week {
+.seasonal__week {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 12px 16px;
   border-radius: 16px;
-  background: var(--ff-green-700);
+  background: var(--green-700);
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
 }
 
-.ff-seasonal__months {
+.seasonal__months {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 8px;
   margin-top: 28px;
 }
 
-.ff-seasonal__months button {
+.seasonal__months button {
   min-height: 38px;
   padding: 10px 0;
   border: 0;
   border-radius: 12px;
-  background: var(--ff-green-700);
-  color: var(--ff-green-200);
+  background: var(--green-700);
+  color: var(--green-200);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.18s var(--ff-ease);
+  transition: background-color 0.18s var(--ease);
 }
 
-.ff-seasonal__months button:hover {
+.seasonal__months button:hover {
   background: #387a48;
   color: #fff;
 }
 
-.ff-seasonal__months button[aria-pressed='true'] {
-  background: var(--ff-yellow);
-  color: var(--ff-ink);
+.seasonal__months button[aria-pressed="true"] {
+  background: var(--yellow);
+  color: var(--ink);
   font-weight: 700;
 }
 
-.ff-seasonal__h2 {
+.seasonal__h2 {
   font-size: 30px;
   line-height: 37px;
 }
 
-.ff-seasonal__peak {
+.seasonal__peak {
   padding-top: 56px;
   padding-bottom: 32px;
 }
 
-.ff-seasonal__peak .ff-seasonal__h2 {
+.seasonal__peak .seasonal__h2 {
   margin-bottom: 24px;
 }
 
-.ff-seasonal__peak-row {
+.seasonal__peak-row {
   display: grid;
   grid-template-columns: minmax(0, 856fr) minmax(0, 400fr);
   gap: 24px;
 }
 
-.ff-seasonal__feature {
+.seasonal__feature {
   position: relative;
   min-height: 440px;
   overflow: hidden;
-  border-radius: var(--ff-r-2xl);
-  background: var(--ff-green);
+  border-radius: var(--r-2xl);
+  background: var(--green);
 }
 
-.ff-seasonal__feature > img {
+.seasonal__feature > img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -113,14 +113,18 @@
   object-fit: cover;
 }
 
-.ff-seasonal__feature::after {
-  content: '';
+.seasonal__feature::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(26, 51, 31, 0.85) 0%, rgba(26, 51, 31, 0) 60%);
+  background: linear-gradient(
+    90deg,
+    rgba(26, 51, 31, 0.85) 0%,
+    rgba(26, 51, 31, 0) 60%
+  );
 }
 
-.ff-seasonal__feature-copy {
+.seasonal__feature-copy {
   position: absolute;
   left: 36px;
   bottom: 36px;
@@ -133,35 +137,35 @@
   color: #fff;
 }
 
-.ff-seasonal__badge {
+.seasonal__badge {
   padding: 5px 12px;
-  border-radius: var(--ff-r-pill);
-  background: var(--ff-yellow);
-  color: var(--ff-ink);
+  border-radius: var(--r-pill);
+  background: var(--yellow);
+  color: var(--ink);
   font-size: 12px;
   font-weight: 700;
 }
 
-.ff-seasonal__feature h3 {
+.seasonal__feature h3 {
   color: #fff;
   font-size: 40px;
   line-height: 1.05;
 }
 
-.ff-seasonal__feature p {
+.seasonal__feature p {
   max-width: 360px;
   font-size: 15px;
   line-height: 1.5;
-  color: var(--ff-green-100);
+  color: var(--green-100);
 }
 
-.ff-seasonal__feature-btns {
+.seasonal__feature-btns {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.ff-seasonal__side {
+.seasonal__side {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -170,20 +174,20 @@
   list-style: none;
 }
 
-.ff-seasonal__mini {
+.seasonal__mini {
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 12px;
   border-radius: 20px;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-seasonal__mini:hover {
-  color: var(--ff-ink);
+.seasonal__mini:hover {
+  color: var(--ink);
 }
 
-.ff-seasonal__mini img {
+.seasonal__mini img {
   width: 100px;
   height: 100px;
   flex: none;
@@ -191,25 +195,25 @@
   object-fit: cover;
 }
 
-.ff-seasonal__mini > span {
+.seasonal__mini > span {
   display: flex;
   flex-direction: column;
   gap: 6px;
   font-size: 13px;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-seasonal__mini strong {
+.seasonal__mini strong {
   font-size: 17px;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-seasonal__see {
+.seasonal__see {
   font-weight: 700;
-  color: var(--ff-green) !important;
+  color: var(--green) !important;
 }
 
-.ff-seasonal__lists {
+.seasonal__lists {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
@@ -217,30 +221,30 @@
   padding-bottom: 40px;
 }
 
-.ff-seasonal__list {
+.seasonal__list {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 28px;
-  border-radius: var(--ff-r-2xl);
+  border-radius: var(--r-2xl);
 }
 
-.ff-seasonal__list--green {
-  background: var(--ff-green-100);
+.seasonal__list--green {
+  background: var(--green-100);
 }
 
-.ff-seasonal__list--orange {
-  background: var(--ff-orange-100);
+.seasonal__list--orange {
+  background: var(--orange-100);
 }
 
-.ff-seasonal__list h2 {
+.seasonal__list h2 {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 22px;
 }
 
-.ff-seasonal__list h2 > span {
+.seasonal__list h2 > span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -248,10 +252,10 @@
   height: 40px;
   border-radius: 12px;
   background: #fff;
-  color: var(--ff-green);
+  color: var(--green);
 }
 
-.ff-seasonal__items {
+.seasonal__items {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -260,7 +264,7 @@
   list-style: none;
 }
 
-.ff-seasonal__item {
+.seasonal__item {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -268,14 +272,14 @@
   border: 1px solid transparent;
   border-radius: 16px;
   background: #fff;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-seasonal__item:hover {
-  color: var(--ff-ink);
+.seasonal__item:hover {
+  color: var(--ink);
 }
 
-.ff-seasonal__item img {
+.seasonal__item img {
   width: 52px;
   height: 52px;
   flex: none;
@@ -283,36 +287,36 @@
   object-fit: cover;
 }
 
-.ff-seasonal__item > span {
+.seasonal__item > span {
   display: flex;
   flex: 1;
   flex-direction: column;
   gap: 2px;
   font-size: 13px;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-seasonal__item strong {
+.seasonal__item strong {
   font-size: 15px;
-  color: var(--ff-ink);
+  color: var(--ink);
 }
 
-.ff-seasonal__none {
-  color: var(--ff-muted);
+.seasonal__none {
+  color: var(--muted);
 }
 
-.ff-seasonal__best {
+.seasonal__best {
   padding-top: 24px;
   padding-bottom: 96px;
 }
 
 /* Produce detail */
-.ff-produce-detail {
+.produce-detail {
   padding-top: 32px;
   padding-bottom: 96px;
 }
 
-.ff-produce-detail__top {
+.produce-detail__top {
   display: grid;
   grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
   align-items: center;
@@ -320,84 +324,84 @@
   margin: 24px 0 48px;
 }
 
-.ff-produce-detail__top > img {
+.produce-detail__top > img {
   width: 100%;
   height: 360px;
-  border-radius: var(--ff-r-xl);
+  border-radius: var(--r-xl);
   object-fit: cover;
-  background: var(--ff-sand);
+  background: var(--sand);
 }
 
-.ff-produce-detail__copy {
+.produce-detail__copy {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.ff-produce-detail__season {
+.produce-detail__season {
   font-size: 15px;
-  color: var(--ff-muted);
+  color: var(--muted);
 }
 
-.ff-produce-detail__season strong {
-  color: var(--ff-green);
+.produce-detail__season strong {
+  color: var(--green);
 }
 
-.ff-produce-detail__rows {
+.produce-detail__rows {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
-.ff-produce-detail__rows .ff-market-row__side {
+.produce-detail__rows .market-row__side {
   display: none;
 }
 
 @media (max-width: 991.98px) {
-  .ff-seasonal__peak-row,
-  .ff-seasonal__lists,
-  .ff-produce-detail__top,
-  .ff-produce-detail__rows {
+  .seasonal__peak-row,
+  .seasonal__lists,
+  .produce-detail__top,
+  .produce-detail__rows {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .ff-seasonal__hero-row {
+  .seasonal__hero-row {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .ff-seasonal__months {
+  .seasonal__months {
     display: flex;
-    margin-inline: calc(var(--ff-gutter) * -1);
-    padding-inline: var(--ff-gutter);
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
     overflow-x: auto;
   }
 
-  .ff-seasonal__months button {
+  .seasonal__months button {
     flex: 0 0 64px;
   }
 }
 
 @media (max-width: 767.98px) {
-  .ff-seasonal__hero h1 {
+  .seasonal__hero h1 {
     font-size: 34px;
   }
 
-  .ff-seasonal__feature h3 {
+  .seasonal__feature h3 {
     font-size: 30px;
   }
 
-  .ff-seasonal__feature-copy {
+  .seasonal__feature-copy {
     left: 20px;
     right: 20px;
     bottom: 20px;
   }
 
-  .ff-seasonal__h2 {
+  .seasonal__h2 {
     font-size: 24px;
   }
 
-  .ff-produce-detail__top > img {
+  .produce-detail__top > img {
     height: 240px;
   }
 }
