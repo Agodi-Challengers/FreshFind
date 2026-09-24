@@ -1,210 +1,181 @@
-import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb.jsx";
-import Dropdown from "../components/Dropdown.jsx";
-import Icon from "../components/Icon.jsx";
-import MarketCard from "../components/MarketCard.jsx";
-import SearchBox from "../components/SearchBox.jsx";
-import { useData } from "../context/DataContext.jsx";
-import { useNow } from "../context/ClockContext.jsx";
-import { useDecoratedMarkets } from "../lib/useMarkets.js";
-import {
-  FEATURES,
-  SORTS,
-  activeFilterChips,
-  applyFilters,
-  filtersFromParams,
-  filtersToParams,
-  hasActiveFilters,
-  sortMarkets,
-} from "../lib/filters.js";
-import { DAY_LONG, WEEK_ORDER } from "../lib/time.js";
+import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Breadcrumb from '../components/Breadcrumb.jsx';
+import Icon from '../components/Icon.jsx';
+import Dropdown from '../components/Dropdown.jsx';
+import SearchBox from '../components/SearchBox.jsx';
+import MarketCard from '../components/MarketCard.jsx';
+import FilterSidebar from '../components/FilterSidebar.jsx';
+import { useData } from '../context/DataContext.jsx';
+import { useNow } from '../context/ClockContext.jsx';
+import { useUserLocation } from '../context/LocationContext.jsx';
+import { useDecoratedMarkets } from '../lib/useMarkets.js';
+import { useUrlFilters } from '../lib/useFilters.js';
+import { applyFilters, sortMarkets, activeFilterChips, hasActiveFilters, filtersToParams, EMPTY_FILTERS, SORTS } from '../lib/filters.js';
+import { areaDropdown, dayDropdown, timeDropdown, produceDropdown, sortDropdown } from '../lib/quickFilters.js';
+import './DirectoryPage.css';
 
 export default function DirectoryPage() {
-  const { areas, categories, produceById } = useData();
-  const decorated = useDecoratedMarkets();
+  const data = useData();
   const now = useNow();
-  const [params, setParams] = useSearchParams();
-
-  const f = useMemo(() => filtersFromParams(params), [params]);
-  const setFilters = (next) =>
-    setParams(filtersToParams(next), { replace: true });
+  const { origin } = useUserLocation();
+  const markets = useDecoratedMarkets();
+  const [filters, setFilters] = useUrlFilters();
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   const results = useMemo(
-    () => sortMarkets(applyFilters(decorated, f, produceById), f.sort),
-    [decorated, f, produceById],
+    () => sortMarkets(applyFilters(markets, filters, data.produceById), filters.sort),
+    [markets, filters, data.produceById],
   );
+  const openCount = markets.filter((m) => m.status.state !== 'closed').length;
+  const chips = activeFilterChips(filters, now);
+  const query = filtersToParams({ ...filters, sort: 'nearest' }).toString();
 
-  const areaValue = f.areas[0] || "all";
-  const dayValue = f.days[0] || "all";
-  const catValue = f.cats[0] || "all";
+  const area = areaDropdown(filters, { ...data, markets });
+  const day = dayDropdown(filters, now);
+  const time = timeDropdown(filters, markets);
+  const cat = produceDropdown(filters, { ...data, markets });
+  const sort = sortDropdown(filters);
 
-  const areaOptions = [
-    { value: "all", label: "All areas" },
-    ...areas.map((a) => ({ value: a.name, label: a.name })),
-  ];
-  const dayOptions = [
-    { value: "all", label: "Any day" },
-    ...WEEK_ORDER.map((d) => ({ value: d, label: DAY_LONG[d] })),
-  ];
-  const catOptions = [
-    { value: "all", label: "All produce" },
-    ...categories.map((c) => ({ value: c.name, label: c.label || c.name })),
-  ];
-  const sortOptions = Object.entries(SORTS).map(([value, label]) => ({
-    value,
-    label,
-  }));
+  useEffect(() => {
+    if (!sheetOpen) return undefined;
+    const onKey = (e) => e.key === 'Escape' && setSheetOpen(false);
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [sheetOpen]);
 
-  const chips = activeFilterChips(f, now);
+  const activeCount =
+    (filters.open ? 1 : 0) + filters.areas.length + filters.days.length + (filters.time !== 'any' ? 1 : 0) + filters.cats.length + filters.feats.length;
 
   return (
-    <div className="ff-container ff-page">
-      <Breadcrumb
-        items={[{ label: "Home", to: "/" }, { label: "Directory" }]}
-      />
-      <div className="ff-page-header" style={{ paddingBottom: 0 }}>
+    <div className="ff-directory">
+      <header className="ff-container ff-page-header">
+        <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Market Directory' }]} />
         <div className="ff-page-header__copy">
-          <span className="ff-eyebrow">Market directory</span>
-          <h1 className="ff-page-title">Every market in one place</h1>
+          <span className="ff-eyebrow">{markets.length} markets · Lagos</span>
+          <h1 className="ff-page-title">Market Directory</h1>
           <p className="ff-lead">
-            Filter by area, trading day, produce and facilities. Every filter
-            lives in the URL, so you can share the exact list.
+            Every farmers market we know about, with days, hours and what they usually sell. Filter by area, day, time or
+            produce to find the one that fits your week.
           </p>
         </div>
-      </div>
+      </header>
 
-      <div className="ff-toolbar" style={{ marginTop: 22 }}>
-        <div className="ff-toolbar__search">
-          <SearchBox
-            value={f.q}
-            onChange={(v) => setFilters({ ...f, q: v })}
-            onPick={(opt) => setFilters({ ...f, q: opt.value })}
-            markets={decorated}
-            placeholder="Search this list"
-          />
-        </div>
-        <Dropdown
-          icon="map-pin"
-          label="Area"
-          value={areaValue}
-          options={areaOptions}
-          onChange={(v) => setFilters({ ...f, areas: v === "all" ? [] : [v] })}
-        />
-        <Dropdown
-          icon="calendar-days"
-          label="Trading day"
-          value={dayValue}
-          options={dayOptions}
-          onChange={(v) => setFilters({ ...f, days: v === "all" ? [] : [v] })}
-        />
-        <Dropdown
-          icon="carrot"
-          label="Produce"
-          value={catValue}
-          options={catOptions}
-          onChange={(v) => setFilters({ ...f, cats: v === "all" ? [] : [v] })}
-        />
-        <Dropdown
-          icon="arrow-up-down"
-          label="Sort"
-          value={f.sort}
-          options={sortOptions}
-          onChange={(v) => setFilters({ ...f, sort: v })}
-          align="right"
-        />
-      </div>
+      <div className="ff-container ff-directory__body">
+        <aside className="ff-directory__sidebar ff-card" aria-label="Filters">
+          <FilterSidebar filters={filters} onChange={setFilters} markets={markets} openCount={openCount} idPrefix="side" />
+        </aside>
 
-      <div className="ff-filter-block">
-        <span className="ff-field-label">Facilities</span>
-        <div className="ff-chip-row">
-          <button
-            type="button"
-            className={`ff-chip${f.open ? " is-active" : ""}`}
-            aria-pressed={f.open}
-            onClick={() => setFilters({ ...f, open: !f.open })}
-          >
-            <span className="ff-dot ff-dot--open" aria-hidden="true" />
-            Open now
+        <section className="ff-directory__main" aria-labelledby="dir-results">
+          <div className="ff-directory__toolbar">
+            <SearchBox
+              value={filters.q}
+              onChange={(q) => setFilters({ ...filters, q })}
+              onSubmit={(q) => setFilters({ ...filters, q })}
+              onPick={(opt) =>
+                opt.type === 'category'
+                  ? setFilters({ ...filters, q: '', cats: [opt.value] })
+                  : setFilters({ ...filters, q: opt.value })
+              }
+              markets={markets}
+              placeholder="Search markets, streets or produce"
+              className="ff-directory__search"
+            />
+            <Dropdown
+              icon="arrow-up-down"
+              label="Sort by"
+              value={sort.value}
+              options={sort.options}
+              onChange={(v) => setFilters({ ...filters, sort: v })}
+              className="ff-directory__sort"
+              align="right"
+            />
+            <div className="ff-view-toggle" role="group" aria-label="View">
+              <span className="ff-view-toggle__btn is-active" aria-current="true" title="Grid view">
+                <Icon name="layout-grid" size={16} />
+                <span className="visually-hidden">Grid view</span>
+              </span>
+              <Link to={`/find${query ? `?${query}` : ''}`} className="ff-view-toggle__btn" title="Map view">
+                <Icon name="map" size={16} />
+                <span className="visually-hidden">Map view</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="ff-directory__quick">
+            <span className="ff-directory__quick-label">Quick filters</span>
+            <Dropdown icon="map-pin" label="Area" value={area.value} options={area.options} onChange={(v) => setFilters({ ...filters, areas: area.apply(v) })} />
+            <Dropdown icon="calendar" label="Day" value={day.value} options={day.options} onChange={(v) => setFilters({ ...filters, days: day.apply(v) })} />
+            <Dropdown icon="clock" label="Time" value={time.value} options={time.options} onChange={(v) => setFilters({ ...filters, time: time.apply(v) })} panelWidth={300} />
+            <Dropdown icon="carrot" label="Produce" value={cat.value} options={cat.options} onChange={(v) => setFilters({ ...filters, cats: cat.apply(v) })} align="right" />
+          </div>
+
+          <button type="button" className="ff-btn ff-btn--primary ff-directory__filters-btn" onClick={() => setSheetOpen(true)}>
+            <Icon name="sliders-horizontal" size={16} />
+            Filters{activeCount ? ` · ${activeCount}` : ''}
           </button>
-          {Object.entries(FEATURES).map(([key, feat]) => (
-            <button
-              key={key}
-              type="button"
-              className={`ff-chip${f.feats.includes(key) ? " is-active" : ""}`}
-              aria-pressed={f.feats.includes(key)}
-              onClick={() =>
-                setFilters({
-                  ...f,
-                  feats: f.feats.includes(key)
-                    ? f.feats.filter((x) => x !== key)
-                    : [...f.feats, key],
-                })
-              }
-            >
-              {feat.label}
-            </button>
-          ))}
-        </div>
-      </div>
 
-      {chips.length > 0 && (
-        <div className="ff-active-chips">
-          {chips.map((c) => (
-            <button
-              key={c.key}
-              type="button"
-              className="ff-chip is-active"
-              onClick={() => setFilters(c.remove(f))}
-            >
-              {c.label}
-              <Icon name="x" size={13} />
-            </button>
-          ))}
-          {hasActiveFilters(f) && (
-            <button
-              type="button"
-              className="ff-link-arrow"
-              onClick={() =>
-                setFilters({
-                  ...f,
-                  ...{
-                    q: "",
-                    open: false,
-                    areas: [],
-                    days: [],
-                    time: "any",
-                    cats: [],
-                    feats: [],
-                  },
-                })
-              }
-            >
-              Clear all
-            </button>
-          )}
-        </div>
-      )}
-
-      <div className="ff-result-bar">
-        <p className="ff-result-bar__count">
-          {results.length} {results.length === 1 ? "market" : "markets"}
-        </p>
-      </div>
-
-      <div className="ff-section--tight">
-        {results.length === 0 ? (
-          <div className="ff-empty">
-            <strong>No markets match these filters</strong>
-            <p>Try clearing a filter or widening the area.</p>
-          </div>
-        ) : (
-          <div className="ff-grid ff-grid--3">
-            {results.map((m) => (
-              <MarketCard key={m.id} market={m} />
+          <div className="ff-result-meta" aria-live="polite">
+            <h2 id="dir-results" className="ff-result-meta__count">
+              Showing {results.length} of {markets.length} markets
+            </h2>
+            {chips.map((c) => (
+              <button key={c.key} type="button" className="ff-filter-chip" onClick={() => setFilters(c.remove(filters))} aria-label={`Remove filter ${c.label}`}>
+                {c.label} ×
+              </button>
             ))}
+            {hasActiveFilters(filters) && (
+              <button type="button" className="ff-text-btn ff-text-btn--accent" onClick={() => setFilters({ ...EMPTY_FILTERS, sort: filters.sort })}>
+                Clear all
+              </button>
+            )}
+            <span className="ff-result-meta__sort">
+              · Sorted by {SORTS[filters.sort].toLowerCase()}
+              {filters.sort === 'nearest' ? ` from ${origin.label}` : ''}
+            </span>
           </div>
-        )}
+
+          {results.length ? (
+            <div className="ff-directory__grid">
+              {results.map((m) => (
+                <MarketCard key={m.id} market={m} />
+              ))}
+            </div>
+          ) : (
+            <div className="ff-empty">
+              <strong>No markets match these filters</strong>
+              <span>Try another day or area, or clear the filters to see all {markets.length} markets.</span>
+              <button type="button" className="ff-btn ff-btn--primary" onClick={() => setFilters({ ...EMPTY_FILTERS, sort: filters.sort })}>
+                Clear filters
+              </button>
+            </div>
+          )}
+        </section>
+      </div>
+
+      {/* Mobile bottom sheet (M2b) */}
+      <div className={`ff-sheet-backdrop${sheetOpen ? ' is-open' : ''}`} onClick={() => setSheetOpen(false)} aria-hidden="true" />
+      <div
+        className={`ff-sheet${sheetOpen ? ' is-open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Filters"
+        aria-hidden={!sheetOpen}
+        inert={sheetOpen ? undefined : true}
+      >
+        <span className="ff-sheet__handle" aria-hidden="true" />
+        <div className="ff-sheet__body">
+          <FilterSidebar filters={filters} onChange={setFilters} markets={markets} openCount={openCount} idPrefix="sheet" />
+        </div>
+        <div className="ff-sheet__foot">
+          <button type="button" className="ff-btn ff-btn--primary ff-btn--lg ff-btn--block" onClick={() => setSheetOpen(false)}>
+            Show {results.length} {results.length === 1 ? 'market' : 'markets'}
+          </button>
+        </div>
       </div>
     </div>
   );

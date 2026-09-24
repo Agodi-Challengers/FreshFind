@@ -1,0 +1,175 @@
+/* Find a Market (Figma: Find a Market · All markets + result variants) */
+
+.ff-find__toolbar {
+  background: #fff;
+  border-bottom: 1px solid var(--ff-border);
+}
+
+.ff-find__toolbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 16px;
+}
+
+.ff-find__loc {
+  width: 210px;
+}
+
+.ff-find__dd {
+  width: 190px;
+}
+
+.ff-find__dd--time {
+  width: 220px;
+}
+
+.ff-find__search {
+  flex: 1;
+  min-width: 200px;
+}
+
+.ff-find__list {
+  flex: none;
+  min-height: 48px;
+}
+
+.ff-find__notice {
+  margin: 12px auto 0;
+  font-size: 13px;
+  color: var(--ff-notice-text);
+}
+
+.ff-find__split {
+  display: grid;
+  grid-template-columns: minmax(0, 620px) minmax(0, 1fr);
+  max-width: var(--ff-max);
+  margin-inline: auto;
+  height: 900px;
+}
+
+.ff-find__list-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 24px 40px var(--ff-gutter);
+  overflow-y: auto;
+}
+
+.ff-find__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ff-find__count {
+  margin-top: 6px;
+  font-size: 26px;
+  line-height: 32px;
+}
+
+.ff-find__sort {
+  width: 210px;
+}
+
+.ff-find__active {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 29px;
+  font-size: 13px;
+}
+
+.ff-find__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ff-find__map-col {
+  position: relative;
+  min-height: 0;
+}
+
+@media (max-width: 1299.98px) {
+  .ff-find__toolbar-inner {
+    flex-wrap: wrap;
+  }
+
+  .ff-find__search {
+    flex-basis: 100%;
+    order: 10;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .ff-find__split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .ff-find__toolbar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ff-find__loc,
+  .ff-find__dd,
+  .ff-find__dd--time,
+  .ff-find__search {
+    width: auto;
+    min-width: 0;
+  }
+
+  .ff-find__search,
+  .ff-find__loc {
+    grid-column: 1 / -1;
+  }
+
+  .ff-find__list {
+    display: none;
+  }
+
+  .ff-find__split {
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto;
+    max-height: none;
+  }
+
+  .ff-find__map-col {
+    height: 420px;
+  }
+
+  .ff-find__list-col {
+    padding: 20px var(--ff-gutter) 32px;
+    overflow: visible;
+  }
+
+  .ff-market-row__locate {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .ff-find__head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ff-find__sort {
+    width: 100%;
+  }
+
+  .ff-market-row {
+    align-items: flex-start;
+  }
+
+  .ff-market-row__thumb {
+    width: 76px;
+    height: 76px;
+  }
+}
