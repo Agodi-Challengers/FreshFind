@@ -1,7 +1,8 @@
 {
-  "name": "frontend",
+  "name": "freshfind",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "FreshFind: discover farmers markets in Lagos, when they open and what is in season.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,8 +11,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bootstrap": "^5.3.8",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.9.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
