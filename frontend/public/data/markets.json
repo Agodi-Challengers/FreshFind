@@ -1,0 +1,328 @@
+{
+  "defaultLocation": {
+    "area": "Lekki",
+    "label": "Lekki Phase 1",
+    "lat": 6.4413,
+    "lng": 3.4679
+  },
+  "areas": [
+    { "name": "Lekki", "place": "Lekki Phase 1", "lat": 6.4413, "lng": 3.4679 },
+    {
+      "name": "Victoria Island",
+      "place": "Victoria Island",
+      "lat": 6.4281,
+      "lng": 3.4219
+    },
+    { "name": "Ikoyi", "place": "Ikoyi", "lat": 6.452, "lng": 3.435 },
+    { "name": "Ajah", "place": "Ajah", "lat": 6.4667, "lng": 3.5667 },
+    { "name": "Yaba", "place": "Yaba", "lat": 6.5095, "lng": 3.3711 },
+    { "name": "Surulere", "place": "Surulere", "lat": 6.5, "lng": 3.35 },
+    { "name": "Ikeja", "place": "Ikeja", "lat": 6.6018, "lng": 3.3515 },
+    { "name": "Ikorodu", "place": "Ikorodu", "lat": 6.6194, "lng": 3.5105 }
+  ],
+  "regions": [
+    { "name": "Island", "label": "Lagos Island" },
+    { "name": "Mainland", "label": "Lagos Mainland" }
+  ],
+  "markets": [
+    {
+      "id": "lekki-farmers-market",
+      "name": "Lekki Farmers Market",
+      "street": "Admiralty Way",
+      "address": "Admiralty Way, Lekki Phase 1, Lagos",
+      "area": "Lekki",
+      "locality": "Lekki Phase 1",
+      "region": "Island",
+      "lat": 6.4413,
+      "lng": 3.4679,
+      "map": { "x": 514, "y": 557 },
+      "images": {
+        "card": "/images/placeholder-market.svg",
+        "row": "/images/placeholder-market.svg",
+        "hero": "/images/placeholder-market.svg"
+      },
+      "schedule": {
+        "sat": ["08:00", "15:00"],
+        "sun": ["09:00", "15:00"]
+      },
+      "produce": [
+        "tomatoes",
+        "scotch-bonnet",
+        "okra",
+        "plantain",
+        "ugu",
+        "mango"
+      ],
+      "categories": ["Vegetables", "Fruits", "Herbs & Spices"],
+      "growers": "Smallholder and organic growers from Epe, Badagry and Ikorodu",
+      "prices": "Retail and wholesale prices",
+      "payment": "Cash and card accepted",
+      "parking": "Dedicated parking on site",
+      "phone": "+234 801 234 5678",
+      "about": "A weekend market on Admiralty Way where farmers from the eastern axis sell straight from the farm.",
+      "tips": "Come before 10 AM for the best tomatoes and the shortest queues."
+    },
+    {
+      "id": "vi-green-market",
+      "name": "VI Green Market",
+      "street": "Adeola Odeku Street",
+      "address": "Adeola Odeku Street, Victoria Island, Lagos",
+      "area": "Victoria Island",
+      "locality": "Victoria Island",
+      "region": "Island",
+      "lat": 6.4281,
+      "lng": 3.4219,
+      "map": { "x": 431, "y": 584 },
+      "images": {
+        "card": "/images/placeholder-market.svg",
+        "row": "/images/placeholder-market.svg",
+        "hero": "/images/placeholder-market.svg"
+      },
+      "schedule": {
+        "wed": ["07:00", "16:00"],
+        "sat": ["07:00", "16:00"]
+      },
+      "produce": [
+        "pineapple",
+        "watermelon",
+        "sweet-corn",
+        "tomatoes",
+        "waterleaf"
+      ],
+      "categories": ["Fruits", "Vegetables", "Herbs & Spices"],
+      "growers": "Mixed conventional growers from Ogun and Oyo states",
+      "prices": "Fixed retail prices",
+      "payment": "Card payments welcome",
+      "parking": "Street parking nearby",
+      "phone": "+234 802 345 6789",
+      "about": "A mid-week and weekend stop for office workers on the island, heavy on fruit stalls.",
+      "tips": "The pineapple stall sells out by early afternoon on Saturdays."
+    },
+    {
+      "id": "ikoyi-organic-hub",
+      "name": "Ikoyi Organic Hub",
+      "street": "Awolowo Road",
+      "address": "Awolowo Road, Ikoyi, Lagos",
+      "area": "Ikoyi",
+      "locality": "Ikoyi",
+      "region": "Island",
+      "lat": 6.452,
+      "lng": 3.435,
+      "map": { "x": 455, "y": 536 },
+      "images": {
+        "card": "/images/placeholder-market.svg",
+        "row": "/images/placeholder-market.svg",
+        "hero": "/images/placeholder-market.svg"
+      },
+      "schedule": {
+        "sat": ["08:00", "14:00"]
+      },
+      "produce": ["ugu", "waterleaf", "brown-beans", "eggs", "okra"],
+      "categories": [
+        "Herbs & Spices",
+        "Grains & Legumes",
+        "Eggs & Dairy",
+        "Vegetables"
+      ],
+      "growers": "Certified organic growers from across Lagos and Ogun",
+      "prices": "Premium retail prices",
+      "payment": "Cash and card accepted",
+      "parking": "Dedicated parking for shoppers",
+      "phone": "+234 803 456 7890",
+      "about": "A Saturday-only certified organic market with a small number of vetted producers.",
+      "tips": "Bring your own bags; the hub is plastic-free."
+    },
+    {
+      "id": "ajah-community-market",
+      "name": "Ajah Community Market",
+      "street": "Addo Road",
+      "address": "Addo Road, Ajah, Lagos",
+      "area": "Ajah",
+      "locality": "Ajah",
+      "region": "Island",
+      "lat": 6.4667,
+      "lng": 3.5667,
+      "map": { "x": 694, "y": 507 },
+      "images": {
+        "card": "/images/placeholder-market.svg",
+        "row": "/images/placeholder-market.svg",
+        "hero": "/images/placeholder-market.svg"
+      },
+      "schedule": {
+        "tue": ["06:00", "18:00"],
+        "fri": ["06:00", "18:00"]
+      },
+      "produce": [
+        "plantain",
+        "yam",
+        "tomatoes",
+        "scotch-bonnet",
+        "brown-beans"
+      ],
+      "categories": ["Fruits", "Tubers", "Vegetables", "Grains & Legumes"],
+      "growers": "Community growers and traders from the Lekki-Epe corridor",
+      "prices": "Wholesale prices for bulk buyers",
+      "payment": "Cash only",
+      "parking": "Dedicated bus and car parking",
+      "phone": "+234 804 567 8901",
+      "about": "A long-running neighbourhood market that opens twice a week for the Ajah community.",
+      "tips": "Yam is cheapest when you buy a full tuber bundle."
+    },
+    {
+      "id": "yaba-fresh-mart",
+      "name": "Yaba Fresh Mart",
+      "street": "Herbert Macaulay Way",
+      "address": "Herbert Macaulay Way, Yaba, Lagos",
+      "area": "Yaba",
+      "locality": "Yaba",
+      "region": "Mainland",
+      "lat": 6.5095,
+      "lng": 3.3711,
+      "map": { "x": 338, "y": 421 },
+      "images": {
+        "card": "/images/placeholder-market.svg",
+        "row": "/images/placeholder-market.svg",
+        "hero": "/images/placeholder-market.svg"
+      },
+      "schedule": {
+        "mon": ["06:00", "19:00"],
+        "tue": ["06:00", "19:00"],
+        "wed": ["06:00", "19:00"],
+        "thu": ["06:00", "19:00"],
+        "fri": ["06:00", "19:00"],
+        "sat": ["06:00", "19:00"],
+        "sun": ["08:00", "16:00"]
+      },
+      "produce": [
+        "tomatoes",
+        "okra",
+        "plantain",
+        "watermelon",
+        "pineapple",
+        "eggs"
+      ],
+      "categories": ["Vegetables", "Fruits", "Eggs & Dairy"],
+      "growers": "Mixed growers from the Lagos mainland and Ogun state",
+      "prices": "Retail and wholesale prices",
+      "payment": "Cash and card accepted",
+      "parking": "Dedicated parking behind the mart",
+      "phone": "+234 805 678 9012",
+      "about": "A daily mainland mart close to the Yaba tech cluster, popular with students and commuters.",
+      "tips": "Evening prices drop just before the 7 PM close."
+    },
+    {
+      "id": "surulere-farmers-bazaar",
+      "name": "Surulere Farmers Bazaar",
+      "street": "Bode Thomas Street",
+      "address": "Bode Thomas Street, Surulere, Lagos",
+      "area": "Surulere",
+      "locality": "Surulere",
+      "region": "Mainland",
+      "lat": 6.5,
+      "lng": 3.35,
+      "map": { "x": 300, "y": 440 },
+      "images": {
+        "card": "/images/placeholder-market.svg",
+        "row": "/images/placeholder-market.svg",
+        "hero": "/images/placeholder-market.svg"
+      },
+      "schedule": {
+        "mon": ["07:00", "18:00"],
+        "wed": ["07:00", "18:00"],
+        "fri": ["07:00", "18:00"]
+      },
+      "produce": ["brown-beans", "yam", "ugu", "scotch-bonnet", "sweet-corn"],
+      "categories": [
+        "Grains & Legumes",
+        "Tubers",
+        "Herbs & Spices",
+        "Vegetables"
+      ],
+      "growers": "Farmers' cooperatives from Oyo and Kwara states",
+      "prices": "Wholesale prices available",
+      "payment": "Cash and transfer accepted",
+      "parking": "Dedicated parking lot next door",
+      "phone": "+234 806 789 0123",
+      "about": "A Monday, Wednesday and Friday bazaar known for dry goods and tubers.",
+      "tips": "Buy beans by the paint bucket for the best value."
+    },
+    {
+      "id": "ikeja-city-market",
+      "name": "Ikeja City Market",
+      "street": "Obafemi Awolowo Way",
+      "address": "Obafemi Awolowo Way, Ikeja, Lagos",
+      "area": "Ikeja",
+      "locality": "Ikeja",
+      "region": "Mainland",
+      "lat": 6.6018,
+      "lng": 3.3515,
+      "map": { "x": 303, "y": 236 },
+      "images": {
+        "card": "/images/placeholder-market.svg",
+        "row": "/images/placeholder-market.svg",
+        "hero": "/images/placeholder-market.svg"
+      },
+      "schedule": {
+        "mon": ["06:00", "20:00"],
+        "tue": ["06:00", "20:00"],
+        "wed": ["06:00", "20:00"],
+        "thu": ["06:00", "20:00"],
+        "fri": ["06:00", "20:00"],
+        "sat": ["06:00", "20:00"],
+        "sun": ["07:00", "18:00"]
+      },
+      "produce": [
+        "tomatoes",
+        "scotch-bonnet",
+        "plantain",
+        "mango",
+        "watermelon",
+        "eggs",
+        "brown-beans"
+      ],
+      "categories": [
+        "Vegetables",
+        "Fruits",
+        "Eggs & Dairy",
+        "Grains & Legumes"
+      ],
+      "growers": "Large-scale growers from the north and south-west",
+      "prices": "Wholesale and retail prices",
+      "payment": "Cash and card accepted",
+      "parking": "Dedicated multi-storey parking",
+      "phone": "+234 807 890 1234",
+      "about": "The biggest market in the dataset: a daily market with the widest produce range.",
+      "tips": "Weekday mornings are calmer than the Saturday rush."
+    },
+    {
+      "id": "ikorodu-roadside-market",
+      "name": "Ikorodu Roadside Market",
+      "street": "Ikorodu Road",
+      "address": "Ikorodu Road, Ikorodu, Lagos",
+      "area": "Ikorodu",
+      "locality": "Ikorodu",
+      "region": "Mainland",
+      "lat": 6.6194,
+      "lng": 3.5105,
+      "map": { "x": 592, "y": 201 },
+      "images": {
+        "card": "/images/placeholder-market.svg",
+        "row": "/images/placeholder-market.svg",
+        "hero": "/images/placeholder-market.svg"
+      },
+      "schedule": {
+        "sat": ["06:00", "17:00"],
+        "sun": ["06:00", "17:00"]
+      },
+      "produce": ["yam", "sweet-corn", "okra", "waterleaf", "plantain"],
+      "categories": ["Tubers", "Vegetables", "Herbs & Spices", "Fruits"],
+      "growers": "Ikorodu and Epe farming families",
+      "prices": "Farm-gate retail prices",
+      "payment": "Cash only",
+      "parking": "Roadside parking available",
+      "phone": "+234 808 901 2345",
+      "about": "A weekend roadside market selling straight off the back of the truck.",
+      "tips": "Sweet corn is picked the same morning in season."
+    }
+  ]
+}

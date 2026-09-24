@@ -1,0 +1,174 @@
+{
+  "months": [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ],
+  "categories": [
+    { "name": "Vegetables", "label": "Vegetables", "icon": "carrot" },
+    { "name": "Fruits", "label": "Fruits", "icon": "apple" },
+    {
+      "name": "Grains & Legumes",
+      "label": "Grains & Legumes",
+      "icon": "wheat"
+    },
+    { "name": "Herbs & Spices", "label": "Herbs & Spices", "icon": "leaf" },
+    { "name": "Tubers", "label": "Tubers", "icon": "sprout" },
+    { "name": "Eggs & Dairy", "label": "Eggs & Dairy", "icon": "egg" }
+  ],
+  "items": [
+    {
+      "id": "tomatoes",
+      "name": "Tomatoes",
+      "shortName": "Tomatoes",
+      "category": "Vegetables",
+      "description": "Vine-ripened Lagos tomatoes, sold by the basket or the paint bucket. Firm enough for stew and sweet enough for salad.",
+      "season": "111111111111",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "scotch-bonnet",
+      "name": "Scotch Bonnet Pepper",
+      "shortName": "Pepper",
+      "category": "Vegetables",
+      "description": "The small, fiery pepper that gives Nigerian stew its heat. Sold fresh in mixed bowls or by the cup.",
+      "season": "111111111111",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "okra",
+      "name": "Okra",
+      "shortName": "Okra",
+      "category": "Vegetables",
+      "description": "Tender green pods, best picked young. A staple for soup and the reason many stalls open before dawn.",
+      "season": "110000000011",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "plantain",
+      "name": "Plantain",
+      "shortName": "Plantain",
+      "category": "Fruits",
+      "description": "Sold in green, yellow and over-ripe bunches depending on whether you are frying, boiling or roasting.",
+      "season": "111111111111",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "mango",
+      "name": "Mango",
+      "shortName": "Mango",
+      "category": "Fruits",
+      "description": "Sweet, fibrous mangoes that arrive with the April rains and disappear by early October.",
+      "season": "000111111000",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "pineapple",
+      "name": "Pineapple",
+      "shortName": "Pineapple",
+      "category": "Fruits",
+      "description": "Golden, low-acid pineapple from the coastal belt, peeled to order at most stalls.",
+      "season": "001111100000",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "sweet-corn",
+      "name": "Sweet Corn",
+      "shortName": "Corn",
+      "category": "Vegetables",
+      "description": "Boiled or roasted on the spot. The roadside favourites are picked the same morning in season.",
+      "season": "000111110000",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "ugu",
+      "name": "Ugu (Fluted Pumpkin Leaves)",
+      "shortName": "Ugu",
+      "category": "Herbs & Spices",
+      "description": "Fluted pumpkin leaves, shredded and sold by the bundle. The backbone of most Nigerian soups.",
+      "season": "111111111111",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "waterleaf",
+      "name": "Waterleaf",
+      "shortName": "Waterleaf",
+      "category": "Herbs & Spices",
+      "description": "Soft, quick-cooking greens used in edikang ikong and afang. Sold in tied bunches while still wet.",
+      "season": "000111110000",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "brown-beans",
+      "name": "Brown Beans",
+      "shortName": "Beans",
+      "category": "Grains & Legumes",
+      "description": "Dried honey beans and oloyin, sold by the cup, the paint bucket or the bag.",
+      "season": "111111111111",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "yam",
+      "name": "Yam",
+      "shortName": "Yam",
+      "category": "Tubers",
+      "description": "Puna and white yam tubers, priced per tuber or per bundle. The new harvest lands with the dry season.",
+      "season": "110000000011",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    },
+    {
+      "id": "watermelon",
+      "name": "Watermelon",
+      "shortName": "Watermelon",
+      "category": "Fruits",
+      "description": "Heavy, deep-red melons that dominate the stalls through the hot months.",
+      "season": "111110000001",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null,
+      "pick": "Look for a heavy melon with a creamy-yellow field spot; that is where the sugar is."
+    },
+    {
+      "id": "eggs",
+      "name": "Farm Eggs",
+      "shortName": "Eggs",
+      "category": "Eggs & Dairy",
+      "description": "Crates of free-range and deep-litter eggs from peri-urban poultry farms around Lagos.",
+      "season": "111111111111",
+      "photo": "/images/placeholder-produce.svg",
+      "image": "/images/placeholder-produce.svg",
+      "icon": null
+    }
+  ]
+}
