@@ -1,0 +1,91 @@
+/* Design tokens taken from the FreshFind Figma file. */
+:root {
+  /* Brand greens */
+  --ff-green: #1f4d2b;
+  --ff-green-hover: #193f23;
+  --ff-green-700: #2f6a3d;
+  --ff-green-600: #3c8d40;
+  --ff-green-500: #3cb371;
+  --ff-green-300: #7bd389;
+  --ff-green-200: #cfe3cf;
+  --ff-green-100: #e4f0df;
+  --ff-green-label: #a9c9ae;
+  --ff-green-border-dark: #3e6b49;
+
+  /* Neutrals */
+  --ff-ink: #1b221c;
+  --ff-muted: #5e6b5f;
+  --ff-placeholder: #9aa39b;
+  --ff-cream: #fbf7ef;
+  --ff-sand: #f3ecdd;
+  --ff-white: #ffffff;
+  --ff-border: #e3dccb;
+  --ff-border-strong: #cfc7b6;
+  --ff-bar-off: #e9e3d4;
+  --ff-closed: #b8b0a0;
+  --ff-closed-text: #a8a08f;
+  --ff-switch-off: #c9c2b2;
+
+  /* Accents */
+  --ff-orange: #e4572e;
+  --ff-orange-hover: #bb4726;
+  --ff-orange-100: #fce3d9;
+  --ff-orange-text: #ffe9e0;
+  --ff-yellow: #f2b33d;
+  --ff-yellow-100: #fdf0d2;
+  --ff-yellow-text: #8a5a00;
+  --ff-notice-text: #6b4a00;
+  --ff-amber: #c98a12;
+  --ff-blue: #2f7de1;
+
+  /* Map */
+  --ff-map-land: #e8f0dc;
+  --ff-map-water: #bcdce8;
+  --ff-pin-closed: #8e978f;
+
+  /* Footer */
+  --ff-footer: #1b221c;
+  --ff-footer-text: #aeb8af;
+  --ff-footer-muted: #7f8a80;
+  --ff-footer-chip: #262f27;
+  --ff-footer-line: #333b34;
+
+  /* Type */
+  --ff-font: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --ff-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  /* Radius */
+  --ff-r-sm: 10px;
+  --ff-r-md: 14px;
+  --ff-r-lg: 18px;
+  --ff-r-card: 22px;
+  --ff-r-xl: 24px;
+  --ff-r-2xl: 28px;
+  --ff-r-pill: 999px;
+
+  /* Shadows */
+  --ff-shadow-float: 0 12px 32px rgba(31, 51, 33, 0.1);
+  --ff-shadow-hover: 0 18px 36px -4px rgba(26, 64, 36, 0.18);
+  --ff-shadow-btn: 0 6px 14px rgba(26, 64, 36, 0.18);
+  --ff-shadow-panel: 0 18px 40px -8px rgba(26, 64, 36, 0.18);
+  --ff-shadow-pin: 0 4px 10px rgba(0, 0, 0, 0.22);
+  --ff-focus-ring: 0 0 0 2px #ffffff, 0 0 0 5px var(--ff-green);
+  --ff-input-ring: 0 0 0 4px rgba(61, 140, 64, 0.2);
+
+  /* Layout */
+  --ff-gutter: 80px;
+  --ff-max: 1440px;
+  --ff-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (max-width: 1199.98px) {
+  :root {
+    --ff-gutter: 40px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --ff-gutter: 20px;
+  }
+}
