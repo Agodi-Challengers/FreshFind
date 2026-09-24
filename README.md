@@ -1,17 +1,17 @@
 # FreshFind · Fresh all along
 
-FreshFind helps residents of Lagos discover farmers markets near them: where they are, when they open, and what is likely to be on the stalls this week. It is a single page application built from the **FreshFind · Web Design** Figma file and the *FreshFind (Web Innovation Unleashed) SRS v1.0*.
+FreshFind helps residents of Lagos discover farmers markets near them: where they are, when they open, and what is likely to be on the stalls this week. It is a single page application built from the **FreshFind · Web Design** Figma file and the _FreshFind (Web Innovation Unleashed) SRS v1.0_.
 
 ## Tech stack
 
-| Layer | Choice | Why |
-|---|---|---|
-| UI | React 19 + Vite | Component based SPA, fast dev server and build |
-| Routing | React Router | Market detail pages, breadcrumbs, shareable filter URLs |
-| Styling | Bootstrap 5 (CSS only) + vanilla CSS | Bootstrap for reset, grid and utilities; the design system itself is plain CSS with custom properties |
-| Data | JSON files in `public/data` | SRS: no backend, data loaded from pre-populated JSON |
-| Maps | Google Maps embed + a design-exported SVG map of Lagos | SRS: embedded Google map on market pages; the Find a Market map follows the Figma design |
-| Chat | Tawk.to widget | Chatbot platform listed in the SRS |
+| Layer   | Choice                                                 | Why                                                                                                   |
+| ------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| UI      | React 19 + Vite                                        | Component based SPA, fast dev server and build                                                        |
+| Routing | React Router                                           | Market detail pages, breadcrumbs, shareable filter URLs                                               |
+| Styling | Bootstrap 5 (CSS only) + vanilla CSS                   | Bootstrap for reset, grid and utilities; the design system itself is plain CSS with custom properties |
+| Data    | JSON files in `public/data`                            | SRS: no backend, data loaded from pre-populated JSON                                                  |
+| Maps    | Google Maps embed + a design-exported SVG map of Lagos | SRS: embedded Google map on market pages; the Find a Market map follows the Figma design              |
+| Chat    | Tawk.to widget                                         | Chatbot platform listed in the SRS                                                                    |
 
 No other runtime libraries are used.
 
