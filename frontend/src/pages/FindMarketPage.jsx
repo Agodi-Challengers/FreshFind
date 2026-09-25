@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb.jsx";
 import Icon from "../components/Icon.jsx";
@@ -16,13 +16,13 @@ import {
   sortMarkets,
   activeFilterChips,
   hasActiveFilters,
-  filtersToParams,
   EMPTY_FILTERS,
 } from "../lib/filters.js";
 import {
   areaDropdown,
   dayDropdown,
   timeDropdown,
+  produceDropdown,
   sortDropdown,
 } from "../lib/quickFilters.js";
 import { DAY_SHORT, formatMinutes } from "../lib/time.js";
@@ -37,6 +37,24 @@ export default function FindMarketPage() {
   const [filters, setFilters] = useUrlFilters();
   const [selectedId, setSelectedId] = useState(null);
   const [hoverId, setHoverId] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchWrapRef = useRef(null);
+
+  useEffect(() => {
+    if (!searchOpen) return undefined;
+    const close = (e) => {
+      if (e.key === "Escape") setSearchOpen(false);
+    };
+    const onDown = (e) => {
+      if (!searchWrapRef.current?.contains(e.target)) setSearchOpen(false);
+    };
+    document.addEventListener("keydown", close);
+    document.addEventListener("mousedown", onDown);
+    return () => {
+      document.removeEventListener("keydown", close);
+      document.removeEventListener("mousedown", onDown);
+    };
+  }, [searchOpen]);
 
   const results = useMemo(
     () =>
@@ -47,11 +65,11 @@ export default function FindMarketPage() {
     [markets, filters, data.produceById],
   );
   const chips = activeFilterChips(filters, now);
-  const listQuery = filtersToParams(filters).toString();
 
   const area = areaDropdown(filters, { ...data, markets });
   const day = dayDropdown(filters, now);
   const time = timeDropdown(filters, markets);
+  const produceFilter = produceDropdown(filters, { ...data, markets });
   const sort = sortDropdown(filters);
 
   const locationOptions = [
@@ -83,7 +101,7 @@ export default function FindMarketPage() {
   if (chips.length === 1) crumbs.push({ label: chips[0].label });
 
   return (
-    <div className="find">
+    <div className="find container">
       <div className="find__toolbar">
         <div className="container find__toolbar-inner">
           <Dropdown
@@ -126,25 +144,54 @@ export default function FindMarketPage() {
             className="find__dd find__dd--time"
             panelWidth={300}
           />
-          <SearchBox
-            value={filters.q}
-            onChange={(q) => setFilters({ ...filters, q })}
-            onSubmit={(q) => setFilters({ ...filters, q })}
-            onPick={(opt) =>
-              opt.type === "category"
-                ? setFilters({ ...filters, q: "", cats: [opt.value] })
-                : setFilters({ ...filters, q: opt.value })
+          <Dropdown
+            icon="carrot"
+            label="Produce"
+            value={produceFilter.value}
+            options={produceFilter.options}
+            onChange={(v) =>
+              setFilters({ ...filters, cats: produceFilter.apply(v) })
             }
-            markets={markets}
-            className="find__search"
+            className="find__dd find__dd--produce"
           />
-          <Link
-            to={`/directory${listQuery ? `?${listQuery}` : ""}`}
-            className="btn btn--outline find__list"
+          <button
+            type="button"
+            className="find__use-location"
+            onClick={requestDeviceLocation}
           >
-            <Icon name="layout-grid" size={16} />
-            List view
-          </Link>
+            <Icon name="locate-fixed" size={16} />
+            {status === "locating" ? "Finding you…" : "Use my location"}
+          </button>
+          <div className="find__search-wrap" ref={searchWrapRef}>
+            {searchOpen ? (
+              <SearchBox
+                value={filters.q}
+                onChange={(q) => setFilters({ ...filters, q })}
+                onSubmit={(q) => {
+                  setFilters({ ...filters, q });
+                  setSearchOpen(false);
+                }}
+                onPick={(opt) => {
+                  setSearchOpen(false);
+                  opt.type === "category"
+                    ? setFilters({ ...filters, q: "", cats: [opt.value] })
+                    : setFilters({ ...filters, q: opt.value });
+                }}
+                markets={markets}
+                className="find__search"
+                autoFocus
+              />
+            ) : (
+              <button
+                type="button"
+                className="btn btn--primary find__search-btn"
+                onClick={() => setSearchOpen(true)}
+              >
+                <Icon name="search" size={16} />
+                Search
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -246,6 +293,22 @@ export default function FindMarketPage() {
           />
         </section>
       </div>
+
+      <section className="container find__cta" aria-labelledby="find-cta-title">
+        <h2 id="find-cta-title">Run a market or grow for one?</h2>
+        <p>
+          Get your market listed on FreshFind so more neighbours know when
+          you're open and what you're selling.
+        </p>
+        <div className="find__cta-buttons">
+          <Link to="/contact?topic=add" className="btn btn--outline btn--lg">
+            List your market
+          </Link>
+          <Link to="/contact" className="btn btn--primary btn--lg">
+            Contact us
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

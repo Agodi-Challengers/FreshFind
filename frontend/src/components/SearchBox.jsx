@@ -28,6 +28,7 @@ export default function SearchBox({
   label,
   icon = "search",
   className = "",
+  autoFocus = false,
 }) {
   const uid = useId();
   const navigate = useNavigate();
@@ -174,6 +175,7 @@ export default function SearchBox({
             placeholder={placeholder}
             value={value}
             autoComplete="off"
+            autoFocus={autoFocus}
             role="combobox"
             aria-label={label ? undefined : placeholder}
             aria-expanded={showPanel}
