@@ -1,4 +1,4 @@
-// Share helper: uses the Web Share API where available (phones), otherwise copies the link.
+
 export async function shareLink({ title, text, url }, toast) {
   try {
     if (navigator.share) {

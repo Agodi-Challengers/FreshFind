@@ -43,9 +43,6 @@ export default function MarketCard({
           name={market.name}
           className="market-card__save"
         />
-        {variant !== "local" && market.km != null && (
-          <span className="pill market-card__km">{formatKm(market.km)}</span>
-        )}
       </div>
       <div className="market-card__body">
         <div className="market-card__title">
@@ -56,7 +53,9 @@ export default function MarketCard({
           </Heading>
           <p className="icon-text muted">
             <Icon name="map-pin" size={14} />
-            {place}
+            {place}{variant !== "local" && market.km != null && (
+          <span>{formatKm(market.km)}</span>
+        )}
           </p>
         </div>
         <p className="icon-text market-card__hours">

@@ -1,18 +1,17 @@
-/* Design tokens taken from the FreshFind Figma file. */
+
 :root {
-  /* Brand greens */
-  --green: #1f4d2b;
-  --green-hover: #193f23;
+  
+  --green: #00B207;
+  --green-hover: #2c742f;
   --green-700: #2f6a3d;
   --green-600: #3c8d40;
   --green-500: #3cb371;
-  --green-300: #7bd389;
+  --green-300: #84d187;
   --green-200: #cfe3cf;
   --green-100: #e4f0df;
   --green-label: #a9c9ae;
   --green-border-dark: #3e6b49;
 
-  /* Neutrals */
   --ink: #1b221c;
   --muted: #5e6b5f;
   --placeholder: #9aa39b;
@@ -26,7 +25,7 @@
   --closed-text: #a8a08f;
   --switch-off: #c9c2b2;
 
-  /* Accents */
+
   --orange: #e4572e;
   --orange-hover: #bb4726;
   --orange-100: #fce3d9;
@@ -38,24 +37,24 @@
   --amber: #c98a12;
   --blue: #2f7de1;
 
-  /* Map */
+  
   --map-land: #e8f0dc;
   --map-water: #bcdce8;
   --pin-closed: #8e978f;
 
-  /* Footer */
+ 
   --footer: #1b221c;
   --footer-text: #aeb8af;
   --footer-muted: #7f8a80;
   --footer-chip: #262f27;
   --footer-line: #333b34;
 
-  /* Type */
   --font:
     "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --display: "Poppins", Georgia, "Times New Roman", serif;
+ 
 
-  /* Radius */
+  
   --r-sm: 10px;
   --r-md: 14px;
   --r-lg: 18px;

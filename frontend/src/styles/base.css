@@ -1,11 +1,10 @@
-/* Global styles. Bootstrap provides the reset; these rules apply the FreshFind design. */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  background: var(--cream);
+  background: #FFFFFF;
   color: var(--ink);
   font-family: var(--font);
   font-size: 16px;
@@ -83,7 +82,6 @@ button {
   color: #fff;
 }
 
-/* ---------- Text helpers ---------- */
 .eyebrow {
   display: block;
   font-family: var(--font);
@@ -92,14 +90,19 @@ button {
   line-height: 17px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: #00B207;
 }
-
+.line{
+  width: 70px;
+}
 .eyebrow--yellow {
   color: var(--yellow);
 }
 
 .section-title {
+  font-family:
+    "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --display: "Poppins", Georgia, "Times New Roman", serif;;
   font-size: 40px;
   line-height: 1.22;
   letter-spacing: -0.015em;
@@ -121,11 +124,25 @@ button {
   color: var(--muted);
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
   .section-title {
     font-size: 28px;
   }
-
+ .home__season .mobile-section-title{
+  display: block;
+  font-family: 
+    "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --display: "Poppins", Georgia, "Times New Roman", serif;;
+}
+.mobile-season{
+  display: block;
+}
+#line{
+  display: none;
+}
+#brow{
+  display: none;
+}
   .page-title {
     font-size: 34px;
   }
@@ -135,7 +152,7 @@ button {
   }
 }
 
-/* ---------- Buttons ---------- */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -201,6 +218,12 @@ button {
 .btn--accent:hover {
   background: var(--orange-hover);
   color: #fff;
+}
+.produce-btn{
+    background: #00B207;
+    padding: 14px 22px;
+    border-radius: 30px;
+    color: white;
 }
 
 .btn--yellow {
@@ -292,7 +315,6 @@ button {
   text-underline-offset: 3px;
 }
 
-/* ---------- Pills ---------- */
 .pill {
   display: inline-flex;
   align-items: center;

@@ -6,7 +6,6 @@ import { useUserLocation } from "../context/LocationContext.jsx";
 import { formatClock, isOpenNow } from "../lib/time.js";
 import { formatCount } from "../lib/visitors.js";
 
-/** Dark top bar: live clock, markets open right now, visitor counter and current location. */
 export default function UtilityBar({ visitors }) {
   const now = useNow();
   const { markets } = useData();
@@ -15,6 +14,12 @@ export default function UtilityBar({ visitors }) {
     () => markets.filter((m) => isOpenNow(m, now)).length,
     [markets, now],
   );
+
+  const location = useUserLocation();
+
+if (location.loading) {
+  return null; 
+}
 
   let locationText = `${origin.label}, Lagos`;
   if (status === "locating") locationText = "Finding you…";

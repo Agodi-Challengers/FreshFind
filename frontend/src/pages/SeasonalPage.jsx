@@ -76,7 +76,7 @@ export default function SeasonalPage() {
   const arriving = useMemo(() => arrivingItems(produce, m), [produce, m]);
   const ending = useMemo(() => endingItems(produce, m), [produce, m]);
 
-  // markets that sell the most in-season items and open this weekend
+
   const best = useMemo(() => {
     const ids = new Set(highlights.map((p) => p.id));
     return sortMarkets(
