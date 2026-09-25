@@ -42,13 +42,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0100",
       "images": {
-        "card": "/images/markets/lekki-sunday-card.webp",
-        "row": "/images/markets/lekki-sunday-row.webp",
-        "popup": "/images/markets/lekki-sunday-popup.webp",
+        "card": "/images/markets/lekki-fruit-market.webp",
+        "row": "/images/markets/lekki-fruit-market.webp",
+        "popup": "/images/markets/lekki-fruit-market.webp",
         "gallery": [
-          "/images/markets/lekki-sunday-gallery-1.webp",
-          "/images/markets/lekki-sunday-gallery-2.webp",
-          "/images/markets/lekki-sunday-gallery-3.webp"
+          "/images/markets/lekki-fruit-market.webp",
+          "/images/markets/lekki-fruit-market.webp",
+          "/images/markets/lekki-fruit-market.webp"
         ]
       },
       "nearby": ["ikoyi-farm-table", "vi-weekend", "chevron-drive", "ajah-fresh-hub"]
@@ -74,13 +74,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0104",
       "images": {
-        "card": "/images/markets/ikoyi-farm-table-card.webp",
-        "row": "/images/markets/ikoyi-farm-table-row.webp",
-        "popup": "/images/markets/ikoyi-farm-table-popup.webp",
+        "card": "/images/markets/ikoyi-farm-table.jpg",
+        "row": "/images/markets/ikoyi-farm-table.jpg",
+        "popup": "/images/markets/ikoyi-farm-table.jpg",
         "gallery": [
-          "/images/markets/ikoyi-farm-table-gallery-1.webp",
-          "/images/markets/ikoyi-farm-table-gallery-2.webp",
-          "/images/markets/ikoyi-farm-table-gallery-2.webp"
+          "/images/markets/ikoyi-farm-table.jpg",
+          "/images/markets/ikoyi-farm-table.jpg",
+          "/images/markets/ikoyi-farm-table.jpg"
         ]
       },
       "nearby": ["vi-weekend", "lekki-sunday", "yaba-green", "yaba-tech-gate"]
@@ -106,13 +106,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0106",
       "images": {
-        "card": "/images/markets/vi-weekend-card.webp",
-        "row": "/images/markets/vi-weekend-row.webp",
-        "popup": "/images/markets/vi-weekend-popup.webp",
+        "card": "/images/markets/vi-weekend.jpg",
+        "row": "/images/markets/vi-weekend.jpg",
+        "popup": "/images/markets/vi-weekend.jpg",
         "gallery": [
-          "/images/markets/vi-weekend-gallery-1.webp",
-          "/images/markets/surulere-organic-gallery-3.webp",
-          "/images/markets/surulere-organic-gallery-2.webp"
+          "/images/markets/vi-weekend.jpg",
+          "/images/markets/vi-weekend.jpg",
+          "/images/markets/vi-weekend.jpg"
         ]
       },
       "nearby": ["ikoyi-farm-table", "lekki-sunday", "surulere-organic", "yaba-green"]
@@ -138,13 +138,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0113",
       "images": {
-        "card": "/images/markets/chevron-drive-card.webp",
-        "row": "/images/markets/chevron-drive-row.webp",
-        "popup": "/images/markets/chevron-drive-popup.webp",
+        "card": "/images/markets/chevron-drive.jpg",
+        "row": "/images/markets/chevron-drive.jpg",
+        "popup": "/images/markets/chevron-drive.jpg",
         "gallery": [
-          "/images/markets/chevron-drive-gallery-1.webp",
-          "/images/markets/yaba-green-gallery-2.webp",
-          "/images/markets/chevron-drive-gallery-3.webp"
+          "/images/markets/chevron-drive.jpg",
+          "/images/markets/chevron-drive.jpg",
+          "/images/markets/chevron-drive.jpg"
         ]
       },
       "nearby": ["lekki-sunday", "ajah-fresh-hub", "ikoyi-farm-table", "vi-weekend"]
@@ -170,13 +170,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0101",
       "images": {
-        "card": "/images/markets/yaba-green-card.webp",
-        "row": "/images/markets/yaba-green-row.webp",
-        "popup": "/images/markets/yaba-green-popup.webp",
+        "card": "/images/markets/yaba-green.jpg",
+        "row": "/images/markets/yaba-green.jpg",
+        "popup": "/images/markets/yaba-green.jpg",
         "gallery": [
-          "/images/markets/yaba-green-gallery-1.webp",
-          "/images/markets/yaba-green-gallery-2.webp",
-          "/images/markets/yaba-green-gallery-2.webp"
+          "/images/markets/yaba-green.jpg",
+          "/images/markets/yaba-green.jpg",
+          "/images/markets/yaba-green.jpg"
         ]
       },
       "nearby": ["yaba-tech-gate", "surulere-organic", "gbagada-dawn", "maryland-evening"]
@@ -208,13 +208,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0114",
       "images": {
-        "card": "/images/markets/yaba-tech-gate-card.webp",
-        "row": "/images/markets/yaba-tech-gate-row.webp",
-        "popup": "/images/markets/yaba-tech-gate-popup.webp",
+        "card": "/images/markets/yaba-tech.webp",
+        "row": "/images/markets/yaba-tech.webp",
+        "popup": "/images/markets/yaba-tech.webp",
         "gallery": [
-          "/images/markets/yaba-tech-gate-gallery-1.webp",
-          "/images/markets/lekki-sunday-gallery-2.webp",
-          "/images/markets/yaba-tech-gate-gallery-3.webp"
+          "/images/markets/yaba-tech.webp",
+          "/images/markets/yaba-tech.webp",
+          "/images/markets/yaba-tech.webp"
         ]
       },
       "nearby": ["yaba-green", "surulere-organic", "gbagada-dawn", "maryland-evening"]
@@ -240,13 +240,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0103",
       "images": {
-        "card": "/images/markets/surulere-organic-card.webp",
-        "row": "/images/markets/surulere-organic-row.webp",
-        "popup": "/images/markets/surulere-organic-popup.webp",
+        "card": "/images/markets/surulere-market.jpg",
+        "row": "/images/markets/surulere-market.jpg",
+        "popup": "/images/markets/surulere-market.jpg",
         "gallery": [
-          "/images/markets/surulere-organic-gallery-1.webp",
-          "/images/markets/surulere-organic-gallery-2.webp",
-          "/images/markets/surulere-organic-gallery-3.webp"
+          "/images/markets/surulere-market.jpg",
+          "/images/markets/surulere-market.jpg",
+          "/images/markets/surulere-market.jpg"
         ]
       },
       "nearby": ["yaba-green", "yaba-tech-gate", "gbagada-dawn", "maryland-evening"]
@@ -272,13 +272,13 @@
       "prices": "Wholesale prices",
       "phone": "+234 800 000 0105",
       "images": {
-        "card": "/images/markets/ajah-fresh-hub-card.webp",
-        "row": "/images/markets/ajah-fresh-hub-row.webp",
-        "popup": "/images/markets/ajah-fresh-hub-popup.webp",
+        "card": "/images/markets/ajah-market.jpg",
+        "row": "/images/markets/ajah-market.jpg",
+        "popup": "/images/markets/ajah-market.jpg",
         "gallery": [
-          "/images/markets/ajah-fresh-hub-gallery-1.webp",
-          "/images/markets/ajah-fresh-hub-gallery-2.webp",
-          "/images/markets/ikeja-harvest-gallery-3.webp"
+          "/images/markets/ajah-market.jpg",
+          "/images/markets/ajah-market.jpg",
+          "/images/markets/ajah-market.jpg"
         ]
       },
       "nearby": ["sangotedo-saturday", "chevron-drive", "lekki-sunday", "ikoyi-farm-table"]
@@ -311,13 +311,13 @@
       "prices": "Wholesale prices",
       "phone": "+234 800 000 0107",
       "images": {
-        "card": "/images/markets/gbagada-dawn-card.webp",
-        "row": "/images/markets/gbagada-dawn-row.webp",
-        "popup": "/images/markets/gbagada-dawn-popup.webp",
+        "card": "/images/markets/gbagada-market.webp",
+        "row": "/images/markets/gbagada-market.webp",
+        "popup": "/images/markets/gbagada-market.webp",
         "gallery": [
-          "/images/markets/gbagada-dawn-gallery-1.webp",
-          "/images/markets/lekki-sunday-gallery-2.webp",
-          "/images/markets/lekki-sunday-gallery-3.webp"
+          "/images/markets/gbagada-market.webp",
+          "/images/markets/gbagada-market.webp",
+          "/images/markets/gbagada-market.webp"
         ]
       },
       "nearby": ["maryland-evening", "yaba-tech-gate", "ikeja-gra-sunday", "yaba-green"]
@@ -349,13 +349,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0108",
       "images": {
-        "card": "/images/markets/maryland-evening-card.webp",
-        "row": "/images/markets/maryland-evening-row.webp",
-        "popup": "/images/markets/maryland-evening-popup.webp",
+        "card": "/images/markets/maryland-evening.webp",
+        "row": "/images/markets/maryland-evening.webp",
+        "popup": "/images/markets/maryland-evening.webp",
         "gallery": [
-          "/images/markets/maryland-evening-gallery-1.webp",
-          "/images/markets/lekki-sunday-gallery-2.webp",
-          "/images/markets/lekki-sunday-gallery-3.webp"
+          "/images/markets/maryland-evening.webp",
+          "/images/markets/maryland-evening.webp",
+          "/images/markets/maryland-evening.webp"
         ]
       },
       "nearby": ["ikeja-gra-sunday", "gbagada-dawn", "ikeja-harvest", "yaba-tech-gate"]
@@ -381,13 +381,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0112",
       "images": {
-        "card": "/images/markets/sangotedo-saturday-card.webp",
-        "row": "/images/markets/sangotedo-saturday-row.webp",
-        "popup": "/images/markets/sangotedo-saturday-popup.webp",
+        "card": "/images/markets/sangotedo-market.avif",
+        "row": "/images/markets/sangotedo-market.avif",
+        "popup": "/images/markets/sangotedo-market.avif",
         "gallery": [
-          "/images/markets/sangotedo-saturday-gallery-1.webp",
-          "/images/markets/sangotedo-saturday-gallery-2.webp",
-          "/images/markets/surulere-organic-gallery-3.webp"
+          "/images/markets/sangotedo-market.avif",
+          "/images/markets/sangotedo-market.avif",
+          "/images/markets/sangotedo-market.avif"
         ]
       },
       "nearby": ["ajah-fresh-hub", "chevron-drive", "lekki-sunday", "ikorodu-farmgate"]
@@ -413,13 +413,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0115",
       "images": {
-        "card": "/images/markets/ikeja-gra-sunday-card.webp",
-        "row": "/images/markets/ikeja-gra-sunday-row.webp",
-        "popup": "/images/markets/ikeja-gra-sunday-popup.webp",
+        "card": "/images/markets/ikeja-market.webp",
+        "row": "/images/markets/ikeja-market.webp",
+        "popup": "/images/markets/ikeja-market.webp",
         "gallery": [
-          "/images/markets/ikeja-gra-sunday-gallery-1.webp",
-          "/images/markets/ikoyi-farm-table-gallery-2.webp",
-          "/images/markets/ikoyi-farm-table-gallery-2.webp"
+          "/images/markets/ikeja-market.webp",
+          "/images/markets/ikeja-market.webp",
+          "/images/markets/ikeja-market.webp"
         ]
       },
       "nearby": ["maryland-evening", "ikeja-harvest", "gbagada-dawn", "yaba-tech-gate"]
@@ -453,13 +453,13 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0109",
       "images": {
-        "card": "/images/markets/festac-2nd-ave-card.webp",
-        "row": "/images/markets/festac-2nd-ave-row.webp",
-        "popup": "/images/markets/festac-2nd-ave-popup.webp",
+        "card": "/images/markets/festac-market.jpg",
+        "row": "/images/markets/festac-market.jpg",
+        "popup": "/images/markets/festac-market.jpg",
         "gallery": [
-          "/images/markets/festac-2nd-ave-gallery-1.webp",
-          "/images/markets/festac-2nd-ave-gallery-2.webp",
-          "/images/markets/festac-2nd-ave-gallery-2.webp"
+          "/images/markets/festac-market.jpg",
+          "/images/markets/festac-market.jpg",
+          "/images/markets/festac-market.jpg"
         ]
       },
       "nearby": ["surulere-organic", "yaba-green", "yaba-tech-gate", "maryland-evening"]
@@ -485,13 +485,13 @@
       "prices": "Wholesale prices",
       "phone": "+234 800 000 0110",
       "images": {
-        "card": "/images/markets/ikorodu-farmgate-card.webp",
-        "row": "/images/markets/ikorodu-farmgate-row.webp",
-        "popup": "/images/markets/ikorodu-farmgate-popup.webp",
+        "card": "/images/markets/ikorodu-market.avif",
+        "row": "/images/markets/ikorodu-market.avif",
+        "popup": "/images/markets/ikorodu-market.avif",
         "gallery": [
-          "/images/markets/ikorodu-farmgate-gallery-1.webp",
-          "/images/markets/ikeja-harvest-gallery-3.webp",
-          "/images/markets/lekki-sunday-gallery-3.webp"
+          "/images/markets/ikorodu-market.avif",
+          "/images/markets/ikorodu-market.avif",
+          "/images/markets/ikorodu-market.avif"
         ]
       },
       "nearby": ["gbagada-dawn", "maryland-evening", "ikeja-gra-sunday", "ikeja-harvest"]
@@ -517,13 +517,13 @@
       "prices": "Wholesale prices",
       "phone": "+234 800 000 0102",
       "images": {
-        "card": "/images/markets/ikeja-harvest-card.webp",
-        "row": "/images/markets/ikeja-harvest-row.webp",
-        "popup": "/images/markets/ikeja-harvest-popup.webp",
+        "card": "/images/markets/ikeja-harvest.jpg",
+        "row": "/images/markets/ikeja-harvest.jpg",
+        "popup": "/images/markets/ikeja-harvest.jpg",
         "gallery": [
-          "/images/markets/ikeja-harvest-gallery-1.webp",
-          "/images/markets/lekki-sunday-gallery-2.webp",
-          "/images/markets/ikeja-harvest-gallery-3.webp"
+          "/images/markets/ikeja-harvest.jpg",
+          "/images/markets/ikeja-harvest.jpg",
+          "/images/markets/ikeja-harvest.jpg"
         ]
       },
       "nearby": ["ikeja-gra-sunday", "maryland-evening", "gbagada-dawn", "yaba-tech-gate"]
@@ -549,13 +549,13 @@
       "prices": "Wholesale prices",
       "phone": "+234 800 000 0111",
       "images": {
-        "card": "/images/markets/epe-fish-farm-card.webp",
-        "row": "/images/markets/epe-fish-farm-row.webp",
-        "popup": "/images/markets/epe-fish-farm-popup.webp",
+        "card": "/images/markets/epe-farm.webp",
+        "row": "/images/markets/epe-farm.webp",
+        "popup": "/images/markets/epe-farm.webp",
         "gallery": [
-          "/images/markets/epe-fish-farm-gallery-1.webp",
-          "/images/markets/festac-2nd-ave-gallery-2.webp",
-          "/images/markets/festac-2nd-ave-gallery-2.webp"
+          "/images/markets/epe-farm.webp",
+          "/images/markets/epe-farm.webp",
+          "/images/markets/epe-farm.webp"
         ]
       },
       "nearby": ["sangotedo-saturday", "ajah-fresh-hub", "ikorodu-farmgate", "chevron-drive"]
