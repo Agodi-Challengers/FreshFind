@@ -67,10 +67,10 @@
       "badge": "Good prices",
       "price": "₦6,000 a small basket",
       "note": "Dry season supply keeps prices low",
-      "image": "/images/produce/tomatoes.webp",
-      "photo": "/images/produce/tomatoes-photo.webp",
-      "icon": "/images/seasonal/plum-tomatoes-mini.webp",
-      "round": "/images/seasonal/tomatoes-round.webp"
+      "image": "/images/produce/tomatoes.jpg",
+      "photo": "/images/produce/tomatoes.jpg",
+      "icon": "/images/seasonal/tomatoes-round.jpg",
+      "round": "/images/seasonal/tomatoes-round.jpg"
     },
     {
       "id": "mangoes",
@@ -85,10 +85,10 @@
         "text": "Juicy, fibre-light and at their cheapest for the next 3 weeks. Look for fruit that gives a little when pressed.",
         "image": "/images/seasonal/mangoes-feature.webp"
       },
-      "image": "/images/produce/mangoes.webp",
-      "photo": "/images/produce/mangoes-photo.webp",
-      "icon": "/images/seasonal/mangoes-icon.webp",
-      "round": "/images/seasonal/mangoes-round.webp"
+      "image": "/images/produce/mango.jpg",
+      "photo": "/images/produce/mango.jpg",
+      "icon": "/images/seasonal/mangoes-round.avif",
+      "round": "/images/seasonal/mangoes-round.avif"
     },
     {
       "id": "ugu",
@@ -100,9 +100,9 @@
       "badge": "Plentiful",
       "note": "Rains start in April, supply rising",
       "image": "/images/produce/ugu.webp",
-      "photo": "/images/produce/ugu-pumpkin-leaves-photo.webp",
-      "icon": "/images/seasonal/ugu-pumpkin-leaves-icon.webp",
-      "round": "/images/seasonal/ugu-pumpkin-leaves-item.webp"
+      "photo": "/images/produce/ugu.webp",
+      "icon": "/images/seasonal/ugu-round.webp",
+      "round": "/images/seasonal/ugu-round.webp"
     },
     {
       "id": "sweet-corn",
@@ -114,9 +114,9 @@
       "price": "₦300–500 a cob",
       "note": "First harvests from Ogun farms",
       "image": "/images/produce/sweet-corn.webp",
-      "photo": "/images/produce/sweet-corn-photo.webp",
-      "icon": "/images/seasonal/sweet-corn-mini.webp",
-      "round": "/images/seasonal/sweet-corn-item.webp"
+      "photo": "/images/produce/sweet-corn.webp",
+      "icon": "/images/seasonal/sweet-corn-round.webp",
+      "round": "/images/seasonal/sweet-corn-round.webp"
     },
     {
       "id": "carrots",
@@ -126,7 +126,7 @@
       "season": "111000000011",
       "note": "Jos supply drops after March",
       "image": "/images/produce/carrots.webp",
-      "icon": "/images/seasonal/carrots-item.webp"
+      "icon": "/images/seasonal/carrots.webp"
     },
     {
       "id": "watermelon",
@@ -136,8 +136,8 @@
       "season": "111100000000",
       "note": "Last weeks of peak season",
       "image": "/images/produce/watermelon.webp",
-      "photo": "/images/produce/watermelon-photo.webp",
-      "icon": "/images/seasonal/watermelon-mini.webp"
+      "photo": "/images/produce/watermelon.webp",
+      "icon": "/images/seasonal/watermelon-round.webp"
     },
     {
       "id": "strawberries",
@@ -147,8 +147,8 @@
       "season": "110000000001",
       "note": "Last Plateau batches",
       "image": "/images/produce/strawberries.webp",
-      "photo": "/images/produce/strawberries-photo.webp",
-      "icon": "/images/seasonal/strawberries-item.webp"
+      "photo": "/images/produce/strawberries.webp",
+      "icon": "/images/seasonal/strawberries-round-item.webp"
     },
     {
       "id": "scotch-bonnet",
@@ -159,7 +159,7 @@
       "badge": "All year",
       "note": "Available all year",
       "image": "/images/produce/scotch-bonnet.webp",
-      "photo": "/images/produce/scotch-bonnet-photo.webp"
+      "photo": "/images/produce/scotch-round.webp"
     },
     {
       "id": "scent-leaf",
@@ -170,7 +170,7 @@
       "badge": "All year",
       "note": "Available all year",
       "image": "/images/produce/scent-leaf.webp",
-      "icon": "/images/seasonal/ugu-pumpkin-leaves-icon.webp"
+      "icon": "/images/seasonal/scent-leaf.webp"
     },
     {
       "id": "garden-eggs",
@@ -179,7 +179,7 @@
       "description": "Bitter-sweet garden eggs, eaten raw with groundnut paste or in stew.",
       "season": "000111111000",
       "note": "More stalls each week",
-      "image": "/images/seasonal/garden-eggs-item.webp"
+      "image": "/images/seasonal/garden-egg.webp"
     },
     {
       "id": "oranges",
@@ -188,8 +188,8 @@
       "description": "Juicy local oranges, great for fresh juice.",
       "season": "111000000011",
       "note": "Late-season, sourer fruit",
-      "image": "/images/produce/oranges.webp",
-      "icon": "/images/seasonal/oranges-item.webp"
+      "image": "/images/produce/oranges.avif",
+      "icon": "/images/seasonal/oranges-round.jpg"
     },
     {
       "id": "onions",
@@ -198,7 +198,7 @@
       "description": "Red and white bulbs from the north. Store them somewhere dry and airy.",
       "season": "111100000011",
       "note": "Northern harvest keeps prices down",
-      "image": "/images/produce/yam.webp"
+      "image": "/images/produce/onions.webp"
     },
     {
       "id": "efo-tete",
@@ -207,7 +207,7 @@
       "description": "Tender amaranth greens for efo riro.",
       "season": "000111111110",
       "note": "Rainy season greens",
-      "image": "/images/produce/ugu.webp"
+      "image": "/images/produce/efo-tete.webp"
     },
     {
       "id": "okra",
@@ -216,7 +216,7 @@
       "description": "Pick small, bright pods that snap cleanly.",
       "season": "000111111100",
       "note": "Plenty through the rains",
-      "image": "/images/produce/okra.webp"
+      "image": "/images/produce/okra.jpg"
     },
     {
       "id": "tatashe",
@@ -234,7 +234,7 @@
       "description": "Crisp, firm cucumbers for salads and juice.",
       "season": "001111110000",
       "note": "Firm and cheap through the rains",
-      "image": "/images/produce/okra.webp"
+      "image": "/images/produce/cucumber.webp"
     },
     {
       "id": "yam",
@@ -262,7 +262,7 @@
       "description": "Oloyin (honey) and brown beans, sold by the mudu.",
       "season": "111000000011",
       "note": "Fresh from the northern harvest",
-      "image": "/images/produce/scotch-bonnet.webp"
+      "image": "/images/produce/beans.webp"
     },
     {
       "id": "garri",
@@ -272,7 +272,7 @@
       "season": "111111111111",
       "badge": "All year",
       "note": "Available all year",
-      "image": "/images/produce/scotch-bonnet.webp"
+      "image": "/images/produce/garri.webp"
     },
     {
       "id": "cassava",
@@ -282,7 +282,7 @@
       "season": "111111111111",
       "badge": "All year",
       "note": "Available all year",
-      "image": "/images/produce/yam.webp"
+      "image": "/images/produce/casava.webp"
     },
     {
       "id": "pineapple",
@@ -291,7 +291,7 @@
       "description": "Sweet sugarloaf pineapples. Smell the base to check ripeness.",
       "season": "111100000011",
       "note": "Sweetest in the dry season",
-      "image": "/images/produce/plantain.webp"
+      "image": "/images/produce/pineaple.webp"
     },
     {
       "id": "pawpaw",
