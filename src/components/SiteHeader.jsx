@@ -44,6 +44,8 @@ export default function SiteHeader() {
   const closeRef = useRef(null);
   const openRef = useRef(null);
   const location = useLocation();
+  const { items: savedItems } = useBookmarks();
+  const savedCount = savedItems.length;
   // Reset the mobile menu when the route changes.
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMenuOpen(false), [location.pathname]);
@@ -82,9 +84,7 @@ export default function SiteHeader() {
           </nav>
           <div className="navbar__actions">
             <SavedButton />
-            <Link className="btn btn--ghost navbar__login">
-              Log in
-            </Link>
+            <Link className="btn btn--ghost navbar__login">Log in</Link>
             <Link id="signBtn" className="btn btn--primary">
               Sign up
             </Link>
@@ -143,6 +143,20 @@ export default function SiteHeader() {
                 </NavLink>
               </li>
             ))}
+            <li style={{ "--i": NAV_LINKS.length }}>
+              <NavLink to="/saved" className="mmenu__link mmenu__link--saved">
+                <Icon name="bookmark" size={20} />
+                <span>Saved</span>
+                {savedCount > 0 && (
+                  <span
+                    className="saved-btn__badge"
+                    aria-label={`${savedCount} saved`}
+                  >
+                    {savedCount}
+                  </span>
+                )}
+              </NavLink>
+            </li>
           </ul>
         </nav>
         <div className="mmenu__actions">
