@@ -321,7 +321,7 @@
       "season": "111111111111",
       "badge": "All year",
       "note": "Available all year",
-      "image": "/images/produce/eggs.webp"
+      "image": "/images/produce/wara.webp"
     },
     {
       "id": "honey",
@@ -340,7 +340,7 @@
       "season": "111111111111",
       "badge": "All year",
       "note": "Available all year",
-      "image": "/images/produce/eggs.webp"
+      "image": "/images/produce/local-chicken.webp"
     },
     {
       "id": "smoked-fish",
@@ -360,7 +360,7 @@
       "season": "111111111111",
       "badge": "All year",
       "note": "Available all year",
-      "image": "/images/produce/smoked-fish.webp"
+      "image": "/images/produce/fresh-catfish.webp"
     }
   ]
 }
