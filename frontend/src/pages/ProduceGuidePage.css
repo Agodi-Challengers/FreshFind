@@ -144,6 +144,7 @@
   color: var(--ink);
 }
 
+
 @media (max-width: 767.98px) {
   .guide__tabs {
     flex-wrap: nowrap;

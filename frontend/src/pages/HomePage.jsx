@@ -16,6 +16,8 @@ import { DAY_KEYS, DAY_LONG } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
 import { asset } from "../lib/assets.js";
 import "./HomePage.css";
+import line from "../assets/Line.png"
+import  "./DirectoryPage.jsx"
 
 const WEEKEND = ["sat", "sun"];
 
@@ -221,7 +223,6 @@ export default function HomePage() {
 
   return (
     <div className="home">
-      {/* ---------- Hero ---------- */}
       <section className="hero container" aria-labelledby="hero-title">
         <div className="hero__copy">
           {inSeasonNames.length > 0 && (
@@ -317,18 +318,24 @@ export default function HomePage() {
         <HeroVisual markets={markets} pick={pick} openCount={openCount} />
       </section>
 
-      {/* ---------- Open near you ---------- */}
+     
       <section className="section container" aria-labelledby="open-title">
         <div className="section-head">
           <div className="section-head__copy">
-            <span className="eyebrow">Happening now</span>
+            <span id="brow" className="eyebrow">Happening now</span>
+            <img id="line" className="line" src={line}/>
             <h2 id="open-title" className="section-title">
               Markets open near you
             </h2>
-            <p className="lead">
-              Live status based on your location and the current time. Tap a
-              market to see its full schedule and stalls.
-            </p>
+            <div className="mobile-season">
+              <h2 className="mobile-season-title">
+              Open near you
+              </h2>
+                <Link to="/directory" className="see-all">
+                  See all
+                </Link>
+            </div>
+            
           </div>
           <div className="home__tabs" role="group" aria-label="Show markets">
             <button
@@ -379,23 +386,20 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* ---------- Seasonal picks ---------- */}
+   
       <section className="home__season" aria-labelledby="season-title">
         <div className="container">
           <div className="section-head">
             <div className="section-head__copy">
-              <span className="eyebrow eyebrow--yellow">
-                In season · {monthName}
+              <span className="eyebrow">
+                In season 
               </span>
+              <img className="line" src={line}/>
               <h2 id="season-title" className="section-title">
                 This week’s seasonal picks
               </h2>
-              <p className="lead">
-                What growers are bringing to market right now, and where you’re
-                most likely to find it.
-              </p>
             </div>
-            <Link to="/produce" className="btn btn--yellow btn--lg">
+            <Link to="/produce" className="produce-btn">
               See the produce guide →
             </Link>
           </div>
@@ -432,7 +436,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- Explore ---------- */}
+      
       <section className="section container" aria-labelledby="explore-title">
         <div className="section-head">
           <div className="section-head__copy">
@@ -481,11 +485,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- How it works ---------- */}
+    
       <section className="container home__how-wrap" aria-labelledby="how-title">
         <div className="home__how">
           <div className="home__how-intro">
             <span className="eyebrow">How it works</span>
+            <img className="line" src={line}/>
             <h2 id="how-title">From “what’s open?” to a full basket.</h2>
           </div>
           <ol className="home__steps">

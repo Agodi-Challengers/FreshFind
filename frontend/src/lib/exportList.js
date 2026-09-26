@@ -1,4 +1,3 @@
-// Builds the formatted "My market list" text used for export, copy and sharing (SRS: export bookmarks).
 import { scheduleLabel, seasonRange } from './time.js';
 
 export function buildList(items, { marketById, produceById }) {

@@ -1,5 +1,4 @@
-// Time helpers. All market hours are Lagos local time (Africa/Lagos, UTC+1),
-// so "now" is always converted to Lagos time, whatever the visitor's own time zone is.
+
 
 export const DAY_KEYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 export const WEEK_ORDER = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
@@ -35,7 +34,7 @@ const lagosFormatter = new Intl.DateTimeFormat('en-GB', {
   hourCycle: 'h23',
 });
 
-/** Returns the Lagos wall-clock parts for a Date. */
+
 export function lagosParts(date = new Date()) {
   const parts = {};
   for (const p of lagosFormatter.formatToParts(date)) parts[p.type] = p.value;
@@ -59,7 +58,7 @@ export function parseHM(value) {
   return h * 60 + m;
 }
 
-/** 450 -> "7:30 AM" */
+
 export function formatMinutes(total) {
   const minutes = ((total % 1440) + 1440) % 1440;
   const h24 = Math.floor(minutes / 60);
@@ -73,7 +72,7 @@ export function formatRange([open, close]) {
   return `${formatMinutes(parseHM(open))} – ${formatMinutes(parseHM(close))}`;
 }
 
-/** "Sat, 14 Mar · 10:42 AM" */
+
 export function formatClock(p) {
   const day = DAY_SHORT[p.dayKey];
   return `${day}, ${p.day} ${MONTH_SHORT[p.month]} · ${formatMinutes(p.minutes)}`;
@@ -86,10 +85,7 @@ function formatDuration(mins) {
   return m ? `${h}h ${m}m` : `${h}h`;
 }
 
-/**
- * Works out whether a market is open for the given Lagos time.
- * state: "open" | "soon" (closes within the hour) | "closed"
- */
+
 export function getMarketStatus(market, now) {
   const today = market.schedule[now.dayKey];
   if (today) {
@@ -151,7 +147,7 @@ function describeDays(days) {
   return days.map((d) => DAY_SHORT[d]).join(' & ');
 }
 
-/** Groups days with the same hours: [{ days: "Mon–Fri", hours: "7:00 AM – 6:00 PM" }] */
+
 export function scheduleGroups(schedule) {
   const groups = [];
   for (const day of WEEK_ORDER) {
@@ -168,7 +164,7 @@ export function scheduleGroups(schedule) {
   return groups.map((g) => ({ days: describeDays(g.days), hours: formatRange(g.hours), dayKeys: g.days }));
 }
 
-/** "Sat & Sun · 10:00 AM – 3:00 PM" (several groups are joined with " | ") */
+
 export function scheduleLabel(schedule) {
   return scheduleGroups(schedule)
     .map((g) => `${g.days} · ${g.hours}`)
@@ -179,23 +175,23 @@ export function openDays(schedule) {
   return WEEK_ORDER.filter((d) => schedule[d]);
 }
 
-/** True if the market is open at some point inside the window on any trading day. */
+
 export function matchesTimeWindow(market, windowKey) {
   const win = TIME_WINDOWS[windowKey];
   if (!win) return true;
   return Object.values(market.schedule).some(([o, c]) => parseHM(o) < win.to && parseHM(c) > win.from);
 }
 
-/** 12-character season string ("111100000011") -> is month (0-11) in season */
+
 export function inSeason(season, month) {
   return season?.[month] === '1';
 }
 
-/** "Mar – May" style label for a season string. Returns "All year" when every month is set. */
+
 export function seasonRange(season) {
   if (!season) return '';
   if (season === '111111111111') return 'All year';
-  // find the start of a run that wraps around the year end
+  
   let start = season.split('').findIndex((c, i) => c === '1' && season[(i + 11) % 12] === '0');
   if (start < 0) start = season.indexOf('1');
   let end = start;

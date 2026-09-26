@@ -1,5 +1,5 @@
-// src/Data/produce.js
-import tomatoImg from "../assets/Tomato.png"; // placeholder until we have real images
+
+import tomatoImg from "../assets/Tomato.png";
 
 export const produce = [
   {
