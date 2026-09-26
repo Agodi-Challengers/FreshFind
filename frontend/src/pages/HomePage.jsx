@@ -15,6 +15,8 @@ import { seasonalHighlights, pickOfTheMonth } from "../lib/seasonal.js";
 import { DAY_KEYS, DAY_LONG } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
 import { asset } from "../lib/assets.js";
+import { FaArrowRight } from "react-icons/fa6";
+
 import "./HomePage.css";
 
 const WEEKEND = ["sat", "sun"];
@@ -412,9 +414,9 @@ export default function HomePage() {
                 This week’s seasonal picks
               </h2>
             </div>
-            <Link to="/produce" className="btn btn--primary btn--lg">
+            <Link to="/produce" id="search-btn" className="btn btn--primary btn--lg">
               See the produce guide
-              <Icon name="arrow-right" size={18} />
+               < FaArrowRight/> 
             </Link>
           </div>
           <ul className="season-cards">
