@@ -1,0 +1,221 @@
+/* Produce Guide (Figma: 04 Produce Guide · Desktop, M4) */
+
+.guide__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 24px 20px;
+}
+
+.guide__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.guide__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 8px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--r-pill);
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  cursor: pointer;
+  transition:
+    background-color 0.18s var(--ease),
+    color 0.18s var(--ease),
+    border-color 0.18s var(--ease);
+}
+
+.guide__tab:hover {
+  border-color: #9aa39b;
+}
+
+.guide__tab:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.guide__tab-count {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.guide__tab[aria-pressed="true"] {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
+
+.guide__tab[aria-pressed="true"] .guide__tab-count {
+  color: var(--green-200);
+}
+
+.guide__controls {
+  display: flex;
+  gap: 10px;
+}
+
+.guide__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 240px;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--green);
+}
+
+.guide__search:hover {
+  border-color: #9aa39b;
+}
+
+.guide__search:focus-within {
+  border-color: var(--green);
+  box-shadow: var(--input-ring);
+}
+
+.guide__search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.guide__search input:focus-visible {
+  box-shadow: none;
+}
+
+.guide__season {
+  width: 190px;
+}
+
+.guide__season .dropdown__button {
+  height: 40px;
+  padding-block: 4px;
+}
+
+/* The design shows only the value ("In season now"), not the small label */
+.guide__season .field-label {
+  display: none;
+}
+
+.guide__grid-wrap {
+  padding-bottom: 40px;
+}
+
+.guide__tip-wrap {
+  padding-bottom: 96px;
+}
+
+.guide__tip {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  border-radius: var(--r-xl);
+  background: var(--yellow-100);
+}
+
+.guide__tip h2 {
+  margin: 0 0 4px;
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.guide__tip p {
+  max-width: 800px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.guide__tip-ic {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+
+@media (max-width: 767.98px) {
+  .guide__tabs {
+    flex-wrap: nowrap;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+  }
+
+  .guide__tab {
+    flex: none;
+  }
+
+  .guide__controls {
+    width: 100%;
+  }
+
+  .guide__search {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .guide__season {
+    flex: none;
+    width: 170px;
+  }
+
+  .guide__tip {
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .guide__tip-wrap {
+    padding-bottom: 48px;
+  }
+}
+
+/* Wide screens: tabs and search/season sit on one row, as in the design */
+@media (min-width: 1200px) {
+  .guide__toolbar {
+    flex-wrap: nowrap;
+  }
+
+  .guide__tabs {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .guide__controls {
+    flex: none;
+  }
+
+  .guide__search {
+    width: 180px;
+  }
+
+  .guide__season {
+    width: 192px;
+  }
+}

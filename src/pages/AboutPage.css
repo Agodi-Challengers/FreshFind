@@ -1,0 +1,274 @@
+/* About us (Figma: 07 About Us · Desktop) */
+
+/* ---------- Our story ---------- */
+.about__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 540px);
+  align-items: center;
+  gap: 56px;
+  padding-block: 40px 56px;
+}
+
+.about__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about__copy h1 {
+  margin: 0;
+  max-width: 480px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.about__copy p {
+  max-width: 560px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--muted);
+}
+
+.about__hero-img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ---------- What we believe ---------- */
+.about__believe {
+  display: grid;
+  grid-template-columns: minmax(0, 624px) minmax(0, 1fr);
+  align-items: center;
+  gap: 64px;
+  padding-block: 24px 40px;
+}
+
+.about__believe-img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 8px;
+  /* soft fade on the right edge, as in the design */
+  -webkit-mask-image: linear-gradient(90deg, #000 78%, transparent);
+  mask-image: linear-gradient(90deg, #000 78%, transparent);
+}
+
+.about__believe-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.about__believe-copy h2 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.about__believe-copy p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--muted);
+}
+
+.about__checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.about__checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.about__check {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green-tint);
+  color: var(--green);
+}
+
+/* ---------- The team ---------- */
+.about__team {
+  padding-block: 56px 64px;
+  background: #f2f2f2;
+  text-align: center;
+}
+
+.about__team h2 {
+  margin: 0 0 12px;
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.about__team-text {
+  margin: 0 0 40px;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* 3 cards on the first row, 2 centred on the second */
+.about__team-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px 48px;
+  max-width: 1032px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.team-card {
+  width: 312px;
+  overflow: hidden;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.team-card__photo {
+  position: relative;
+  height: 280px;
+}
+
+.team-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Social icons appear on a dark overlay when the card is hovered or focused */
+.team-card__social {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  padding-bottom: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.team-card__social a {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+}
+
+.team-card__social a:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+.team-card__social a:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: none;
+}
+
+.team-card:hover,
+.team-card:focus-within {
+  border-color: #3c8d40;
+  box-shadow: 0 18px 36px -4px rgba(26, 64, 36, 0.18);
+}
+
+.team-card:hover .team-card__social,
+.team-card:focus-within .team-card__social {
+  opacity: 1;
+}
+
+.team-card__body {
+  padding: 16px 20px 20px;
+}
+
+.team-card__body h3 {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.team-card__body p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------- Tablet and mobile ---------- */
+@media (max-width: 991.98px) {
+  .about__hero,
+  .about__believe {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about__believe-img {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about__copy h1,
+  .about__believe-copy h2,
+  .about__team h2 {
+    font-size: 28px;
+  }
+
+  .about__hero-img,
+  .about__believe-img {
+    height: 260px;
+  }
+
+  .about__team-list {
+    gap: 20px;
+  }
+
+  .team-card {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-card,
+  .team-card__social {
+    transition: none;
+  }
+}
+
+/* Phones and tablets have no hover, so keep the icons visible */
+@media (hover: none) {
+  .team-card__social {
+    opacity: 1;
+    background: linear-gradient(transparent 55%, rgba(0, 0, 0, 0.5));
+  }
+}

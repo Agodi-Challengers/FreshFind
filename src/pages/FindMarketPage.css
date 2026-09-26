@@ -1,0 +1,217 @@
+/* Find a Market (Figma: 01 Find a Market · Desktop + mobile) */
+/* Every rule is scoped under .find so it cannot leak to other pages. */
+
+.find__toolbar {
+  background: #F2F2F2;
+  border-bottom: 1px solid var(--border);
+}
+
+.find__toolbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding-block: 14px;
+}
+
+.find__toolbar .field-label {
+  display: none;
+}
+
+.find__toolbar .dropdown__button {
+  height: 46px;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+.find__toolbar .dropdown__value {
+  font-size: 13px;
+  line-height: 17px;
+}
+
+.find__toolbar .search__field {
+  height: 46px;
+  border-radius: 10px;
+}
+
+.find__dd {
+  flex: 1 1 150px;
+  min-width: 0;
+}
+
+.find__dd--time {
+  flex: 1.2 1 160px;
+}
+
+.find__dd--produce {
+  flex: 1 1 150px;
+}
+
+.find__use-location {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 170px;
+  gap: 6px;
+  min-width: 0;
+  height: 46px;
+  padding: 4px 8px;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  background: #fff;
+  color: #1F4D2B;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.18s var(--ease),
+    border-color 0.18s var(--ease);
+}
+
+.find__use-location:hover {
+  border-color: var(--green-600);
+  background: var(--green-tint);
+}
+
+.find__search {
+  flex: 1 1 100px;
+  min-width: 0;
+}
+
+.find__search-wrap {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+
+.find__search-btn {
+  width: 100%;
+  min-width: 130px;
+  height: 46px;
+  padding: 0 20px;
+}
+
+.find__notice {
+  margin: 12px auto 0;
+  font-size: 13px;
+  color: var(--notice-text);
+}
+
+.find__split {
+  display: grid;
+  grid-template-columns: minmax(380px, 480px) minmax(0, 1fr);
+  align-items: stretch;
+  height: calc(100vh - 300px);
+  min-height: 520px;
+}
+
+.find__list-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px 24px 28px 0;
+  overflow-y: auto;
+}
+
+.find__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.find__head > div {
+  min-width: 0;
+}
+
+.find__count {
+  margin: 0;
+  font-size: 26px;
+  line-height: 32px;
+}
+
+.find__sort {
+  flex: none;
+  width: 180px;
+}
+
+.find__active {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 29px;
+  font-size: 13px;
+}
+
+.find__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.find__map-col {
+  position: relative;
+  min-height: 0;
+}
+
+@media (max-width: 1199.98px) {
+  .find__split {
+    grid-template-columns: minmax(325px, 44%) minmax(0, 1fr);
+  }
+
+  .find__toolbar .dropdown__value,
+  .find__toolbar .search__input {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 699.98px) {
+  .find__toolbar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .find__dd,
+  .find__dd--time,
+  .find__dd--produce {
+    flex: none;
+    width: auto;
+    min-width: 0;
+  }
+
+  .find__use-location,
+  .find__search-wrap {
+    grid-column: 1 / -1;
+  }
+
+  .find__split {
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto;
+    min-height: 0;
+  }
+
+  .find__map-col {
+    height: 360px;
+  }
+
+  .find__list-col {
+    padding: 20px 0 32px;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .find__head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .find__sort {
+    width: 100%;
+  }
+}
