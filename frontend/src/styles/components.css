@@ -761,10 +761,13 @@
 }
 
 .section-head__copy {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 620px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
 }
 
 /* ---------- Grids ---------- */
@@ -788,9 +791,11 @@
 }
 
 @media (max-width: 991.98px) {
-  .grid--4,
-  .grid--3 {
+  .grid--4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid--3{
+    display: none;
   }
 }
 

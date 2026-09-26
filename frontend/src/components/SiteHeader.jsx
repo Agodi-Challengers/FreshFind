@@ -103,15 +103,6 @@ export default function SiteHeader() {
 
       {/* Mobile */}
       <div className="mobile-top">
-        <div className="mobile-live">
-          <span className="mobile-live__l">
-            <span className="live-dot" aria-hidden="true" />
-            {openCount} {openCount === 1 ? "market" : "markets"} open near you
-          </span>
-          <span>
-            {DAY_SHORT[now.dayKey]} {formatMinutes(now.minutes)}
-          </span>
-        </div>
         <header className="mobile-header">
           <Logo compact />
           <div className="mobile-header__icons">

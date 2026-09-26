@@ -46,14 +46,8 @@ export default function SiteFooter({ visitors }) {
             © {new Date().getFullYear()} FreshFind. Market information is for
             guidance; always confirm hours with the market.
           </p>
-          <p
-            className="footer__counter"
-            aria-label={`Visitors: ${visitors.toLocaleString("en-NG")}`}
-          >
-            <Icon name="eye" size={14} />
-            <span aria-hidden="true">
-              Visitors: {counter.split("").join(" ")}
-            </span>
+          <p>
+            Designed by Agodi Challengers
           </p>
         </div>
       </div>

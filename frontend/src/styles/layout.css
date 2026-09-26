@@ -264,7 +264,7 @@
   height: 16px;
   padding: 1px 7px;
   border-radius: var(--r-pill);
-  background: var(--orange);
+  background: var(--green);
   color: #fff;
   font-size: 11px;
   font-weight: 700;
@@ -284,6 +284,14 @@
 
 .mobile-live {
   display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 20px 8px;
+  background: var(--green);
+  color: var(--green-200);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
 }
 
 
@@ -329,7 +337,7 @@
   height: 18px;
   padding: 0 5px;
   border-radius: var(--r-pill);
-  background: var(--orange);
+  background: var(--green);
   color: #fff;
   font-size: 10px;
   font-weight: 700;
