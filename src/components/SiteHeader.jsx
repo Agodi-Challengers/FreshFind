@@ -160,12 +160,8 @@ export default function SiteHeader() {
           </ul>
         </nav>
         <div className="mmenu__actions">
-          <Link to="/signup" className="mmenu__btn mmenu__btn--primary">
-            Sign up
-          </Link>
-          <Link to="/login" className="mmenu__btn mmenu__btn--outline">
-            Log in
-          </Link>
+          <Link className="mmenu__btn mmenu__btn--primary">Sign up</Link>
+          <Link className="mmenu__btn mmenu__btn--outline">Log in</Link>
         </div>
       </div>
     </>

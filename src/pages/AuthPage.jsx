@@ -69,10 +69,10 @@ export default function AuthPage({ mode }) {
           </button>
 
           <nav className="auth__tabs" aria-label="Account">
-            <Link to="/login" aria-current={!signup ? "page" : undefined}>
+            <Link   aria-current={!signup ? "page" : undefined}>
               Log in
             </Link>
-            <Link to="/signup" aria-current={signup ? "page" : undefined}>
+            <Link   aria-current={signup ? "page" : undefined}>
               Sign up
             </Link>
           </nav>
