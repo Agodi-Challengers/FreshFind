@@ -1,5 +1,7 @@
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -757,4 +759,22 @@ button {
   .toast {
     bottom: 100px;
   }
+}
+
+/* ---------- Phones and tablets ---------- */
+/* iPhone Safari zooms into any field smaller than 16px when it is tapped,
+   and the page stays zoomed and shifted sideways. 16px stops that. */
+@media (max-width: 991.98px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Safety net: nothing may make the page scroll sideways. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
 }
