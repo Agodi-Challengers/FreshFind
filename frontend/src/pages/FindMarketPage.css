@@ -264,7 +264,7 @@
   align-items: center;
   max-width: 640px;
   margin: 0 auto;
-  padding: 56px 24px 80px;
+  padding: 16px 24px;
   text-align: center;
 }
 
@@ -310,7 +310,7 @@
 
 @media (max-width: 991.98px) {
   .find__cta {
-    padding: 40px 20px 56px;
+    padding: 16px 20px;
   }
 
   .find__cta h2 {

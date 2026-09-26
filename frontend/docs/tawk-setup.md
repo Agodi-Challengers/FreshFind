@@ -40,3 +40,18 @@ Use **Shortcuts** (and, if you enable it, the AI Assist knowledge base) with the
 | How do I list my market? | Send us the details: /contact?topic=add |
 
 Quick replies to enable on the welcome message: **What’s in season?**, **Markets open now**, **Do they take transfers?**, **Parking info** (as in the Figma chatbot frame).
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6ab7af89b7335734433eac22/1k3eobcaf';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
