@@ -15,12 +15,17 @@ import { formatKm } from "../lib/geo.js";
 import { asset, googleMapsEmbed, googleMapsLink, googleDirections } from "../lib/assets.js";
 import { shareLink } from "../lib/share.js";
 import "./MarketDetailPage.css";
+import { FiShoppingBag } from "react-icons/fi";
+import { LuBaby, LuWallet } from "react-icons/lu";
+import { FaArrowRight } from "react-icons/fa6";
+import { PiCarProfileLight } from "react-icons/pi";
+
 
 const INFO = [
-  { key: "payment", title: "Payment", icon: "wallet" },
-  { key: "parking", title: "Parking", icon: "car" },
-  { key: "familyFriendly", title: "Family friendly", icon: "heart-handshake", fallback: "Open space, good for a family visit" },
-  { key: "bringABag", title: "Bring a bag", icon: "shopping-basket", fallback: "Most stalls do not give out bags" },
+  { key: "payment", title: "Payment", icon: <LuWallet/>, fallback: "Free street parking" },
+  { key: "parking", title: "Parking", icon: <PiCarProfileLight/>, fallback: "Dedicated parking" },
+  { key: "familyFriendly", title: "Family friendly", icon: <FiShoppingBag/>, fallback: "Stroller access" },
+  { key: "bringABag", title: "Bring a bag", icon: < LuBaby/> , fallback: "Nylon-free market" },
 ];
 
 /** Every photo we have for a market, without repeats. */
@@ -107,15 +112,15 @@ export default function MarketDetailPage() {
               </div>
               <div className="detail__meta">
                 <span className="icon-text">
-                  <Icon name="map-pin" size={16} />
+                  <Icon className="detail-icon" name="map-pin" size={16} />
                   {market.address}
                 </span>
                 <span className="icon-text">
-                  <Icon name="navigation" size={16} />
+                  <Icon className="detail-icon" name="navigation" size={16} />
                   {km} from you
                 </span>
                 <span className="icon-text">
-                  <Icon name="store" size={16} />
+                  <Icon className="detail-icon" name="store" size={16} />
                   {market.growers}
                 </span>
               </div>
@@ -176,7 +181,7 @@ export default function MarketDetailPage() {
                   <li key={`${pid}-${i}`}>
                     <Link to={`/produce/${pid}`} className="detail__produce-card card hover-card">
                       <img src={asset(p.image)} alt="" width="168" height="120" loading="lazy" />
-                      <strong>{p.shortName || p.name}</strong>
+                      <strong  className="title">{p.shortName || p.name}</strong>
                       <span>{seasonRange(p.season)}</span>
                     </Link>
                   </li>
@@ -193,10 +198,10 @@ export default function MarketDetailPage() {
               {INFO.map((i) => (
                 <li key={i.key} className="card">
                   <span className="detail__info-ic" aria-hidden="true">
-                    <Icon name={i.icon} size={18} />
+                    {i.icon}
                   </span>
                   <strong>{i.title}</strong>
-                  <span>{market[i.key] || i.fallback}</span>
+                  <span>{i.fallback}</span>
                 </li>
               ))}
             </ul>
@@ -290,7 +295,7 @@ export default function MarketDetailPage() {
           <div className="detail__nearby-head">
             <h2 id="nearby-title">Other markets near {market.area}</h2>
             <Link to={`/directory?area=${encodeURIComponent(market.area)}`} className="link-arrow">
-              View all →
+              View all <FaArrowRight/>
             </Link>
           </div>
           <div className="grid grid--4">

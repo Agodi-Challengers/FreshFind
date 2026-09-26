@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import PageBanner from "../components/PageBanner.jsx";
 import Icon from "../components/Icon.jsx";
 import { asset } from "../lib/assets.js";
+import { TiTick } from "react-icons/ti";
 import "./AboutPage.css";
+import { FaArrowRight } from "react-icons/fa6";
 
 // The three things we care about (Figma "What we believe" checklist)
 const BELIEFS = ["Local first", "Accurate listings", "Easy for everyone"];
@@ -98,7 +100,7 @@ export default function AboutPage() {
             {BELIEFS.map((item) => (
               <li key={item}>
                 <span className="about__check" aria-hidden="true">
-                  <Icon name="badge-check" size={14} />
+                  <TiTick/>
                 </span>
                 {item}
               </li>
@@ -106,7 +108,7 @@ export default function AboutPage() {
           </ul>
           <Link to="/produce" className="btn btn--primary btn--lg">
             See produce guide
-            <Icon name="arrow-right" size={16} />
+            <FaArrowRight/>
           </Link>
         </div>
       </section>

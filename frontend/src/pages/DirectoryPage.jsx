@@ -114,7 +114,7 @@ export default function DirectoryPage() {
                   : setFilters({ ...filters, q: opt.value })
               }
               markets={markets}
-              placeholder="Search markets, streets or produce"
+              placeholder="Search markets by name or street"
               className="directory__search"
             />
             <Dropdown

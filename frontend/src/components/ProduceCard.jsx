@@ -52,7 +52,7 @@ export default function ProduceCard({ item }) {
         <p className="produce-card__desc">{item.description}</p>
         <SeasonStrip season={item.season} currentMonth={now.month} />
         <div className="produce-card__foot">
-          <span className="icon-text produce-card__count">
+          <span  style = {{color: "#1F4D2B"}}className="icon-text produce-card__count">
             <Icon name="store" size={14} />
             At {count} {count === 1 ? "market" : "markets"}
           </span>

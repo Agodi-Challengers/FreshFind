@@ -562,7 +562,9 @@ button {
 
   .page-banner__text {
     font-size: 15px;
-    line-height: 22px;
+    line-height: 19px;
+    color: #FFFFFF;
+    font-weight: 100;
   }
 }
 

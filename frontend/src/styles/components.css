@@ -809,7 +809,7 @@
 .produce-card__buy {
   font-size: 13px;
   font-weight: 700;
-  color: var(--green);
+  color: #1F4D2B;
 }
 
 .produce-card__buy:hover {

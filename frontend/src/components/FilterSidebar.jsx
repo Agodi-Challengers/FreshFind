@@ -63,7 +63,7 @@ export default function FilterSidebar({
           className="text-btn text-btn--accent"
           onClick={() => onChange({ ...EMPTY_FILTERS, sort: filters.sort })}
         >
-          Reset all
+          Reset
         </button>
       </div>
 

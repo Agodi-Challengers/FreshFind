@@ -9,6 +9,7 @@ import { useNow } from "../context/ClockContext.jsx";
 import { useToast } from "../context/ToastContext.jsx";
 import { useDecoratedMarkets } from "../lib/useMarkets.js";
 import { sortMarkets } from "../lib/filters.js";
+import { GoDotFill } from "react-icons/go";
 import {
   seasonalHighlights,
   endingItems,
@@ -170,7 +171,6 @@ export default function SeasonalPage() {
               </h2>
               <div className="seasonal__pills">
                 <span className="pill pill--green">
-                  <span className="dot dot--open" aria-hidden="true" />
                   In season
                 </span>
                 <span className="pill pill--amber">Pick of the week</span>
@@ -238,9 +238,9 @@ export default function SeasonalPage() {
                 <div className="seasonal__card-body">
                   <h3 className="seasonal__card-title">{p.name}</h3>
                   {endingIds.has(p.id) ? (
-                    <span className="pill pill--amber">Ending soon</span>
+                    <span className="pill pill--amber"> <GoDotFill/> Ending soon</span>
                   ) : (
-                    <span className="pill pill--green">In season</span>
+                    <span className="pill pill--green"> <GoDotFill style={{ color: "#00B207"}}/> In season</span>
                   )}
                   <p className="seasonal__card-note">
                     {p.note || p.description}

@@ -68,8 +68,8 @@ export default function MarketCard({
         )}
 
         <p className="icon-text market-card__hours">
-          <Icon name="calendar-days" size={14} />
-          {scheduleLabel(market.schedule)}
+          <Icon  name="calendar-days" size={14} />
+          {scheduleLabel(market.schedule)} 
         </p>
 
         {variant === "home" ? (
@@ -105,7 +105,7 @@ export default function MarketCard({
         )}
 
         <div className="market-card__footer">
-          <span className={`status-text ${statusTextClass(market.status)}`}>
+          <span  style={{ color: "#3C8D40" }} className={`status-text ${statusTextClass(market.status)}`}>
             {market.status.label}
           </span>
           <span className="market-card__more" aria-hidden="true">
