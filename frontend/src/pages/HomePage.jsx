@@ -16,6 +16,8 @@ import { DAY_KEYS, DAY_LONG } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
 import { asset } from "../lib/assets.js";
 import "./HomePage.css";
+import line from "../assets/Line.png"
+import  "./DirectoryPage.jsx"
 
 const WEEKEND = ["sat", "sun"];
 
@@ -87,19 +89,15 @@ function HeroVisual({ markets, pick, openCount }) {
     <div className="hero__visual">
       <div className="hero__photo">
         <img
-          src={asset("/images/site/home-hero.webp")}
+          src={asset("/images/site/home-hero.png")}
           alt="Fresh vegetables and fruit on a Lagos market stall"
-          width="520"
-          height="520"
+          // width="520"
+          // height="520"
           fetchPriority="high"
         />
       </div>
 
-      <div className="hero__live float-card">
-        <span className="dot dot--open" aria-hidden="true" />
-        {openCount} {openCount === 1 ? "market" : "markets"} open near you
-      </div>
-
+      
       {pick && (
         <Link
           to={`/produce/${pick.id}`}
@@ -159,11 +157,6 @@ function HeroVisual({ markets, pick, openCount }) {
           </span>
         </Link>
       )}
-
-      <div className="hero__stat float-card float-card--c">
-        <span className="hero__stat-num">{markets.length}</span>
-        <span>markets listed in Lagos</span>
-      </div>
     </div>
   );
 }
@@ -221,26 +214,45 @@ export default function HomePage() {
 
   return (
     <div className="home">
-      {/* ---------- Hero ---------- */}
       <section className="hero container" aria-labelledby="hero-title">
         <div className="hero__copy">
           {inSeasonNames.length > 0 && (
-            <Link to="/seasonal" className="hero__tag">
-              <Icon name="sprout" size={14} />
-              This week: {listNames(inSeasonNames)}{" "}
-              {inSeasonNames.length === 1 ? "is" : "are"} in season
-            </Link>
+            <span  className="hero__tag">
+              WELCOME TO FRESHFIND
+            </span>
           )}
           <h1 id="hero-title" className="hero__title">
-            Know what’s fresh, and exactly where to find it.
+            Fresh markets, right around the corner.
           </h1>
           <p className="hero__lead">
-            FreshFind brings every farmers market in your neighbourhood into one
-            place: where they are, when they open, and what’s likely on the
-            stalls this week. No more chasing flyers and WhatsApp forwards.
+            Discover farmers markets, find what's in season, and plan your next fresh-food stop
           </p>
 
-          <form
+          <div className="hero__popular">
+            <span>Popular:</span>
+            <Link to="/find?open=1" className="chip">
+              <span className="dot dot--open" aria-hidden="true" />
+              Open now
+            </Link>
+            <Link to="/find?day=sat" className="chip">
+              This Saturday
+            </Link>
+            <Link to="/directory?feat=organic" className="chip">
+              Organic
+            </Link>
+            <button
+              type="button"
+              className="chip"
+              onClick={() => {
+                requestDeviceLocation();
+                navigate("/find");
+              }}
+            >
+              Near me
+            </button>
+          </div>
+
+           <form
             className="quickfind"
             role="search"
             aria-label="Find a market near you"
@@ -289,46 +301,31 @@ export default function HomePage() {
             </button>
           </form>
 
-          <div className="hero__popular">
-            <span>Popular:</span>
-            <Link to="/find?open=1" className="chip">
-              <span className="dot dot--open" aria-hidden="true" />
-              Open now
-            </Link>
-            <Link to="/find?day=sat" className="chip">
-              This Saturday
-            </Link>
-            <Link to="/directory?feat=organic" className="chip">
-              Organic
-            </Link>
-            <button
-              type="button"
-              className="chip"
-              onClick={() => {
-                requestDeviceLocation();
-                navigate("/find");
-              }}
-            >
-              Near me
-            </button>
-          </div>
         </div>
 
         <HeroVisual markets={markets} pick={pick} openCount={openCount} />
       </section>
 
-      {/* ---------- Open near you ---------- */}
+     
       <section className="section container" aria-labelledby="open-title">
-        <div className="section-head">
-          <div className="section-head__copy">
+        <div className="section-head" style={{ justifyContent: "center" }}>
+          <div
+            className="section-head__copy"
+            style={{ textAlign: "center", margin: "0 auto" }}
+          >
             <span className="eyebrow">Happening now</span>
             <h2 id="open-title" className="section-title">
               Markets open near you
             </h2>
-            <p className="lead">
-              Live status based on your location and the current time. Tap a
-              market to see its full schedule and stalls.
-            </p>
+            <div className="mobile-season">
+              <h2 className="mobile-season-title">
+              Open near you
+              </h2>
+                <Link to="/directory" className="see-all">
+                  See all
+                </Link>
+            </div>
+            
           </div>
           <div className="home__tabs" role="group" aria-label="Show markets">
             <button
@@ -379,23 +376,20 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* ---------- Seasonal picks ---------- */}
+   
       <section className="home__season" aria-labelledby="season-title">
         <div className="container">
           <div className="section-head">
             <div className="section-head__copy">
-              <span className="eyebrow eyebrow--yellow">
-                In season · {monthName}
+              <span className="eyebrow">
+                In season 
               </span>
+              <img className="line" src={line}/>
               <h2 id="season-title" className="section-title">
                 This week’s seasonal picks
               </h2>
-              <p className="lead">
-                What growers are bringing to market right now, and where you’re
-                most likely to find it.
-              </p>
             </div>
-            <Link to="/produce" className="btn btn--yellow btn--lg">
+            <Link to="/produce" className="produce-btn">
               See the produce guide →
             </Link>
           </div>
@@ -432,7 +426,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- Explore ---------- */}
+      
       <section className="section container" aria-labelledby="explore-title">
         <div className="section-head">
           <div className="section-head__copy">
@@ -444,7 +438,7 @@ export default function HomePage() {
         </div>
         <div className="grid grid--3">
           <Link to="/directory" className="feature card hover-card">
-            <span className="feature__icon feature__icon--green">
+            <span className="feature__icon feature_i _icon--green">
               <Icon name="map" size={30} />
             </span>
             <h3>Market Directory</h3>
@@ -481,11 +475,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- How it works ---------- */}
+    
       <section className="container home__how-wrap" aria-labelledby="how-title">
         <div className="home__how">
           <div className="home__how-intro">
             <span className="eyebrow">How it works</span>
+            <img className="line" src={line}/>
             <h2 id="how-title">From “what’s open?” to a full basket.</h2>
           </div>
           <ol className="home__steps">

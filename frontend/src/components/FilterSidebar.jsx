@@ -55,7 +55,7 @@ export default function FilterSidebar({
     <div className="filters">
       <div className="filters__head">
         <h2 className="filters__title">
-          <Icon name="sliders-horizontal" size={16} />
+          <Icon className="filter-icon" name="sliders-horizontal" size={16} />
           Filters
         </h2>
         <button

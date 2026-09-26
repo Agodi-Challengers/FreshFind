@@ -1,5 +1,3 @@
-// Prefixes public paths with Vite's base URL, so the site also works when it is
-// deployed to a sub-folder (for example GitHub Pages).
 export function asset(path) {
   if (!path) return '';
   if (/^(https?:)?\/\//.test(path) || path.startsWith('data:')) return path;
