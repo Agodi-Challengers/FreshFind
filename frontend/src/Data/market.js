@@ -1,4 +1,4 @@
-import marketImg from "../assets/marketing.png";
+import marketImg from "../assets/thumbnails7.png";
 
 
 export const markets = [

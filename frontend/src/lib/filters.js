@@ -1,5 +1,4 @@
-// Filtering and sorting for the Market Directory and Find a Market pages.
-// Filters live in the URL (?area=Lekki&day=sat) so every result can be linked and shared.
+
 
 import { getMarketStatus, matchesTimeWindow, TIME_WINDOWS, DAY_LONG, DAY_KEYS } from './time.js';
 import { distanceKm } from './geo.js';

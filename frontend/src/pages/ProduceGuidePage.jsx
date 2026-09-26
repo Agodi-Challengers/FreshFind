@@ -68,16 +68,14 @@ export default function ProduceGuidePage() {
 
   return (
     <div className="guide">
-      <header className="container page-header">
+      <header className="container_page-header">
         <Breadcrumb
           items={[{ label: "Home", to: "/" }, { label: "Produce Guide" }]}
         />
         <div className="page-header__copy">
-          <span className="eyebrow">What to buy, and when</span>
-          <h1 className="page-title">Produce Guide</h1>
+          <h1 className="page-title">Fresh & In Season</h1>
           <p className="lead">
-            Learn when fruit, vegetables, herbs and dairy are at their best, and
-            which markets usually have them.
+            Find the best months to buy seasonal produce and discover the Lagos markets where they’re available.
           </p>
         </div>
       </header>
@@ -157,22 +155,6 @@ export default function ProduceGuidePage() {
           </div>
         )}
       </section>
-
-      <div className="container guide__tip-wrap">
-        <div className="guide__tip">
-          <span className="guide__tip-ic" aria-hidden="true">
-            <Icon name="lightbulb" size={24} />
-          </span>
-          <div>
-            <h2>How to read the season bar</h2>
-            <p>
-              Green months are when the item is most plentiful and cheapest at
-              Lagos markets. Tap any item to see which markets stocked it
-              recently.
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

@@ -76,19 +76,10 @@ export default function DirectoryPage() {
 
   return (
     <div className="directory">
-      <header className="container page-header">
+      <header className="container_page-header">
         <Breadcrumb
           items={[{ label: "Home", to: "/" }, { label: "Market Directory" }]}
         />
-        <div className="page-header__copy">
-          <span className="eyebrow">{markets.length} markets · Lagos</span>
-          <h1 className="page-title">Market Directory</h1>
-          <p className="lead">
-            Every farmers market we know about, with days, hours and what they
-            usually sell. Filter by area, day, time or produce to find the one
-            that fits your week.
-          </p>
-        </div>
       </header>
 
       <div className="container directory__body">

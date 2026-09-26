@@ -1,4 +1,4 @@
-/* Site chrome: utility bar, navbar, mobile header, drawer, tab bar, footer, chat launcher. */
+
 
 /* ---------- Logo ---------- */
 .logo {
@@ -82,7 +82,7 @@
 .logo__img {
   display: block;
   width: auto;
-  height: 60px;
+  /* height: 60px; */
 }
 
 .logo--brand.logo--compact .logo__img {
@@ -95,7 +95,7 @@
 
 /* ---------- Utility bar ---------- */
 .utility {
-  background: var(--green);
+  background: #333333;
   color: #fff;
   font-size: 13px;
   line-height: 17px;
@@ -145,12 +145,12 @@
   text-underline-offset: 3px;
 }
 
-/* ---------- Desktop navbar ---------- */
+
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(251, 247, 239, 0.94);
+  background-color: #FFFFFF;
   backdrop-filter: saturate(1.2) blur(8px);
   border-bottom: 1px solid var(--border);
 }
@@ -209,19 +209,22 @@
 }
 
 .navlink.active {
-  color: var(--green);
+  color: #1F4D2B;
   font-weight: 600;
 }
 
 .navlink.active::after {
   transform: scaleX(1);
-  background: var(--orange);
+  background: #1F4D2B;
 }
 
 .navbar__actions {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+#signBtn{
+  background-color: #00B207;
 }
 
 .navbar__login {
@@ -261,7 +264,7 @@
   height: 16px;
   padding: 1px 7px;
   border-radius: var(--r-pill);
-  background: var(--orange);
+  background: var(--green);
   color: #fff;
   font-size: 11px;
   font-weight: 700;
@@ -274,13 +277,13 @@
   }
 }
 
-/* ---------- Mobile header ---------- */
+
 .mobile-top {
   display: none;
 }
 
 .mobile-live {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   padding: 6px 20px 8px;
@@ -291,18 +294,13 @@
   line-height: 16px;
 }
 
-.mobile-live__l {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
 
 .mobile-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 20px;
-  background: var(--cream);
+  background:#F2F2F2;
   border-bottom: 1px solid var(--border);
 }
 
@@ -339,7 +337,7 @@
   height: 18px;
   padding: 0 5px;
   border-radius: var(--r-pill);
-  background: var(--orange);
+  background: var(--green);
   color: #fff;
   font-size: 10px;
   font-weight: 700;
@@ -347,7 +345,7 @@
   text-align: center;
 }
 
-/* ---------- Mobile menu (full screen, from the feat-Aishat design) ---------- */
+
 .mmenu {
   position: fixed;
   inset: 0;
@@ -355,7 +353,7 @@
   display: flex;
   flex-direction: column;
   padding: 0 5% calc(30px + env(safe-area-inset-bottom));
-  background: #fff;
+  background: #ffffff;
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
@@ -472,8 +470,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 62px;
-  border-radius: var(--r-pill);
+  height: 52px;
+  border-radius: 20px;
   font-size: 18px;
   font-weight: 600;
   transition:
@@ -485,7 +483,7 @@
 }
 
 .mmenu__btn--primary {
-  background: var(--green);
+  background: #00B207;
   color: #fff;
 }
 
@@ -497,9 +495,9 @@
 }
 
 .mmenu__btn--outline {
-  border: 1.5px solid var(--green);
+  border: 1.5px solid #00B207;
   background: #fff;
-  color: var(--green);
+  color: #00B207;
 }
 
 .mmenu__btn--outline:hover {
@@ -532,7 +530,7 @@
   }
 }
 
-/* ---------- Bottom tab bar ---------- */
+
 .tabbar {
   display: none;
 }

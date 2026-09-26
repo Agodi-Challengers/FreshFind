@@ -1,6 +1,3 @@
-// Options and value mapping for the "quick filter" dropdowns (Area, Day, Time, Produce, Sort)
-// used on the Directory and Find a Market pages. The dropdowns are single-select shortcuts
-// over the same filter state that the sidebar edits with checkboxes.
 import { DAY_KEYS, DAY_LONG, TIME_WINDOWS, WEEK_ORDER, matchesTimeWindow } from './time.js';
 import { SORTS } from './filters.js';
 
