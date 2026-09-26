@@ -16,7 +16,14 @@ const KEY = "ff:bookmarks";
  * item = { type: 'market' | 'produce', id, note, savedAt }
  */
 export function BookmarksProvider({ children }) {
-  const [items, setItems] = useState(() => readJSON(sessionStore, KEY, []));
+  // Ignore anything saved without a type (older builds saved some that way);
+  // the Saved page could not show those, but the header badge still counted them.
+  const [items, setItems] = useState(() => {
+    const saved = readJSON(sessionStore, KEY, []);
+    return Array.isArray(saved)
+      ? saved.filter((i) => i && (i.type === "market" || i.type === "produce"))
+      : [];
+  });
 
   const update = useCallback((fn) => {
     setItems((prev) => {
