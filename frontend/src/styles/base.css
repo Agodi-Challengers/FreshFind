@@ -476,6 +476,13 @@ button {
   margin-top: 14px;
 }
 
+.container_page-header{
+  background-image: url("../../public/images/markets/Breadcrumbs.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* ---------- Cards ---------- */
 .card {
   background: #fff;

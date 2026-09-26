@@ -7,6 +7,9 @@
   gap: 32px;
   padding-bottom: 96px;
 }
+#contact-header{
+  min-height: 100px;
+}
 
 .contact__form {
   display: flex;

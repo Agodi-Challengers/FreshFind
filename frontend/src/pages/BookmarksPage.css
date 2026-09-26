@@ -42,9 +42,9 @@
   list-style: none;
 }
 .container_page-header{
-  background-image: url("images/markets/Breadcrumbs.png");
-  background-position: center;
+  background-image: url("../../public/images/markets/Breadcrumbs.png");
   background-size: cover;
+  background-position: center;
   min-height: 200px;
   margin-bottom: 20px;
   padding: 50px;

@@ -1,12 +1,21 @@
-/* Market detail (Figma: Market · <name>, M3 Market Detail · Mobile) */
+.links{
+  min-height: 100px;
+  background-image: url("../../public/images/markets/Breadcrumbs.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 50px;
+  margin-bottom: 30px;
+}
 
 .detail__top {
   display: flex;
+
   flex-direction: column;
   gap: 20px;
   padding-top: 32px;
+  
 }
-
 .detail__gallery {
   display: grid;
   grid-template-columns: minmax(0, 868fr) minmax(0, 400fr);

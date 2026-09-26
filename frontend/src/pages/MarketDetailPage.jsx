@@ -61,18 +61,20 @@ export default function MarketDetailPage() {
 
   return (
     <article className="detail">
-      <div className="container detail__top">
-        <Breadcrumb
-          items={[
-            { label: "Home", to: "/" },
-            { label: "Market Directory", to: "/directory" },
-            {
-              label: market.area,
-              to: `/directory?area=${encodeURIComponent(market.area)}`,
-            },
-            { label: market.name },
-          ]}
-        />
+      <div className="container-detail__top">
+        <div className="links">
+          <Breadcrumb 
+            items={[
+              { label: "Home", to: "/" },
+              { label: "Market Directory", to: "/directory" },
+              {
+                label: market.area,
+                to: `/directory?area=${encodeURIComponent(market.area)}`,
+              },
+              { label: market.name },
+            ]}
+          />
+        </div>
 
         <div className="detail__gallery">
           <img

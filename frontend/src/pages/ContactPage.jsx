@@ -87,16 +87,10 @@ export default function ContactPage() {
 
   return (
     <div className="contact">
-      <header className="container_page-header">
+      <header id="contact-header" className="container_page-header">
         <Breadcrumb
           items={[{ label: "Home", to: "/" }, { label: "Contact us" }]}
         />
-        <div className="page-header__copy">
-          <p className="lead">
-            Questions, corrections to a market listing, or want to add your
-            market? Send us a message.
-          </p>
-        </div>
       </header>
 
       <div className="container contact__body">
