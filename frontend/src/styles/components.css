@@ -45,9 +45,9 @@
 }
 
 .status-text {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  line-height: 17px;
+  line-height: 18px;
 }
 
 .status-text--open {
@@ -55,7 +55,7 @@
 }
 
 .status-text--soon {
-  color: var(--amber);
+  color: var(--warning);
 }
 
 .status-text--closed {
@@ -63,8 +63,8 @@
 }
 
 .pill--amber {
-  background: var(--yellow-100);
-  color: var(--yellow-text);
+  background: #fff4e5;
+  color: var(--warning);
 }
 
 .field-label {
@@ -106,7 +106,7 @@
 }
 
 .bookmark.is-saved {
-  background: var(--green);
+  background: var(--green-hard);
   color: #fff;
 }
 
@@ -120,7 +120,7 @@
   border-color: var(--green);
 }
 
-/* ---------- Market card ---------- */
+/* ---------- Market card (Figma "Market card" Default / Hover / Focus) ---------- */
 .market-card {
   position: relative;
   display: flex;
@@ -131,7 +131,8 @@
 
 .market-card__media {
   position: relative;
-  height: 160px;
+  height: 170px;
+  overflow: hidden;
   background: var(--sand);
 }
 
@@ -158,19 +159,12 @@
   right: 14px;
 }
 
-.market-card__km {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
-  padding: 4px 9px;
-}
-
 .market-card__body {
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 10px;
-  padding: 16px 18px 18px;
+  gap: 12px;
+  padding: 18px 20px 20px;
 }
 
 .market-card__title {
@@ -179,17 +173,51 @@
   gap: 4px;
 }
 
+.market-card__title .icon-text {
+  font-size: 12px;
+  line-height: 18px;
+}
+
 .market-card__name {
   margin: 0;
-  font-family: var(--font);
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 22px;
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
+.market-card__name a {
+  color: var(--green-hover);
+}
+
+.market-card--home .market-card__name {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.market-card--home .market-card__name a {
+  color: var(--ink);
+}
+
+.market-card:hover .market-card__name a {
+  color: var(--green-ink);
+}
+
+.market-card__desc {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
 }
 
 .market-card__hours {
+  font-size: 12px;
   font-weight: 500;
+  line-height: 18px;
   color: var(--ink);
+}
+
+.market-card__hours .icon {
+  color: var(--green-600);
 }
 
 .market-card__produce {
@@ -201,25 +229,50 @@
   list-style: none;
 }
 
+.market-card__produce .pill {
+  background: #f2f2f2;
+  font-weight: 500;
+}
+
+.market-card__photos {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.market-card__photos img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--cream);
+}
+
 .market-card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   margin-top: auto;
+  font-size: 12px;
 }
 
 .market-card__more {
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 17px;
-  color: var(--green);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--green-ink);
   white-space: nowrap;
+  transition: gap 0.18s var(--ease);
 }
 
 .market-card:hover .market-card__more {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  gap: 8px;
 }
 
 /* ---------- Market row (Find a Market) ---------- */
@@ -761,13 +814,20 @@
 }
 
 .section-head__copy {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* centred header (Figma "Plan your market day in minutes") */
+.section-head--center {
   justify-content: center;
+}
+
+.section-head--center .section-head__copy {
+  align-items: center;
   text-align: center;
-  margin: 0 auto;
 }
 
 /* ---------- Grids ---------- */
@@ -791,11 +851,9 @@
 }
 
 @media (max-width: 991.98px) {
-  .grid--4 {
+  .grid--4,
+  .grid--3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .grid--3{
-    display: none;
   }
 }
 

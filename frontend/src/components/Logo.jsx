@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import Icon from "./Icon.jsx";
-import { asset } from "../lib/assets.js";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
+import logoLight from "../assets/ChatGPT Image Sep 23, 2026, 11_31_21 PM 1.png";
 
 /**
  * FreshFind logo.
@@ -45,6 +44,7 @@ export default function Logo({
     );
   }
 
+  // White wordmark from the Figma footer, used on dark surfaces
   return (
     <Link
       to={to}
@@ -52,13 +52,13 @@ export default function Logo({
       aria-label="FreshFind home"
       onClick={onClick}
     >
-      <span className="logo__mark" aria-hidden="true">
-        <Icon name="leaf" size={compact ? 17 : 20} />
-      </span>
-      <span className="logo__text">
-        <span className="logo__name">FreshFind</span>
-        {tagline && <span className="logo__tag">Fresh all along</span>}
-      </span>
+      <img
+        className="logo__img logo__img--light"
+        src={logoLight}
+        alt="FreshFind"
+        width="152"
+        height="41"
+      />
     </Link>
   );
 }

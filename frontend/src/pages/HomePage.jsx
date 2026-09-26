@@ -16,15 +16,9 @@ import { DAY_KEYS, DAY_LONG } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
 import { asset } from "../lib/assets.js";
 import "./HomePage.css";
-import line from "../assets/Line.png"
-import  "./DirectoryPage.jsx"
 
 const WEEKEND = ["sat", "sun"];
 
-const listNames = (names) =>
-  names.length <= 1
-    ? names.join("")
-    : `${names.slice(0, -1).join(", ")} & ${names[names.length - 1]}`;
 
 function areaOptions(areas, regions, markets) {
   const count = (fn) => markets.filter(fn).length;
@@ -174,9 +168,6 @@ export default function HomePage() {
   const [q, setQ] = useState("");
   const [tab, setTab] = useState("open");
 
-  const monthName = new Intl.DateTimeFormat("en-GB", { month: "long" }).format(
-    new Date(2026, now.month, 1),
-  );
   const seasonal = useMemo(
     () => seasonalHighlights(produce, now.month),
     [produce, now.month],
@@ -187,15 +178,24 @@ export default function HomePage() {
   );
   const openCount = markets.filter((m) => m.status.state !== "closed").length;
 
-  const tabMarkets = useMemo(() => {
-    let list = markets;
-    if (tab === "open")
-      list = markets.filter((m) => m.status.state !== "closed");
-    else if (tab === "today")
-      list = markets.filter((m) => m.schedule[now.dayKey]);
-    else list = markets.filter((m) => WEEKEND.some((d) => m.schedule[d]));
-    return sortMarkets(list, "nearest").slice(0, 4);
-  }, [markets, tab, now.dayKey]);
+  // markets for each tab of "Markets open near you"
+  const tabLists = useMemo(
+    () => ({
+      open: markets.filter((m) => m.status.state !== "closed"),
+      today: markets.filter((m) => m.schedule[now.dayKey]),
+      weekend: markets.filter((m) => WEEKEND.some((d) => m.schedule[d])),
+    }),
+    [markets, now.dayKey],
+  );
+  const tabMarkets = useMemo(
+    () => sortMarkets(tabLists[tab], "nearest").slice(0, 4),
+    [tabLists, tab],
+  );
+  const tabs = [
+    { id: "open", label: "Open now" },
+    { id: "today", label: "Today" },
+    { id: "weekend", label: "This weekend" },
+  ];
 
   const goFind = (extra = {}) => {
     const f = { ...EMPTY_FILTERS, q, ...extra };
@@ -208,189 +208,217 @@ export default function HomePage() {
     navigate(`/find${s ? `?${s}` : ""}`);
   };
 
-  const inSeasonNames = seasonal
-    .slice(0, 3)
-    .map((p) => (p.shortName || p.name).toLowerCase());
-
   return (
     <div className="home">
-      <section className="hero container" aria-labelledby="hero-title">
-        <div className="hero__copy">
-          {inSeasonNames.length > 0 && (
-            <span  className="hero__tag">
-              WELCOME TO FRESHFIND
-            </span>
-          )}
-          <h1 id="hero-title" className="hero__title">
-            Fresh markets, right around the corner.
-          </h1>
-          <p className="hero__lead">
-            Discover farmers markets, find what's in season, and plan your next fresh-food stop
-          </p>
+      <div className="hero-band">
+        <section className="hero container" aria-labelledby="hero-title">
+          <div className="hero__copy">
+            <span className="hero__tag">Welcome to FreshFind</span>
+            <h1 id="hero-title" className="hero__title">
+              Fresh markets, right around the corner.
+            </h1>
+            <p className="hero__lead">
+              Discover farmers markets, find what's in season, and plan your
+              next fresh-food stop.
+            </p>
 
-          <div className="hero__popular">
-            <span>Popular:</span>
-            <Link to="/find?open=1" className="chip">
-              <span className="dot dot--open" aria-hidden="true" />
-              Open now
-            </Link>
-            <Link to="/find?day=sat" className="chip">
-              This Saturday
-            </Link>
-            <Link to="/directory?feat=organic" className="chip">
-              Organic
-            </Link>
-            <button
-              type="button"
-              className="chip"
-              onClick={() => {
-                requestDeviceLocation();
-                navigate("/find");
+            <div className="hero__popular">
+              <span>Popular:</span>
+              <Link to="/find?open=1" className="chip">
+                <span className="dot dot--open" aria-hidden="true" />
+                Open now
+              </Link>
+              <Link to="/find?day=sat" className="chip">
+                This Saturday
+              </Link>
+              <Link to="/directory?feat=organic" className="chip">
+                Organic
+              </Link>
+              <button
+                type="button"
+                className="chip"
+                onClick={() => {
+                  requestDeviceLocation();
+                  navigate("/find");
+                }}
+              >
+                Near me
+              </button>
+            </div>
+
+            <form
+              className="quickfind"
+              role="search"
+              aria-labelledby="quickfind-title"
+              onSubmit={(e) => {
+                e.preventDefault();
+                goFind();
               }}
             >
-              Near me
-            </button>
+              <div className="quickfind__head">
+                <h2 id="quickfind-title">Quick Find</h2>
+                <p>Choose where, when, and what you want to find.</p>
+              </div>
+              <Dropdown
+                icon="map-pin"
+                label="Area"
+                value={area}
+                onChange={setArea}
+                options={areaOptions(areas, regions, markets)}
+                className="quickfind__area"
+              />
+              <Dropdown
+                icon="calendar"
+                label="Day"
+                value={day}
+                onChange={setDay}
+                options={dayOptions(now)}
+                className="quickfind__day"
+              />
+              <SearchBox
+                icon="carrot"
+                label="Produce"
+                placeholder="e.g. tomatoes"
+                value={q}
+                onChange={setQ}
+                onSubmit={() => goFind()}
+                onPick={(opt) =>
+                  opt.type === "category"
+                    ? goFind({ q: "", cats: [opt.value] })
+                    : goFind({ q: opt.value })
+                }
+                markets={markets}
+                className="quickfind__search"
+              />
+              <button
+                type="submit"
+                className="btn btn--accent btn--lg quickfind__go"
+              >
+                <Icon name="search" size={17} />
+                <span className="quickfind__go-long">Find markets near me</span>
+                <span className="quickfind__go-short">Find markets</span>
+              </button>
+            </form>
           </div>
 
-           <form
-            className="quickfind"
-            role="search"
-            aria-label="Find a market near you"
-            onSubmit={(e) => {
-              e.preventDefault();
-              goFind();
-            }}
-          >
-            <Dropdown
-              icon="map-pin"
-              label="Area"
-              value={area}
-              onChange={setArea}
-              options={areaOptions(areas, regions, markets)}
-              className="quickfind__area"
-            />
-            <Dropdown
-              icon="calendar"
-              label="Day"
-              value={day}
-              onChange={setDay}
-              options={dayOptions(now)}
-              className="quickfind__day"
-            />
-            <SearchBox
-              icon="carrot"
-              label="Produce"
-              placeholder="e.g. tomatoes, ugu, fish"
-              value={q}
-              onChange={setQ}
-              onSubmit={() => goFind()}
-              onPick={(opt) =>
-                opt.type === "category"
-                  ? goFind({ q: "", cats: [opt.value] })
-                  : goFind({ q: opt.value })
-              }
-              markets={markets}
-              className="quickfind__search"
-            />
-            <button
-              type="submit"
-              className="btn btn--accent btn--lg quickfind__go"
-            >
-              <Icon name="search" size={17} />
-              Find markets
-            </button>
-          </form>
+          <HeroVisual markets={markets} pick={pick} openCount={openCount} />
+        </section>
+      </div>
 
-        </div>
-
-        <HeroVisual markets={markets} pick={pick} openCount={openCount} />
-      </section>
-
-     
-      <section className="section container" aria-labelledby="open-title">
-        <div className="section-head" style={{ justifyContent: "center" }}>
-          <div
-            className="section-head__copy"
-            style={{ textAlign: "center", margin: "0 auto" }}
-          >
-            <span className="eyebrow">Happening now</span>
-            <h2 id="open-title" className="section-title">
-              Markets open near you
-            </h2>
-            <div className="mobile-season">
-              <h2 className="mobile-season-title">
-              Open near you
-              </h2>
-                <Link to="/directory" className="see-all">
-                  See all
-                </Link>
-            </div>
-            
-          </div>
-          <div className="home__tabs" role="group" aria-label="Show markets">
-            <button
-              type="button"
-              className="chip chip--lg"
-              aria-pressed={tab === "open"}
-              onClick={() => setTab("open")}
-            >
-              Open now · {openCount}
-            </button>
-            <button
-              type="button"
-              className="chip chip--lg"
-              aria-pressed={tab === "today"}
-              onClick={() => setTab("today")}
-            >
-              Today
-            </button>
-            <button
-              type="button"
-              className="chip chip--lg"
-              aria-pressed={tab === "weekend"}
-              onClick={() => setTab("weekend")}
-            >
-              This weekend
-            </button>
-            <Link to="/directory" className="btn btn--ghost">
-              View directory →
-            </Link>
-          </div>
-        </div>
-        {tabMarkets.length ? (
-          <div className="grid grid--4 scroll-row">
-            {tabMarkets.map((m) => (
-              <MarketCard key={m.id} market={m} />
-            ))}
-          </div>
-        ) : (
-          <div className="empty">
-            <strong>No markets are open right now</strong>
-            <span>
-              Most Lagos markets open early. See which one opens next.
-            </span>
-            <Link to="/directory?sort=next" className="btn btn--primary">
-              See what opens next
-            </Link>
-          </div>
-        )}
-      </section>
-
-   
-      <section className="home__season" aria-labelledby="season-title">
+      {/* ---------- Markets open near you ---------- */}
+      <section className="home-section" aria-labelledby="open-title">
         <div className="container">
           <div className="section-head">
             <div className="section-head__copy">
-              <span className="eyebrow">
-                In season 
+              <span className="eyebrow">Happening now</span>
+              <h2 id="open-title" className="section-title">
+                Markets open near you
+              </h2>
+            </div>
+            <Link to="/directory" className="see-all">
+              See all
+            </Link>
+            <div className="home__tabs" role="group" aria-label="Show markets">
+              {tabs.map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  className="chip chip--lg"
+                  aria-pressed={tab === t.id}
+                  onClick={() => setTab(t.id)}
+                >
+                  {t.label} ({tabLists[t.id].length})
+                </button>
+              ))}
+              <Link to="/directory" className="btn btn--ghost">
+                View directory
+                <Icon name="arrow-right" size={16} />
+              </Link>
+            </div>
+          </div>
+          {tabMarkets.length ? (
+            <div className="home__cards scroll-row">
+              {tabMarkets.map((m) => (
+                <MarketCard key={m.id} market={m} variant="home" />
+              ))}
+            </div>
+          ) : (
+            <div className="empty">
+              <strong>No markets are open right now</strong>
+              <span>
+                Most Lagos markets open early. See which one opens next.
               </span>
-              <img className="line" src={line}/>
+              <Link to="/directory?sort=next" className="btn btn--primary">
+                See what opens next
+              </Link>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ---------- Explore ---------- */}
+      <section
+        className="home-section home-section--grey home__explore"
+        aria-labelledby="explore-title"
+      >
+        <div className="container">
+          <div className="section-head section-head--center">
+            <div className="section-head__copy">
+              <span className="eyebrow">Everything in one place</span>
+              <h2 id="explore-title" className="section-title">
+                Plan your market day in minutes
+              </h2>
+            </div>
+          </div>
+          <div className="grid grid--3">
+            <Link to="/directory" className="feature card hover-card">
+              <span className="feature__icon">
+                <Icon name="map" size={30} />
+              </span>
+              <h3>Market Directory</h3>
+              <p>
+                Browse every market in your area. Filter by neighbourhood, day
+                of the week or produce, and sort by distance or next open day.
+              </p>
+            </Link>
+            <Link to="/produce" className="feature card hover-card">
+              <span className="feature__icon">
+                <Icon name="carrot" size={30} />
+              </span>
+              <h3>Produce Guide</h3>
+              <p>
+                Look up fruits, vegetables, herbs and dairy: when they’re in
+                season and which markets usually stock them.
+              </p>
+            </Link>
+            <Link to="/saved" className="feature card hover-card">
+              <span className="feature__icon">
+                <Icon name="bookmark" size={30} />
+              </span>
+              <h3>Bookmarks &amp; notes</h3>
+              <p>
+                Save favourite markets and produce ({saved.length} saved), add
+                quick notes for your shopping list, then export or share them
+                with family.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Seasonal picks ---------- */}
+      <section className="home-section" aria-labelledby="season-title">
+        <div className="container">
+          <div className="section-head">
+            <div className="section-head__copy">
+              <span className="eyebrow">In season</span>
               <h2 id="season-title" className="section-title">
                 This week’s seasonal picks
               </h2>
             </div>
-            <Link to="/produce" className="produce-btn">
-              See the produce guide →
+            <Link to="/produce" className="btn btn--primary btn--lg">
+              See the produce guide
+              <Icon name="arrow-right" size={18} />
             </Link>
           </div>
           <ul className="season-cards">
@@ -398,10 +426,11 @@ export default function HomePage() {
               <li key={p.id}>
                 <Link to={`/produce/${p.id}`} className="season-card">
                   <img
+                    className="season-card__img"
                     src={asset(p.icon || p.image)}
                     alt=""
-                    width="64"
-                    height="64"
+                    width="230"
+                    height="181"
                     loading="lazy"
                   />
                   <span className="season-card__t">
@@ -426,100 +455,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      
-      <section className="section container" aria-labelledby="explore-title">
-        <div className="section-head">
-          <div className="section-head__copy">
-            <span className="eyebrow">Everything in one place</span>
-            <h2 id="explore-title" className="section-title">
-              Plan your market day in minutes
-            </h2>
-          </div>
-        </div>
-        <div className="grid grid--3">
-          <Link to="/directory" className="feature card hover-card">
-            <span className="feature__icon feature_i _icon--green">
-              <Icon name="map" size={30} />
-            </span>
-            <h3>Market Directory</h3>
-            <p>
-              Browse every market in your area. Filter by neighbourhood, day of
-              the week or produce, and sort by distance or next open day.
-            </p>
-            <span className="feature__link">
-              Browse {markets.length} markets →
-            </span>
-          </Link>
-          <Link to="/produce" className="feature card hover-card">
-            <span className="feature__icon feature__icon--yellow">
-              <Icon name="carrot" size={30} />
-            </span>
-            <h3>Produce Guide</h3>
-            <p>
-              Look up fruits, vegetables, herbs and dairy: when they’re in
-              season and which markets usually stock them.
-            </p>
-            <span className="feature__link">Open the guide →</span>
-          </Link>
-          <Link to="/saved" className="feature card hover-card">
-            <span className="feature__icon feature__icon--orange">
-              <Icon name="bookmark" size={30} />
-            </span>
-            <h3>Bookmarks &amp; notes</h3>
-            <p>
-              Save favourite markets and produce, add quick notes for your
-              shopping list, then export or share them with family.
-            </p>
-            <span className="feature__link">View saved ({saved.length}) →</span>
-          </Link>
-        </div>
-      </section>
-
-    
-      <section className="container home__how-wrap" aria-labelledby="how-title">
-        <div className="home__how">
-          <div className="home__how-intro">
-            <span className="eyebrow">How it works</span>
-            <img className="line" src={line}/>
-            <h2 id="how-title">From “what’s open?” to a full basket.</h2>
-          </div>
-          <ol className="home__steps">
-            <li>
-              <span className="home__num">1</span>
-              <h3>Tell us where and when</h3>
-              <p>Share your location or pick an area and day.</p>
-            </li>
-            <li>
-              <span className="home__num">2</span>
-              <h3>See what’s open and fresh</h3>
-              <p>Markets, hours and typical produce, updated for right now.</p>
-            </li>
-            <li>
-              <span className="home__num">3</span>
-              <h3>Save it and go</h3>
-              <p>Bookmark, add a note, and get directions on the map.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      {/* ---------- CTA ---------- */}
-      <section className="container home__cta-wrap" aria-labelledby="cta-title">
-        <div className="home__cta">
-          <div>
-            <h2 id="cta-title">Run a market or grow for one?</h2>
-            <p>
-              Get your market listed on FreshFind so more neighbours know when
-              you’re open and what you’re selling.
-            </p>
-          </div>
-          <div className="home__cta-buttons">
-            <Link to="/contact?topic=add" className="btn btn--outline btn--lg">
-              List your market
-            </Link>
-            <Link to="/contact" className="btn btn--outline-light btn--lg">
-              Contact us
-            </Link>
+      {/* ---------- How it works ---------- */}
+      <section className="home__how-wrap" aria-labelledby="how-title">
+        <div className="container">
+          <div className="home__how">
+            <div className="home__how-intro">
+              <span className="eyebrow">How it works</span>
+              <h2 id="how-title">From “what’s open?” to a full basket.</h2>
+            </div>
+            <ol className="home__steps">
+              <li>
+                <span className="home__num">1</span>
+                <h3>Tell us where and when</h3>
+                <p>Share your location or pick an area and day.</p>
+              </li>
+              <li>
+                <span className="home__num">2</span>
+                <h3>See what’s open and fresh</h3>
+                <p>Markets, hours and typical produce, updated for right now.</p>
+              </li>
+              <li>
+                <span className="home__num">3</span>
+                <h3>Save it and go</h3>
+                <p>Bookmark, add a note, and get directions on the map.</p>
+              </li>
+            </ol>
           </div>
         </div>
       </section>

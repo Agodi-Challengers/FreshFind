@@ -1,21 +1,22 @@
-/* Landing page (Figma: 00 Landing Page · Desktop, M1 Home · Mobile) */
+/* Landing page (Figma: 00 Landing Page · Desktop, Home · Mobile) */
 
-.section {
-  padding-top: 88px;
-  padding-bottom: 88px;
-  background-color: #F2F2F2;
+/* =========================
+   HERO
+========================= */
+
+.hero-band {
+  background: #f2f2f2;
+  overflow-x: clip;
 }
-
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 640px) minmax(0, 584px);
+  grid-template-columns: minmax(0, 666px) minmax(0, 520px);
   justify-content: space-between;
   align-items: center;
   gap: 56px;
   padding-top: 72px;
   padding-bottom: 88px;
-  background-color: #F2F2F2;
 }
 
 .hero__copy {
@@ -26,44 +27,49 @@
 }
 
 .hero__tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: var(--r-pill);
-  color: #00b207;
-  font-size: 13px;
+  margin-bottom: -20px;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 17px;
-  transition: 0.3s ease;
-}
-
-.hero__tag:hover {
+  line-height: 21px;
+  text-transform: uppercase;
   color: var(--green);
-  background: #d6e9cf;
 }
 
 .hero__title {
   margin: 0;
-  max-width: 650px;
+  max-width: 631px;
   font-size: 64px;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
-.section-title{
-  display:none;
-}
-
-
 
 .hero__lead {
   max-width: 580px;
-  margin: 0;
-  font-size: 19px;
+  margin: -8px 0 0;
+  font-size: 18px;
   line-height: 1.5;
   color: var(--muted);
 }
 
+/* =========================
+   POPULAR
+========================= */
+
+.hero__popular {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.hero__popular .chip:hover {
+  transform: translateY(-2px);
+}
 
 /* =========================
    QUICK FIND
@@ -72,7 +78,7 @@
 .quickfind {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 5px;
   width: 100%;
   padding: 8px;
   border: 1px solid var(--border);
@@ -81,12 +87,17 @@
   box-shadow: var(--shadow-float);
 }
 
+/* "Quick Find" heading is only shown on phones (Figma mobile) */
+.quickfind__head {
+  display: none;
+}
+
 .quickfind__area {
-  width: 160px;
+  width: 150px;
 }
 
 .quickfind__day {
-  width: 140px;
+  width: 150px;
 }
 
 .quickfind__search {
@@ -103,34 +114,13 @@
 
 .quickfind__go {
   flex: none;
-  min-height: 52px;
-  margin-left: 8px;
-  padding: 16px 20px;
+  min-height: 55px;
+  padding: 16px 24px;
 }
 
-
-/* =========================
-   POPULAR
-========================= */
-
-.hero__popular {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--muted);
+.quickfind__go-long {
+  display: none;
 }
-
-.hero__popular .chip {
-  transition: all 0.25s ease;
-}
-
-.hero__popular .chip:hover {
-  transform: translateY(-2px);
-}
-
 
 /* =========================
    HERO VISUAL
@@ -139,23 +129,23 @@
 .hero__visual {
   position: relative;
   width: 100%;
-  max-width: 584px;
-  aspect-ratio: 584 / 560;
+  max-width: 520px;
+  aspect-ratio: 513 / 534;
   justify-self: end;
 }
 
+.hero__photo {
+  position: absolute;
+  inset: 11% -18% 11% 0;
+}
 
 .hero__photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-
-/* =========================
-   FLOATING CARDS
-========================= */
-
+/* floating cards */
 .float-card {
   position: absolute;
   z-index: 2;
@@ -168,28 +158,23 @@
   animation-delay: -2s;
 }
 
-.float-card--c {
-  animation-delay: -4s;
-}
-
-
 /* Pick of the week */
-
 .hero__pick {
-  top: 0.7%;
-  right: 3%;
+  top: 0;
+  right: -6%;
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px 18px 12px 12px;
   border-radius: 20px;
   color: var(--ink);
-  transition: 0.25s ease;
+  transition:
+    box-shadow 0.25s var(--ease),
+    transform 0.25s var(--ease);
 }
 
 .hero__pick:hover {
   color: var(--ink);
-  transform: translateY(-3px);
   box-shadow: var(--shadow-hover);
 }
 
@@ -207,8 +192,8 @@
 }
 
 .hero__pick-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10px;
+  font-weight: 500;
   line-height: 14px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -217,31 +202,28 @@
 
 .hero__pick-name {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 20px;
 }
 
-
 /* Featured market */
-
 .hero__featured {
-  top: 54.5%;
-  left: 0;
+  top: 52%;
+  left: -8%;
   display: flex;
   flex-direction: column;
   gap: 14px;
   width: 300px;
-  max-width: 60%;
+  max-width: 62%;
   padding: 18px;
   border-radius: 24px;
   color: var(--ink);
-  transition: 0.25s ease;
+  transition: box-shadow 0.25s var(--ease);
 }
 
 .hero__featured:hover {
   color: var(--ink);
   box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
 }
 
 .hero__featured-row {
@@ -267,7 +249,7 @@
 
 .hero__featured-name {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 21px;
 }
 
@@ -284,13 +266,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--muted);
-}
-
-.hero__featured-status .pill {
-  background: var(--green-100);
 }
 
 .hero__featured-produce {
@@ -312,31 +290,26 @@
   justify-content: center;
   background: var(--cream);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--muted);
 }
 
-.hero__stat {
-  right: -2.3%;
-  bottom: 0.7%;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 14px 18px;
-  border-radius: 20px;
-  background: var(--yellow);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 17px;
+/* =========================
+   SECTIONS
+========================= */
+
+.home-section {
+  padding-block: 88px;
+  background: #fff;
 }
 
-.hero__stat-num {
-  font-family: var(--display);
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 35px;
+.home-section--grey {
+  background: #f2f2f2;
 }
 
+.home-section .section-head {
+  align-items: center;
+}
 
 .home__tabs {
   display: flex;
@@ -345,24 +318,71 @@
   gap: 8px;
 }
 
-
-.home__season {
-  padding: 88px 0;
-  background: #FFFFFF;
-  color:black;
+.home__tabs .btn--ghost {
+  gap: 2px;
+  padding-inline: 8px;
 }
 
-.home__season .section-title {
-  color: black;
-}
-.home__season .mobile-section-title{
+/* "See all" link is the mobile version of the tabs */
+.see-all {
   display: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
 }
 
-.home__season .lead {
-  color: var(--green-200);
+.home__cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
 }
 
+/* ---------- Explore features ---------- */
+.feature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px;
+  border-color: var(--border);
+  color: var(--ink);
+}
+
+.feature:hover {
+  color: var(--ink);
+}
+
+.feature h3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 36px;
+  color: var(--ink);
+  transition: color 0.18s var(--ease);
+}
+
+.feature:hover h3 {
+  color: var(--green-ink);
+}
+
+.feature p {
+  font-family: "DM Sans", var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.feature__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background-color: var(--green-tint);
+  color: var(--green-hard);
+}
+
+/* ---------- Seasonal picks ---------- */
 .season-cards {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -377,52 +397,61 @@
   flex-direction: column;
   gap: 16px;
   height: 100%;
-  border: 1px solid var(--green-border-dark);
+  padding: 0 20px 20px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
   border-radius: var(--r-card);
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
+  background: #fff;
+  color: var(--ink);
   transition:
     border-color 0.2s var(--ease),
-    box-shadow 0.2s var(--ease),
-    transform 0.2s var(--ease),
-    background-color 0.2s var(--ease);
+    box-shadow 0.2s var(--ease);
 }
 
-.season-card:hover {
-  color: #fff;
-  border-color: var(--green-600);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
+/* Figma: Hover and Active = 1px #2C742F border with a green glow */
+.season-card:hover,
+.season-card:active,
+.season-card:focus-visible {
+  color: var(--ink);
+  border-color: var(--green-hard);
+  box-shadow: 0 0 12px rgba(32, 181, 38, 0.32);
 }
 
-.season-card img {
-  width: 100%;
-  height: auto;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
+.season-card:focus-visible {
+  box-shadow:
+    0 0 12px rgba(32, 181, 38, 0.32),
+    var(--focus-ring);
+}
+
+.season-card__img {
+  width: calc(100% + 40px);
+  max-width: none;
+  height: 181px;
+  margin-inline: -20px;
   object-fit: cover;
+  background: #fff;
 }
 
 .season-card__t {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
 }
 
 .season-card__cat {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 600;
-  line-height: 16px;
+  line-height: 15px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--green-label);
+  color: var(--danger);
 }
 
 .season-card__name {
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 25px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  color: var(--green-hard);
 }
 
 .season-card__meta {
@@ -432,129 +461,80 @@
   justify-content: space-between;
   gap: 8px;
   margin-top: auto;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  color: var(--green-200);
+  color: var(--ink);
 }
 
 .season-card__badge {
   padding: 5px 10px;
   border-radius: var(--r-pill);
-  background: var(--green-700);
+  background: var(--green);
   color: #fff;
   font-size: 12px;
-  line-height: 16px;
+  font-weight: 500;
+  line-height: 18px;
 }
 
-/* ---------- Explore features ---------- */
-.feature {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding: 32px;
-  border-radius: var(--r-2xl);
-  color: var(--ink);
+/* ---------- How it works ---------- */
+.home__how-wrap {
+  padding-bottom: 0;
+  background: #fff;
 }
-
-.feature:hover {
-  color: var(--ink);
-}
-
-.feature h3 {
-  font-size: 24px;
-  line-height: 30px;
-}
-
-.feature p {
-  font-size: 16px;
-  line-height: 1.55;
-  color: var(--muted);
-}
-
-.feature__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  border-radius: 18px;
-  color: #2C742F;
-  background-color: #E4FFE5;
-}
-
-.feature__icon--green {
-  background: var(--green-100);
-}
-
-.feature__icon--yellow {
-  background-color: #E4FFE5;
-  color: #2C742F;
-}
-
-.feature__icon--orange {
-  background-color: #E4FFE5;
-  color: #2C742F;
-}
-
-.feature__link {
-  margin-top: auto;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--green);
-}
-
-.feature:hover .feature__link {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 
 .home__how {
   display: flex;
   align-items: flex-start;
-  gap: 64px;
-  padding: 48px;
-  background: white;
-  border-radius: 32px;
+  gap: 48px;
+  padding: 48px 0;
+  background: #fff;
 }
 
 .home__how-intro {
-  flex: 0 0 320px;
-}
-.home__steps {
-  flex: 1;
   display: flex;
-  gap: 48px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  color: #5E6B5F;
-}
-#how-title{
-  font-family:
-    "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --display: "Poppins", Georgia, "Times New Roman", serif;;
-}
-.home__steps li {
-  flex: 1;
-  min-width: 0; 
-  display: flex;
+  flex: 0 0 300px;
   flex-direction: column;
   gap: 12px;
 }
 
+.home__how-intro h2 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.home__steps {
+  display: flex;
+  flex: 1;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+}
+
+.home__steps li {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+
 .home__steps li p {
   margin: 0;
-  line-height: 1.6;
-  white-space: normal;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .home__steps h3 {
-  font-family: var(--font);
+  font-family: var(--display);
   font-size: 18px;
-  font-weight: 700;
-
+  font-weight: 600;
+  line-height: 27px;
+  color: var(--ink);
 }
 
 .home__num {
@@ -564,55 +544,11 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--green-hard);
   color: #fff;
-  font-size: 15px;
+  font-family: "DM Sans", var(--font);
+  font-size: 12px;
   font-weight: 700;
-}
-
-/* ---------- CTA banner ---------- */
-.home__cta-wrap {
-  padding-bottom: 96px;
-  background-color: #F2F2F2;
-}
-
-.home__cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  padding: 56px 64px;
-  border-radius: 32px;
-  background: var(--none);
-  color: #fff;
-}
-
-.home__cta h2 {
-  color: #000;
-  font-size: 40px;
-  line-height: 1.22;
-  letter-spacing: -0.015em;
-  text-align: center;
-}
-
-.home__cta p {
-  margin-top: 14px;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #000;
-  text-align: center;
-}
-
-.home__cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-@media (min-width: 1300px){
-  .mobile-season{
-    display: none;
-  }
 }
 
 /* =========================
@@ -621,7 +557,7 @@
 
 @media (max-width: 1299.98px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 500px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
     gap: 40px;
   }
 
@@ -632,24 +568,16 @@
   .season-cards {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .mobile-season{
-    display: none;
+
+  .home__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
-
-/* =========================
-   TABLET
-========================= */
 
 @media (max-width: 1199.98px) {
   .hero {
     grid-template-columns: minmax(0, 1fr);
     padding-top: 48px;
-  }
-
-  .hero__copy {
-    width: 100%;
   }
 
   .hero__visual {
@@ -664,51 +592,23 @@
   .home__how-intro {
     flex-basis: auto;
   }
-  .mobile-season{
-    display: none;
-  }
 }
 
-
-/* =========================
-   SMALL TABLET
-========================= */
-
 @media (max-width: 991.98px) {
-  .section {
+  .home__explore {
     display: none;
-  }
-
-  .hero {
-    gap: 36px;
   }
 
   .hero__title {
     font-size: 48px;
   }
-
-  .home__cta {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 36px 28px;
-  }
-
-  .home__cta h2 {
-    font-size: 25px;
-  }
-  .mobile-season{
-    display: none;
-  }
-  
 }
 
-
 /* =========================
-   MOBILE
+   MOBILE (Figma: Home · Mobile)
 ========================= */
 
 @media (max-width: 767.98px) {
-
   .hero {
     display: flex;
     flex-direction: column;
@@ -717,92 +617,46 @@
     padding-top: 24px;
     padding-bottom: 28px;
   }
-  .mobile-season{
-    display: block;
-  }
 
-  /*
-    This allows the hero children to be reordered
-    without changing your JSX structure.
-  */
+  /* lets the hero children be re-ordered on phones */
   .hero__copy {
     display: contents;
   }
 
-  /* Welcome text */
-
   .hero__tag {
     order: 1;
-    width: fit-content;
-    padding: 0;
     margin-bottom: 14px;
     font-size: 12px;
   }
-
-  /* Main heading */
 
   .hero__title {
     order: 2;
     max-width: 100%;
     margin-bottom: 16px;
     font-size: 36px;
-    line-height: 1.06;
-    letter-spacing: -0.015em;
+    line-height: 1.2;
   }
-
-  /* Description */
 
   .hero__lead {
     order: 3;
     max-width: 100%;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
     font-size: 15px;
     line-height: 1.55;
   }
 
-
-  /* =========================
-     MOBILE HERO IMAGE
-  ========================= */
-
   .hero__visual {
     order: 4;
-    display: block;
     width: 100%;
     max-width: 100%;
-    height: 390px;
+    height: 360px;
     aspect-ratio: auto;
     margin: 0 0 20px;
   }
 
-  /*
-    Make the produce image look more
-    like the reference instead of a
-    large rounded square.
-  */
-
   .hero__photo {
-    top: 30px;
-    right: 0;
-    width: 100%;
-    height: 330px;
-    overflow: visible;
-    border-radius: 0;
-    background: transparent;
+    inset: 50px 0 10px 0;
   }
-
-  .hero__photo::after {
-    display: none;
-  }
-
-  .hero__photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-
-  /* Pick of the week */
 
   .hero__pick {
     top: 0;
@@ -828,70 +682,70 @@
     line-height: 16px;
   }
 
-
-  /* Featured market card */
-
   .hero__featured {
-    top: 55%;
+    top: 52%;
     left: 0;
-    width: 285px;
+    width: 260px;
     max-width: 78%;
-    padding: 14px;
-    gap: 10px;
-    border-radius: 20px;
-  }
-
-  .hero__featured-row {
-    gap: 10px;
+    padding: 12px;
+    gap: 8px;
+    border-radius: 16px;
   }
 
   .hero__featured-row img {
-    width: 42px;
-    height: 42px;
-    border-radius: 11px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
   }
 
   .hero__featured-name {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 13px;
+    line-height: 17px;
   }
 
   .hero__featured-street {
-    font-size: 11px;
-    line-height: 15px;
+    font-size: 10px;
+    line-height: 14px;
   }
 
   .hero__featured-status {
     gap: 6px;
-    font-size: 11px;
-  }
-
-  .hero__featured-produce {
-    gap: 5px;
+    font-size: 10px;
   }
 
   .hero__featured-produce img,
   .hero__more {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     border-radius: 8px;
   }
 
-
-  /* =========================
-     QUICK FIND
-  ========================= */
-
+  /* Quick Find becomes a card with a heading */
   .quickfind {
     order: 5;
     flex-direction: column;
     align-items: stretch;
-    gap: 0;
-    width: 100%;
-    padding: 6px;
+    gap: 10px;
+    padding: 20px 16px;
     margin-bottom: 22px;
-    border-radius: 24px;
-    box-shadow: var(--shadow-float);
+    border-radius: 16px;
+  }
+
+  .quickfind__head {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .quickfind__head h2 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+
+  .quickfind__head p {
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--muted);
   }
 
   .quickfind__area,
@@ -902,43 +756,77 @@
   .quickfind .dropdown__button,
   .quickfind .search__field {
     width: 100%;
-    height: 58px;
+    height: 54px;
     padding-inline: 14px;
-    border-color: transparent;
-    border-bottom: 1px solid var(--border);
-    border-radius: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
   }
 
   .quickfind__go {
     width: 100%;
-    min-height: 56px;
-    margin: 6px 0 0;
-    border-radius: 16px;
+    min-height: 54px;
+    margin: 4px 0 0;
   }
 
+  .quickfind__go-long {
+    display: inline;
+  }
 
-  /* =========================
-     POPULAR
-  ========================= */
+  .quickfind__go-short {
+    display: none;
+  }
 
   .hero__popular {
     order: 6;
-    gap: 8px;
     font-size: 12px;
-    line-height: 1;
   }
 
-  .hero__popular > span {
-    width: 100%;
-    margin-bottom: 2px;
+  .home-section {
+    padding-block: 36px;
   }
 
-  .hero__popular .chip {
-    padding: 9px 14px;
+  .home-section .section-head {
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    margin-bottom: 16px;
   }
 
+  .home-section .section-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
 
-  /* Other sections */
+  /* "Open near you": title + "See all", no tabs */
+  .home__tabs {
+    display: none;
+  }
+
+  .see-all {
+    display: inline;
+  }
+
+  .home__cards {
+    display: flex;
+    gap: 14px;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .home__cards > * {
+    flex: 0 0 270px;
+    scroll-snap-align: start;
+  }
+
+  .home-section .section-head .btn--lg {
+    align-self: flex-start;
+  }
+
+  .home-section:has(.season-cards) .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .season-cards {
     display: flex;
@@ -949,32 +837,27 @@
   }
 
   .season-cards li {
-    flex: 0 0 200px;
-  }
-
-  .home__season {
-    padding: 36px 0;
-  }
-
-  .home__steps {
-    grid-template-columns: minmax(0, 1fr);
+    flex: 0 0 210px;
   }
 
   .home__how {
-    padding: 28px 20px;
-    border-radius: 24px;
+    gap: 24px;
+    padding: 36px 0 12px;
   }
 
-  .home__how-wrap,
-  .home__cta-wrap {
-    padding-bottom: 48px;
+  .home__how-intro h2 {
+    font-size: 28px;
+  }
+
+  .home__steps {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .home__steps li {
+    padding: 12px;
   }
 }
-
-
-/* =========================
-   VERY SMALL PHONES
-========================= */
 
 @media (max-width: 380px) {
   .hero__title {
@@ -982,14 +865,6 @@
   }
 
   .hero__visual {
-    height: 350px;
-  }
-
-  .hero__photo {
-    height: 300px;
-  }
-
-  .hero__featured {
-    max-width: 82%;
+    height: 330px;
   }
 }

@@ -10,31 +10,37 @@ import { asset } from "../lib/assets.js";
 /**
  * Market card used on Home, Directory, Seasonal and Market detail pages.
  * `market` must be decorated with `status` and `km` (see lib/filters.js decorate()).
- * variant "local": shows "Locality · 1.2 km" instead of the distance pill (Seasonal / mobile design).
+ *
+ * variant "home": produce is shown as small round photos (Figma landing page)
+ * showDescription: adds the short description (Figma directory cards)
  */
 export default function MarketCard({
   market,
   variant = "default",
   headingLevel = 3,
+  showDescription = false,
 }) {
   const { produceById } = useData();
   const Heading = `h${headingLevel}`;
   const shown = market.produce.slice(0, 3);
   const more = market.produce.length - shown.length;
   const place =
-    variant === "local"
+    market.km != null
       ? `${market.locality} · ${formatKm(market.km)}`
-      : `${market.area} · ${market.region}`;
+      : market.locality;
+
+  // first sentence of the description is enough for a card
+  const shortDescription = market.description.split(". ")[0] + ".";
 
   return (
-    <article className="market-card card hover-card">
+    <article className={`market-card market-card--${variant} card hover-card`}>
       <div className="market-card__media">
         <img
           src={asset(market.images.card)}
           alt=""
           loading="lazy"
-          width="304"
-          height="160"
+          width="309"
+          height="170"
         />
         <StatusPill status={market.status} className="market-card__status" />
         <BookmarkButton
@@ -53,36 +59,58 @@ export default function MarketCard({
           </Heading>
           <p className="icon-text muted">
             <Icon name="map-pin" size={14} />
-            {place}{variant !== "local" && market.km != null && (
-          <span>{formatKm(market.km)}</span>
-        )}
+            {place}
           </p>
         </div>
+
+        {showDescription && (
+          <p className="market-card__desc">{shortDescription}</p>
+        )}
+
         <p className="icon-text market-card__hours">
           <Icon name="calendar-days" size={14} />
           {scheduleLabel(market.schedule)}
         </p>
-        <ul className="market-card__produce" aria-label="Typical produce">
-          {shown.map((id) => (
-            <li key={id} className="pill pill--soft">
-              {produceById[id]?.shortName || produceById[id]?.name || id}
-            </li>
-          ))}
-          {more > 0 && (
-            <li
-              className="pill pill--soft pill--muted"
-              aria-label={`and ${more} more`}
-            >
-              +{more}
-            </li>
-          )}
-        </ul>
+
+        {variant === "home" ? (
+          <ul className="market-card__photos" aria-label="Typical produce">
+            {market.produce.slice(0, 4).map((id) => (
+              <li key={id}>
+                <img
+                  src={asset(produceById[id]?.icon || produceById[id]?.image)}
+                  alt={produceById[id]?.name || id}
+                  width="30"
+                  height="30"
+                  loading="lazy"
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul className="market-card__produce" aria-label="Typical produce">
+            {shown.map((id) => (
+              <li key={id} className="pill pill--soft">
+                {produceById[id]?.shortName || produceById[id]?.name || id}
+              </li>
+            ))}
+            {more > 0 && (
+              <li
+                className="pill pill--soft pill--muted"
+                aria-label={`and ${more} more`}
+              >
+                +{more}
+              </li>
+            )}
+          </ul>
+        )}
+
         <div className="market-card__footer">
           <span className={`status-text ${statusTextClass(market.status)}`}>
             {market.status.label}
           </span>
           <span className="market-card__more" aria-hidden="true">
-            Details →
+            Details
+            <Icon name="arrow-right" size={14} />
           </span>
         </div>
       </div>
