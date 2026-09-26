@@ -19,7 +19,6 @@ import "./HomePage.css";
 
 const WEEKEND = ["sat", "sun"];
 
-
 function areaOptions(areas, regions, markets) {
   const count = (fn) => markets.filter(fn).length;
   const opts = [
@@ -55,7 +54,7 @@ function dayOptions(now) {
   ];
 }
 
-function HeroVisual({ markets, pick, openCount }) {
+function HeroVisual({ markets, pick }) {
   const { produceById } = useData();
   const featured = useMemo(() => {
     const open = sortMarkets(
@@ -91,7 +90,6 @@ function HeroVisual({ markets, pick, openCount }) {
         />
       </div>
 
-      
       {pick && (
         <Link
           to={`/produce/${pick.id}`}
@@ -176,8 +174,6 @@ export default function HomePage() {
     () => pickOfTheMonth(produce, now.month),
     [produce, now.month],
   );
-  const openCount = markets.filter((m) => m.status.state !== "closed").length;
-
   // markets for each tab of "Markets open near you"
   const tabLists = useMemo(
     () => ({
@@ -301,7 +297,7 @@ export default function HomePage() {
             </form>
           </div>
 
-          <HeroVisual markets={markets} pick={pick} openCount={openCount} />
+          <HeroVisual markets={markets} pick={pick} />
         </section>
       </div>
 
@@ -472,7 +468,9 @@ export default function HomePage() {
               <li>
                 <span className="home__num">2</span>
                 <h3>See what’s open and fresh</h3>
-                <p>Markets, hours and typical produce, updated for right now.</p>
+                <p>
+                  Markets, hours and typical produce, updated for right now.
+                </p>
               </li>
               <li>
                 <span className="home__num">3</span>

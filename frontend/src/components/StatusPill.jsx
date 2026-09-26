@@ -16,6 +16,7 @@ export default function StatusPill({ status, className = "" }) {
   );
 }
 
+/* eslint-disable-next-line react-refresh/only-export-components */
 export function statusTextClass(status) {
   return {
     open: "status-text--open",

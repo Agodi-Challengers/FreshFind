@@ -112,6 +112,8 @@ export default function SearchBox({
   const flat = useMemo(() => groups.flatMap((g) => g.options), [groups]);
   const showPanel = open && flat.length > 0;
 
+  // Reset the highlighted suggestion whenever the query changes.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setActive(-1), [q]);
 
   useEffect(() => {

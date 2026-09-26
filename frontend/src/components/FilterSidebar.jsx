@@ -122,7 +122,7 @@ export default function FilterSidebar({
       </fieldset>
 
       <fieldset className="filters__group">
-        <legend>Day of the week</legend>
+        <legend>Days of The Week</legend>
         <div className="filters__days">
           {WEEK_ORDER.map((d) => (
             <button
@@ -155,7 +155,7 @@ export default function FilterSidebar({
       </fieldset>
 
       <fieldset className="filters__group">
-        <legend>Time of day</legend>
+        <legend>Time of Day</legend>
         <Check
           round
           name={`${idPrefix}-time`}
@@ -177,7 +177,7 @@ export default function FilterSidebar({
       </fieldset>
 
       <fieldset className="filters__group">
-        <legend>Produce category</legend>
+        <legend>Product Category</legend>
         {categories.map((c) => (
           <Check
             key={c.name}

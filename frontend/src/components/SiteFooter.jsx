@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom";
 import Logo from "./Logo.jsx";
-import Icon from "./Icon.jsx";
 import { useBookmarks } from "../context/BookmarksContext.jsx";
 
-/** Footer with site links, contact details and the simulated visitor counter. */
-export default function SiteFooter({ visitors }) {
+/** Footer with site links and contact details. */
+export default function SiteFooter() {
   const { items } = useBookmarks();
-  const digits = String(visitors).padStart(6, "0");
-  const counter = `${digits.slice(0, -3)},${digits.slice(-3)}`;
 
   return (
     <footer className="footer">
@@ -46,9 +43,7 @@ export default function SiteFooter({ visitors }) {
             © {new Date().getFullYear()} FreshFind. Market information is for
             guidance; always confirm hours with the market.
           </p>
-          <p>
-            Designed by Agodi Challengers
-          </p>
+          <p>Designed by Agodi Challengers</p>
         </div>
       </div>
     </footer>

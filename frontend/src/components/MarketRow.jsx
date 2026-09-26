@@ -5,7 +5,7 @@ import BookmarkButton from "./BookmarkButton.jsx";
 import { useData } from "../context/DataContext.jsx";
 import { scheduleLabel } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
-import { asset } from "../lib/assets.js";
+import { asset, googleDirections } from "../lib/assets.js";
 
 /** Result row on the Find a Market page. Selecting a row highlights its pin on the map. */
 export default function MarketRow({
@@ -46,32 +46,34 @@ export default function MarketRow({
           </h3>
           <StatusPill status={market.status} />
         </div>
-        <p className="icon-text muted">
-          <Icon name="map-pin" size={14} />
-          {market.street} · {formatKm(market.km)}
-        </p>
         <p className="icon-text market-row__hours">
           <Icon name="clock" size={14} />
           {scheduleLabel(market.schedule)}
         </p>
-        <p className={`status-text ${statusTextClass(market.status)}`}>
-          {market.status.label}
+        <p className="icon-text muted">
+          <Icon name="map-pin" size={14} />
+          {market.locality} · {formatKm(market.km)}
         </p>
-        <ul className="market-row__produce" aria-label="Typical produce">
-          {shown.map((id) => (
-            <li key={id} className="pill pill--soft">
-              {produceById[id]?.shortName || produceById[id]?.name || id}
-            </li>
-          ))}
-          {more > 0 && (
-            <li
-              className="pill pill--soft pill--muted"
-              aria-label={`and ${more} more`}
-            >
-              +{more}
-            </li>
-          )}
-        </ul>
+        {shown.length > 0 && (
+          <ul className="market-row__produce" aria-label="Typical produce">
+            {shown.map((id) => (
+              <li key={id} className="pill pill--soft">
+                {produceById[id]?.shortName || produceById[id]?.name || id}
+              </li>
+            ))}
+            {more > 0 && (
+              <li
+                className="pill pill--soft pill--muted"
+                aria-label={`and ${more} more`}
+              >
+                +{more}
+              </li>
+            )}
+          </ul>
+        )}
+        <span className={`status-text ${statusTextClass(market.status)}`}>
+          {market.status.label}
+        </span>
       </div>
       <div className="market-row__side">
         <BookmarkButton
@@ -80,14 +82,19 @@ export default function MarketRow({
           name={market.name}
           variant="outline"
         />
-        <button
-          type="button"
-          className="market-row__locate"
-          onClick={() => onSelect?.(market.id)}
+        <a
+          className="market-row__action"
+          href={googleDirections(market)}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <Icon name="map-pin" size={14} />
-          <span className="visually-hidden">Show {market.name} on the map</span>
-        </button>
+          <Icon name="navigation" size={15} />
+          Directions
+        </a>
+        <Link className="market-row__action" to={`/markets/${market.id}`}>
+          Details
+          <Icon name="arrow-right" size={15} />
+        </Link>
       </div>
     </article>
   );

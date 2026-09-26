@@ -2,7 +2,6 @@
 
 .icon {
   flex: none;
-  
 }
 
 .icon-text {
@@ -286,9 +285,12 @@
   cursor: pointer;
 }
 
+/* Selected row matches the Figma card hover state */
 .market-row.is-selected {
-  border-color: var(--orange);
-  box-shadow: 0 0 0 1px var(--orange);
+  border-color: var(--green-600);
+  box-shadow:
+    0 0 0 0.5px var(--green-600),
+    var(--shadow-hover);
 }
 
 .market-row__thumb {
@@ -355,8 +357,34 @@
   gap: 8px;
 }
 
-.market-row__locate {
-  display: none;
+.market-row__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--r-pill);
+  background: #fff;
+  color: var(--green-ink);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color 0.18s var(--ease),
+    background-color 0.18s var(--ease),
+    color 0.18s var(--ease);
+}
+
+.market-row__action:hover {
+  border-color: var(--green-600);
+  background: var(--green-tint);
+  color: var(--green-ink);
+}
+
+.market-row__action .icon {
+  color: var(--green);
 }
 
 /* ---------- Floating panel (dropdowns, search suggestions) ---------- */
@@ -907,7 +935,10 @@
   font-weight: 500;
   color: var(--ink);
   cursor: pointer;
-  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .pagination__btn:hover:not(:disabled) {
@@ -939,4 +970,56 @@
 .pagination__gap {
   padding-inline: 4px;
   color: var(--muted);
+}
+
+/* ---------- Shared filter chips + text buttons (Directory and Find a Market) ---------- */
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 11px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--green-100);
+  color: var(--green);
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.filter-chip:hover {
+  background: #d4e8cc;
+}
+
+.filter-chip--dark {
+  padding: 6px 12px;
+  background: var(--green);
+  color: #fff;
+  font-size: 13px;
+  line-height: 17px;
+}
+
+.filter-chip--dark:hover {
+  background: var(--green-hover);
+}
+
+.text-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--green-600);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.text-btn:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.text-btn--accent {
+  color: var(--orange);
+  font-size: 13px;
 }

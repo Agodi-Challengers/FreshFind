@@ -10,9 +10,7 @@ import logoLight from "../assets/ChatGPT Image Sep 23, 2026, 11_31_21 PM 1.png";
  */
 export default function Logo({
   variant = "dark",
-  tagline = true,
   compact = false,
-  size,
   to = "/",
   onClick,
 }) {

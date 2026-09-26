@@ -17,29 +17,29 @@ const TEAM = [
     github: "https://github.com/",
   },
   {
-    name: "Chiamaka Nwosu",
+    name: "Ziora Iwuji",
     role: "Frontend Developer",
     photo: "/images/site/team-member.jpg",
     linkedin: "https://www.linkedin.com/",
     github: "https://github.com/",
   },
   {
-    name: "Ibrahim Musa",
+    name: "Aishat Lawal",
     role: "Frontend Developer",
     photo: "/images/site/team-member.jpg",
     linkedin: "https://www.linkedin.com/",
     github: "https://github.com/",
   },
   {
-    name: "Temitope Adeyemi",
-    role: "UI/UX Designer",
+    name: "Treasure Amao",
+    role: "Frontend Developer",
     photo: "/images/site/team-member.jpg",
     linkedin: "https://www.linkedin.com/",
     github: "https://github.com/",
   },
   {
-    name: "Emeka Okonkwo",
-    role: "Data & Content",
+    name: "Omisakin Olawole",
+    role: "Product Designer ",
     photo: "/images/site/team-member.jpg",
     linkedin: "https://www.linkedin.com/",
     github: "https://github.com/",
@@ -49,7 +49,9 @@ const TEAM = [
 export default function AboutPage() {
   return (
     <div className="about">
-      <PageBanner crumbs={[{ label: "Home", to: "/" }, { label: "About us" }]} />
+      <PageBanner
+        crumbs={[{ label: "Home", to: "/" }, { label: "About us" }]}
+      />
 
       {/* Our story */}
       <section className="container about__hero">
@@ -72,7 +74,10 @@ export default function AboutPage() {
       </section>
 
       {/* What we believe */}
-      <section className="container about__believe" aria-labelledby="believe-title">
+      <section
+        className="container about__believe"
+        aria-labelledby="believe-title"
+      >
         <img
           className="about__believe-img"
           src={asset("/images/site/about-believe.jpg")}

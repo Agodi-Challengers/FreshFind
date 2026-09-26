@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb.jsx";
+import { Link, useSearchParams } from "react-router-dom";
+import PageBanner from "../components/PageBanner.jsx";
 import Icon from "../components/Icon.jsx";
 import Dropdown from "../components/Dropdown.jsx";
 import SearchBox from "../components/SearchBox.jsx";
 import MarketCard from "../components/MarketCard.jsx";
+import Pagination from "../components/Pagination.jsx";
 import FilterSidebar from "../components/FilterSidebar.jsx";
 import { useData } from "../context/DataContext.jsx";
 import { useNow } from "../context/ClockContext.jsx";
@@ -20,14 +21,10 @@ import {
   EMPTY_FILTERS,
   SORTS,
 } from "../lib/filters.js";
-import {
-  areaDropdown,
-  dayDropdown,
-  timeDropdown,
-  produceDropdown,
-  sortDropdown,
-} from "../lib/quickFilters.js";
+import { sortDropdown } from "../lib/quickFilters.js";
 import "./DirectoryPage.css";
+
+const PAGE_SIZE = 9; // 3 columns x 3 rows, as in the design
 
 export default function DirectoryPage() {
   const data = useData();
@@ -36,6 +33,9 @@ export default function DirectoryPage() {
   const markets = useDecoratedMarkets();
   const [filters, setFilters] = useUrlFilters();
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [params, setParams] = useSearchParams();
+
+  const page = Math.max(1, Number(params.get("page")) || 1);
 
   const results = useMemo(
     () =>
@@ -49,11 +49,22 @@ export default function DirectoryPage() {
   const chips = activeFilterChips(filters, now);
   const query = filtersToParams({ ...filters, sort: "nearest" }).toString();
 
-  const area = areaDropdown(filters, { ...data, markets });
-  const day = dayDropdown(filters, now);
-  const time = timeDropdown(filters, markets);
-  const cat = produceDropdown(filters, { ...data, markets });
   const sort = sortDropdown(filters);
+
+  // Pagination: 9 cards per page. Any filter change drops "page" and goes back to 1.
+  const pageCount = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
+  const currentPage = Math.min(page, pageCount);
+  const pageItems = results.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE,
+  );
+
+  const goToPage = (n) => {
+    const next = filtersToParams(filters);
+    if (n > 1) next.set("page", String(n));
+    setParams(next, { replace: true });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     if (!sheetOpen) return undefined;
@@ -76,11 +87,9 @@ export default function DirectoryPage() {
 
   return (
     <div className="directory">
-      <header className="container_page-header">
-        <Breadcrumb
-          items={[{ label: "Home", to: "/" }, { label: "Market Directory" }]}
-        />
-      </header>
+      <PageBanner
+        crumbs={[{ label: "Home", to: "/" }, { label: "Market Directory" }]}
+      />
 
       <div className="container directory__body">
         <aside className="directory__sidebar card" aria-label="Filters">
@@ -137,40 +146,7 @@ export default function DirectoryPage() {
             </div>
           </div>
 
-          <div className="directory__quick">
-            <span className="directory__quick-label">Quick filters</span>
-            <Dropdown
-              icon="map-pin"
-              label="Area"
-              value={area.value}
-              options={area.options}
-              onChange={(v) => setFilters({ ...filters, areas: area.apply(v) })}
-            />
-            <Dropdown
-              icon="calendar"
-              label="Day"
-              value={day.value}
-              options={day.options}
-              onChange={(v) => setFilters({ ...filters, days: day.apply(v) })}
-            />
-            <Dropdown
-              icon="clock"
-              label="Time"
-              value={time.value}
-              options={time.options}
-              onChange={(v) => setFilters({ ...filters, time: time.apply(v) })}
-              panelWidth={300}
-            />
-            <Dropdown
-              icon="carrot"
-              label="Produce"
-              value={cat.value}
-              options={cat.options}
-              onChange={(v) => setFilters({ ...filters, cats: cat.apply(v) })}
-              align="right"
-            />
-          </div>
-
+          {/* Mobile only: opens the filters as a bottom sheet */}
           <button
             type="button"
             className="btn btn--primary directory__filters-btn"
@@ -213,11 +189,19 @@ export default function DirectoryPage() {
           </div>
 
           {results.length ? (
-            <div className="directory__grid">
-              {results.map((m) => (
-                <MarketCard key={m.id} market={m} />
-              ))}
-            </div>
+            <>
+              <div className="directory__grid">
+                {pageItems.map((m) => (
+                  <MarketCard key={m.id} market={m} showDescription />
+                ))}
+              </div>
+              <Pagination
+                page={currentPage}
+                pageCount={pageCount}
+                onChange={goToPage}
+                label="Directory pages"
+              />
+            </>
           ) : (
             <div className="empty">
               <strong>No markets match these filters</strong>

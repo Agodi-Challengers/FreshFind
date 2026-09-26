@@ -1,5 +1,3 @@
-
-
 export function readJSON(storage, key, fallback) {
   try {
     const raw = storage?.getItem(key);
@@ -13,7 +11,7 @@ export function writeJSON(storage, key, value) {
   try {
     storage?.setItem(key, JSON.stringify(value));
   } catch {
- 
+    // Storage can be full or blocked (for example in private mode), so ignore.
   }
 }
 
