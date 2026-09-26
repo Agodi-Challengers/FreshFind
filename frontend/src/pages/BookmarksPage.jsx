@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb.jsx";
+import PageBanner from "../components/PageBanner.jsx";
 import Icon from "../components/Icon.jsx";
 import StatusPill from "../components/StatusPill.jsx";
 import { useData } from "../context/DataContext.jsx";
@@ -31,7 +31,7 @@ function SavedItem({ item, market, produce, count }) {
           <div className="saved__title">
             <div className="saved__tags">
               <span
-                className={`pill ${isMarket ? "pill--green" : "pill--yellow"} saved__type`}
+                className={`pill ${isMarket ? "pill--green" : "pill--produce"} saved__type`}
               >
                 {isMarket ? "Market" : "Produce"}
               </span>
@@ -40,11 +40,20 @@ function SavedItem({ item, market, produce, count }) {
             <h2>
               <Link to={to}>{name}</Link>
             </h2>
-            <p>
-              {isMarket
-                ? `${scheduleLabel(market.schedule)} · ${market.area}`
-                : `In season ${seasonRange(produce.season)} · at ${count} markets`}
-            </p>
+            {isMarket ? (
+              <p className="saved__meta">
+                <Icon name="calendar-days" size={14} />
+                {scheduleLabel(market.schedule)} · {market.area}
+              </p>
+            ) : (
+              <p className="saved__meta">
+                In season {seasonRange(produce.season)}
+                <span className="saved__count">
+                  <Icon name="store" size={14} />
+                  At {count} markets
+                </span>
+              </p>
+            )}
           </div>
           <div className="saved__icons">
             <button
@@ -57,7 +66,7 @@ function SavedItem({ item, market, produce, count }) {
             </button>
             <button
               type="button"
-              className="icon-btn" id="remove-btn"
+              className="icon-btn icon-btn--danger"
               aria-label={`Remove ${name}`}
               onClick={() => {
                 remove(item.type, item.id);
@@ -104,8 +113,10 @@ export default function BookmarksPage() {
       tab === "all" ||
       (tab === "markets" ? i.type === "market" : i.type === "produce"),
   );
-  const nMarkets = valid.filter((i) => i.type === "market").length;
-  const nProduce = valid.length - nMarkets;
+  const savedMarkets = valid.filter((i) => i.type === "market");
+  const savedProduce = valid.filter((i) => i.type === "produce");
+  const nMarkets = savedMarkets.length;
+  const nProduce = savedProduce.length;
 
   const text = buildList(valid, data);
   const siteUrl = `${window.location.origin}${import.meta.env.BASE_URL}`;
@@ -122,10 +133,7 @@ export default function BookmarksPage() {
 
   return (
     <div className="bookmarks">
-      <header className="container_page-header">
-        <Breadcrumb className="path" items={[{ label: "Home", to: "/" }, { label: "Saved" }]} />
-      </header>
-
+      <PageBanner crumbs={[{ label: "Home", to: "/" }, { label: "Saved" }]} />
 
       <div className="container bookmarks__body">
         <section aria-label="Saved items" className="bookmarks__list">
@@ -136,7 +144,7 @@ export default function BookmarksPage() {
               aria-pressed={tab === "all"}
               onClick={() => setTab("all")}
             >
-              All · {valid.length}
+              All <span className="chip__count">{valid.length}</span>
             </button>
             <button
               type="button"
@@ -144,7 +152,7 @@ export default function BookmarksPage() {
               aria-pressed={tab === "markets"}
               onClick={() => setTab("markets")}
             >
-              Markets · {nMarkets}
+              Markets <span className="chip__count">{nMarkets}</span>
             </button>
             <button
               type="button"
@@ -152,7 +160,7 @@ export default function BookmarksPage() {
               aria-pressed={tab === "produce"}
               onClick={() => setTab("produce")}
             >
-              Produce · {nProduce}
+              Produce <span className="chip__count">{nProduce}</span>
             </button>
           </div>
 
@@ -192,17 +200,53 @@ export default function BookmarksPage() {
         >
           <h2 id="export-title">Export &amp; share</h2>
           <p className="muted">Preview of your formatted list</p>
-          <pre
-            className="bookmarks__preview"
-            tabIndex={0}
-            aria-label="List preview"
-          >
-            {text}
-          </pre>
+          <div className="bookmarks__preview" tabIndex={0} aria-label="List preview">
+            {savedMarkets.length === 0 && savedProduce.length === 0 && (
+              <p className="bookmarks__preview-empty">Nothing saved yet.</p>
+            )}
+            {savedMarkets.length > 0 && (
+              <>
+                <h3>My market lists</h3>
+                <ul>
+                  {savedMarkets.map((i) => {
+                    const m = decoratedById[i.id];
+                    return (
+                      <li key={i.id}>
+                        <span>
+                          <strong>{m.name}</strong>
+                          {i.note.trim() && <small>Note: {i.note.trim()}</small>}
+                        </span>
+                        <span>({scheduleLabel(m.schedule)})</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            )}
+            {savedProduce.length > 0 && (
+              <>
+                <h3>My produce</h3>
+                <ul>
+                  {savedProduce.map((i) => {
+                    const p = data.produceById[i.id];
+                    return (
+                      <li key={i.id}>
+                        <span>
+                          <strong>{p.name}</strong>
+                          {i.note.trim() && <small>Note: {i.note.trim()}</small>}
+                        </span>
+                        <span>({seasonRange(p.season)})</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            )}
+          </div>
           <div className="bookmarks__export-btns">
             <button
               type="button"
-              className="btn btn--primary"
+              className="btn bookmarks__download"
               onClick={() => downloadText(text, "freshfind-market-list.txt")}
               disabled={!valid.length}
             >
