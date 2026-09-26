@@ -3,6 +3,11 @@ import PageBanner from "../components/PageBanner.jsx";
 import Icon from "../components/Icon.jsx";
 import { asset } from "../lib/assets.js";
 import "./AboutPage.css";
+import Paul from "../assets/Paul.png";
+import Ziora from "../assets/Ziora.png";
+import Aishat from "../assets/Aishat.png";
+import Treasure from "../assets/Treasure.png";
+import Omisakin from "../assets/Wole.png";
 
 // The three things we care about (Figma "What we believe" checklist)
 const BELIEFS = ["Local first", "Accurate listings", "Easy for everyone"];
@@ -11,35 +16,35 @@ const BELIEFS = ["Local first", "Accurate listings", "Easy for everyone"];
 const TEAM = [
   {
     name: "Paul Ademola",
-    role: "Product Designer / Team Leader",
-    photo: "/images/site/team-member.jpg",
+    role: "Product Design (UI/UX) / Team Leader",
+    photo: Paul,
     linkedin: "https://www.linkedin.com/in/paul-ademola-68697226b",
     github: "https://github.com/paulademolaa",
   },
   {
     name: "Ziora Iwuji",
     role: "Frontend Developer",
-    photo: "/images/site/team-member.jpg",
-    github: "Https://github.com/ziora-lawrence",
+    photo: Ziora,
+    github: "https://github.com/ziora-lawrence",
   },
   {
     name: "Aishat Lawal",
     role: "Frontend Developer",
-    photo: "/images/site/team-member.jpg",
+    photo: Aishat,
     linkedin: "https://www.linkedin.com/in/aishat-lawal-4252b13b0",
     github: "https://github.com/anikemide0902-rgb",
   },
   {
     name: "Treasure Amao",
     role: "Frontend Developer",
-    photo: "/images/site/team-member.jpg",
+    photo: Treasure,
     linkedin: "https://www.linkedin.com/in/treasure-amao-021b73418",
     github: "https://github.com/temzycodes",
   },
   {
     name: "Omisakin Olawole",
-    role: "Product Designer ",
-    photo: "/images/site/team-member.jpg",
+    role: "Product Design (UI/UX)",
+    photo: Omisakin,
     linkedin: "https://www.linkedin.com/in/olawole-omisakin-670a16291",
     github: "https://github.com/",
   },

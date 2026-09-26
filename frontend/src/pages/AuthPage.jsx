@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../components/Logo.jsx";
 import Icon from "../components/Icon.jsx";
 import { useData } from "../context/DataContext.jsx";
 import { useToast } from "../context/ToastContext.jsx";
@@ -47,9 +46,6 @@ export default function AuthPage({ mode }) {
     <div className="auth">
       <div className="auth__photo">
         <img src={asset("/images/site/auth.webp")} alt="" />
-        <div className="auth__photo-top">
-          <Logo variant="light" />
-        </div>
         <div className="auth__quote">
           <p>
             Plan your market day in minutes. See who’s open, what’s in season,
