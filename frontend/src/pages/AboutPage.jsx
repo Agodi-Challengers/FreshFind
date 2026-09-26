@@ -4,10 +4,10 @@ import Icon from "../components/Icon.jsx";
 import { asset } from "../lib/assets.js";
 import "./AboutPage.css";
 import Paul from "../assets/Paul.png";
-import Ziora from "../assets/ziora.png";
-import Aishat from "../assets/aishat.png";
-import Treasure from "../assets/treasure.png";
-import Omisakin from "../assets/wole.png";
+import Ziora from "../assets/Ziora.png";
+import Aishat from "../assets/Aishat.png";
+import Treasure from "../assets/Treasure.png";
+import Omisakin from "../assets/Wole.png";
 
 // The three things we care about (Figma "What we believe" checklist)
 const BELIEFS = ["Local first", "Accurate listings", "Easy for everyone"];
