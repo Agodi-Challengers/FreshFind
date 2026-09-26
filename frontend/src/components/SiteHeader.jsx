@@ -82,10 +82,10 @@ export default function SiteHeader() {
           </nav>
           <div className="navbar__actions">
             <SavedButton />
-            <Link to="/login" className="btn btn--ghost navbar__login">
+            <Link className="btn btn--ghost navbar__login">
               Log in
             </Link>
-            <Link to="/signup" id="signBtn" className="btn btn--primary">
+            <Link id="signBtn" className="btn btn--primary">
               Sign up
             </Link>
           </div>
