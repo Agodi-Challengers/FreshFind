@@ -31,7 +31,7 @@ export default function LagosMap({ markets, selectedId, hoverId, onSelect }) {
   // keep the selected pin in view when zoomed in
   useEffect(() => {
     const vp = viewportRef.current;
-    if (!vp || !selected || zoom === 0) return;
+    if (!vp || !selected) return;
     const scale = vp.scrollWidth / W;
     vp.scrollTo({
       left: selected.map.x * scale - vp.clientWidth / 2,
