@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb.jsx";
+import PageBanner from "../components/PageBanner.jsx";
+import Pagination from "../components/Pagination.jsx";
 import Icon from "../components/Icon.jsx";
 import Dropdown from "../components/Dropdown.jsx";
 import ProduceCard from "../components/ProduceCard.jsx";
@@ -14,6 +15,8 @@ const SEASONS = [
   { value: "now", label: "In season now" },
   { value: "out", label: "Out of season" },
 ];
+
+const PAGE_SIZE = 8; // 2 rows of 4 cards, as in the design
 
 const clean = (s) =>
   s
@@ -30,14 +33,17 @@ export default function ProduceGuidePage() {
   const season = SEASONS.some((s) => s.value === params.get("season"))
     ? params.get("season")
     : "now";
+  const page = Math.max(1, Number(params.get("page")) || 1);
 
   const update = (patch) => {
     const next = new URLSearchParams(params);
     for (const [k, v] of Object.entries(patch)) {
-      if (!v || (k === "cat" && v === "All") || (k === "season" && v === "now"))
+      if (!v || (k === "cat" && v === "All") || (k === "season" && v === "now") || (k === "page" && v === 1))
         next.delete(k);
       else next.set(k, v);
     }
+    // Changing a filter goes back to page 1
+    if (!("page" in patch)) next.delete("page");
     setParams(next, { replace: true });
   };
 
@@ -62,23 +68,26 @@ export default function ProduceGuidePage() {
     [produce, cat, q, season, now.month],
   );
 
+  const pageCount = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+  const currentPage = Math.min(page, pageCount);
+  const pageItems = items.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  const goToPage = (n) => {
+    update({ page: n });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const count = (c) =>
     produce.filter((p) => (c === "All" || p.category === c) && bySeason(p))
       .length;
 
   return (
     <div className="guide">
-      <header className="container_page-header">
-        <Breadcrumb
-          items={[{ label: "Home", to: "/" }, { label: "Produce Guide" }]}
-        />
-        <div className="page-header__copy">
-          <h1 className="page-title">Fresh & In Season</h1>
-          <p className="lead">
-            Find the best months to buy seasonal produce and discover the Lagos markets where they’re available.
-          </p>
-        </div>
-      </header>
+      <PageBanner
+        crumbs={[{ label: "Home", to: "/" }, { label: "Produce Guide" }]}
+        title="Fresh & In Season"
+        text="Find the best months to buy seasonal produce and discover the Lagos markets where they’re available."
+      />
 
       <div className="container guide__toolbar">
         <div className="guide__tabs" role="group" aria-label="Category">
@@ -88,7 +97,6 @@ export default function ProduceGuidePage() {
             aria-pressed={cat === "All"}
             onClick={() => update({ cat: "All" })}
           >
-            <Icon name="sparkles" size={15} />
             All <span className="guide__tab-count">{count("All")}</span>
           </button>
           {categories.map((c) => (
@@ -99,7 +107,6 @@ export default function ProduceGuidePage() {
               aria-pressed={cat === c.name}
               onClick={() => update({ cat: c.name })}
             >
-              <Icon name={c.icon} size={15} />
               {c.name} <span className="guide__tab-count">{count(c.name)}</span>
             </button>
           ))}
@@ -134,11 +141,19 @@ export default function ProduceGuidePage() {
         aria-label="Produce"
       >
         {items.length ? (
+          <>
           <div className="grid grid--4">
-            {items.map((p) => (
+            {pageItems.map((p) => (
               <ProduceCard key={p.id} item={p} />
             ))}
           </div>
+          <Pagination
+            page={currentPage}
+            pageCount={pageCount}
+            onChange={goToPage}
+            label="Produce pages"
+          />
+          </>
         ) : (
           <div className="empty">
             <strong>Nothing matches</strong>

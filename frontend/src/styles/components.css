@@ -761,14 +761,15 @@
   line-height: 14px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--danger);
 }
 
 .produce-card__name {
   margin: 0;
   font-family: var(--font);
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--green-hard);
   line-height: 23px;
 }
 
@@ -881,4 +882,61 @@
     flex: 0 0 270px;
     scroll-snap-align: start;
   }
+}
+
+/* ---------- Pagination (Figma: < 1 2 3 4 … >) ---------- */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 32px;
+}
+
+.pagination__btn {
+  display: inline-grid;
+  place-items: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.pagination__btn:hover:not(:disabled) {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.pagination__btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.pagination__btn[aria-current="page"] {
+  border-color: var(--green);
+  border-radius: 8px;
+  background: var(--green);
+  color: #fff;
+}
+
+.pagination__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination__prev {
+  transform: rotate(180deg);
+}
+
+.pagination__gap {
+  padding-inline: 4px;
+  color: var(--muted);
 }
