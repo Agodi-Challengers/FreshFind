@@ -142,7 +142,7 @@
 .team-card {
   width: 312px;
   overflow: hidden;
-  text-align: left;
+  text-align: center;
   background: #fff;
   border: 1px solid var(--card-border);
   border-radius: 8px;
