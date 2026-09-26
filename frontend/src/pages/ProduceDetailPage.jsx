@@ -85,7 +85,7 @@ export default function ProduceDetailPage() {
           Where to buy {item.shortName || item.name} ({sellers.length})
         </h2>
         {sellers.length ? (
-          <div className="produce-detail__rows">
+          <div className="produce-detail__rows" style={{ marginTop: "40px" }}>
             {sellers.map((m) => (
               <MarketRow key={m.id} market={m} />
             ))}

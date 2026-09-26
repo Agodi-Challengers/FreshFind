@@ -28,7 +28,7 @@ export default function SiteFooter() {
             <h2>FreshFind</h2>
             <Link to="/about">About us</Link>
             <Link to="/contact">Contact us</Link>
-            <Link to="/contact?topic=add">List your market</Link>
+            {/* <Link to="/contact?topic=add">List your market</Link> */}
             <Link to="/saved">Saved ({items.length})</Link>
           </nav>
           <div className="footer__col">

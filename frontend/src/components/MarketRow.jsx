@@ -5,17 +5,22 @@ import BookmarkButton from "./BookmarkButton.jsx";
 import { useData } from "../context/DataContext.jsx";
 import { scheduleLabel } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
-import { asset, googleDirections } from "../lib/assets.js";
+import { asset } from "../lib/assets.js";
 
-/** Result row on the Find a Market page. Selecting a row highlights its pin on the map. */
+/**
+ * Result row on the Find a Market page. Selecting a row highlights its pin on the map.
+ * `showStatusText` controls the "Open until …" / "Opens Tomorrow …" line; the Find
+ * page hides it because the schedule is already conveyed by the hours row and the pill.
+ */
 export default function MarketRow({
   market,
   selected = false,
+  showStatusText = true,
   onSelect,
   onHover,
 }) {
   const { produceById } = useData();
-  const shown = market.produce.slice(0, 4);
+  const shown = market.produce.slice(0, 3);
   const more = market.produce.length - shown.length;
 
   const handleClick = (e) => {
@@ -71,9 +76,11 @@ export default function MarketRow({
             )}
           </ul>
         )}
-        <span className={`status-text ${statusTextClass(market.status)}`}>
-          {market.status.label}
-        </span>
+        {showStatusText && (
+          <span className={`status-text ${statusTextClass(market.status)}`}>
+            {market.status.label}
+          </span>
+        )}
       </div>
       <div className="market-row__side">
         <BookmarkButton
@@ -82,19 +89,6 @@ export default function MarketRow({
           name={market.name}
           variant="outline"
         />
-        <a
-          className="market-row__action"
-          href={googleDirections(market)}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="navigation" size={15} />
-          Directions
-        </a>
-        <Link className="market-row__action" to={`/markets/${market.id}`}>
-          Details
-          <Icon name="arrow-right" size={15} />
-        </Link>
       </div>
     </article>
   );

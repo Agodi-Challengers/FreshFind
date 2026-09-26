@@ -11,9 +11,9 @@ export default function CtaBanner() {
           you’re open and what you’re selling.
         </p>
         <div className="cta-banner__buttons">
-          <Link to="/contact?topic=add" className="btn btn--outline btn--lg">
+          {/* <Link to="/contact?topic=add" className="btn btn--outline btn--lg">
             List your market
-          </Link>
+          </Link> */}
           <Link to="/contact" className="btn btn--outline-light btn--lg">
             Contact us
           </Link>

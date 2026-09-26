@@ -214,8 +214,4 @@
   .find__sort {
     width: 100%;
   }
-
-  .find .market-row {
-    align-items: flex-start;
-  }
 }

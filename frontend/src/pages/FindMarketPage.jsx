@@ -218,6 +218,7 @@ export default function FindMarketPage() {
                   key={m.id}
                   market={m}
                   selected={m.id === selectedId}
+                  showStatusText={false}
                   onSelect={setSelectedId}
                   onHover={setHoverId}
                 />

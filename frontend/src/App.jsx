@@ -54,7 +54,7 @@ function SiteLayout() {
       </main>
       <CtaBanner />
       <SiteFooter visitors={visitors} />
-      <BottomTabBar />
+      {/* <BottomTabBar />/ */}
       <ChatLauncher />
     </>
   );
