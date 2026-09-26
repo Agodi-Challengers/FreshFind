@@ -41,6 +41,17 @@
   padding: 0;
   list-style: none;
 }
+.container_page-header{
+  background-image: url("images/markets/Breadcrumbs.png");
+  background-position: center;
+  background-size: cover;
+  min-height: 200px;
+  margin-bottom: 20px;
+  padding: 50px;
+}
+#export-title{
+  color: #1B221C;
+}
 
 .saved {
   display: flex;
@@ -194,7 +205,7 @@
   padding: 18px;
   overflow: auto;
   border-radius: 16px;
-  background: var(--cream);
+  background: #EDF0EB;
   font-family: var(--font);
   font-size: 12px;
   line-height: 2;

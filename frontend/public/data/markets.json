@@ -42,8 +42,8 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0100",
       "images": {
-        "card": "/images/markets/lekki-sunday-card.png",
-        "row": "/images/markets/lekki-sunday-row.png",
+        "card": "/images/markets/thumbnail2.png",
+        "row": "/images/markets/thumbnail2.png",
         "popup": "/images/markets/lekki-sunday-popup.png",
         "gallery": [
           "/images/markets/lekki-sunday-gallery-1.png",
@@ -74,7 +74,7 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0104",
       "images": {
-        "card": "/images/markets/ikoyi-farm-table-card.png",
+        "card": "/images/markets/thumbnail3.png",
         "row": "/images/markets/ikoyi-farm-table-row.png",
         "popup": "/images/markets/ikoyi-farm-table-popup.png",
         "gallery": [
@@ -106,7 +106,7 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0106",
       "images": {
-        "card": "/images/markets/vi-weekend-card.png",
+        "card": "/images/markets/thumbnail4.png",
         "row": "/images/markets/vi-weekend-row.png",
         "popup": "/images/markets/vi-weekend-popup.png",
         "gallery": [
@@ -138,7 +138,7 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0113",
       "images": {
-        "card": "/images/markets/chevron-drive-card.png",
+        "card": "/images/markets/thumbnail5.png",
         "row": "/images/markets/chevron-drive-row.png",
         "popup": "/images/markets/chevron-drive-popup.png",
         "gallery": [
@@ -170,7 +170,7 @@
       "prices": "Retail prices",
       "phone": "+234 800 000 0101",
       "images": {
-        "card": "/images/markets/yaba-green-card.webp",
+        "card": "/images/markets/thumbnail6.png",
         "row": "/images/markets/yaba-green-row.png",
         "popup": "/images/markets/yaba-green-popup.png",
         "gallery": [

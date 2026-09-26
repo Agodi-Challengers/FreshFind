@@ -2,7 +2,9 @@
 
 .seasonal__hero {
   padding: 40px 0 48px;
-  background: var(--green);
+  background-image: url("../../public/images/markets/Breadcrumbs.png");
+  background-size: cover;
+  background-position: center;
   color: #fff;
 }
 
@@ -58,7 +60,7 @@
   padding: 10px 0;
   border: 0;
   border-radius: 12px;
-  background: var(--green-700);
+  background: #5E6B5F;
   color: var(--green-200);
   font-size: 14px;
   font-weight: 500;
@@ -72,14 +74,22 @@
 }
 
 .seasonal__months button[aria-pressed="true"] {
-  background: var(--yellow);
-  color: var(--ink);
+  background: #00B207;
+  color: white;
   font-weight: 700;
 }
 
 .seasonal__h2 {
-  font-size: 30px;
+  font-size: 40px;
   line-height: 37px;
+  margin-bottom: 24px;
+  color: #f8f3f3;
+}
+#best-title{
+  color: #1B221C;
+}
+.link-arrow{
+  color: #1F4D2B;
 }
 
 .seasonal__peak {
@@ -87,9 +97,6 @@
   padding-bottom: 32px;
 }
 
-.seasonal__peak .seasonal__h2 {
-  margin-bottom: 24px;
-}
 
 .seasonal__peak-row {
   display: grid;
@@ -102,7 +109,6 @@
   min-height: 440px;
   overflow: hidden;
   border-radius: var(--r-2xl);
-  background: var(--green);
 }
 
 .seasonal__feature > img {

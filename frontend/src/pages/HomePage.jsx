@@ -16,7 +16,7 @@ import { DAY_KEYS, DAY_LONG } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
 import { asset } from "../lib/assets.js";
 import "./HomePage.css";
-import line from "../assets/line.png"
+import line from "../assets/Line.png"
 import  "./DirectoryPage.jsx"
 
 const WEEKEND = ["sat", "sun"];

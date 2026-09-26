@@ -102,21 +102,10 @@ export default function SeasonalPage() {
             items={[{ label: "Home", to: "/" }, { label: "Seasonal" }]}
             light
           />
-          <div className="seasonal__hero-row">
-            <div className="seasonal__hero-copy">
-              <span className="eyebrow eyebrow--yellow">
-                Fresh right now · Lagos
-              </span>
-              <h1>What’s in season in {monthName}</h1>
-              <p>{months[m].intro}</p>
-            </div>
-            {m === now.month && (
-              <span className="seasonal__week">
-                <Icon name="sun" size={18} />
-                {weekLabel(now)}
-              </span>
-            )}
-          </div>
+           <h2 id="peak-title" className="seasonal__h2">
+          Peak this month
+          </h2>
+          
           <div
             className="seasonal__months"
             role="group"
@@ -146,14 +135,11 @@ export default function SeasonalPage() {
         className="container seasonal__peak"
         aria-labelledby="peak-title"
       >
-        <h2 id="peak-title" className="seasonal__h2">
-          Peak this month
-        </h2>
         <div className="seasonal__peak-row">
           {pick && (
             <div className="seasonal__feature">
               <img
-                src={asset(pick.pick?.image || pick.photo || pick.image)}
+                src="/images/markets/ugwu.png"
                 alt=""
               />
               <div className="seasonal__feature-copy">
@@ -208,39 +194,12 @@ export default function SeasonalPage() {
       </section>
 
       <section
-        className="container seasonal__lists"
-        aria-label="Arriving and ending"
-      >
-        <div className="seasonal__list seasonal__list--green">
-          <h2>
-            <span aria-hidden="true">
-              <Icon name="trending-up" size={18} />
-            </span>
-            Just arriving
-          </h2>
-          <ItemList items={arriving} empty="Nothing new arriving this month." />
-        </div>
-        <div className="seasonal__list seasonal__list--orange">
-          <h2>
-            <span aria-hidden="true">
-              <Icon name="hourglass" size={18} />
-            </span>
-            Ending soon
-          </h2>
-          <ItemList
-            items={ending}
-            empty="Nothing is going out of season this month."
-          />
-        </div>
-      </section>
-
-      <section
         className="container seasonal__best"
         aria-labelledby="best-title"
       >
         <div className="detail__nearby-head">
           <h2 id="best-title" className="seasonal__h2">
-            Best markets for seasonal picks this weekend
+            Top Markets for Seasonal Picks
           </h2>
           <Link to="/directory?day=sat,sun" className="link-arrow">
             Open directory →
