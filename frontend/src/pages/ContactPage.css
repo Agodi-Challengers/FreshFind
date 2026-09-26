@@ -2,10 +2,15 @@
 
 .contact__body {
   display: grid;
-  grid-template-columns: minmax(0, 788fr) minmax(0, 460fr);
+  grid-template-columns: minmax(0, 460fr) minmax(0, 788fr);
   align-items: start;
   gap: 32px;
-  padding-bottom: 96px;
+  padding-block: 40px 96px;
+}
+
+/* Figma puts the map card on the left and the form on the right */
+.contact__side {
+  order: -1;
 }
 
 .contact__form {
@@ -13,7 +18,7 @@
   flex-direction: column;
   gap: 18px;
   padding: 32px;
-  border-radius: var(--r-2xl);
+  border-radius: 8px;
 }
 
 .contact__form h2 {
@@ -46,9 +51,9 @@
 .field textarea {
   width: 100%;
   padding: 14px 16px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--cream);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: #fff;
   font-size: 14px;
   color: var(--ink);
   transition:
@@ -58,7 +63,7 @@
 
 .field input:hover,
 .field textarea:hover {
-  border-color: var(--placeholder);
+  border-color: #9aa39b;
 }
 
 .field input:focus,
@@ -124,7 +129,7 @@
 
 .contact__map {
   overflow: hidden;
-  border-radius: var(--r-2xl);
+  border-radius: 8px;
 }
 
 .contact__map-frame {
@@ -175,8 +180,8 @@
   width: 100%;
   padding: 20px;
   border: 0;
-  border-radius: var(--r-xl);
-  background: var(--green);
+  border-radius: 8px;
+  background: var(--green-deep);
   color: #fff;
   text-align: left;
   cursor: pointer;
@@ -185,8 +190,13 @@
     transform 0.18s var(--ease);
 }
 
+.contact__faq:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
 .contact__faq:hover {
-  background: var(--green-hover);
+  background: #193f23;
   transform: translateY(-2px);
 }
 
@@ -212,14 +222,18 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--yellow);
-  color: var(--green);
+  background: var(--warning);
+  color: var(--green-ink);
 }
 
 @media (max-width: 991.98px) {
   .contact__body {
     grid-template-columns: minmax(0, 1fr);
-    padding-bottom: 48px;
+    padding-block: 24px 48px;
+  }
+
+  .contact__side {
+    order: 1;
   }
 }
 

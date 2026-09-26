@@ -1,6 +1,6 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb.jsx";
+import PageBanner from "../components/PageBanner.jsx";
 import Icon from "../components/Icon.jsx";
 import StatusPill from "../components/StatusPill.jsx";
 import BookmarkButton from "../components/BookmarkButton.jsx";
@@ -10,7 +10,7 @@ import { useNow } from "../context/ClockContext.jsx";
 import { useUserLocation } from "../context/LocationContext.jsx";
 import { useToast } from "../context/ToastContext.jsx";
 import { useDecoratedMarkets } from "../lib/useMarkets.js";
-import { scheduleLabel, formatRange, WEEK_ORDER, DAY_LONG } from "../lib/time.js";
+import { scheduleLabel, formatRange, seasonRange, WEEK_ORDER, DAY_LONG } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
 import { asset, googleMapsEmbed, googleMapsLink, googleDirections } from "../lib/assets.js";
 import { shareLink } from "../lib/share.js";
@@ -19,12 +19,18 @@ import "./MarketDetailPage.css";
 const INFO = [
   { key: "payment", title: "Payment", icon: "wallet" },
   { key: "parking", title: "Parking", icon: "car" },
-  { key: "familyFriendly", title: "Family friendly", icon: "users" },
-  { key: "bringABag", title: "Bring a bag", icon: "shopping-bag" },
+  { key: "familyFriendly", title: "Family friendly", icon: "heart-handshake", fallback: "Open space, good for a family visit" },
+  { key: "bringABag", title: "Bring a bag", icon: "shopping-basket", fallback: "Most stalls do not give out bags" },
 ];
 
+/** Every photo we have for a market, without repeats. */
+function marketPhotos(images) {
+  const all = [...(images.gallery || []), images.card, images.row, images.popup];
+  return all.filter((src, i) => src && all.indexOf(src) === i);
+}
+
 export default function MarketDetailPage() {
-  const { id = "lekki-sunday-market" } = useParams();
+  const { id = "lekki-sunday" } = useParams();
   const { produceById } = useData();
   const now = useNow();
   const { origin } = useUserLocation();
@@ -38,24 +44,21 @@ export default function MarketDetailPage() {
   );
 
   const km = formatKm(market.km);
-  const [main, ...thumbs] = market.images.gallery;
+  const photos = marketPhotos(market.images);
+  const [active, setActive] = useState(0);
+  const main = photos[active] || photos[0];
 
   return (
     <article className="detail">
       <div className="detail__top">
-        {/* Breadcrumb banner */}
-        <div className="detail__breadcrumb-banner">
-          <div className="container">
-            <Breadcrumb
-              items={[
-                { label: "Home", to: "/" },
-                { label: "Market Directory", to: "/directory" },
-                { label: market.area, to: `/directory?area=${encodeURIComponent(market.area)}` },
-                { label: market.name },
-              ]}
-            />
-          </div>
-        </div>
+        <PageBanner
+          crumbs={[
+            { label: "Home", to: "/" },
+            { label: "Market Directory", to: "/directory" },
+            { label: market.area, to: `/directory?area=${encodeURIComponent(market.area)}` },
+            { label: market.name },
+          ]}
+        />
 
         {/* Gallery */}
         <div className="container">
@@ -67,13 +70,22 @@ export default function MarketDetailPage() {
               width="1040"
               height="520"
             />
-            <div className="detail__photo-strip">
-              {thumbs.map((src, i) => (
-                <button key={`${src}-${i}`} type="button" className="detail__photo-thumb">
-                  <img src={asset(src)} alt="" width="140" height="140" loading="lazy" />
-                </button>
-              ))}
-            </div>
+            {photos.length > 1 && (
+              <div className="detail__photo-strip">
+                {photos.map((src, i) => (
+                  <button
+                    key={src}
+                    type="button"
+                    className={`detail__photo-thumb${i === active ? " is-active" : ""}`}
+                    aria-label={`Show photo ${i + 1} of ${photos.length}`}
+                    aria-pressed={i === active}
+                    onClick={() => setActive(i)}
+                  >
+                    <img src={asset(src)} alt="" width="140" height="140" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -81,14 +93,15 @@ export default function MarketDetailPage() {
         <div className="container">
           <div className="detail__title-row">
             <div className="detail__title">
+              <h1 className="detail__name">{market.name}</h1>
               <div className="detail__badges">
                 <StatusPill status={market.status} />
-                {market.status.open && market.status.closesIn && (
-                  <span className="pill pill--outline pill--muted">{market.status.closesIn}</span>
+                {market.status.state !== "closed" && (
+                  <span className="pill pill--outline pill--muted">{market.status.label}</span>
                 )}
-                {market.verified && (
+                {market.verified !== false && (
                   <span className="pill pill--verified">
-                    <Icon name="check" size={13} /> Verified Listing
+                    <Icon name="badge-check" size={13} /> Verified Listing
                   </span>
                 )}
               </div>
@@ -102,8 +115,8 @@ export default function MarketDetailPage() {
                   {km} from you
                 </span>
                 <span className="icon-text">
-                  <Icon name="calendar-days" size={16} />
-                  {market.stalls}
+                  <Icon name="store" size={16} />
+                  {market.growers}
                 </span>
               </div>
             </div>
@@ -128,9 +141,9 @@ export default function MarketDetailPage() {
               <button
                 type="button"
                 className="btn btn--outline"
-                onClick={() => toast.show("Note added")}
+                onClick={() => toast("Note added")}
               >
-                <Icon name="note-pencil" size={16} />
+                <Icon name="sticky-note" size={16} />
                 Add note
               </button>
               <BookmarkButton id={market.id} name={market.name} variant="button" />
@@ -164,7 +177,7 @@ export default function MarketDetailPage() {
                     <Link to={`/produce/${pid}`} className="detail__produce-card card hover-card">
                       <img src={asset(p.image)} alt="" width="168" height="120" loading="lazy" />
                       <strong>{p.shortName || p.name}</strong>
-                      <span>{p.season}</span>
+                      <span>{seasonRange(p.season)}</span>
                     </Link>
                   </li>
                 );
@@ -183,7 +196,7 @@ export default function MarketDetailPage() {
                     <Icon name={i.icon} size={18} />
                   </span>
                   <strong>{i.title}</strong>
-                  <span>{market[i.key]}</span>
+                  <span>{market[i.key] || i.fallback}</span>
                 </li>
               ))}
             </ul>
@@ -214,7 +227,7 @@ export default function MarketDetailPage() {
                 })}
               </tbody>
             </table>
-            <p className="detail__small">{market.lastUpdated}</p>
+            <p className="detail__small">{scheduleLabel(market.schedule)}</p>
           </section>
 
           <section className="detail__location card" aria-labelledby="location-title">
@@ -282,19 +295,12 @@ export default function MarketDetailPage() {
           </div>
           <div className="grid grid--4">
             {nearby.map((m, i) => (
-              <MarketCard key={`${m.id}-${i}`} market={m} />
+              <MarketCard key={`${m.id}-${i}`} market={m} headingLevel={3} />
             ))}
           </div>
         </section>
       )}
 
-      <button
-        type="button"
-        className="detail__ask-fab"
-        onClick={() => toast.show("Ask FreshFind is opening…")}
-      >
-        <span aria-hidden="true">🧺</span> Ask FreshFind
-      </button>
     </article>
   );
 }

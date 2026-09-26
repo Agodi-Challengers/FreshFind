@@ -16,6 +16,7 @@ import SiteHeader from "./components/SiteHeader.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
 import BottomTabBar from "./components/BottomTabBar.jsx";
 import ChatLauncher from "./components/ChatLauncher.jsx";
+import CtaBanner from "./components/CtaBanner.jsx";
 import { getVisitorCount } from "./lib/visitors.js";
 import HomePage from "./pages/HomePage.jsx";
 import FindMarketPage from "./pages/FindMarketPage.jsx";
@@ -51,6 +52,7 @@ function SiteLayout() {
       <main id="main" className="main" tabIndex={-1}>
         <Outlet />
       </main>
+      <CtaBanner />
       <SiteFooter visitors={visitors} />
       <BottomTabBar />
       <ChatLauncher />

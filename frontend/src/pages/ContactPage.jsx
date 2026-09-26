@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb.jsx";
+import PageBanner from "../components/PageBanner.jsx";
 import Icon from "../components/Icon.jsx";
 import { useOpenChat } from "../components/ChatLauncher.jsx";
 import { useUserLocation } from "../context/LocationContext.jsx";
@@ -87,17 +87,7 @@ export default function ContactPage() {
 
   return (
     <div className="contact">
-      <header className="container_page-header">
-        <Breadcrumb
-          items={[{ label: "Home", to: "/" }, { label: "Contact us" }]}
-        />
-        <div className="page-header__copy">
-          <p className="lead">
-            Questions, corrections to a market listing, or want to add your
-            market? Send us a message.
-          </p>
-        </div>
-      </header>
+      <PageBanner crumbs={[{ label: "Home", to: "/" }, { label: "Contact" }]} />
 
       <div className="container contact__body">
         <form className="contact__form card" onSubmit={submit} noValidate>
@@ -132,7 +122,7 @@ export default function ContactPage() {
           {field("message", "Message", {
             as: "textarea",
             placeholder:
-              "Tell us what’s changed. For listings, include the market name and new days or hours.",
+              "Questions, corrections, or market updates? Tell us the market name and what’s changed.",
           })}
           <div className="contact__submit">
             <p className="muted">
@@ -140,7 +130,7 @@ export default function ContactPage() {
                 ? "Your email app should open with the message ready to send."
                 : "We usually reply within 2 working days."}
             </p>
-            <button type="submit" className="btn btn--accent btn--lg">
+            <button type="submit" className="btn btn--primary btn--lg">
               Send message
               <Icon name="send-horizontal" size={16} />
             </button>

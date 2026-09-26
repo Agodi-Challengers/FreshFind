@@ -1,8 +1,15 @@
 
 :root {
   
-  --green: #00B207;
-  --green-hover: #2c742f;
+  /* Brand greens (Figma "Color" frame) */
+  --green: #00B207; /* Primary */
+  --green-hover: #008c06; /* hover state of primary buttons */
+  --green-hard: #2c742f; /* Hard Primary */
+  --green-soft: #84d187; /* Soft Primary */
+  --green-deep: #006304; /* chat launcher, "View details" */
+  --green-ink: #1f4d2b; /* link text, focus ring */
+  --green-tint: #e4ffe5; /* status pills, icon tiles */
+  --card-border: #e4f0df;
   --green-700: #2f6a3d;
   --green-600: #3c8d40;
   --green-500: #3cb371;
@@ -26,6 +33,8 @@
   --switch-off: #c9c2b2;
 
 
+  --warning: #ff8a00;
+  --danger: #ea4b48;
   --orange: #e4572e;
   --orange-hover: #bb4726;
   --orange-100: #fce3d9;
@@ -50,7 +59,8 @@
   --footer-line: #333b34;
 
   --font:
-    "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    "Poppins", "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
   --display: "Poppins", Georgia, "Times New Roman", serif;
  
 
@@ -58,7 +68,7 @@
   --r-sm: 10px;
   --r-md: 14px;
   --r-lg: 18px;
-  --r-card: 22px;
+  --r-card: 8px;
   --r-xl: 24px;
   --r-2xl: 28px;
   --r-pill: 999px;
@@ -69,7 +79,7 @@
   --shadow-btn: 0 6px 14px rgba(26, 64, 36, 0.18);
   --shadow-panel: 0 18px 40px -8px rgba(26, 64, 36, 0.18);
   --shadow-pin: 0 4px 10px rgba(0, 0, 0, 0.22);
-  --focus-ring: 0 0 0 2px #ffffff, 0 0 0 5px var(--green);
+  --focus-ring: 0 0 0 2px #ffffff, 0 0 0 5px var(--green-ink);
   --input-ring: 0 0 0 4px rgba(61, 140, 64, 0.2);
 
   /* Layout */

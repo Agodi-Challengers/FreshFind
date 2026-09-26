@@ -82,7 +82,11 @@ export default function SiteHeader() {
             <ul className="navbar__links">
               {NAV_LINKS.map((l) => (
                 <li key={l.to}>
-                  <NavLink to={l.to} className="navlink">
+                  <NavLink
+                    to={l.to}
+                    className="navlink"
+                    data-label={l.label}
+                  >
                     {l.label}
                   </NavLink>
                 </li>
