@@ -5,17 +5,19 @@
  * maximizeChat() and minimizeChat(). It never talks to Tawk.to directly.
  *
  * Which provider runs is set in .env:
+ *   VITE_CHAT_PROVIDER=json   -> FreshFind Assistant, scripted answers from
+ *                                public/data/chatbot.json (SRS 1.5, default)
  *   VITE_CHAT_PROVIDER=tawk   -> Tawk.to live chat
  *   VITE_CHAT_PROVIDER=none   -> no chat loads at all
  */
 
-const SUPPORTED = ["tawk", "none"];
+const SUPPORTED = ["json", "tawk", "none"];
 
-const requested = (import.meta.env.VITE_CHAT_PROVIDER || "none").trim().toLowerCase();
+const requested = (import.meta.env.VITE_CHAT_PROVIDER || "json").trim().toLowerCase();
 
 if (!SUPPORTED.includes(requested)) {
   console.warn(
-    `[chat] VITE_CHAT_PROVIDER="${requested}" is not supported. Use "tawk" or "none". Chat is turned off.`,
+    `[chat] VITE_CHAT_PROVIDER="${requested}" is not supported. Use "json", "tawk" or "none". Chat is turned off.`,
   );
 }
 
@@ -32,11 +34,12 @@ if (requested === "tawk" && !tawkHasIds) {
 }
 
 function pickProvider() {
+  if (requested === "json") return "json";
   if (requested === "tawk") return tawkHasIds ? "tawk" : "none";
   return "none";
 }
 
-/** The provider that is actually running: "tawk" or "none". */
+/** The provider that is actually running: "json", "tawk" or "none". */
 export const chatProvider = pickProvider();
 
 /** True when a chat provider is switched on. */
