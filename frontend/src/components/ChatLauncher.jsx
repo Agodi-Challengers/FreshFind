@@ -20,7 +20,7 @@ export default function ChatLauncher() {
 
   useEffect(() => {
     if (!tawkConfigured) return undefined;
-    // load the widget after the page has settled, so it does not slow down first paint
+    
     const id = window.setTimeout(loadTawk, 2500);
     return () => window.clearTimeout(id);
   }, []);

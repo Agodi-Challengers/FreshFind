@@ -2,7 +2,7 @@
 /* Every rule is scoped under .find so it cannot leak to other pages. */
 
 .find__toolbar {
-  background: var(--map-land);
+  background: #F2F2F2;
   border-bottom: 1px solid var(--border);
 }
 

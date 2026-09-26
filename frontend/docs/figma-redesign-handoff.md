@@ -102,12 +102,12 @@ Known mobile rules:
 - On mobile, cards and season cards scroll horizontally.
 - The bottom tab bar must not cover content, so leave padding-bottom on `main`.
 
-### 4.5 Cleanup and PR
+4.5 Cleanup and PR
 - Search for leftovers: `grep -rn "container_page-header\|Breadcrumbs.png\|picsum\|toast.show\|id=\"remove-btn\"" src`. The result should be empty.
 - `npm run lint && npm run build`, then fix any warnings.
 - Open a PR `feature/figma-redesign-sync → dev` titled "Figma redesign sync: pages, images and states". In the description, list the pages changed, the bug fixes (the global CSS leak from MarketDetailPage.css, broken image paths, missing icons, `toast.show`, the raw season strings, the duplicate chat button) and a screenshot per page.
 
-## 5. How to check your work
+5. How to check your work
 - `npm run dev`, then open each route: `/`, `/find`, `/directory`, `/markets/lekki-sunday`, `/produce`, `/produce/tomatoes`, `/seasonal`, `/saved`, `/about`, `/contact`.
 - Compare each one side by side with its Figma frame at 1440px and at 402px.
 - Tab through each page with the keyboard. Every interactive element needs a visible focus ring, and hover must match Figma.

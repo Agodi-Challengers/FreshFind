@@ -14,7 +14,7 @@ import { ToastProvider } from "./context/ToastContext.jsx";
 import UtilityBar from "./components/UtilityBar.jsx";
 import SiteHeader from "./components/SiteHeader.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
-import BottomTabBar from "./components/BottomTabBar.jsx";
+
 import ChatLauncher from "./components/ChatLauncher.jsx";
 import CtaBanner from "./components/CtaBanner.jsx";
 import { getVisitorCount } from "./lib/visitors.js";
@@ -54,7 +54,6 @@ function SiteLayout() {
       </main>
       <CtaBanner />
       <SiteFooter visitors={visitors} />
-      {/* <BottomTabBar />/ */}
       <ChatLauncher />
     </>
   );

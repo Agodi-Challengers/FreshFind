@@ -35,14 +35,11 @@ export default function Logo({
           className="logo__img"
           src={logo}
           alt="FreshFind"
-          // width="100"
-          // height="100"
         />
       </Link>
     );
   }
 
-  // White wordmark from the Figma footer, used on dark surfaces
   return (
     <Link
       to={to}

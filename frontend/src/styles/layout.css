@@ -1,6 +1,5 @@
 
 
-/* ---------- Logo ---------- */
 .logo {
   display: inline-flex;
   align-items: center;
@@ -93,7 +92,7 @@
   height: 70px;
 }
 
-/* ---------- Utility bar ---------- */
+
 .utility {
   background: #333333;
   color: #fff;
@@ -195,7 +194,6 @@
   white-space: nowrap;
 }
 
-/* reserve the width of the bold text so the menu does not jump on hover */
 .navlink::before {
   content: attr(data-label);
   height: 0;
@@ -779,7 +777,6 @@
   }
 }
 
-/* ---------- Loading ---------- */
 .loading {
   display: grid;
   place-items: center;
