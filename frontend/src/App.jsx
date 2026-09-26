@@ -38,7 +38,7 @@ function ScrollToTop() {
   return null;
 }
 
-/** Page chrome shared by every route except login / sign up. */
+
 function SiteLayout() {
   const [visitors] = useState(getVisitorCount);
   return (

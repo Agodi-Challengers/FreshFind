@@ -6,11 +6,6 @@ import { readJSON, sessionStore, writeJSON } from '../lib/storage.js';
 const LocationContext = createContext(null);
 const KEY = 'ff:location';
 
-/**
- * Where distances are measured from. Starts at the default (Lekki Phase 1),
- * can be set to the visitor's real position (browser geolocation) or to an area they pick.
- * The position is only kept for this browser session and never leaves the device.
- */
 export function LocationProvider({ children }) {
   const { ready, areas, defaultLocation } = useData();
   const [stored, setStored] = useState(() => readJSON(sessionStore, KEY, null));

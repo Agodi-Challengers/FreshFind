@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Icon from "./Icon.jsx";
 import StatusPill, { statusTextClass } from "./StatusPill.jsx";
 import BookmarkButton from "./BookmarkButton.jsx";
+import { useData } from "../context/DataContext.jsx";
 import { scheduleLabel } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
 import { asset } from "../lib/assets.js";
@@ -13,6 +14,10 @@ export default function MarketRow({
   onSelect,
   onHover,
 }) {
+  const { produceById } = useData();
+  const shown = market.produce.slice(0, 4);
+  const more = market.produce.length - shown.length;
+
   const handleClick = (e) => {
     if (e.target.closest("a, button")) return;
     onSelect?.(market.id);
@@ -52,6 +57,21 @@ export default function MarketRow({
         <p className={`status-text ${statusTextClass(market.status)}`}>
           {market.status.label}
         </p>
+        <ul className="market-row__produce" aria-label="Typical produce">
+          {shown.map((id) => (
+            <li key={id} className="pill pill--soft">
+              {produceById[id]?.shortName || produceById[id]?.name || id}
+            </li>
+          ))}
+          {more > 0 && (
+            <li
+              className="pill pill--soft pill--muted"
+              aria-label={`and ${more} more`}
+            >
+              +{more}
+            </li>
+          )}
+        </ul>
       </div>
       <div className="market-row__side">
         <BookmarkButton

@@ -1,5 +1,4 @@
-// Tawk.to chat widget (SRS: chatbot platform).
-// The Tawk bubble is hidden so the design's own "Ask FreshFind" launcher opens the chat.
+
 
 const PROPERTY_ID = import.meta.env.VITE_TAWK_PROPERTY_ID;
 const WIDGET_ID = import.meta.env.VITE_TAWK_WIDGET_ID;
@@ -39,7 +38,7 @@ export function loadTawk() {
   document.body.appendChild(script);
 }
 
-/** Opens the chat. Returns false when Tawk.to is not configured. */
+
 export function openChat() {
   if (!tawkConfigured) return false;
   const T = api();

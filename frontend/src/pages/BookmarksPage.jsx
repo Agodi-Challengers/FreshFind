@@ -57,7 +57,7 @@ function SavedItem({ item, market, produce, count }) {
             </button>
             <button
               type="button"
-              className="icon-btn"
+              className="icon-btn" id="remove-btn"
               aria-label={`Remove ${name}`}
               onClick={() => {
                 remove(item.type, item.id);
@@ -122,25 +122,10 @@ export default function BookmarksPage() {
 
   return (
     <div className="bookmarks">
-      <header className="container page-header">
-        <Breadcrumb items={[{ label: "Home", to: "/" }, { label: "Saved" }]} />
-        <div className="page-header__copy">
-          <span className="eyebrow">Your list</span>
-          <h1 className="page-title">Saved markets &amp; produce</h1>
-          <p className="lead">
-            Keep track of the markets you like and what you plan to buy. Add a
-            note, then export or share your list.
-          </p>
-        </div>
+      <header className="container_page-header">
+        <Breadcrumb className="path" items={[{ label: "Home", to: "/" }, { label: "Saved" }]} />
       </header>
 
-      <div className="container">
-        <p className="bookmarks__notice" role="note">
-          <Icon name="info" size={18} />
-          Notes are kept only for this visit. Export or share your list before
-          you close the tab.
-        </p>
-      </div>
 
       <div className="container bookmarks__body">
         <section aria-label="Saved items" className="bookmarks__list">

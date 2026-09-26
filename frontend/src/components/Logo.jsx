@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Icon from "./Icon.jsx";
 import { asset } from "../lib/assets.js";
+import logo from "../assets/logo.png"
 
 /**
  * FreshFind logo.
@@ -19,9 +20,9 @@ export default function Logo({
   if (variant !== "light") {
     const cls = [
       "logo",
-      "logo--brand",
-      compact && "logo--compact",
-      size && `logo--${size}`,
+      // "logo--brand",
+      // compact && "logo--compact",
+      // size && `logo--${size}`,
     ]
       .filter(Boolean)
       .join(" ");
@@ -35,10 +36,10 @@ export default function Logo({
       >
         <img
           className="logo__img"
-          src={asset("/images/freshfind-logo.svg")}
+          src={logo}
           alt="FreshFind"
-          width="194"
-          height="100"
+          // width="100"
+          // height="100"
         />
       </Link>
     );

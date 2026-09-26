@@ -53,7 +53,7 @@ export default function SiteHeader() {
     [markets, now],
   );
 
-  // close the mobile menu when the route changes
+ 
   useEffect(() => setMenuOpen(false), [location.pathname]);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function SiteHeader() {
     const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    // focus the close button once the menu is visible
+ 
     const focusTimer = window.setTimeout(() => closeRef.current?.focus(), 60);
     const opener = openRef.current;
     return () => {
@@ -74,10 +74,10 @@ export default function SiteHeader() {
 
   return (
     <>
-      {/* Desktop */}
+    
       <header className="navbar">
         <div className="container navbar__inner">
-          <Logo />
+          <Logo/>
           <nav aria-label="Main">
             <ul className="navbar__links">
               {NAV_LINKS.map((l) => (
@@ -94,7 +94,7 @@ export default function SiteHeader() {
             <Link to="/login" className="btn btn--ghost navbar__login">
               Log in
             </Link>
-            <Link to="/signup" className="btn btn--primary">
+            <Link to="/signup" id="signBtn" className="btn btn--primary">
               Sign up
             </Link>
           </div>
@@ -106,7 +106,6 @@ export default function SiteHeader() {
         <header className="mobile-header">
           <Logo compact />
           <div className="mobile-header__icons">
-            <SavedButton compact />
             <button
               ref={openRef}
               type="button"
