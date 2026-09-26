@@ -140,6 +140,7 @@
   font-size: 14px;
   line-height: 1.45;
   color: #1b221c;
+  white-space: pre-line;
 }
 
 .chatbot__bubble--user {
@@ -160,7 +161,9 @@
   background: #fff;
   color: #1f4d2b;
   text-decoration: none;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .chatbot__market img {
@@ -200,7 +203,9 @@
 
 .chatbot__market:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 5px #1f4d2b;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 5px #1f4d2b;
 }
 
 /* Typing indicator (Figma: Loop / Chat typing indicator) */
@@ -273,7 +278,9 @@
   color: #1f4d2b;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.18s ease, border-color 0.18s ease;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .chatbot__chip:hover {
@@ -284,7 +291,9 @@
 
 .chatbot__chip:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 5px #1f4d2b;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 5px #1f4d2b;
 }
 
 /* Input bar */
@@ -341,7 +350,9 @@
 
 .chatbot__send:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 5px #1f4d2b;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 5px #1f4d2b;
 }
 
 /* Phones: the 400px Figma frame fills the screen width, above the tab bar */

@@ -6,10 +6,10 @@
   },
   "greeting": "Hi! 👋 I can help you find markets, opening hours and what’s in season. What are you looking for?",
   "suggestions": [
+    "What can this site do?",
     "What’s in season?",
     "Markets open now",
-    "Do they take transfers?",
-    "Parking info"
+    "Do they take transfers?"
   ],
   "placeholder": "Type your question…",
   "maxResults": 3,
@@ -30,6 +30,43 @@
     "outOfSeason": "out of season right now (best {range})",
     "allYear": "available all year",
     "link": "About {name}"
+  },
+  "about": {
+    "text": "FreshFind is a free guide to Lagos food markets. It shows when and where markets open, what’s in season, and how to reach each one, so you can shop fresh for less. It also lets you save markets and produce, add notes, and share or download your list.",
+    "links": [
+      { "label": "About FreshFind", "to": "/about" },
+      { "label": "Contact us", "to": "/contact" }
+    ]
+  },
+  "capabilities": {
+    "intro": "FreshFind helps you shop Lagos markets smarter. Here’s what you can do:",
+    "items": [
+      {
+        "label": "Find a Market",
+        "to": "/find",
+        "desc": "search markets by area, day, time or feature, then open them on the map"
+      },
+      {
+        "label": "Directory",
+        "to": "/directory",
+        "desc": "browse every listed market with live open/closed status"
+      },
+      {
+        "label": "Produce Guide",
+        "to": "/produce",
+        "desc": "see which markets sell each type of produce"
+      },
+      {
+        "label": "Seasonal",
+        "to": "/seasonal",
+        "desc": "check what’s in season this month"
+      },
+      {
+        "label": "Saved",
+        "to": "/saved",
+        "desc": "bookmark markets and produce, add notes, then download or share your list"
+      }
+    ]
   },
   "intents": [
     {
@@ -163,6 +200,54 @@
         "Markets open now",
         "Sunday markets in Lekki",
         "Markets open this weekend"
+      ]
+    },
+    {
+      "id": "about",
+      "type": "about",
+      "keywords": [
+        "more about the platform",
+        "about the platform",
+        "about the site",
+        "about this site",
+        "about this website",
+        "about freshfind",
+        "more about freshfind",
+        "what is freshfind",
+        "what is this platform",
+        "what is this site",
+        "what is this website",
+        "know more",
+        "learn more",
+        "tell me more",
+        "platform"
+      ],
+      "suggestions": [
+        "What can this site do?",
+        "Markets open now",
+        "What’s in season?"
+      ]
+    },
+    {
+      "id": "capabilities",
+      "type": "capabilities",
+      "keywords": [
+        "what can you do",
+        "what can this site do",
+        "what does this site do",
+        "what can this website do",
+        "what can i do",
+        "what can i do here",
+        "site features",
+        "features",
+        "capabilities",
+        "help"
+      ],
+      "answer": "FreshFind helps you shop Lagos markets smarter. Here’s what you can do:",
+      "suggestions": [
+        "Markets open now",
+        "What’s in season?",
+        "Markets near me"
       ]
     }
   ],
