@@ -1,11 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "./Logo.jsx";
 import Icon from "./Icon.jsx";
 import { useBookmarks } from "../context/BookmarksContext.jsx";
-import { useNow } from "../context/ClockContext.jsx";
-import { useData } from "../context/DataContext.jsx";
-import { isOpenNow, formatMinutes, DAY_SHORT } from "../lib/time.js";
 
 export const NAV_LINKS = [
   { to: "/find", label: "Find a Market" },
@@ -46,14 +44,8 @@ export default function SiteHeader() {
   const closeRef = useRef(null);
   const openRef = useRef(null);
   const location = useLocation();
-  const now = useNow();
-  const { markets } = useData();
-  const openCount = useMemo(
-    () => markets.filter((m) => isOpenNow(m, now)).length,
-    [markets, now],
-  );
-
- 
+  // Reset the mobile menu when the route changes.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMenuOpen(false), [location.pathname]);
 
   useEffect(() => {
@@ -61,7 +53,7 @@ export default function SiteHeader() {
     const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
- 
+
     const focusTimer = window.setTimeout(() => closeRef.current?.focus(), 60);
     const opener = openRef.current;
     return () => {
@@ -74,19 +66,14 @@ export default function SiteHeader() {
 
   return (
     <>
-    
       <header className="navbar">
         <div className="container navbar__inner">
-          <Logo/>
+          <Logo />
           <nav aria-label="Main">
             <ul className="navbar__links">
               {NAV_LINKS.map((l) => (
                 <li key={l.to}>
-                  <NavLink
-                    to={l.to}
-                    className="navlink"
-                    data-label={l.label}
-                  >
+                  <NavLink to={l.to} className="navlink" data-label={l.label}>
                     {l.label}
                   </NavLink>
                 </li>

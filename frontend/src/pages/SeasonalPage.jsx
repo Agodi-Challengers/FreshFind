@@ -1,81 +1,50 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb.jsx";
+import PageBanner from "../components/PageBanner.jsx";
 import Icon from "../components/Icon.jsx";
 import BookmarkButton from "../components/BookmarkButton.jsx";
 import MarketCard from "../components/MarketCard.jsx";
 import { useData } from "../context/DataContext.jsx";
 import { useNow } from "../context/ClockContext.jsx";
+import { useToast } from "../context/ToastContext.jsx";
 import { useDecoratedMarkets } from "../lib/useMarkets.js";
 import { sortMarkets } from "../lib/filters.js";
 import {
   seasonalHighlights,
-  arrivingItems,
   endingItems,
   pickOfTheMonth,
 } from "../lib/seasonal.js";
 import { MONTH_SHORT } from "../lib/time.js";
+import { shareLink } from "../lib/share.js";
 import { asset } from "../lib/assets.js";
 import "./SeasonalPage.css";
 
-function weekLabel(now) {
-  const d = new Date(Date.UTC(now.year, now.month, now.day));
-  const start = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-  const week = Math.ceil(((d - start) / 86400000 + start.getUTCDay() + 1) / 7);
-  const monday = new Date(d);
-  monday.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7));
-  const sunday = new Date(monday);
-  sunday.setUTCDate(monday.getUTCDate() + 6);
-  const fmt = (x) => `${x.getUTCDate()} ${MONTH_SHORT[x.getUTCMonth()]}`;
-  return `Week ${week} · ${fmt(monday)} – ${fmt(sunday)}`;
-}
-
-function ItemList({ items, empty }) {
-  if (!items.length) return <p className="seasonal__none">{empty}</p>;
-  return (
-    <ul className="seasonal__items">
-      {items.slice(0, 4).map((p) => (
-        <li key={p.id}>
-          <Link to={`/produce/${p.id}`} className="seasonal__item hover-card">
-            <img
-              src={asset(p.icon || p.image)}
-              alt=""
-              width="52"
-              height="52"
-              loading="lazy"
-            />
-            <span>
-              <strong>{p.name}</strong>
-              <span>{p.note}</span>
-            </span>
-            <Icon name="chevron-right" size={18} />
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-}
+/** Removes empty values and duplicates so the gallery only shows real photos. */
+const unique = (list) => [...new Set(list.filter(Boolean))];
 
 export default function SeasonalPage() {
-  const { produce, months, marketsByProduce } = useData();
+  const { produce, months, categories, marketsByProduce } = useData();
   const now = useNow();
+  const toast = useToast();
   const markets = useDecoratedMarkets();
   const [params, setParams] = useSearchParams();
+  const [shot, setShot] = useState(0);
+
   const m =
     Number.isInteger(Number(params.get("m"))) && params.get("m") !== null
       ? Math.min(11, Math.max(0, Number(params.get("m"))))
       : now.month;
-  const monthName = months[m].name;
 
   const highlights = useMemo(
     () => seasonalHighlights(produce, m),
     [produce, m],
   );
   const pick = useMemo(() => pickOfTheMonth(produce, m), [produce, m]);
-  const side = highlights.filter((p) => p.id !== pick?.id).slice(0, 3);
-  const arriving = useMemo(() => arrivingItems(produce, m), [produce, m]);
   const ending = useMemo(() => endingItems(produce, m), [produce, m]);
+  const endingIds = useMemo(() => new Set(ending.map((p) => p.id)), [ending]);
 
+  // Mini cards: everything in season this month except the big pick.
+  const cards = highlights.filter((p) => p.id !== pick?.id).slice(0, 6);
 
   const best = useMemo(() => {
     const ids = new Set(highlights.map((p) => p.id));
@@ -94,110 +63,205 @@ export default function SeasonalPage() {
 
   const pickCount = pick ? marketsByProduce[pick.id]?.length || 0 : 0;
 
+  // Photos available for the pick, used by the vertical thumbnail slider.
+  const images = pick
+    ? unique([pick.pick?.image, pick.round, pick.photo, pick.image, pick.icon])
+    : [];
+  const index = images.length
+    ? ((shot % images.length) + images.length) % images.length
+    : 0;
+  const activeImage = images[index] || "";
+  const catLabel =
+    categories.find((c) => c.name === pick?.category)?.label || pick?.category;
+
+  const goToMonth = (i) => {
+    const next = new URLSearchParams(params);
+    if (i === now.month) next.delete("m");
+    else next.set("m", String(i));
+    setParams(next, { replace: true });
+  };
+
   return (
     <div className="seasonal">
-      <section className="seasonal__hero">
-        <div className="container">
-          <Breadcrumb
-            items={[{ label: "Home", to: "/" }, { label: "Seasonal" }]}
-            light
-          />
-           <h2 id="peak-title" className="seasonal__h2">
-          Peak this month
-          </h2>
-          
-          <div
-            className="seasonal__months"
-            role="group"
-            aria-label="Choose a month"
-          >
-            {MONTH_SHORT.map((label, i) => (
-              <button
-                key={label}
-                type="button"
-                aria-pressed={i === m}
-                aria-label={months[i].name}
-                onClick={() => {
-                  const next = new URLSearchParams(params);
-                  if (i === now.month) next.delete("m");
-                  else next.set("m", String(i));
-                  setParams(next, { replace: true });
-                }}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="container seasonal__peak"
-        aria-labelledby="peak-title"
+      <PageBanner
+        crumbs={[{ label: "Home", to: "/" }, { label: "Seasonal" }]}
+        title="Peak this month"
       >
-        <div className="seasonal__peak-row">
-          {pick && (
-            <div className="seasonal__feature">
-              <img
-                src="/images/markets/ugwu.png"
-                alt=""
-              />
-              <div className="seasonal__feature-copy">
-                <span className="seasonal__badge">Pick of the week</span>
-                <h3>{pick.pick?.title || pick.name}</h3>
-                <p>{pick.pick?.text || pick.description}</p>
-                <div className="seasonal__feature-btns">
-                  <Link
-                    to={`/directory?q=${encodeURIComponent(pick.shortName || pick.name)}`}
-                    className="btn btn--yellow"
-                  >
-                    Find at {pickCount} {pickCount === 1 ? "market" : "markets"}
-                  </Link>
-                  <BookmarkButton
-                    type="produce"
-                    id={pick.id}
-                    name={pick.name}
-                    variant="button"
-                    light
+        <div
+          className="seasonal__months"
+          role="group"
+          aria-label="Choose a month"
+        >
+          {MONTH_SHORT.map((label, i) => (
+            <button
+              key={label}
+              type="button"
+              aria-pressed={i === m}
+              aria-label={months[i].name}
+              onClick={() => goToMonth(i)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </PageBanner>
+
+      {pick && (
+        <section
+          className="container seasonal__pick"
+          aria-labelledby="pick-title"
+        >
+          <div className="seasonal__pick-row">
+            <div className="seasonal__gallery">
+              <div className="seasonal__thumbs">
+                <button
+                  type="button"
+                  className="seasonal__arrow"
+                  aria-label="Previous photo"
+                  onClick={() => setShot((s) => s - 1)}
+                >
+                  <Icon
+                    name="chevron-down"
+                    size={16}
+                    className="seasonal__arrow-ic seasonal__arrow-ic--up"
                   />
-                </div>
+                </button>
+                {images.map((src, i) => (
+                  <button
+                    key={src}
+                    type="button"
+                    className="seasonal__thumb"
+                    aria-pressed={i === index}
+                    aria-label={`Show photo ${i + 1}`}
+                    onClick={() => setShot(i)}
+                  >
+                    <img
+                      src={asset(src)}
+                      alt=""
+                      width="84"
+                      height="72"
+                      loading="lazy"
+                    />
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  className="seasonal__arrow"
+                  aria-label="Next photo"
+                  onClick={() => setShot((s) => s + 1)}
+                >
+                  <Icon
+                    name="chevron-down"
+                    size={16}
+                    className="seasonal__arrow-ic"
+                  />
+                </button>
+              </div>
+              <div className="seasonal__stage">
+                <img src={asset(activeImage)} alt={pick.name} />
               </div>
             </div>
-          )}
-          <ul className="seasonal__side">
-            {side.map((p) => (
-              <li key={p.id}>
-                <Link
-                  to={`/produce/${p.id}`}
-                  className="seasonal__mini card hover-card"
+
+            <div className="seasonal__pick-copy">
+              <span className="eyebrow">Pick of the month</span>
+              <h2 id="pick-title" className="seasonal__pick-name">
+                {pick.pick?.title || pick.name}
+              </h2>
+              <div className="seasonal__pills">
+                <span className="pill pill--green">
+                  <span className="dot dot--open" aria-hidden="true" />
+                  In season
+                </span>
+                <span className="pill pill--amber">Pick of the week</span>
+              </div>
+              <p className="seasonal__pick-text">
+                {pick.pick?.text || pick.description}
+              </p>
+              <p className="seasonal__cat">
+                Category: <strong>{catLabel}</strong>
+              </p>
+              <Link
+                to={`/directory?q=${encodeURIComponent(pick.shortName || pick.name)}`}
+                className="btn btn--primary seasonal__find"
+              >
+                Find at {pickCount} {pickCount === 1 ? "market" : "markets"}
+              </Link>
+              <div className="seasonal__pick-actions">
+                <BookmarkButton
+                  type="produce"
+                  id={pick.id}
+                  name={pick.name}
+                  variant="button"
+                />
+                <button
+                  type="button"
+                  className="btn btn--outline"
+                  onClick={() =>
+                    shareLink(
+                      {
+                        title: `${pick.name} — FreshFind`,
+                        text: pick.description,
+                        url: window.location.href,
+                      },
+                      toast,
+                    )
+                  }
                 >
-                  <img
-                    src={asset(p.icon || p.image)}
-                    alt=""
-                    width="100"
-                    height="100"
-                    loading="lazy"
-                  />
-                  <span>
-                    <strong>{p.name}</strong>
-                    <span>
-                      {p.badge || "In season"}
-                      {p.price ? ` · ${p.price}` : ""}
-                    </span>
-                    <span className="seasonal__see">See markets →</span>
-                  </span>
-                </Link>
-              </li>
+                  <Icon name="share-2" size={16} />
+                  Share
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {cards.length > 0 && (
+        <section
+          className="container seasonal__in-season"
+          aria-labelledby="in-season-title"
+        >
+          <h2 id="in-season-title" className="seasonal__h2">
+            Also in season
+          </h2>
+          <div className="seasonal__grid">
+            {cards.map((p) => (
+              <article key={p.id} className="seasonal__card card hover-card">
+                <img
+                  src={asset(p.icon || p.image || p.photo)}
+                  alt=""
+                  width="132"
+                  height="98"
+                  loading="lazy"
+                />
+                <div className="seasonal__card-body">
+                  <h3 className="seasonal__card-title">{p.name}</h3>
+                  {endingIds.has(p.id) ? (
+                    <span className="pill pill--amber">Ending soon</span>
+                  ) : (
+                    <span className="pill pill--green">In season</span>
+                  )}
+                  <p className="seasonal__card-note">
+                    {p.note || p.description}
+                  </p>
+                  <Link
+                    to={`/directory?q=${encodeURIComponent(p.shortName || p.name)}`}
+                    className="seasonal__see"
+                  >
+                    See markets →
+                  </Link>
+                </div>
+              </article>
             ))}
-          </ul>
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       <section
         className="container seasonal__best"
         aria-labelledby="best-title"
       >
-        <div className="detail__nearby-head">
+        <div className="seasonal__best-head">
           <h2 id="best-title" className="seasonal__h2">
             Top Markets for Seasonal Picks
           </h2>
@@ -207,7 +271,7 @@ export default function SeasonalPage() {
         </div>
         <div className="grid grid--4 scroll-row">
           {best.map((mk) => (
-            <MarketCard key={mk.id} market={mk} variant="local" />
+            <MarketCard key={mk.id} market={mk} />
           ))}
         </div>
       </section>

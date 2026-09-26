@@ -3,6 +3,7 @@ import Icon from "./Icon.jsx";
 import { loadTawk, openChat, tawkConfigured } from "../lib/tawk.js";
 import { useToast } from "../context/ToastContext.jsx";
 
+/* eslint-disable-next-line react-refresh/only-export-components */
 export function useOpenChat() {
   const toast = useToast();
   return () => {

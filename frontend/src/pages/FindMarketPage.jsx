@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb.jsx";
+import PageBanner from "../components/PageBanner.jsx";
 import Icon from "../components/Icon.jsx";
 import Dropdown from "../components/Dropdown.jsx";
 import SearchBox from "../components/SearchBox.jsx";
@@ -31,8 +30,7 @@ import "./FindMarketPage.css";
 export default function FindMarketPage() {
   const data = useData();
   const now = useNow();
-  const { origin, status, requestDeviceLocation, chooseArea, reset } =
-    useUserLocation();
+  const { origin, status, requestDeviceLocation } = useUserLocation();
   const markets = useDecoratedMarkets();
   const [filters, setFilters] = useUrlFilters();
   const [selectedId, setSelectedId] = useState(null);
@@ -72,53 +70,14 @@ export default function FindMarketPage() {
   const produceFilter = produceDropdown(filters, { ...data, markets });
   const sort = sortDropdown(filters);
 
-  const locationOptions = [
-    {
-      value: "device",
-      label: status === "locating" ? "Finding you…" : "Use my current location",
-      strong: true,
-    },
-    { value: "default", label: `${data.defaultLocation.label} (default)` },
-    { header: "Choose an area" },
-    ...data.areas.map((a) => ({ value: `area:${a.name}`, label: a.place })),
-  ];
-  const locationValue =
-    origin.source === "device"
-      ? "device"
-      : origin.source === "area"
-        ? `area:${origin.area}`
-        : "default";
-  const onLocation = (v) => {
-    if (v === "device") requestDeviceLocation();
-    else if (v === "default") reset();
-    else chooseArea(v.slice(5));
-  };
-
-  const crumbs = [
-    { label: "Home", to: "/" },
-    { label: "Find a Market", to: chips.length ? "/find" : undefined },
-  ];
-  if (chips.length === 1) crumbs.push({ label: chips[0].label });
-
   return (
-    <div className="find container">
+    <div className="find">
+      <PageBanner
+        crumbs={[{ label: "Home", to: "/" }, { label: "Find a Market" }]}
+      />
+
       <div className="find__toolbar">
         <div className="container find__toolbar-inner">
-          <Dropdown
-            icon="locate-fixed"
-            label={origin.source === "device" ? "Your location" : "Location"}
-            value={locationValue}
-            options={
-              origin.source === "device"
-                ? [
-                    { value: "device", label: origin.label, strong: true },
-                    ...locationOptions.slice(1),
-                  ]
-                : locationOptions
-            }
-            onChange={onLocation}
-            className="find__loc"
-          />
           <Dropdown
             icon="map-pin"
             label="Area"
@@ -129,7 +88,7 @@ export default function FindMarketPage() {
           />
           <Dropdown
             icon="calendar"
-            label="Day"
+            label="Date"
             value={day.value}
             options={day.options}
             onChange={(v) => setFilters({ ...filters, days: day.apply(v) })}
@@ -202,16 +161,13 @@ export default function FindMarketPage() {
         </p>
       )}
 
-      <div className="find__split">
+      <div className="container find__split">
         <section className="find__list-col" aria-labelledby="find-count">
           <div className="find__head">
-            <div>
-              <Breadcrumb items={crumbs} />
-              <h1 id="find-count" className="find__count" aria-live="polite">
-                {results.length}{" "}
-                {results.length === 1 ? "market matches" : "markets match"}
-              </h1>
-            </div>
+            <h1 id="find-count" className="find__count" aria-live="polite">
+              {results.length}{" "}
+              {results.length === 1 ? "market matches" : "markets match"}
+            </h1>
             <Dropdown
               icon="arrow-up-down"
               label="Sort by"
@@ -293,22 +249,6 @@ export default function FindMarketPage() {
           />
         </section>
       </div>
-
-      <section className="container find__cta" aria-labelledby="find-cta-title">
-        <h2 id="find-cta-title">Run a market or grow for one?</h2>
-        <p>
-          Get your market listed on FreshFind so more neighbours know when
-          you're open and what you're selling.
-        </p>
-        <div className="find__cta-buttons">
-          <Link to="/contact?topic=add" className="btn btn--outline btn--lg">
-            List your market
-          </Link>
-          <Link to="/contact" className="btn btn--primary btn--lg">
-            Contact us
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

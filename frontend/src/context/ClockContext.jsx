@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import { lagosParts } from '../lib/time.js';
+import { createContext, useContext, useEffect, useState } from "react";
+import { lagosParts } from "../lib/time.js";
 
 const ClockContext = createContext(null);
 
@@ -13,7 +13,9 @@ export function ClockProvider({ children }) {
   useEffect(() => {
     const id = window.setInterval(() => {
       const next = lagosParts();
-      setNow((prev) => (prev.minutes === next.minutes && prev.day === next.day ? prev : next));
+      setNow((prev) =>
+        prev.minutes === next.minutes && prev.day === next.day ? prev : next,
+      );
     }, 1000);
     return () => window.clearInterval(id);
   }, []);
@@ -21,8 +23,9 @@ export function ClockProvider({ children }) {
   return <ClockContext.Provider value={now}>{children}</ClockContext.Provider>;
 }
 
+/* eslint-disable-next-line react-refresh/only-export-components */
 export function useNow() {
   const ctx = useContext(ClockContext);
-  if (!ctx) throw new Error('useNow must be used inside <ClockProvider>');
+  if (!ctx) throw new Error("useNow must be used inside <ClockProvider>");
   return ctx;
 }

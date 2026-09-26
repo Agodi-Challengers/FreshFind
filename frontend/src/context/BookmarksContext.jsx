@@ -1,8 +1,14 @@
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
-import { readJSON, sessionStore, writeJSON } from '../lib/storage.js';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
+import { readJSON, sessionStore, writeJSON } from "../lib/storage.js";
 
 const BookmarksContext = createContext(null);
-const KEY = 'ff:bookmarks';
+const KEY = "ff:bookmarks";
 
 /**
  * Saved markets and produce with personal notes.
@@ -20,35 +26,55 @@ export function BookmarksProvider({ children }) {
     });
   }, []);
 
-  const isSaved = useCallback((type, id) => items.some((i) => i.type === type && i.id === id), [items]);
+  const isSaved = useCallback(
+    (type, id) => items.some((i) => i.type === type && i.id === id),
+    [items],
+  );
 
   const toggle = useCallback(
     (type, id) => {
       const willSave = !items.some((i) => i.type === type && i.id === id);
       update((prev) => {
         const exists = prev.some((i) => i.type === type && i.id === id);
-        if (exists) return prev.filter((i) => !(i.type === type && i.id === id));
-        return [...prev, { type, id, note: '', savedAt: Date.now() }];
+        if (exists)
+          return prev.filter((i) => !(i.type === type && i.id === id));
+        return [...prev, { type, id, note: "", savedAt: Date.now() }];
       });
       return willSave;
     },
     [items, update],
   );
 
-  const remove = useCallback((type, id) => update((prev) => prev.filter((i) => !(i.type === type && i.id === id))), [update]);
-
-  const setNote = useCallback(
-    (type, id, note) => update((prev) => prev.map((i) => (i.type === type && i.id === id ? { ...i, note } : i))),
+  const remove = useCallback(
+    (type, id) =>
+      update((prev) => prev.filter((i) => !(i.type === type && i.id === id))),
     [update],
   );
 
-  const value = useMemo(() => ({ items, isSaved, toggle, remove, setNote }), [items, isSaved, toggle, remove, setNote]);
+  const setNote = useCallback(
+    (type, id, note) =>
+      update((prev) =>
+        prev.map((i) => (i.type === type && i.id === id ? { ...i, note } : i)),
+      ),
+    [update],
+  );
 
-  return <BookmarksContext.Provider value={value}>{children}</BookmarksContext.Provider>;
+  const value = useMemo(
+    () => ({ items, isSaved, toggle, remove, setNote }),
+    [items, isSaved, toggle, remove, setNote],
+  );
+
+  return (
+    <BookmarksContext.Provider value={value}>
+      {children}
+    </BookmarksContext.Provider>
+  );
 }
 
+/* eslint-disable-next-line react-refresh/only-export-components */
 export function useBookmarks() {
   const ctx = useContext(BookmarksContext);
-  if (!ctx) throw new Error('useBookmarks must be used inside <BookmarksProvider>');
+  if (!ctx)
+    throw new Error("useBookmarks must be used inside <BookmarksProvider>");
   return ctx;
 }

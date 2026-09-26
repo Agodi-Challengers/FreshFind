@@ -106,8 +106,6 @@ export default function Dropdown({
     }
   };
 
-  let index = -1;
-
   return (
     <div
       className={`dropdown${open ? " is-open" : ""} ${className}`.trim()}
@@ -155,8 +153,7 @@ export default function Dropdown({
                 </li>
               );
             }
-            index += 1;
-            const i = index;
+            const i = selectable.indexOf(opt);
             const selected = opt.value === current?.value;
             return (
               <li
