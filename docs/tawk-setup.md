@@ -20,11 +20,11 @@ Pages never talk to Tawk directly. To open the chat from anywhere, use `openChat
 
 ## 1. Settings (.env)
 
-| Variable | Values | What it does |
-|---|---|---|
-| `VITE_CHAT_PROVIDER` | `tawk` or `none` | `tawk` loads Tawk.to. `none` loads no chat script and hides the button. |
-| `VITE_TAWK_PROPERTY_ID` | from Tawk | Property ID from the embed link `https://embed.tawk.to/<PROPERTY_ID>/<WIDGET_ID>` |
-| `VITE_TAWK_WIDGET_ID` | from Tawk | Widget ID from the same link |
+| Variable                | Values           | What it does                                                                      |
+| ----------------------- | ---------------- | --------------------------------------------------------------------------------- |
+| `VITE_CHAT_PROVIDER`    | `tawk` or `none` | `tawk` loads Tawk.to. `none` loads no chat script and hides the button.           |
+| `VITE_TAWK_PROPERTY_ID` | from Tawk        | Property ID from the embed link `https://embed.tawk.to/<PROPERTY_ID>/<WIDGET_ID>` |
+| `VITE_TAWK_WIDGET_ID`   | from Tawk        | Widget ID from the same link                                                      |
 
 - `frontend/.env.development` already holds the team's FreshFind property, so `npm run dev` works with no setup. These IDs are public (every visitor's browser sees them), so they are safe in the repo.
 - For the live site, set the same three variables in the hosting dashboard (or a local `.env.production`). If they are missing, the production build has chat switched off.
@@ -40,20 +40,20 @@ In **Administration → Chat Widget → Widget Appearance** (property "FreshFind
 
 ## 3. Pre-scripted answers (SRS: static dataset, links to market and produce pages)
 
-Use **Shortcuts** (and, if you enable it, the AI Assist knowledge base) with these questions and answers. Replace the domain with the live site address.
+Use **Shortcuts** (and, if you enable it, the knowledge-base feature) with these questions and answers. Replace the domain with the live site address.
 
-| Question | Answer |
-|---|---|
-| What's in season? | See this month's picks: /seasonal · Full guide: /produce |
-| Which markets are open now? | Live list of open markets: /find?open=1 |
-| Which markets open this Saturday? | /find?day=sat |
-| Do markets take bank transfers? | Most markets take cash and bank transfer. Markets that also take card: /directory?feat=card |
-| Is there parking? | Markets with dedicated parking: /directory?feat=parking |
-| Where can I buy fresh fish? | /directory?cat=Fish%20%26%20meat · Festac 2nd Avenue: /markets/festac-2nd-ave · Epe Fish & Farm: /markets/epe-fish-farm |
-| Where can I buy tomatoes? | /produce/tomatoes |
-| Organic produce? | Markets with organic growers: /directory?feat=organic |
-| Evening markets after work? | /directory?time=evening |
-| How do I list my market? | Send us the details: /contact?topic=add |
+| Question                          | Answer                                                                                                                  |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| What's in season?                 | See this month's picks: /seasonal · Full guide: /produce                                                                |
+| Which markets are open now?       | Live list of open markets: /find?open=1                                                                                 |
+| Which markets open this Saturday? | /find?day=sat                                                                                                           |
+| Do markets take bank transfers?   | Most markets take cash and bank transfer. Markets that also take card: /directory?feat=card                             |
+| Is there parking?                 | Markets with dedicated parking: /directory?feat=parking                                                                 |
+| Where can I buy fresh fish?       | /directory?cat=Fish%20%26%20meat · Festac 2nd Avenue: /markets/festac-2nd-ave · Epe Fish & Farm: /markets/epe-fish-farm |
+| Where can I buy tomatoes?         | /produce/tomatoes                                                                                                       |
+| Organic produce?                  | Markets with organic growers: /directory?feat=organic                                                                   |
+| Evening markets after work?       | /directory?time=evening                                                                                                 |
+| How do I list my market?          | Send us the details: /contact?topic=add                                                                                 |
 
 Quick replies to enable on the welcome message: **What's in season?**, **Markets open now**, **Do they take transfers?**, **Parking info** (as in the Figma chatbot frame).
 

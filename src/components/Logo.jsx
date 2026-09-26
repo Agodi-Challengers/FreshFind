@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-import logoLight from "../assets/ChatGPT Image Sep 23, 2026, 11_31_21 PM 1.png";
+import logoLight from "../assets/logo-light.png";
 
 /**
  * FreshFind logo.
@@ -31,11 +31,7 @@ export default function Logo({
         aria-label="FreshFind home"
         onClick={onClick}
       >
-        <img
-          className="logo__img"
-          src={logo}
-          alt="FreshFind"
-        />
+        <img className="logo__img" src={logo} alt="FreshFind" />
       </Link>
     );
   }

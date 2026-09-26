@@ -1,11 +1,16 @@
 {
-  "_about": "Pre-scripted FreshFind Assistant (SRS 1.5: static, rule-based chatbot loaded from JSON; no AI or backend). Edit the answers here; the logic lives in src/services/chatbotService.js. {placeholders} are filled from the market and produce data.",
+  "_about": "Pre-scripted FreshFind Assistant (SRS 1.5: static, rule-based chatbot loaded from JSON; no external service or backend). Edit the answers here; the logic lives in src/services/chatbotService.js. {placeholders} are filled from the market and produce data.",
   "assistant": {
     "name": "FreshFind Assistant",
     "status": "Answers instantly"
   },
   "greeting": "Hi! 👋 I can help you find markets, opening hours and what’s in season. What are you looking for?",
-  "suggestions": ["What’s in season?", "Markets open now", "Do they take transfers?", "Parking info"],
+  "suggestions": [
+    "What’s in season?",
+    "Markets open now",
+    "Do they take transfers?",
+    "Parking info"
+  ],
   "placeholder": "Type your question…",
   "maxResults": 3,
   "search": {
@@ -13,7 +18,11 @@
     "foundClosest": "I found {count} {markets}{filters}. The closest is {name}, {hours}.",
     "none": "I couldn’t find any markets{filters}. Try another day, area or produce.",
     "seeAll": "See all {count} in the directory",
-    "noneSuggestions": ["Markets open now", "Markets open this weekend", "Markets near me"]
+    "noneSuggestions": [
+      "Markets open now",
+      "Markets open this weekend",
+      "Markets near me"
+    ]
   },
   "produce": {
     "answer": "{name} is {season}. You can find it at {count} {markets}{closest}.",
@@ -26,9 +35,20 @@
     {
       "id": "greeting",
       "type": "text",
-      "keywords": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"],
+      "keywords": [
+        "hi",
+        "hello",
+        "hey",
+        "good morning",
+        "good afternoon",
+        "good evening"
+      ],
       "answer": "Hello! Ask me about markets, opening days, areas or produce.",
-      "suggestions": ["Markets open now", "Markets near me", "What’s in season?"]
+      "suggestions": [
+        "Markets open now",
+        "Markets near me",
+        "What’s in season?"
+      ]
     },
     {
       "id": "thanks",
@@ -39,7 +59,14 @@
     {
       "id": "nearMe",
       "type": "nearMe",
-      "keywords": ["near me", "nearby", "closest", "nearest", "around me", "close to me"],
+      "keywords": [
+        "near me",
+        "nearby",
+        "closest",
+        "nearest",
+        "around me",
+        "close to me"
+      ],
       "answer": "Here are the markets closest to you:",
       "locating": "Finding your location…",
       "denied": "I need your location to find markets near you. You can allow location access in your browser, or tell me an area, like “markets in Yaba”.",
@@ -48,7 +75,16 @@
     {
       "id": "season",
       "type": "season",
-      "keywords": ["in season", "season", "seasonal", "this month", "what's fresh", "what’s fresh", "whats fresh", "pick of the"],
+      "keywords": [
+        "in season",
+        "season",
+        "seasonal",
+        "this month",
+        "what's fresh",
+        "what’s fresh",
+        "whats fresh",
+        "pick of the"
+      ],
       "answer": "In season in {month}: {items}.",
       "links": [
         { "label": "This month’s picks", "to": "/seasonal" },
@@ -60,26 +96,40 @@
       "type": "text",
       "keywords": ["transfer", "pay", "payment", "card", "cash", "pos"],
       "answer": "Most markets take cash and bank transfer. Some also accept card.",
-      "links": [{ "label": "Markets that accept card", "to": "/directory?feat=card" }]
+      "links": [
+        { "label": "Markets that accept card", "to": "/directory?feat=card" }
+      ]
     },
     {
       "id": "parking",
       "type": "text",
       "keywords": ["parking", "park", "car"],
       "answer": "Several markets have dedicated parking. Street parking fills up early on weekends, so arrive before 9 AM.",
-      "links": [{ "label": "Markets with parking", "to": "/directory?feat=parking" }]
+      "links": [
+        { "label": "Markets with parking", "to": "/directory?feat=parking" }
+      ]
     },
     {
       "id": "wholesale",
       "type": "text",
       "keywords": ["wholesale", "bulk", "cheap", "cheapest"],
       "answer": "Some markets sell at wholesale prices, which is good for bulk buying.",
-      "links": [{ "label": "Wholesale markets", "to": "/directory?feat=wholesale" }]
+      "links": [
+        { "label": "Wholesale markets", "to": "/directory?feat=wholesale" }
+      ]
     },
     {
       "id": "listMarket",
       "type": "text",
-      "keywords": ["list my market", "add my market", "add a market", "list a market", "register my market", "i run a market", "i sell"],
+      "keywords": [
+        "list my market",
+        "add my market",
+        "add a market",
+        "list a market",
+        "register my market",
+        "i run a market",
+        "i sell"
+      ],
       "answer": "We’d love to list your market! Send us the name, address, days and hours.",
       "links": [{ "label": "Add my market", "to": "/contact?topic=add" }]
     },
@@ -100,13 +150,29 @@
     {
       "id": "hours",
       "type": "text",
-      "keywords": ["opening hours", "what time", "hours", "when do", "when does", "open times"],
+      "keywords": [
+        "opening hours",
+        "what time",
+        "hours",
+        "when do",
+        "when does",
+        "open times"
+      ],
       "answer": "Tell me a market, an area or a day and I’ll show the hours, for example “Sunday markets in Lekki” or “markets open now”.",
-      "suggestions": ["Markets open now", "Sunday markets in Lekki", "Markets open this weekend"]
+      "suggestions": [
+        "Markets open now",
+        "Sunday markets in Lekki",
+        "Markets open this weekend"
+      ]
     }
   ],
   "fallback": {
     "answer": "Sorry, I didn’t catch that. You can ask about an area (“markets in Yaba”), a day (“Sunday markets”), produce (“where can I get mangoes”) or “markets near me”.",
-    "suggestions": ["Markets open now", "Markets near me", "What’s in season?", "Where can I get tomatoes?"]
+    "suggestions": [
+      "Markets open now",
+      "Markets near me",
+      "What’s in season?",
+      "Where can I get tomatoes?"
+    ]
   }
 }

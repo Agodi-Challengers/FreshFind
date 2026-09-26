@@ -34,3 +34,6 @@ dist-ssr
 /.env.development
 /.env.example
 /next
+
+# Local cleanup notes (excluded from version control)
+/CHANGES.md

@@ -7,18 +7,90 @@
   },
   "regions": ["Island", "Mainland", "Outskirts"],
   "areas": [
-    { "name": "Lekki", "region": "Island", "lat": 6.4383, "lng": 3.4652, "place": "Lekki Phase 1" },
-    { "name": "Ikoyi", "region": "Island", "lat": 6.452, "lng": 3.438, "place": "Ikoyi" },
-    { "name": "Victoria Island", "region": "Island", "lat": 6.4281, "lng": 3.4219, "place": "Victoria Island" },
-    { "name": "Ajah", "region": "Island", "lat": 6.468, "lng": 3.58, "place": "Ajah" },
-    { "name": "Yaba", "region": "Mainland", "lat": 6.514, "lng": 3.378, "place": "Yaba" },
-    { "name": "Surulere", "region": "Mainland", "lat": 6.493, "lng": 3.355, "place": "Surulere" },
-    { "name": "Ikeja", "region": "Mainland", "lat": 6.6, "lng": 3.35, "place": "Ikeja" },
-    { "name": "Gbagada", "region": "Mainland", "lat": 6.555, "lng": 3.388, "place": "Gbagada" },
-    { "name": "Maryland", "region": "Mainland", "lat": 6.571, "lng": 3.367, "place": "Maryland" },
-    { "name": "Festac", "region": "Mainland", "lat": 6.467, "lng": 3.284, "place": "Festac Town" },
-    { "name": "Ikorodu", "region": "Outskirts", "lat": 6.615, "lng": 3.507, "place": "Ikorodu" },
-    { "name": "Epe", "region": "Outskirts", "lat": 6.584, "lng": 3.983, "place": "Epe" }
+    {
+      "name": "Lekki",
+      "region": "Island",
+      "lat": 6.4383,
+      "lng": 3.4652,
+      "place": "Lekki Phase 1"
+    },
+    {
+      "name": "Ikoyi",
+      "region": "Island",
+      "lat": 6.452,
+      "lng": 3.438,
+      "place": "Ikoyi"
+    },
+    {
+      "name": "Victoria Island",
+      "region": "Island",
+      "lat": 6.4281,
+      "lng": 3.4219,
+      "place": "Victoria Island"
+    },
+    {
+      "name": "Ajah",
+      "region": "Island",
+      "lat": 6.468,
+      "lng": 3.58,
+      "place": "Ajah"
+    },
+    {
+      "name": "Yaba",
+      "region": "Mainland",
+      "lat": 6.514,
+      "lng": 3.378,
+      "place": "Yaba"
+    },
+    {
+      "name": "Surulere",
+      "region": "Mainland",
+      "lat": 6.493,
+      "lng": 3.355,
+      "place": "Surulere"
+    },
+    {
+      "name": "Ikeja",
+      "region": "Mainland",
+      "lat": 6.6,
+      "lng": 3.35,
+      "place": "Ikeja"
+    },
+    {
+      "name": "Gbagada",
+      "region": "Mainland",
+      "lat": 6.555,
+      "lng": 3.388,
+      "place": "Gbagada"
+    },
+    {
+      "name": "Maryland",
+      "region": "Mainland",
+      "lat": 6.571,
+      "lng": 3.367,
+      "place": "Maryland"
+    },
+    {
+      "name": "Festac",
+      "region": "Mainland",
+      "lat": 6.467,
+      "lng": 3.284,
+      "place": "Festac Town"
+    },
+    {
+      "name": "Ikorodu",
+      "region": "Outskirts",
+      "lat": 6.615,
+      "lng": 3.507,
+      "place": "Ikorodu"
+    },
+    {
+      "name": "Epe",
+      "region": "Outskirts",
+      "lat": 6.584,
+      "lng": 3.983,
+      "place": "Epe"
+    }
   ],
   "markets": [
     {
@@ -33,9 +105,23 @@
       "lng": 3.4716,
       "map": { "x": 445, "y": 623 },
       "schedule": { "sun": ["07:00", "14:00"] },
-      "description": "A big Sunday market with 60+ stalls. Growers from Epe, Ikorodu and Ogun State sell straight from the farm. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
-      "categories": ["Vegetables", "Herbs & spices", "Grains & tubers", "Fish & meat"],
-      "produce": ["tomatoes", "scotch-bonnet", "ugu", "yam", "plantain", "smoked-fish", "scent-leaf", "onions"],
+      "description": "A big Sunday market with 60+ stalls. Growers from Epe, Ikorodu and Ogun State sell straight from the farm, so the produce is as fresh as it gets. Go early for the widest choice; the last hour before closing is when sellers start dropping prices.",
+      "categories": [
+        "Vegetables",
+        "Herbs & spices",
+        "Grains & tubers",
+        "Fish & meat"
+      ],
+      "produce": [
+        "tomatoes",
+        "scotch-bonnet",
+        "ugu",
+        "yam",
+        "plantain",
+        "smoked-fish",
+        "scent-leaf",
+        "onions"
+      ],
       "payment": "Cash and bank transfer",
       "parking": "Dedicated parking",
       "growers": "Mixed growers & traders",
@@ -51,7 +137,12 @@
           "/images/markets/lekki-sunday-gallery-3.jpg"
         ]
       },
-      "nearby": ["ikoyi-farm-table", "vi-weekend", "chevron-drive", "ajah-fresh-hub"]
+      "nearby": [
+        "ikoyi-farm-table",
+        "vi-weekend",
+        "chevron-drive",
+        "ajah-fresh-hub"
+      ]
     },
     {
       "id": "ikoyi-farm-table",
@@ -65,9 +156,16 @@
       "lng": 3.438,
       "map": { "x": 369, "y": 608 },
       "schedule": { "sat": ["10:00", "15:00"], "sun": ["10:00", "15:00"] },
-      "description": "Artisan dairy, eggs, honey and pastured chicken from nearby farms. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Artisan dairy, eggs, honey and pastured chicken from nearby farms. Small and calm, it suits a slow weekend shop rather than a big restock.",
       "categories": ["Dairy & eggs", "Vegetables", "Fish & meat"],
-      "produce": ["eggs", "wara", "honey", "local-chicken", "efo-tete", "tomatoes"],
+      "produce": [
+        "eggs",
+        "wara",
+        "honey",
+        "local-chicken",
+        "efo-tete",
+        "tomatoes"
+      ],
       "payment": "Cash, transfer and card",
       "parking": "Dedicated parking",
       "growers": "Organic growers present",
@@ -97,9 +195,16 @@
       "lng": 3.422,
       "map": { "x": 344, "y": 662 },
       "schedule": { "sat": ["09:00", "17:00"] },
-      "description": "Saturday market by the water with fruit, honey and ready-to-cook herbs. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Saturday market by the water with fruit, honey and ready-to-cook herbs. It gets lively around midday, so bring a list if you do not enjoy queueing.",
       "categories": ["Fruit", "Dairy & eggs", "Herbs & spices"],
-      "produce": ["pineapple", "mangoes", "honey", "eggs", "scent-leaf", "tatashe"],
+      "produce": [
+        "pineapple",
+        "mangoes",
+        "honey",
+        "eggs",
+        "scent-leaf",
+        "tatashe"
+      ],
       "payment": "Cash, transfer and card",
       "parking": "Dedicated parking",
       "growers": "Mixed growers & traders",
@@ -115,7 +220,12 @@
           "/images/markets/thumbnail4.png"
         ]
       },
-      "nearby": ["ikoyi-farm-table", "lekki-sunday", "surulere-organic", "yaba-green"]
+      "nearby": [
+        "ikoyi-farm-table",
+        "lekki-sunday",
+        "surulere-organic",
+        "yaba-green"
+      ]
     },
     {
       "id": "chevron-drive",
@@ -126,10 +236,10 @@
       "street": "Chevron Drive, Lekki",
       "address": "Chevron Drive, Lekki, Lagos",
       "lat": 6.438,
-      "lng": 3.530,
+      "lng": 3.53,
       "map": { "x": 554, "y": 640 },
       "schedule": { "wed": ["16:00", "20:00"], "fri": ["16:00", "20:00"] },
-      "description": "Midweek evening market for fresh greens and eggs after work. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Midweek evening market for fresh greens and eggs after work. Traders set up around 4pm and start packing away as the light fades.",
       "categories": ["Vegetables", "Herbs & spices", "Dairy & eggs"],
       "produce": ["efo-tete", "scent-leaf", "tatashe", "eggs", "honey"],
       "payment": "Cash, transfer and card",
@@ -147,7 +257,12 @@
           "/images/markets/chevron-drive.jpg"
         ]
       },
-      "nearby": ["lekki-sunday", "ajah-fresh-hub", "ikoyi-farm-table", "vi-weekend"]
+      "nearby": [
+        "lekki-sunday",
+        "ajah-fresh-hub",
+        "ikoyi-farm-table",
+        "vi-weekend"
+      ]
     },
     {
       "id": "yaba-green",
@@ -161,9 +276,17 @@
       "lng": 3.377,
       "map": { "x": 242, "y": 498 },
       "schedule": { "sat": ["08:00", "16:00"], "sun": ["10:00", "16:00"] },
-      "description": "Leafy greens, herbs and organic growers from Ogun and Oyo farms. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Leafy greens, herbs and organic growers from Ogun and Oyo farms. Compact but well stocked, and a reliable stop for soup ingredients.",
       "categories": ["Vegetables", "Herbs & spices"],
-      "produce": ["ugu", "efo-tete", "okra", "garden-eggs", "scent-leaf", "tatashe", "carrots"],
+      "produce": [
+        "ugu",
+        "efo-tete",
+        "okra",
+        "garden-eggs",
+        "scent-leaf",
+        "tatashe",
+        "carrots"
+      ],
       "payment": "Cash and bank transfer",
       "parking": "Street parking only",
       "growers": "Organic growers present",
@@ -179,7 +302,12 @@
           "/images/markets/thumbnail6.png"
         ]
       },
-      "nearby": ["yaba-tech-gate", "surulere-organic", "gbagada-dawn", "maryland-evening"]
+      "nearby": [
+        "yaba-tech-gate",
+        "surulere-organic",
+        "gbagada-dawn",
+        "maryland-evening"
+      ]
     },
     {
       "id": "yaba-tech-gate",
@@ -199,9 +327,16 @@
         "thu": ["07:00", "18:00"],
         "fri": ["07:00", "18:00"]
       },
-      "description": "Weekday market with low prices, popular with students and staff. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Weekday market with low prices, popular with students and staff. It is practical rather than pretty, and the fruit here is usually a bargain.",
       "categories": ["Vegetables", "Fruit"],
-      "produce": ["tomatoes", "oranges", "pawpaw", "carrots", "cucumber", "garden-eggs"],
+      "produce": [
+        "tomatoes",
+        "oranges",
+        "pawpaw",
+        "carrots",
+        "cucumber",
+        "garden-eggs"
+      ],
       "payment": "Cash and bank transfer",
       "parking": "Street parking only",
       "growers": "Mixed growers & traders",
@@ -217,7 +352,12 @@
           "/images/markets/thumbnail7.png"
         ]
       },
-      "nearby": ["yaba-green", "surulere-organic", "gbagada-dawn", "maryland-evening"]
+      "nearby": [
+        "yaba-green",
+        "surulere-organic",
+        "gbagada-dawn",
+        "maryland-evening"
+      ]
     },
     {
       "id": "surulere-organic",
@@ -231,7 +371,7 @@
       "lng": 3.36,
       "map": { "x": 211, "y": 524 },
       "schedule": { "sat": ["09:00", "15:00"] },
-      "description": "A small, friendly market for tropical fruit, coconuts and fresh juice. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "A small, friendly market for tropical fruit, coconuts and fresh juice. The juice stand alone is worth the trip on a hot afternoon.",
       "categories": ["Fruit"],
       "produce": ["mangoes", "pineapple", "oranges", "pawpaw", "watermelon"],
       "payment": "Cash and bank transfer",
@@ -249,7 +389,12 @@
           "/images/markets/lekki-fruit-market.webp"
         ]
       },
-      "nearby": ["yaba-green", "yaba-tech-gate", "gbagada-dawn", "maryland-evening"]
+      "nearby": [
+        "yaba-green",
+        "yaba-tech-gate",
+        "gbagada-dawn",
+        "maryland-evening"
+      ]
     },
     {
       "id": "ajah-fresh-hub",
@@ -262,10 +407,21 @@
       "lat": 6.472,
       "lng": 3.588,
       "map": { "x": 670, "y": 578 },
-      "schedule": { "tue": ["07:00", "18:00"], "thu": ["07:00", "18:00"], "sat": ["07:00", "18:00"] },
-      "description": "Busy midweek market for grains, peppers, yam and groundnuts. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "schedule": {
+        "tue": ["07:00", "18:00"],
+        "thu": ["07:00", "18:00"],
+        "sat": ["07:00", "18:00"]
+      },
+      "description": "Busy midweek market for grains, peppers, yam and groundnuts. It is built for bulk buying, so come for a big shop rather than a single meal.",
       "categories": ["Grains & tubers", "Vegetables"],
-      "produce": ["sweet-corn", "yam", "scotch-bonnet", "beans", "plantain", "onions"],
+      "produce": [
+        "sweet-corn",
+        "yam",
+        "scotch-bonnet",
+        "beans",
+        "plantain",
+        "onions"
+      ],
       "payment": "Cash and bank transfer",
       "parking": "Street parking only",
       "growers": "Mixed growers & traders",
@@ -281,7 +437,12 @@
           "/images/markets/ikeja-harvest.jpg"
         ]
       },
-      "nearby": ["sangotedo-saturday", "chevron-drive", "lekki-sunday", "ikoyi-farm-table"]
+      "nearby": [
+        "sangotedo-saturday",
+        "chevron-drive",
+        "lekki-sunday",
+        "ikoyi-farm-table"
+      ]
     },
     {
       "id": "gbagada-dawn",
@@ -302,9 +463,16 @@
         "fri": ["06:00", "11:00"],
         "sat": ["06:00", "11:00"]
       },
-      "description": "Early-morning market for traders and families who shop before work. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Early-morning market for traders and families who shop before work. The gates open while it is still dark, and most stalls are packed up by noon.",
       "categories": ["Vegetables", "Fish & meat"],
-      "produce": ["tomatoes", "scotch-bonnet", "onions", "yam", "ugu", "smoked-fish"],
+      "produce": [
+        "tomatoes",
+        "scotch-bonnet",
+        "onions",
+        "yam",
+        "ugu",
+        "smoked-fish"
+      ],
       "payment": "Cash and bank transfer",
       "parking": "Street parking only",
       "growers": "Mixed growers & traders",
@@ -320,7 +488,12 @@
           "/images/markets/lekki-sunday-gallery-3.jpg"
         ]
       },
-      "nearby": ["maryland-evening", "yaba-tech-gate", "ikeja-gra-sunday", "yaba-green"]
+      "nearby": [
+        "maryland-evening",
+        "yaba-tech-gate",
+        "ikeja-gra-sunday",
+        "yaba-green"
+      ]
     },
     {
       "id": "maryland-evening",
@@ -340,9 +513,16 @@
         "thu": ["16:00", "21:00"],
         "fri": ["16:00", "21:00"]
       },
-      "description": "After-work market for quick stew ingredients on the way home. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "After-work market for quick stew ingredients on the way home. It fills up between 5 and 7, and the vendors know exactly what a tired commuter needs.",
       "categories": ["Vegetables", "Dairy & eggs"],
-      "produce": ["tomatoes", "scotch-bonnet", "onions", "efo-tete", "eggs", "plantain"],
+      "produce": [
+        "tomatoes",
+        "scotch-bonnet",
+        "onions",
+        "efo-tete",
+        "eggs",
+        "plantain"
+      ],
       "payment": "Cash, transfer and card",
       "parking": "Street parking only",
       "growers": "Mixed growers & traders",
@@ -358,7 +538,12 @@
           "/images/markets/lekki-sunday-gallery-3.jpg"
         ]
       },
-      "nearby": ["ikeja-gra-sunday", "gbagada-dawn", "ikeja-harvest", "yaba-tech-gate"]
+      "nearby": [
+        "ikeja-gra-sunday",
+        "gbagada-dawn",
+        "ikeja-harvest",
+        "yaba-tech-gate"
+      ]
     },
     {
       "id": "sangotedo-saturday",
@@ -372,7 +557,7 @@
       "lng": 3.632,
       "map": { "x": 760, "y": 578 },
       "schedule": { "sat": ["07:00", "15:00"] },
-      "description": "Neighbourhood Saturday market with fruit trucks from Ogun State. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Neighbourhood Saturday market with fruit trucks from Ogun State. Watermelon and pineapple are the draw, and prices soften as the morning goes on.",
       "categories": ["Fruit", "Vegetables"],
       "produce": ["watermelon", "pineapple", "sweet-corn", "tomatoes", "ugu"],
       "payment": "Cash and bank transfer",
@@ -390,7 +575,12 @@
           "/images/markets/sangotedo-market.avif"
         ]
       },
-      "nearby": ["ajah-fresh-hub", "chevron-drive", "lekki-sunday", "ikorodu-farmgate"]
+      "nearby": [
+        "ajah-fresh-hub",
+        "chevron-drive",
+        "lekki-sunday",
+        "ikorodu-farmgate"
+      ]
     },
     {
       "id": "ikeja-gra-sunday",
@@ -404,9 +594,16 @@
       "lng": 3.355,
       "map": { "x": 214, "y": 348 },
       "schedule": { "sun": ["09:00", "14:00"] },
-      "description": "Quiet Sunday market for organic produce, dairy and baked goods. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Quiet Sunday market for organic produce, dairy and baked goods. Fewer crowds than the bigger markets, with a steady line of regulars.",
       "categories": ["Dairy & eggs", "Fruit", "Herbs & spices"],
-      "produce": ["eggs", "wara", "honey", "mangoes", "scent-leaf", "strawberries"],
+      "produce": [
+        "eggs",
+        "wara",
+        "honey",
+        "mangoes",
+        "scent-leaf",
+        "strawberries"
+      ],
       "payment": "Cash, transfer and card",
       "parking": "Dedicated parking",
       "growers": "Organic growers present",
@@ -422,7 +619,12 @@
           "/images/markets/ikeja-market.webp"
         ]
       },
-      "nearby": ["maryland-evening", "ikeja-harvest", "gbagada-dawn", "yaba-tech-gate"]
+      "nearby": [
+        "maryland-evening",
+        "ikeja-harvest",
+        "gbagada-dawn",
+        "yaba-tech-gate"
+      ]
     },
     {
       "id": "festac-2nd-ave",
@@ -444,9 +646,16 @@
         "sat": ["08:00", "19:00"],
         "sun": ["08:00", "19:00"]
       },
-      "description": "Open every day, with the best fresh and smoked fish on the mainland. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Open every day, with the best fresh and smoked fish on the mainland. The fish section is the heart of it, busy from morning until evening.",
       "categories": ["Fish & meat", "Grains & tubers"],
-      "produce": ["fresh-catfish", "smoked-fish", "plantain", "yam", "garden-eggs", "scotch-bonnet"],
+      "produce": [
+        "fresh-catfish",
+        "smoked-fish",
+        "plantain",
+        "yam",
+        "garden-eggs",
+        "scotch-bonnet"
+      ],
       "payment": "Cash and bank transfer",
       "parking": "Street parking only",
       "growers": "Mixed growers & traders",
@@ -462,7 +671,12 @@
           "/images/markets/epe-farm.webp"
         ]
       },
-      "nearby": ["surulere-organic", "yaba-green", "yaba-tech-gate", "maryland-evening"]
+      "nearby": [
+        "surulere-organic",
+        "yaba-green",
+        "yaba-tech-gate",
+        "maryland-evening"
+      ]
     },
     {
       "id": "ikorodu-farmgate",
@@ -476,9 +690,17 @@
       "lng": 3.507,
       "map": { "x": 521, "y": 277 },
       "schedule": { "thu": ["06:00", "14:00"], "sun": ["06:00", "12:00"] },
-      "description": "Farm-gate prices on cassava, garri and yam straight from Ikorodu farms. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Farm-gate prices on cassava, garri and yam straight from Ikorodu farms. It is a working market rather than a weekend outing, so come early and bring cash.",
       "categories": ["Grains & tubers", "Fruit"],
-      "produce": ["cassava", "garri", "yam", "sweet-corn", "plantain", "pawpaw", "okra"],
+      "produce": [
+        "cassava",
+        "garri",
+        "yam",
+        "sweet-corn",
+        "plantain",
+        "pawpaw",
+        "okra"
+      ],
       "payment": "Cash and bank transfer",
       "parking": "Street parking only",
       "growers": "Mixed growers & traders",
@@ -494,7 +716,12 @@
           "/images/markets/ikorodu-market.avif"
         ]
       },
-      "nearby": ["gbagada-dawn", "maryland-evening", "ikeja-gra-sunday", "ikeja-harvest"]
+      "nearby": [
+        "gbagada-dawn",
+        "maryland-evening",
+        "ikeja-gra-sunday",
+        "ikeja-harvest"
+      ]
     },
     {
       "id": "ikeja-harvest",
@@ -508,9 +735,17 @@
       "lng": 3.353,
       "map": { "x": 203, "y": 312 },
       "schedule": { "wed": ["07:30", "13:00"], "sat": ["07:30", "13:00"] },
-      "description": "Wholesale-friendly market known for tomatoes, onions and tubers. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Wholesale-friendly market known for tomatoes, onions and tubers. Best for buying in quantity, though single shoppers are welcome too.",
       "categories": ["Vegetables", "Grains & tubers"],
-      "produce": ["tomatoes", "onions", "yam", "beans", "plantain", "scotch-bonnet", "garri"],
+      "produce": [
+        "tomatoes",
+        "onions",
+        "yam",
+        "beans",
+        "plantain",
+        "scotch-bonnet",
+        "garri"
+      ],
       "payment": "Cash and bank transfer",
       "parking": "Dedicated parking",
       "growers": "Mixed growers & traders",
@@ -526,7 +761,12 @@
           "/images/markets/ikeja-harvest.jpg"
         ]
       },
-      "nearby": ["ikeja-gra-sunday", "maryland-evening", "gbagada-dawn", "yaba-tech-gate"]
+      "nearby": [
+        "ikeja-gra-sunday",
+        "maryland-evening",
+        "gbagada-dawn",
+        "yaba-tech-gate"
+      ]
     },
     {
       "id": "epe-fish-farm",
@@ -536,13 +776,20 @@
       "locality": "Epe",
       "street": "Oluwo Market Road, Epe",
       "address": "Oluwo Market Road, Epe, Lagos",
-      "lat": 6.580,
+      "lat": 6.58,
       "lng": 3.989,
       "map": { "x": 780, "y": 348 },
       "schedule": { "mon": ["06:00", "15:00"], "fri": ["06:00", "15:00"] },
-      "description": "Lagoon-side market famous for fresh fish landed the same morning. Come early for the best choice. Prices are usually lowest in the last hour before closing.",
+      "description": "Lagoon-side market famous for fresh fish landed the same morning. Arrive early for the widest choice; by afternoon the best lots are gone.",
       "categories": ["Fish & meat", "Grains & tubers", "Fruit"],
-      "produce": ["fresh-catfish", "smoked-fish", "scotch-bonnet", "sweet-corn", "yam", "pineapple"],
+      "produce": [
+        "fresh-catfish",
+        "smoked-fish",
+        "scotch-bonnet",
+        "sweet-corn",
+        "yam",
+        "pineapple"
+      ],
       "payment": "Cash and bank transfer",
       "parking": "Street parking only",
       "growers": "Mixed growers & traders",
@@ -558,7 +805,12 @@
           "/images/markets/epe-farm.webp"
         ]
       },
-      "nearby": ["sangotedo-saturday", "ajah-fresh-hub", "ikorodu-farmgate", "chevron-drive"]
+      "nearby": [
+        "sangotedo-saturday",
+        "ajah-fresh-hub",
+        "ikorodu-farmgate",
+        "chevron-drive"
+      ]
     }
   ]
 }
