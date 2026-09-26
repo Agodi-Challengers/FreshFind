@@ -17,6 +17,7 @@ import {
 import { MONTH_SHORT } from "../lib/time.js";
 import { shareLink } from "../lib/share.js";
 import { asset } from "../lib/assets.js";
+import { FaArrowRight } from "react-icons/fa6";
 import "./SeasonalPage.css";
 
 /** Removes empty values and duplicates so the gallery only shows real photos. */
@@ -248,7 +249,7 @@ export default function SeasonalPage() {
                     to={`/directory?q=${encodeURIComponent(p.shortName || p.name)}`}
                     className="seasonal__see"
                   >
-                    See markets →
+                    See markets <FaArrowRight/>
                   </Link>
                 </div>
               </article>

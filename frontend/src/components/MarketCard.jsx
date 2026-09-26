@@ -6,7 +6,7 @@ import { useData } from "../context/DataContext.jsx";
 import { scheduleLabel } from "../lib/time.js";
 import { formatKm } from "../lib/geo.js";
 import { asset } from "../lib/assets.js";
-
+import { FaArrowRight } from "react-icons/fa6";
 /**
  * Market card used on Home, Directory, Seasonal and Market detail pages.
  * `market` must be decorated with `status` and `km` (see lib/filters.js decorate()).
@@ -110,7 +110,7 @@ export default function MarketCard({
           </span>
           <span className="market-card__more" aria-hidden="true">
             Details
-            <Icon name="arrow-right" size={14} />
+            <FaArrowRight/>
           </span>
         </div>
       </div>
