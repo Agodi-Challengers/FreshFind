@@ -62,8 +62,8 @@
 }
 
 .pill--amber {
-  background: #fff4e5;
-  color: var(--warning);
+  background: #FF8A00;
+  color: var(--white);
 }
 
 .field-label {

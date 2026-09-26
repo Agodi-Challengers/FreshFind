@@ -151,8 +151,8 @@
 }
 
 .detail .pill--verified {
-  background: var(--cream);
-  color: var(--ink-700);
+  background: var(--green-100);
+  color: var(--green-700);
   border: 1px solid var(--line);
 }
 
@@ -213,6 +213,8 @@
 
 .detail .btn--outline:hover {
   border-color: var(--ink-300);
+  background: var(--green);
+  color: #fff;
 }
 
 .detail .btn--solid {
