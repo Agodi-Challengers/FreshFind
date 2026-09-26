@@ -6,6 +6,8 @@ import { useData } from "../context/DataContext.jsx";
 import { useNow } from "../context/ClockContext.jsx";
 import { inSeason } from "../lib/time.js";
 import { asset } from "../lib/assets.js";
+import { FaArrowRight } from "react-icons/fa6";
+
 
 /** Produce Guide card: photo, category, description, season strip and where to buy. */
 export default function ProduceCard({ item }) {
@@ -60,7 +62,8 @@ export default function ProduceCard({ item }) {
             to={`/directory?q=${encodeURIComponent(item.shortName || item.name)}`}
             className="produce-card__buy"
           >
-            Where to buy →
+            Where to buy <FaArrowRight />
+
           </Link>
         </div>
       </div>

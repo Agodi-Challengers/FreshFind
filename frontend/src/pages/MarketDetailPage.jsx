@@ -15,6 +15,7 @@ import { formatKm } from "../lib/geo.js";
 import { asset, googleMapsEmbed, googleMapsLink, googleDirections } from "../lib/assets.js";
 import { shareLink } from "../lib/share.js";
 import "./MarketDetailPage.css";
+import { FaArrowRight } from "react-icons/fa6";
 
 const INFO = [
   { key: "payment", title: "Payment", icon: "wallet" },
@@ -47,6 +48,8 @@ export default function MarketDetailPage() {
   const photos = marketPhotos(market.images);
   const [active, setActive] = useState(0);
   const main = photos[active] || photos[0];
+  const [isShared, setIsShared] = useState(false);
+
 
   return (
     <article className="detail">
@@ -121,33 +124,38 @@ export default function MarketDetailPage() {
               </div>
             </div>
             <div className="detail__actions">
-              <button
-                type="button"
-                className="btn btn--outline"
-                onClick={() =>
-                  shareLink(
-                    {
-                      title: market.name,
-                      text: `${market.name} · ${scheduleLabel(market.schedule)}`,
-                      url: typeof window !== "undefined" ? window.location.href : "",
-                    },
-                    toast,
-                  )
-                }
-              >
-                <Icon name="share-2" size={16} />
-                Share
-              </button>
-              <button
-                type="button"
-                className="btn btn--outline"
-                onClick={() => toast("Note added")}
-              >
-                <Icon name="sticky-note" size={16} />
-                Add note
-              </button>
-              <BookmarkButton id={market.id} name={market.name} variant="button" />
-            </div>
+
+              <div className="detail__actions">
+  <button
+    type="button"
+    className="btn btn--outline"
+    onClick={() =>
+      shareLink(
+        {
+          title: market.name,
+          text: `${market.name} · ${scheduleLabel(market.schedule)}`,
+          url:
+            typeof window !== "undefined"
+              ? window.location.href
+              : "",
+        },
+        toast,
+      )
+    }
+  >
+    <Icon name="share-2" size={16} />
+    Share
+  </button>
+
+</div>
+  
+
+  <BookmarkButton
+    id={market.id}
+    name={market.name}
+    variant="button"
+  />
+</div>
           </div>
         </div>
       </div>
@@ -290,7 +298,8 @@ export default function MarketDetailPage() {
           <div className="detail__nearby-head">
             <h2 id="nearby-title">Other markets near {market.area}</h2>
             <Link to={`/directory?area=${encodeURIComponent(market.area)}`} className="link-arrow">
-              View all →
+              View all <FaArrowRight />
+
             </Link>
           </div>
           <div className="grid grid--4">

@@ -35,6 +35,7 @@ export default function BookmarkButton({
         aria-pressed={saved}
         aria-label={label}
         onClick={onClick}
+        style={saved ? { backgroundColor: "#00b207", color: "white" } : {}}
       >
         <Icon name={saved ? "bookmark-check" : "bookmark"} size={16} />
         {saved ? "Saved" : "Save"}
