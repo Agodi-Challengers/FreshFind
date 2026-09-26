@@ -33,3 +33,4 @@ dist-ssr
 /frontend
 /.env.development
 /.env.example
+/CHANGES.md
