@@ -151,6 +151,7 @@ export default function MarketDetailPage() {
   
 
   <BookmarkButton
+    type="market"
     id={market.id}
     name={market.name}
     variant="button"

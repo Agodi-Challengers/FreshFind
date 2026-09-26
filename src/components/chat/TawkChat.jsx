@@ -103,6 +103,9 @@ export default function TawkChat() {
   function handleLoad() {
     // Hide Tawk's own bubble: the Figma "Ask FreshFind" button is the only way in.
     attemptTawk(tawk.current, "hideWidget");
+    // Tawk remembers an open window from the last visit and reloads it
+    // "open but hidden". Start closed so our button reliably opens it.
+    if (isChatMaximized()) closeChatWindow();
     registerChatControls({
       open: openChatWindow,
       close: closeChatWindow,

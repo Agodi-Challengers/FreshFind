@@ -6,7 +6,6 @@ import {
   isChatOpen,
   openChat,
   subscribeToChat,
-  toggleChat,
 } from "../services/chatService.js";
 
 /* eslint-disable-next-line react-refresh/only-export-components */
@@ -19,8 +18,8 @@ export function useOpenChat() {
 
 /**
  * Floating "Ask FreshFind" button from the Figma (States / Chat launcher).
- * It opens the live chat chosen in .env. It hides while the chat window is open,
- * and is not shown at all when chat is switched off.
+ * It always opens the live chat chosen in .env. It hides while the chat window
+ * is open, and is not shown at all when chat is switched off.
  */
 export default function ChatLauncher() {
   const [open, setOpen] = useState(isChatOpen);
@@ -33,7 +32,7 @@ export default function ChatLauncher() {
     <button
       type="button"
       className="chat-launcher"
-      onClick={toggleChat}
+      onClick={openChat}
       aria-label="Ask FreshFind: open chat"
       aria-expanded={open}
       hidden={open}
