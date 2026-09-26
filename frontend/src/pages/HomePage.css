@@ -3,9 +3,11 @@
 .section {
   padding-top: 88px;
   padding-bottom: 88px;
+  background-color: #F2F2F2;
 }
 
 /* ---------- Hero ---------- */
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 640px) minmax(0, 584px);
@@ -14,6 +16,7 @@
   gap: 56px;
   padding-top: 72px;
   padding-bottom: 88px;
+  background-color: #F2F2F2;
 }
 
 .hero__copy {
@@ -29,11 +32,11 @@
   gap: 6px;
   padding: 6px 12px;
   border-radius: var(--r-pill);
-  background: var(--green-100);
-  color: var(--green);
+  color: #00b207;
   font-size: 13px;
   font-weight: 500;
   line-height: 17px;
+  transition: 0.3s ease;
 }
 
 .hero__tag:hover {
@@ -42,6 +45,8 @@
 }
 
 .hero__title {
+  margin: 0;
+  max-width: 650px;
   font-size: 64px;
   line-height: 1.04;
   letter-spacing: -0.02em;
@@ -49,12 +54,17 @@
 
 .hero__lead {
   max-width: 580px;
+  margin: 0;
   font-size: 19px;
   line-height: 1.5;
   color: var(--muted);
 }
 
-/* Quick find bar */
+
+/* =========================
+   QUICK FIND
+========================= */
+
 .quickfind {
   display: flex;
   align-items: center;
@@ -84,10 +94,6 @@
 .quickfind .search__field {
   padding-inline: 12px;
   gap: 8px;
-}
-
-.quickfind .dropdown__button,
-.quickfind .search__field {
   border-radius: 14px;
 }
 
@@ -97,6 +103,11 @@
   margin-left: 8px;
   padding: 16px 20px;
 }
+
+
+/* =========================
+   POPULAR
+========================= */
 
 .hero__popular {
   display: flex;
@@ -108,7 +119,19 @@
   color: var(--muted);
 }
 
-/* Hero visual with floating cards */
+.hero__popular .chip {
+  transition: all 0.25s ease;
+}
+
+.hero__popular .chip:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   HERO VISUAL
+========================= */
+
 .hero__visual {
   position: relative;
   width: 100%;
@@ -117,33 +140,17 @@
   justify-self: end;
 }
 
-.hero__photo {
-  position: absolute;
-  top: 3.6%;
-  right: 0;
-  width: 89%;
-  aspect-ratio: 1;
-  overflow: hidden;
-  border-radius: 40px;
-  background: var(--sand);
-}
-
-.hero__photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(31, 77, 43, 0) 0%,
-    rgba(20, 51, 28, 0.55) 100%
-  );
-}
 
 .hero__photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+
+/* =========================
+   FLOATING CARDS
+========================= */
 
 .float-card {
   position: absolute;
@@ -161,20 +168,8 @@
   animation-delay: -4s;
 }
 
-.hero__live {
-  top: 9%;
-  left: 17%;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: var(--r-pill);
-  color: var(--green);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 17px;
-  animation-duration: 7s;
-}
+
+/* Pick of the week */
 
 .hero__pick {
   top: 0.7%;
@@ -185,10 +180,13 @@
   padding: 12px 18px 12px 12px;
   border-radius: 20px;
   color: var(--ink);
+  transition: 0.25s ease;
 }
 
 .hero__pick:hover {
   color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 
 .hero__pick img {
@@ -219,6 +217,9 @@
   line-height: 20px;
 }
 
+
+/* Featured market */
+
 .hero__featured {
   top: 54.5%;
   left: 0;
@@ -230,11 +231,13 @@
   padding: 18px;
   border-radius: 24px;
   color: var(--ink);
+  transition: 0.25s ease;
 }
 
 .hero__featured:hover {
   color: var(--ink);
   box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
 }
 
 .hero__featured-row {
@@ -308,28 +311,6 @@
   font-weight: 700;
   color: var(--muted);
 }
-
-.hero__stat {
-  right: -2.3%;
-  bottom: 0.7%;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 14px 18px;
-  border-radius: 20px;
-  background: var(--yellow);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 17px;
-}
-
-.hero__stat-num {
-  font-family: var(--display);
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 35px;
-}
-
 /* ---------- Open near you ---------- */
 .home__tabs {
   display: flex;
@@ -469,7 +450,8 @@
   width: 60px;
   height: 60px;
   border-radius: 18px;
-  color: var(--green);
+  color: #2C742F;
+  background-color: #E4FFE5;
 }
 
 .feature__icon--green {
@@ -477,13 +459,13 @@
 }
 
 .feature__icon--yellow {
-  background: var(--yellow-100);
-  color: var(--yellow-text);
+  background-color: #E4FFE5;
+  color: #2C742F;
 }
 
 .feature__icon--orange {
-  background: var(--orange-100);
-  color: var(--orange);
+  background-color: #E4FFE5;
+  color: #2C742F;
 }
 
 .feature__link {
@@ -573,32 +555,35 @@
 /* ---------- CTA banner ---------- */
 .home__cta-wrap {
   padding-bottom: 96px;
+  background-color: #F2F2F2;
 }
 
 .home__cta {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
   padding: 56px 64px;
   border-radius: 32px;
-  background: var(--orange);
+  background: var(--none);
   color: #fff;
 }
 
 .home__cta h2 {
-  color: #fff;
+  color: #000;
   font-size: 40px;
   line-height: 1.22;
   letter-spacing: -0.015em;
+  text-align: center;
 }
 
 .home__cta p {
-  max-width: 560px;
   margin-top: 14px;
   font-size: 18px;
   line-height: 1.5;
-  color: var(--orange-text);
+  color: #000;
+  text-align: center;
 }
 
 .home__cta-buttons {
@@ -607,8 +592,16 @@
   gap: 12px;
 }
 
-/* ---------- Responsive ---------- */
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media (max-width: 1299.98px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 500px);
+    gap: 40px;
+  }
+
   .hero__title {
     font-size: 54px;
   }
@@ -618,10 +611,19 @@
   }
 }
 
+
+/* =========================
+   TABLET
+========================= */
+
 @media (max-width: 1199.98px) {
   .hero {
     grid-template-columns: minmax(0, 1fr);
     padding-top: 48px;
+  }
+
+  .hero__copy {
+    width: 100%;
   }
 
   .hero__visual {
@@ -638,10 +640,22 @@
   }
 }
 
+
+/* =========================
+   SMALL TABLET
+========================= */
+
 @media (max-width: 991.98px) {
   .section {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    display: none;
+  }
+
+  .hero {
+    gap: 36px;
+  }
+
+  .hero__title {
+    font-size: 48px;
   }
 
   .home__cta {
@@ -651,40 +665,197 @@
   }
 
   .home__cta h2 {
-    font-size: 30px;
+    font-size: 25px;
   }
 }
 
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 767.98px) {
+
   .hero {
-    gap: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
     padding-top: 24px;
     padding-bottom: 28px;
   }
 
+  /*
+    This allows the hero children to be reordered
+    without changing your JSX structure.
+  */
   .hero__copy {
-    gap: 18px;
+    display: contents;
   }
 
+  /* Welcome text */
+
+  .hero__tag {
+    order: 1;
+    width: fit-content;
+    padding: 0;
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  /* Main heading */
+
   .hero__title {
+    order: 2;
+    max-width: 100%;
+    margin-bottom: 16px;
     font-size: 36px;
     line-height: 1.06;
     letter-spacing: -0.015em;
   }
 
+  /* Description */
+
   .hero__lead {
+    order: 3;
+    max-width: 100%;
+    margin-bottom: 20px;
     font-size: 15px;
+    line-height: 1.55;
   }
 
+
+  /* =========================
+     MOBILE HERO IMAGE
+  ========================= */
+
   .hero__visual {
+    order: 4;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 390px;
+    aspect-ratio: auto;
+    margin: 0 0 20px;
+  }
+
+  /*
+    Make the produce image look more
+    like the reference instead of a
+    large rounded square.
+  */
+
+  .hero__photo {
+    top: 30px;
+    right: 0;
+    width: 100%;
+    height: 330px;
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .hero__photo::after {
     display: none;
   }
 
-  /* Quick find becomes a stacked card (M1) */
+  .hero__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+  /* Pick of the week */
+
+  .hero__pick {
+    top: 0;
+    right: 0;
+    gap: 8px;
+    padding: 8px 12px 8px 8px;
+    border-radius: 16px;
+  }
+
+  .hero__pick img {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+  }
+
+  .hero__pick-eyebrow {
+    font-size: 9px;
+    line-height: 12px;
+  }
+
+  .hero__pick-name {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+
+  /* Featured market card */
+
+  .hero__featured {
+    top: 55%;
+    left: 0;
+    width: 285px;
+    max-width: 78%;
+    padding: 14px;
+    gap: 10px;
+    border-radius: 20px;
+  }
+
+  .hero__featured-row {
+    gap: 10px;
+  }
+
+  .hero__featured-row img {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+  }
+
+  .hero__featured-name {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .hero__featured-street {
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .hero__featured-status {
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .hero__featured-produce {
+    gap: 5px;
+  }
+
+  .hero__featured-produce img,
+  .hero__more {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+
+
+  /* =========================
+     QUICK FIND
+  ========================= */
+
   .quickfind {
+    order: 5;
     flex-direction: column;
     align-items: stretch;
+    gap: 0;
+    width: 100%;
     padding: 6px;
+    margin-bottom: 22px;
+    border-radius: 24px;
+    box-shadow: var(--shadow-float);
   }
 
   .quickfind__area,
@@ -694,16 +865,44 @@
 
   .quickfind .dropdown__button,
   .quickfind .search__field {
+    width: 100%;
     height: 58px;
+    padding-inline: 14px;
     border-color: transparent;
-    border-bottom-color: var(--border);
+    border-bottom: 1px solid var(--border);
     border-radius: 0;
   }
 
   .quickfind__go {
-    margin: 0;
-    border-radius: 14px;
+    width: 100%;
+    min-height: 56px;
+    margin: 6px 0 0;
+    border-radius: 16px;
   }
+
+
+  /* =========================
+     POPULAR
+  ========================= */
+
+  .hero__popular {
+    order: 6;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .hero__popular > span {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  .hero__popular .chip {
+    padding: 9px 14px;
+  }
+
+
+  /* Other sections */
 
   .season-cards {
     display: flex;
@@ -733,5 +932,28 @@
   .home__how-wrap,
   .home__cta-wrap {
     padding-bottom: 48px;
+  }
+}
+
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+  .hero__title {
+    font-size: 33px;
+  }
+
+  .hero__visual {
+    height: 350px;
+  }
+
+  .hero__photo {
+    height: 300px;
+  }
+
+  .hero__featured {
+    max-width: 82%;
   }
 }

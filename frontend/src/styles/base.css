@@ -92,7 +92,7 @@ button {
   line-height: 17px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: #00B207;
 }
 
 .eyebrow--yellow {
@@ -194,12 +194,12 @@ button {
 }
 
 .btn--accent {
-  background: var(--orange);
+  background-color: #00B207;
   color: #fff;
 }
 
 .btn--accent:hover {
-  background: var(--orange-hover);
+  background-color: #2C742F;
   color: #fff;
 }
 
@@ -220,8 +220,8 @@ button {
 }
 
 .btn--outline:hover {
-  background: var(--green-100);
-  color: var(--green);
+  background-color:#00B207;
+  
 }
 
 .btn--ghost {
@@ -235,14 +235,13 @@ button {
 }
 
 .btn--outline-light {
-  background: transparent;
+  background-color: #00B207;
   border-color: #fff;
   color: #fff;
 }
 
 .btn--outline-light:hover {
-  background: var(--green-100);
-  color: var(--green);
+  background-color: #2C742F;
 }
 
 .btn--block {
@@ -339,7 +338,7 @@ button {
 }
 
 .dot--open {
-  background: var(--green-500);
+  background-color: #00B207
 }
 
 .dot--soon {

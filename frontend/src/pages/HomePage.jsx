@@ -87,19 +87,15 @@ function HeroVisual({ markets, pick, openCount }) {
     <div className="hero__visual">
       <div className="hero__photo">
         <img
-          src={asset("/images/site/home-hero.webp")}
+          src={asset("/images/site/home-hero.png")}
           alt="Fresh vegetables and fruit on a Lagos market stall"
-          width="520"
-          height="520"
+          // width="520"
+          // height="520"
           fetchPriority="high"
         />
       </div>
 
-      <div className="hero__live float-card">
-        <span className="dot dot--open" aria-hidden="true" />
-        {openCount} {openCount === 1 ? "market" : "markets"} open near you
-      </div>
-
+      
       {pick && (
         <Link
           to={`/produce/${pick.id}`}
@@ -159,11 +155,6 @@ function HeroVisual({ markets, pick, openCount }) {
           </span>
         </Link>
       )}
-
-      <div className="hero__stat float-card float-card--c">
-        <span className="hero__stat-num">{markets.length}</span>
-        <span>markets listed in Lagos</span>
-      </div>
     </div>
   );
 }
@@ -225,22 +216,42 @@ export default function HomePage() {
       <section className="hero container" aria-labelledby="hero-title">
         <div className="hero__copy">
           {inSeasonNames.length > 0 && (
-            <Link to="/seasonal" className="hero__tag">
-              <Icon name="sprout" size={14} />
-              This week: {listNames(inSeasonNames)}{" "}
-              {inSeasonNames.length === 1 ? "is" : "are"} in season
-            </Link>
+            <span  className="hero__tag">
+              WELCOME TO FRESHFIND
+            </span>
           )}
           <h1 id="hero-title" className="hero__title">
-            Know what’s fresh, and exactly where to find it.
+            Fresh markets, right around the corner.
           </h1>
           <p className="hero__lead">
-            FreshFind brings every farmers market in your neighbourhood into one
-            place: where they are, when they open, and what’s likely on the
-            stalls this week. No more chasing flyers and WhatsApp forwards.
+            Discover farmers markets, find what's in season, and plan your next fresh-food stop
           </p>
 
-          <form
+          <div className="hero__popular">
+            <span>Popular:</span>
+            <Link to="/find?open=1" className="chip">
+              <span className="dot dot--open" aria-hidden="true" />
+              Open now
+            </Link>
+            <Link to="/find?day=sat" className="chip">
+              This Saturday
+            </Link>
+            <Link to="/directory?feat=organic" className="chip">
+              Organic
+            </Link>
+            <button
+              type="button"
+              className="chip"
+              onClick={() => {
+                requestDeviceLocation();
+                navigate("/find");
+              }}
+            >
+              Near me
+            </button>
+          </div>
+
+           <form
             className="quickfind"
             role="search"
             aria-label="Find a market near you"
@@ -289,29 +300,6 @@ export default function HomePage() {
             </button>
           </form>
 
-          <div className="hero__popular">
-            <span>Popular:</span>
-            <Link to="/find?open=1" className="chip">
-              <span className="dot dot--open" aria-hidden="true" />
-              Open now
-            </Link>
-            <Link to="/find?day=sat" className="chip">
-              This Saturday
-            </Link>
-            <Link to="/directory?feat=organic" className="chip">
-              Organic
-            </Link>
-            <button
-              type="button"
-              className="chip"
-              onClick={() => {
-                requestDeviceLocation();
-                navigate("/find");
-              }}
-            >
-              Near me
-            </button>
-          </div>
         </div>
 
         <HeroVisual markets={markets} pick={pick} openCount={openCount} />
@@ -319,8 +307,11 @@ export default function HomePage() {
 
       {/* ---------- Open near you ---------- */}
       <section className="section container" aria-labelledby="open-title">
-        <div className="section-head">
-          <div className="section-head__copy">
+        <div className="section-head" style={{ justifyContent: "center" }}>
+          <div
+            className="section-head__copy"
+            style={{ textAlign: "center", margin: "0 auto" }}
+          >
             <span className="eyebrow">Happening now</span>
             <h2 id="open-title" className="section-title">
               Markets open near you
@@ -444,7 +435,7 @@ export default function HomePage() {
         </div>
         <div className="grid grid--3">
           <Link to="/directory" className="feature card hover-card">
-            <span className="feature__icon feature__icon--green">
+            <span className="feature__icon feature_i _icon--green">
               <Icon name="map" size={30} />
             </span>
             <h3>Market Directory</h3>
