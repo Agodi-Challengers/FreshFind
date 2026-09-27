@@ -30,7 +30,7 @@ dist-ssr
 /artifacts
 /artifacts.zip
 /frontend/.next
-/frontend
+
 /.env.development
 /.env.example
 /next
