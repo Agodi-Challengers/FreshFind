@@ -16,7 +16,6 @@ import SiteHeader from "./components/SiteHeader.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
 
 import ChatLauncher from "./components/ChatLauncher.jsx";
-import ChatWidget from "./components/chat/ChatWidget.jsx";
 import CtaBanner from "./components/CtaBanner.jsx";
 import { getVisitorCount } from "./lib/visitors.js";
 import HomePage from "./pages/HomePage.jsx";
@@ -39,7 +38,6 @@ function ScrollToTop() {
   }, [pathname]);
   return null;
 }
-
 
 function SiteLayout() {
   const [visitors] = useState(getVisitorCount);
@@ -104,8 +102,6 @@ export default function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ToastProvider>
-        {/* Live chat (Tawk.to). Loads once for the whole site, only if switched on in .env. */}
-        <ChatWidget />
         <DataProvider>
           <ClockProvider>
             <BookmarksProvider>

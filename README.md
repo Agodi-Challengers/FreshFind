@@ -1,17 +1,17 @@
 # FreshFind · Fresh all along
 
-FreshFind helps residents of Lagos discover farmers markets near them: where they are, when they open, and what is likely to be on the stalls this week. It is a single page application built from the **FreshFind · Web Design** Figma file and the *FreshFind (Web Innovation Unleashed) SRS v1.0*.
+FreshFind helps residents of Lagos discover farmers markets near them: where they are, when they open, and what is likely to be on the stalls this week. It is a single page application built from the **FreshFind · Web Design** Figma file and the _FreshFind (Web Innovation Unleashed) SRS v1.0_.
 
 ## Tech stack
 
-| Layer | Choice | Why |
-|---|---|---|
-| UI | React 19 + Vite | Component based SPA, fast dev server and build |
-| Routing | React Router | Market detail pages, breadcrumbs, shareable filter URLs |
-| Styling | Bootstrap 5 (CSS only) + vanilla CSS | Bootstrap for reset, grid and utilities; the design system itself is plain CSS with custom properties |
-| Data | JSON files in `public/data` | SRS: no backend, data loaded from pre-populated JSON |
-| Maps | Google Maps embed + a design-exported SVG map of Lagos | SRS: embedded Google map on market pages; the Find a Market map follows the Figma design |
-| Chat | Tawk.to widget | Chatbot platform listed in the SRS |
+| Layer   | Choice                                                 | Why                                                                                                   |
+| ------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| UI      | React 19 + Vite                                        | Component based SPA, fast dev server and build                                                        |
+| Routing | React Router                                           | Market detail pages, breadcrumbs, shareable filter URLs                                               |
+| Styling | Bootstrap 5 (CSS only) + vanilla CSS                   | Bootstrap for reset, grid and utilities; the design system itself is plain CSS with custom properties |
+| Data    | JSON files in `public/data`                            | SRS: no backend, data loaded from pre-populated JSON                                                  |
+| Maps    | Google Maps embed + a design-exported SVG map of Lagos | SRS: embedded Google map on market pages; the Find a Market map follows the Figma design              |
+| Chat    | JSON rule-based assistant (`public/data/chatbot.json`) | Chatbot listed in the SRS, no external service                                                        |
 
 No other runtime libraries are used.
 
@@ -22,15 +22,15 @@ Requirements: Node.js 20.19 or newer and npm. The app lives in the `frontend/` f
 ```bash
 cd frontend
 npm install
-cp .env.example .env   # then add your Tawk.to IDs
+cp .env.example .env   # optional: copy the example chat settings
 npm run dev            # http://localhost:5173
 npm run build          # production build in dist/
 npm run preview        # serve the production build
 ```
 
-### Tawk.to
+### Chat
 
-Set `VITE_TAWK_PROPERTY_ID` and `VITE_TAWK_WIDGET_ID` in `frontend/.env`. You find both in the Tawk.to dashboard under **Administration → Chat Widget**; the embed link has the form `https://embed.tawk.to/<PROPERTY_ID>/<WIDGET_ID>`. Without them the site still works and the "Ask FreshFind" button explains that chat is not configured.
+The FreshFind Assistant is a rule-based chatbot whose wording lives in `public/data/chatbot.json`. Set `VITE_CHAT_PROVIDER=json` to switch it on (the default) or `none` to hide it. No external chat service or API key is needed.
 
 ## Project structure
 

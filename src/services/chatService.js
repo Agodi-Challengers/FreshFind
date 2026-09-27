@@ -1,52 +1,35 @@
 /**
- * One place to control the live chat, whatever provider is switched on.
+ * One place to control the live chat.
  *
  * The rest of the app only calls openChat(), closeChat(), toggleChat(),
- * maximizeChat() and minimizeChat(). It never talks to Tawk.to directly.
+ * maximizeChat() and minimizeChat(). It never talks to the chat widget directly.
  *
  * Which provider runs is set in .env:
  *   VITE_CHAT_PROVIDER=json   -> FreshFind Assistant, scripted answers from
  *                                public/data/chatbot.json (SRS 1.5, default)
- *   VITE_CHAT_PROVIDER=tawk   -> Tawk.to live chat
  *   VITE_CHAT_PROVIDER=none   -> no chat loads at all
  */
 
-const SUPPORTED = ["json", "tawk", "none"];
+const SUPPORTED = ["json", "none"];
 
-const requested = (import.meta.env.VITE_CHAT_PROVIDER || "json").trim().toLowerCase();
+const requested = (import.meta.env.VITE_CHAT_PROVIDER || "json")
+  .trim()
+  .toLowerCase();
 
 if (!SUPPORTED.includes(requested)) {
   console.warn(
-    `[chat] VITE_CHAT_PROVIDER="${requested}" is not supported. Use "json", "tawk" or "none". Chat is turned off.`,
+    `[chat] VITE_CHAT_PROVIDER="${requested}" is not supported. Use "json" or "none". Falling back to "json".`,
   );
 }
 
-// Tawk.to needs both IDs. Without them it cannot load, so chat stays off
-// (otherwise the button would show but do nothing).
-const tawkHasIds = Boolean(
-  import.meta.env.VITE_TAWK_PROPERTY_ID && import.meta.env.VITE_TAWK_WIDGET_ID,
-);
-
-if (requested === "tawk" && !tawkHasIds) {
-  console.warn(
-    "[chat] VITE_CHAT_PROVIDER=tawk but VITE_TAWK_PROPERTY_ID or VITE_TAWK_WIDGET_ID is missing. Chat is turned off.",
-  );
-}
-
-function pickProvider() {
-  if (requested === "json") return "json";
-  if (requested === "tawk") return tawkHasIds ? "tawk" : "none";
-  return "none";
-}
-
-/** The provider that is actually running: "json", "tawk" or "none". */
-export const chatProvider = pickProvider();
+/** The provider that is actually running: "json" or "none". */
+export const chatProvider = SUPPORTED.includes(requested) ? requested : "json";
 
 /** True when a chat provider is switched on. */
 export const chatEnabled = chatProvider !== "none";
 
-// The provider component (for example TawkChat) gives us its controls once
-// its widget has loaded. Until then we remember the last thing that was asked.
+// The provider component (the ChatbotPanel) gives us its controls once
+// it has loaded. Until then we remember the last thing that was asked.
 let controls = null;
 let pendingAction = null;
 
